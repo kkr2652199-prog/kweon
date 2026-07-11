@@ -1,6 +1,6 @@
 # STATUS_LATEST.md — kweon 현재 상태
 
-📅 최종 갱신: 2026-07-11 KST (테스트로또 archive 1231회 백필 완료)
+📅 최종 갱신: 2026-07-11 KST (상세페이지 증거보관소·7뇌 필살기·보조뇌 UI)
 
 ## 기본 정보
 | 항목 | 값 |
@@ -31,9 +31,15 @@
 - 등수 우선 best: `tier_utils.py` + 보너스 채점
 - API: `/walkforward/review`, `/progress`, `/detail/draw/{n}`
 
-### 상세페이지
-- 3뇌 판정 스트립 · 5등+ / 미적중 드롭다운 · brain_verdicts API
-- 캐시 버전: `?v=20260711k`
+### 상세페이지 — **증거 보관소** (2026-07-11m)
+- 7뇌 `short_desc` 필살기 한 줄 · `brain_meta` API
+- 5세트 **confidence** 바 + 최고신뢰 세트 강조 + `confidence_summary`
+- **보조 4뇌** `aux_brains` 섹션 (신호/경고, 채점 대상 아님)
+- `aux_analysis_json` lazy 저장 (검증 3회차 9행)
+
+### 다음 (P0)
+- aux_analysis_json 전 구간 일괄 백필 (선택)
+- 판매점 SPA 파서 (pending 1098회)
 
 ### 데이터 현황
 | 테이블 | 범위/건수 |
@@ -49,16 +55,12 @@
 - API timeout 22회 → 재시도 완료
 - `draw_archive.py` 판매점 실패 내성 + `store_fetch_status=pending`
 
-### 다음 (P0)
-- 판매점 SPA 파서 (pending 1098회)
-- 보조 4뇌 UI (`aux_analysis_json`)
-
 ## 효도로또 — 보존
 - app/hyodo/ · /api/hyodo/* · 테스트로또 검증 후 동기화
 
 ## 최신 보고서
+- `reports/20260711_4군_테스트로또_상세페이지_증거보관소_보고서.md`
 - `reports/20260711_4군_테스트로또_archive_백필_보고서.md`
-- `reports/20260711_4군_테스트로또_상세페이지_7뇌_구현_보고서.md`
 
 ## 관리 문서
 | 파일 | 용도 |

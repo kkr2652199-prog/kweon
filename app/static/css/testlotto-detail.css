@@ -1118,3 +1118,173 @@
   border-radius: 8px;
   font-size: 0.86rem;
 }
+
+/* ── 필살기·신뢰도·보조뇌 ── */
+.tld-verdict__desc,
+.tld-scorecard__desc {
+  display: block;
+  font-size: 0.68rem;
+  color: #94a3b8;
+  line-height: 1.25;
+  margin: 0.15rem 0 0.2rem;
+  font-weight: 400;
+}
+
+.tld-brain-short-desc {
+  display: block;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  font-weight: 400;
+  margin-top: 0.2rem;
+}
+
+.tld-conf-summary {
+  margin: 0 0 0.75rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 3px solid #3b82f6;
+  border-radius: 6px;
+  font-size: 0.86rem;
+  color: #cbd5e1;
+}
+
+.tld-conf-bar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-width: 5.5rem;
+  height: 1.1rem;
+  background: #1e293b;
+  border-radius: 999px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.tld-conf-bar__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 999px;
+}
+
+.tld-set-row--topconf {
+  box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.35);
+}
+
+.tld-conf-tag {
+  font-style: normal;
+  font-size: 0.68rem;
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.2);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  margin-left: 0.25rem;
+}
+
+.tld-conf-bar__txt {
+  position: relative;
+  z-index: 1;
+  font-size: 0.68rem;
+  color: #e2e8f0;
+  padding: 0 0.4rem;
+  width: 100%;
+  text-align: center;
+}
+
+.tld-set-row__conf {
+  flex: 1;
+  max-width: 7rem;
+}
+
+.tld-aux-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #2a2a3e;
+}
+
+.tld-aux-note {
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+.tld-aux-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.65rem;
+}
+
+.tld-aux-card {
+  background: #16162a;
+  border: 1px solid #2a2a3e;
+  border-radius: 10px;
+  padding: 0.75rem;
+  border-top: 3px solid var(--aux-color, #64748b);
+}
+
+.tld-aux-card__badge {
+  font-size: 0.65rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tld-aux-card__name {
+  margin: 0.2rem 0 0;
+  font-size: 0.92rem;
+  color: #f1f5f9;
+}
+
+.tld-aux-card__desc {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  line-height: 1.35;
+}
+
+.tld-aux-card__actual {
+  font-size: 0.75rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 0.45rem;
+  background: #1e1e32;
+}
+
+.tld-aux-card__label {
+  display: block;
+  font-size: 0.65rem;
+  color: #64748b;
+  margin-bottom: 0.15rem;
+}
+
+.tld-aux-signal--ok { border-left: 2px solid #4ade80; }
+.tld-aux-signal--warn { border-left: 2px solid #fbbf24; }
+.tld-aux-signal--alert { border-left: 2px solid #f87171; }
+
+.tld-aux-pred-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tld-aux-pred {
+  font-size: 0.7rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #252538;
+  color: #cbd5e1;
+}
+
+.tld-aux-pred__name {
+  display: block;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 0.1rem;
+}
+
+.tld-aux-pred__signal {
+  color: #94a3b8;
+  word-break: break-word;
+}

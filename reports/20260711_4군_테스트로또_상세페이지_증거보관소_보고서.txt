@@ -1,0 +1,17 @@
+4군 테스트로또 상세페이지 증거보관소 완성
+2026-07-11 KST
+
+[STEP1] registry short_desc 7뇌 + API brain_verdicts/brains/brain_meta
+
+[STEP2] aux_analysis.py + aux_brains API + aux_analysis_json 저장(lazy+walkforward)
+  보조뇌 = 신호/경고 (채점 대상 아님)
+
+[STEP3] confidence 바 + most_confident_set + confidence_summary (채점 미변경)
+
+[검증 500·1000·1231] short_desc/conf/aux 4개/sets confidence 전부 OK
+
+[보조뇌 DB] aux_stored 9행 (3회×3뇌 lazy) / total 3689
+
+[UI] ②채점: 판정스트립+필살기+5세트신뢰도+보조4뇌그리드
+
+[TODO] aux 전구간 백필, 판매점 SPA, 구간타임라인 등수

@@ -5,7 +5,15 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from app.testlotto.brains.registry import DISPLAY_NAMES, PREDICT_BRAINS
+from app.testlotto.aux_analysis import (
+    build_aux_brains_section,
+    build_brain_aux_json,
+    confidence_summary_line,
+    most_confident_set,
+    parse_aux_json,
+)
+from app.testlotto.brains.registry import AUX_BRAINS, DISPLAY_NAMES, PREDICT_BRAINS, get_short_desc
+from app.testlotto.data_service import _get_draws_before
 from app.testlotto.models import get_lotto_db
 from app.testlotto.prize_tiers import get_prize_tiers
 from app.testlotto.tier_utils import (
@@ -55,6 +63,7 @@ def upsert_brain_page_from_review(
     bonus_matched: int = 0,
     tier_rank: int = 0,
     tier_label: str = "미적중",
+    aux_analysis_json: list[dict[str, Any]] | None = None,
 ) -> None:
     """복습 1건 → 뇌별 상세페이지 스냅샷 저장."""
     pred_set = set(predicted)
@@ -93,8 +102,8 @@ def upsert_brain_page_from_review(
                 actual_nums, matched_count,
                 missed_patterns, hit_nums, miss_nums,
                 feature_snapshot, feedback_json, learn_snapshot_json,
-                narrative, detail_json, updated_at
-            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, datetime('now','localtime'))
+                aux_analysis_json, narrative, detail_json, updated_at
+            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, datetime('now','localtime'))
             ON CONFLICT(draw_no, brain_tag, phase) DO UPDATE SET
                 predicted_nums=excluded.predicted_nums,
                 predicted_sets_json=excluded.predicted_sets_json,
@@ -107,6 +116,7 @@ def upsert_brain_page_from_review(
                 feature_snapshot=excluded.feature_snapshot,
                 feedback_json=excluded.feedback_json,
                 learn_snapshot_json=excluded.learn_snapshot_json,
+                aux_analysis_json=excluded.aux_analysis_json,
                 narrative=excluded.narrative,
                 detail_json=excluded.detail_json,
                 updated_at=excluded.updated_at
@@ -126,6 +136,7 @@ def upsert_brain_page_from_review(
                 json.dumps(feature_row or {}, ensure_ascii=False),
                 json.dumps(feedback, ensure_ascii=False),
                 json.dumps(weight_snapshot, ensure_ascii=False),
+                json.dumps(aux_analysis_json or [], ensure_ascii=False),
                 narrative,
                 json.dumps(detail_blob, ensure_ascii=False),
             ),
@@ -181,6 +192,15 @@ def sync_brain_pages_from_reviews(start: int = 2, end: int = 1231) -> int:
             missed = _parse_json(d.get("missed_patterns"), [])
             feedback = _parse_json(d.get("feedback_json"), {})
             weight_snap = _parse_json(d.get("weight_snapshot"), {})
+            draws_before = _get_draws_before(draw_no)
+            best_nums = list(
+                next(
+                    (s.get("nums") for s in predicted_sets if int(s.get("set_no") or 0) == int(d.get("best_set_no") or best_info.get("best_set_no") or 1)),
+                    predicted,
+                )
+                or predicted
+            )
+            aux_json = build_brain_aux_json(best_nums, draws_before, draw_no)
             upsert_brain_page_from_review(
                 draw_no,
                 d["brain_tag"],
@@ -196,6 +216,7 @@ def sync_brain_pages_from_reviews(start: int = 2, end: int = 1231) -> int:
                 feedback=feedback,
                 weight_snapshot=weight_snap,
                 feature_row=feat_cache.get(draw_no),
+                aux_analysis_json=aux_json,
             )
             synced += 1
     finally:
@@ -269,6 +290,7 @@ def get_draw_detail(draw_no: int) -> dict[str, Any]:
                     ),
                     "feedback": _parse_json(pd.get("feedback_json"), {}),
                     "learn_snapshot": _parse_json(pd.get("learn_snapshot_json"), {}),
+                    "aux_analysis": parse_aux_json(pd.get("aux_analysis_json")),
                     "narrative": pd.get("narrative") or "",
                     "updated_at": pd.get("updated_at"),
                 }
@@ -276,7 +298,10 @@ def get_draw_detail(draw_no: int) -> dict[str, Any]:
 
         actual_nums = _draw_nums(draw_d)
         bonus_num = int(draw_d.get("bonus") or 0)
+        draws_before = _get_draws_before(draw_no)
         brain_verdicts: list[dict[str, Any]] = []
+        aux_persist: list[tuple[str, list[dict[str, Any]]]] = []
+
         for b in brains:
             b["predicted_sets"] = enrich_predicted_sets(
                 b.get("predicted_sets") or [], actual_nums, bonus_num
@@ -289,18 +314,69 @@ def get_draw_detail(draw_no: int) -> dict[str, Any]:
             b["bonus_matched"] = int(best_info.get("bonus_matched") or 0)
             b["tier_rank"] = int(best_info.get("tier_rank") or 0)
             b["tier_label"] = best_info.get("tier_label") or "미적중"
+            b["short_desc"] = get_short_desc(b["brain_tag"])
+            b["brain_role"] = "predict"
+
+            conf_set_no, conf_val, conf_matched = most_confident_set(b["predicted_sets"])
+            b["most_confident_set_no"] = conf_set_no
+            b["most_confident_score"] = conf_val
+            b["confidence_summary"] = confidence_summary_line(
+                b["brain_name"], conf_set_no, conf_val, conf_matched
+            )
+
+            aux_stored = b.get("aux_analysis") or []
+            if not aux_stored:
+                best_set = next(
+                    (
+                        s
+                        for s in b["predicted_sets"]
+                        if int(s.get("set_no") or 0) == b["best_set_no"]
+                    ),
+                    b["predicted_sets"][0] if b["predicted_sets"] else None,
+                )
+                if best_set:
+                    aux_stored = build_brain_aux_json(
+                        list(best_set.get("nums") or []), draws_before, draw_no
+                    )
+                    aux_persist.append((b["brain_tag"], aux_stored))
+            b["aux_analysis"] = aux_stored
+
             brain_verdicts.append(
                 {
                     "brain_tag": b["brain_tag"],
                     "brain_name": b["brain_name"],
+                    "short_desc": b["short_desc"],
                     "tier_rank": b["tier_rank"],
                     "tier_label": b["tier_label"],
                     "matched_count": b["matched_count"],
                     "bonus_matched": b["bonus_matched"],
                     "best_set_no": b["best_set_no"],
+                    "most_confident_set_no": conf_set_no,
+                    "most_confident_score": conf_val,
+                    "confidence_summary": b["confidence_summary"],
                     "has_review": True,
                 }
             )
+
+        if aux_persist:
+            try:
+                for tag, aux_data in aux_persist:
+                    conn.execute(
+                        """
+                        UPDATE testlotto_brain_page
+                        SET aux_analysis_json = ?, updated_at = datetime('now','localtime')
+                        WHERE draw_no = ? AND brain_tag = ? AND phase = ?
+                        """,
+                        (
+                            json.dumps(aux_data, ensure_ascii=False),
+                            draw_no,
+                            tag,
+                            PHASE_REVIEW,
+                        ),
+                    )
+                conn.commit()
+            except Exception:
+                pass
 
         for pb in PREDICT_BRAINS:
             tag = pb["tag"]
@@ -309,11 +385,15 @@ def get_draw_detail(draw_no: int) -> dict[str, Any]:
                     {
                         "brain_tag": tag,
                         "brain_name": DISPLAY_NAMES.get(tag, tag),
+                        "short_desc": get_short_desc(tag),
                         "tier_rank": 0,
                         "tier_label": "기록 없음",
                         "matched_count": 0,
                         "bonus_matched": 0,
                         "best_set_no": 0,
+                        "most_confident_set_no": 0,
+                        "most_confident_score": 0.0,
+                        "confidence_summary": "",
                         "has_review": False,
                     }
                 )
@@ -380,6 +460,18 @@ def get_draw_detail(draw_no: int) -> dict[str, Any]:
             "brains": brains,
             "brain_verdicts": brain_verdicts,
             "brain_order": [b["tag"] for b in PREDICT_BRAINS],
+            "aux_brains": build_aux_brains_section(
+                draw_no, actual_nums, brains, draws_before=draws_before
+            ),
+            "aux_brain_order": [b["tag"] for b in AUX_BRAINS],
+            "brain_meta": {
+                b["tag"]: {
+                    "name": b["name"],
+                    "role": b["role"],
+                    "short_desc": b.get("short_desc", ""),
+                }
+                for b in PREDICT_BRAINS + AUX_BRAINS
+            },
         }
     finally:
         conn.close()

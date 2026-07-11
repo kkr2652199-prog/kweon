@@ -3,9 +3,16 @@
  */
 
 const BRAINS = [
-  { tag: 'stat', name: '통계요정', color: '#3b82f6', role: '빈도·끝수·이월수' },
-  { tag: 'markov', name: '흐름술사', color: '#10b981', role: '전이·궁합수' },
-  { tag: 'review', name: '복습왕', color: '#f59e0b', role: '전회차 복습·오답 학습' },
+  { tag: 'stat', name: '통계요정', color: '#3b82f6', short_desc: '최근 빈도·끝수·이월수로 자주 나온 흐름을 잡는다' },
+  { tag: 'markov', name: '흐름술사', color: '#10b981', short_desc: '직전 회차와의 전이·궁합수 연결을 추적한다' },
+  { tag: 'review', name: '복습왕', color: '#f59e0b', short_desc: '과거 오답을 복습해 놓쳤던 구간을 보정한다' },
+];
+
+const AUX_BRAINS_META = [
+  { tag: 'miss_aux', name: '오답탐정', color: '#a855f7', short_desc: '자주 틀린 패턴을 찾아 경고한다' },
+  { tag: 'pattern_aux', name: '패턴돋보기', color: '#ec4899', short_desc: '쌍수·연속수·AC값 신호를 읽는다' },
+  { tag: 'balance_aux', name: '균형지킴이', color: '#06b6d4', short_desc: '홀짝·고저·합계 균형을 점검한다' },
+  { tag: 'referee_aux', name: '심판관', color: '#64748b', short_desc: '세트 간 겹침·쏠림을 최종 판정한다' },
 ];
 
 const PATTERN_LABELS = {
@@ -126,6 +133,24 @@ function _ballsInline(nums, actual, bonus) {
 function _asDrawNo(n) {
   const v = parseInt(n, 10);
   return Number.isFinite(v) && v > 0 ? v : null;
+}
+
+function _brainShortDesc(tag, detail) {
+  const meta = detail?.brain_meta?.[tag];
+  if (meta?.short_desc) return meta.short_desc;
+  const b = BRAINS.find((x) => x.tag === tag);
+  return b?.short_desc || '';
+}
+
+function _confBarHtml(confidence) {
+  const pct = Math.min(100, Math.max(0, Number(confidence) || 0));
+  return `<span class="tld-conf-bar" title="신뢰도 ${pct.toFixed(1)}%"><span class="tld-conf-bar__fill" style="width:${pct}%"></span><span class="tld-conf-bar__txt">${pct.toFixed(1)}%</span></span>`;
+}
+
+function _auxLevelClass(level) {
+  if (level === 'ok') return 'tld-aux-signal--ok';
+  if (level === 'warn') return 'tld-aux-signal--warn';
+  return 'tld-aux-signal--alert';
 }
 
 function _matchLabel(n) {
@@ -256,6 +281,7 @@ function _selectBrain(tag) {
     _renderBrainVerdicts(cached);
     _renderBrainScorecards(cached);
     _renderBrainDetail(cached, tag);
+    _renderAuxBrains(cached);
     _loadLearnSummary(tag);
     const bname = BRAIN_NAME[tag] || tag;
     const status = document.getElementById('tldStatus');
@@ -305,10 +331,12 @@ function _renderBrainVerdicts(detail) {
     const mc = has ? `${v.matched_count || 0}/6` : '—';
     const setNo = has && v.best_set_no ? `best ${v.best_set_no}세트` : '';
     const tr = has ? Number(v.tier_rank) || 0 : -1;
+    const desc = v?.short_desc || _brainShortDesc(b.tag, detail);
     return (
       `<button type="button" class="tld-verdict ${_verdictClass(tr)}${active ? ' tld-verdict--active' : ''}${!has ? ' tld-verdict--empty' : ''}" ` +
-      `data-brain="${b.tag}" style="--brain-color:${b.color}">` +
+      `data-brain="${b.tag}" style="--brain-color:${b.color}" title="${desc}">` +
       `<span class="tld-verdict__name">${b.name}</span>` +
+      `<span class="tld-verdict__desc">${desc}</span>` +
       `<span class="tld-verdict__tier">${tier}</span>` +
       `<span class="tld-verdict__meta">${mc}${setNo ? ' · ' + setNo : ''}</span>` +
       `</button>`
@@ -332,11 +360,13 @@ function _renderBrainScorecards(detail) {
     const scoreText = has ? `best ${mc}개 · ${setCount}세트` : '기록 없음';
     const grade = has ? _brainTierLabel(data) : '';
     const pct = has ? Math.round((mc / 6) * 100) : 0;
+    const desc = data?.short_desc || _brainShortDesc(b.tag, detail);
     return (
       `<button type="button" role="tab" aria-selected="${active}" ` +
       `class="tld-scorecard${active ? ' tld-scorecard--active' : ''}${!has ? ' tld-scorecard--empty' : ''}" ` +
-      `data-brain="${b.tag}" style="--brain-color:${b.color}">` +
+      `data-brain="${b.tag}" style="--brain-color:${b.color}" title="${desc}">` +
       `<span class="tld-scorecard__name">${b.name}</span>` +
+      `<span class="tld-scorecard__desc">${desc}</span>` +
       `<span class="tld-scorecard__ring" style="--pct:${pct}"><span class="tld-scorecard__mc">${has ? mc + '/6' : '—'}</span></span>` +
       `<span class="tld-scorecard__label">${scoreText}${grade ? ' · ' + grade : ''}</span>` +
       `</button>`
@@ -345,6 +375,45 @@ function _renderBrainScorecards(detail) {
   wrap.querySelectorAll('.tld-scorecard').forEach((btn) => {
     btn.addEventListener('click', () => _selectBrain(btn.dataset.brain));
   });
+}
+
+function _renderAuxBrains(detail) {
+  const wrap = document.getElementById('tldAuxBrains');
+  if (!wrap) return;
+  const auxList = detail.aux_brains || [];
+  if (!auxList.length) {
+    wrap.innerHTML = '<p class="tld-empty-inline">보조뇌 신호 데이터가 없습니다.</p>';
+    return;
+  }
+  wrap.innerHTML = auxList
+    .map((aux) => {
+      const meta = AUX_BRAINS_META.find((a) => a.tag === aux.brain_tag) || {};
+      const color = meta.color || '#64748b';
+      const desc = aux.short_desc || meta.short_desc || '';
+      const actual = aux.on_actual || {};
+      const onPred = (aux.on_predict_brains || [])
+        .map(
+          (p) =>
+            `<li class="tld-aux-pred ${_auxLevelClass(p.level)}">` +
+            `<span class="tld-aux-pred__name">${p.predict_name || p.predict_tag}</span>` +
+            `<span class="tld-aux-pred__signal">${p.signal || ''}</span>` +
+            `</li>`
+        )
+        .join('');
+      return `<article class="tld-aux-card" style="--aux-color:${color}">
+        <header class="tld-aux-card__head">
+          <span class="tld-aux-card__badge">신호/경고</span>
+          <h5 class="tld-aux-card__name">${aux.brain_name || meta.name}</h5>
+          <p class="tld-aux-card__desc">${desc}</p>
+        </header>
+        <div class="tld-aux-card__actual ${_auxLevelClass(actual.level)}">
+          <span class="tld-aux-card__label">실제 당첨</span>
+          <span class="tld-aux-card__signal">${actual.signal || '—'}</span>
+        </div>
+        <ul class="tld-aux-pred-list">${onPred || '<li class="tld-aux-pred tld-muted">예측뇌 평가 없음</li>'}</ul>
+      </article>`;
+    })
+    .join('');
 }
 
 function _renderAlignedCompare(detail, predNums) {
@@ -393,9 +462,17 @@ function _renderSetRow(detail, setItem, isBest) {
   const nums = setItem.nums || [];
   const { mc, tier } = _setTierRank(setItem, detail);
   const tierTag = tier && tier !== '미적중' ? ` <em class="tld-tier-tag">${tier}</em>` : '';
-  return `<div class="tld-set-row${isBest ? ' tld-set-row--best' : ''}">
+  const conf = setItem.confidence != null ? _confBarHtml(setItem.confidence) : '';
+  const isTopConf =
+    detail.brains &&
+    (() => {
+      const brain = (detail.brains || []).find((b) => b.brain_tag === _currentBrain);
+      return brain && Number(brain.most_confident_set_no) === Number(setItem.set_no);
+    })();
+  return `<div class="tld-set-row${isBest ? ' tld-set-row--best' : ''}${isTopConf ? ' tld-set-row--topconf' : ''}">
     <div class="tld-set-row__head">
-      <span class="tld-set-row__label">${setItem.set_no || '?'}세트${isBest ? ' <em class="tld-best-tag">BEST</em>' : ''}</span>
+      <span class="tld-set-row__label">${setItem.set_no || '?'}세트${isBest ? ' <em class="tld-best-tag">BEST</em>' : ''}${isTopConf ? ' <em class="tld-conf-tag">최고신뢰</em>' : ''}</span>
+      <span class="tld-set-row__conf">${conf}</span>
       <span class="tld-match-badge ${_matchBadge(mc)}">${mc}개 적중${tierTag}</span>
     </div>
     ${_renderAlignedCompare(detail, nums)}
@@ -405,8 +482,10 @@ function _renderSetRow(detail, setItem, isBest) {
 function _renderSetRowCompact(detail, setItem) {
   const { mc, tier } = _setTierRank(setItem, detail);
   const tierTag = tier ? `<span class="tld-tier-tag">${tier}</span>` : '';
+  const conf = setItem.confidence != null ? _confBarHtml(setItem.confidence) : '';
   return `<div class="tld-set-compact">
     <span class="tld-set-compact__label">${setItem.set_no || '?'}세트</span>
+    ${conf}
     <span class="tld-match-badge ${_matchBadge(mc)}">${mc}개${tierTag}</span>
     ${_ballsInline(setItem.nums || [], detail.actual_nums, detail.bonus)}
   </div>`;
@@ -682,7 +761,9 @@ function _renderBrainDetail(detail, brainTag) {
   const bmeta = BRAINS.find((b) => b.tag === brainTag);
 
   if (title) {
-    title.textContent = `${bmeta?.name || '예측 뇌'} · 제 ${detail.draw_no}회 채점`;
+    const desc = brain?.short_desc || _brainShortDesc(brainTag, detail);
+    title.innerHTML = `${bmeta?.name || '예측 뇌'} · 제 ${detail.draw_no}회 채점` +
+      (desc ? `<span class="tld-brain-short-desc">${desc}</span>` : '');
   }
 
   if (!brain) {
@@ -704,9 +785,11 @@ function _renderBrainDetail(detail, brainTag) {
     (brain.missed_patterns || []).map((p) => PATTERN_LABELS[p] || p);
   const hitNums = (brain.hit_nums || []).join(', ') || '없음';
   const bestNo = brain.best_set_no || 1;
+  const confLine = brain.confidence_summary || '';
 
   if (compare) {
     compare.innerHTML = `
+      ${confLine ? `<p class="tld-conf-summary">${confLine}</p>` : ''}
       <div class="tld-grade-header">
         <div class="tld-grade-score">
           <span class="tld-grade-score__num">${mc}<span class="tld-grade-score__den">/6</span></span>
@@ -800,6 +883,7 @@ async function _loadSingleDraw(drawNo) {
     _renderBrainVerdicts(detail);
     _renderBrainScorecards(detail);
     _renderBrainDetail(detail, _currentBrain);
+    _renderAuxBrains(detail);
     _renderPrizeTiers(detail);
     _renderAnalysisGrid(detail);
     await _loadLearnSummary(_currentBrain);

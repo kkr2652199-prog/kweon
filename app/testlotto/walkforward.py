@@ -8,6 +8,7 @@ from typing import Any
 
 from app.testlotto.brains.coordinator import PREDICT_MODULES
 from app.testlotto.brains.registry import PREDICT_BRAINS, SETS_PER_PREDICT_BRAIN
+from app.testlotto.aux_analysis import build_brain_aux_json
 from app.testlotto.data_service import _get_draws_before
 from app.testlotto.draw_analysis import detect_missed_patterns, upsert_draw_features
 from app.testlotto.detail_service import upsert_brain_page_from_review
@@ -201,6 +202,7 @@ def review_single_draw(draw_no: int, *, store_features: bool = True) -> dict[str
             feedback=feedback,
             weight_snapshot=get_all_learn_states(),
             feature_row=feature_row,
+            aux_analysis_json=build_brain_aux_json(item["nums"], draws, draw_no),
         )
 
     return {"draw_no": draw_no, "reviews": results, "feature_stored": store_features}
