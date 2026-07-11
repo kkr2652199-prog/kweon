@@ -282,6 +282,7 @@ function _selectBrain(tag) {
     _renderBrainScorecards(cached);
     _renderBrainDetail(cached, tag);
     _renderAuxBrains(cached);
+    _renderAnalysisGrid(cached, tag);
     _loadLearnSummary(tag);
     const bname = BRAIN_NAME[tag] || tag;
     const status = document.getElementById('tldStatus');
@@ -432,7 +433,7 @@ function _renderWrongNote(detail, brain) {
       const tags = (explainMap[n] || [])
         .map((t) => `<span class="tld-wn-tag">${t}</span>`)
         .join('');
-      return `<div class="tld-wn-cell ${cls}">
+      return `<div class="tld-wn-cell ${cls}" data-hm-focus="${n}" role="button" tabindex="0" title="④ 히트맵에서 ${n}번 보기">
         ${_ballHtml(n, hit ? 'tld-ball--hit' : 'tld-ball--miss')}
         <div class="tld-wn-tags">${tags || '<span class="tld-wn-tag tld-wn-tag--muted">근거산출</span>'}</div>
       </div>`;
@@ -443,7 +444,7 @@ function _renderWrongNote(detail, brain) {
     .map((n) => {
       const caught = predSet.has(n);
       const cls = caught ? 'tld-wn-cell--hit' : 'tld-wn-cell--ghost';
-      return `<div class="tld-wn-cell ${cls}">
+      return `<div class="tld-wn-cell ${cls}" data-hm-focus="${n}" role="button" tabindex="0" title="④ 히트맵에서 ${n}번 보기">
         ${_ballHtml(n, caught ? 'tld-ball--hit' : 'tld-ball--actual-miss')}
         ${caught ? '' : '<span class="tld-wn-ghost-lbl">놓침</span>'}
       </div>`;
@@ -744,36 +745,173 @@ function _renderPrizeTiers(detail) {
   }
 }
 
-function _renderAnalysisGrid(detail) {
+function _zone5Class(n) {
+  if (n <= 10) return 'tld-hm-cell--z5-1';
+  if (n <= 20) return 'tld-hm-cell--z5-2';
+  if (n <= 30) return 'tld-hm-cell--z5-3';
+  if (n <= 40) return 'tld-hm-cell--z5-4';
+  return 'tld-hm-cell--z5-5';
+}
+
+function _heatLevel(count, max) {
+  if (!max || count <= 0) return 0;
+  return Math.min(9, Math.floor((count / max) * 9));
+}
+
+function _heatmapBrainOverlay(detail, brainTag) {
+  const brain = (detail.brains || []).find((b) => b.brain_tag === brainTag);
+  const wn = brain?.wrong_note;
+  const actual = new Set(detail.actual_nums || []);
+  const pred = wn?.best_nums || [];
+  const predSet = new Set(pred);
+  const explainMap = Object.fromEntries((wn?.num_explains || []).map((e) => [e.num, e.tags || []]));
+  return {
+    predHit: pred.filter((n) => actual.has(n)),
+    predMiss: pred.filter((n) => !actual.has(n)),
+    actualMiss: wn?.actual_missed_nums || [...actual].filter((n) => !predSet.has(n)),
+    explainMap,
+  };
+}
+
+let _hmFocusTimer = null;
+
+function _focusHeatmapNum(num) {
+  const n = parseInt(num, 10);
+  if (!Number.isFinite(n) || n < 1 || n > 45) return;
+  const panel = document.getElementById('tldAnalysisPanel');
+  const cell = document.querySelector(`.tld-hm-cell[data-num="${n}"]`);
+  if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  if (!cell) return;
+  document.querySelectorAll('.tld-hm-cell--focus').forEach((el) => el.classList.remove('tld-hm-cell--focus'));
+  cell.classList.add('tld-hm-cell--focus');
+  clearTimeout(_hmFocusTimer);
+  _hmFocusTimer = setTimeout(() => cell.classList.remove('tld-hm-cell--focus'), 2400);
+}
+
+function _renderFreqHeatmap(detail, brainTag) {
+  const board = detail.analysis_board;
+  if (!board || !Array.isArray(board.freq_grid)) {
+    return '<p class="tld-empty-inline">analysis_board 데이터가 없습니다. 서버를 재시작했는지 확인하세요.</p>';
+  }
+
+  const freqMap = Object.fromEntries((board.freq_grid || []).map((x) => [x.num, x.count]));
+  const recentMap = Object.fromEntries((board.freq_recent || []).map((x) => [x.num, x.count]));
+  const maxFreq = Math.max(...Object.values(freqMap), 1);
+  const winning = new Set(board.winning_nums || detail.actual_nums || []);
+  const spike = new Set(board.spike_nums || []);
+  const cold = new Set(board.cold_comeback || []);
+  const overlay = _heatmapBrainOverlay(detail, brainTag);
+  const predHit = new Set(overlay.predHit);
+  const predMiss = new Set(overlay.predMiss);
+  const actualMiss = new Set(overlay.actualMiss);
+
+  const cells = [];
+  for (let n = 1; n <= 45; n += 1) {
+    const count = freqMap[n] || 0;
+    const recent = recentMap[n] || 0;
+    const cls = [
+      'tld-hm-cell',
+      _zone5Class(n),
+      `tld-hm-cell--heat-${_heatLevel(count, maxFreq)}`,
+      winning.has(n) ? 'tld-hm-cell--win' : '',
+      spike.has(n) ? 'tld-hm-cell--spike' : '',
+      cold.has(n) ? 'tld-hm-cell--cold' : '',
+      predHit.has(n) ? 'tld-hm-cell--pred-hit' : '',
+      predMiss.has(n) ? 'tld-hm-cell--pred-miss' : '',
+      actualMiss.has(n) ? 'tld-hm-cell--actual-miss' : '',
+    ]
+      .filter(Boolean)
+      .join(' ');
+    const tags = (overlay.explainMap[n] || []).slice(0, 2).join(' · ');
+    const title = [
+      `${n}번 · 누적 ${count}회`,
+      recent ? `최근20 ${recent}회` : '',
+      winning.has(n) ? '당첨' : '',
+      spike.has(n) ? '급등' : '',
+      cold.has(n) ? '장기미출후출현' : '',
+      predHit.has(n) ? '예측적중' : '',
+      predMiss.has(n) ? '예측오답' : '',
+      actualMiss.has(n) ? '놓침' : '',
+      tags ? `태그: ${tags}` : '',
+    ]
+      .filter(Boolean)
+      .join(' · ');
+
+    cells.push(`<button type="button" class="${cls}" data-num="${n}" data-hm-focus="${n}" title="${title}" aria-label="${title}">
+      <span class="tld-hm-num">${n}</span>
+      <span class="tld-hm-count">${count}</span>
+      ${recent > 0 ? `<span class="tld-hm-recent">+${recent}</span>` : ''}
+    </button>`);
+  }
+
+  return `<div class="tld-hm-grid" id="tldFreqHeatmap">${cells.join('')}</div>`;
+}
+
+function _renderHotColdChips(items, cls) {
+  if (!items?.length) return '<span class="tld-muted">—</span>';
+  return items
+    .map(
+      (x) =>
+        `<button type="button" class="tld-hm-chip ${cls}" data-hm-focus="${x.num}" title="${x.num}번 · ${x.count}회 (${x.pct || 0}%)">` +
+        `<span class="tld-hm-chip__num">${x.num}</span><span class="tld-hm-chip__cnt">${x.count}</span></button>`
+    )
+    .join('');
+}
+
+function _renderZone6Bars(zone6) {
+  if (!zone6?.length) return '';
+  const max = Math.max(...zone6.map((z) => z.count), 1);
+  return zone6
+    .map((z) => {
+      const pct = Math.round((z.count / max) * 100);
+      return `<div class="tld-hm-zone6-row">
+        <span class="tld-hm-zone6-label">${z.label}</span>
+        <span class="tld-hm-zone6-bar"><span class="tld-hm-zone6-fill" style="width:${pct}%"></span></span>
+        <span class="tld-hm-zone6-val">${z.count}</span>
+      </div>`;
+    })
+    .join('');
+}
+
+function _renderAnalysisGrid(detail, brainTag) {
   const grid = document.getElementById('tldAnalysisGrid');
   const f = detail.features || {};
+  const board = detail.analysis_board || {};
+  const tag = brainTag || _currentBrain;
   if (!grid) return;
 
   const groups = [
     {
       title: '이월·연속',
       items: [
-        ['이월수 개수', f.carry_over_count != null ? `${f.carry_over_count}개` : '—'],
-        ['이월 번호', (f.carry_over_nums || []).join(', ') || '없음'],
-        ['연속수 쌍', f.consecutive_count != null ? `${f.consecutive_count}쌍` : '—'],
+        ['이월수 개수', f.carry_over_count != null ? `${f.carry_over_count}개` : (board.carry_over_nums?.length ? `${board.carry_over_nums.length}개` : '—')],
+        ['이월 번호', (f.carry_over_nums || board.carry_over_nums || []).join(', ') || '없음'],
+        ['연속수 쌍', f.consecutive_count != null ? `${f.consecutive_count}쌍` : (board.consecutive_count != null ? `${board.consecutive_count}쌍` : '—')],
+        ['연속 런', (board.consecutive_runs || []).map((r) => r.join('-')).join(' / ') || '없음'],
       ],
     },
     {
       title: '끝수·구간',
       items: [
-        ['끝수 분포', (f.ending_digits || []).join(', ') || '—'],
+        ['끝수 분포', (f.ending_digits || board.ending_digits || []).join(', ') || '—'],
         [
           '구간(저·중·고)',
           Array.isArray(f.zone_low_mid_high) && f.zone_low_mid_high.length === 3
             ? `저 ${f.zone_low_mid_high[0]} · 중 ${f.zone_low_mid_high[1]} · 고 ${f.zone_low_mid_high[2]}`
-            : '—',
+            : Array.isArray(board.zone_low_mid_high)
+              ? `저 ${board.zone_low_mid_high[0]} · 중 ${board.zone_low_mid_high[1]} · 고 ${board.zone_low_mid_high[2]}`
+              : '—',
         ],
+        ['합계·홀짝', board.sum_total != null ? `${board.sum_total} · ${board.odd_count}:${board.even_count}` : '—'],
+        ['AC값', f.ac_value != null ? String(f.ac_value) : (board.ac_value != null ? String(board.ac_value) : '—')],
       ],
     },
     {
       title: '미출·순위',
       items: [
         ['장기 미출', (f.gap_overdue_nums || []).join(', ') || '없음'],
+        ['급등 번호', (board.spike_nums || []).join(', ') || '없음'],
+        ['갑작출현', (board.cold_comeback || []).join(', ') || '없음'],
         [
           '814만 조합 순위',
           f.combo_rank_814 != null ? `${Number(f.combo_rank_814).toLocaleString('ko-KR')}위` : '—',
@@ -782,17 +920,60 @@ function _renderAnalysisGrid(detail) {
     },
   ];
 
-  grid.innerHTML = groups
-    .map(
-      (g) => `
-    <div class="tld-analysis-card">
-      <h4 class="tld-analysis-card__title">${g.title}</h4>
-      <dl class="tld-analysis-dl">
-        ${g.items.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}
-      </dl>
-    </div>`
-    )
-    .join('');
+  const pairHits = (board.pair_hot_hits || [])
+    .map((p) => `${p.pair.join('-')}(${p.hist_count})`)
+    .join(', ');
+  const bonus = board.bonus_profile || {};
+  const bname = BRAIN_NAME[tag] || tag;
+
+  grid.innerHTML = `
+    <div class="tld-analysis-layout">
+      <div class="tld-analysis-heatmap-wrap">
+        <div class="tld-hm-header">
+          <h4 class="tld-hm-title">1~45 출현 히트맵</h4>
+          <p class="tld-hm-sub">누적 ${board.total_draws || '—'}회 · 최근 ${board.freq_recent_window || 20}회 · <strong>${bname}</strong> 오답노트 연동</p>
+        </div>
+        ${_renderFreqHeatmap(detail, tag)}
+        <div class="tld-hm-legend">
+          <span class="tld-hm-legend__item tld-hm-legend__win">당첨</span>
+          <span class="tld-hm-legend__item tld-hm-legend__spike">급등</span>
+          <span class="tld-hm-legend__item tld-hm-legend__cold">갑작출현</span>
+          <span class="tld-hm-legend__item tld-hm-legend__pred-hit">예측적중</span>
+          <span class="tld-hm-legend__item tld-hm-legend__pred-miss">예측오답</span>
+          <span class="tld-hm-legend__item tld-hm-legend__actual-miss">놓침</span>
+          <span class="tld-hm-legend__hint">② 오답노트 번호 클릭 → 여기 강조</span>
+        </div>
+      </div>
+      <aside class="tld-analysis-side">
+        <div class="tld-hm-side-card">
+          <h5 class="tld-hm-side-title">HOT / COLD</h5>
+          <div class="tld-hm-side-row"><span class="tld-hm-side-label">HOT</span>${_renderHotColdChips(board.hot_top5, 'tld-hm-chip--hot')}</div>
+          <div class="tld-hm-side-row"><span class="tld-hm-side-label">COLD</span>${_renderHotColdChips(board.cold_top5, 'tld-hm-chip--cold')}</div>
+        </div>
+        <div class="tld-hm-side-card">
+          <h5 class="tld-hm-side-title">6구간 분포</h5>
+          ${_renderZone6Bars(board.zone6)}
+        </div>
+        <div class="tld-hm-side-card">
+          <h5 class="tld-hm-side-title">쌍·보너스</h5>
+          <p class="tld-hm-side-line"><span>핫쌍</span> ${pairHits || '없음'}</p>
+          <p class="tld-hm-side-line"><span>보너스</span> ${bonus.num || '—'} · ${bonus.zone6 || ''} · 누적 ${bonus.hist_count ?? '—'}${bonus.carry_from_prev ? ' · 이월' : ''}</p>
+        </div>
+      </aside>
+      <div class="tld-analysis-cards">
+        ${groups
+          .map(
+            (g) => `
+        <div class="tld-analysis-card">
+          <h4 class="tld-analysis-card__title">${g.title}</h4>
+          <dl class="tld-analysis-dl">
+            ${g.items.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}
+          </dl>
+        </div>`
+          )
+          .join('')}
+      </div>
+    </div>`;
 }
 
 function _renderActual(detail) {
@@ -930,7 +1111,7 @@ async function _loadSingleDraw(drawNo) {
     _renderBrainDetail(detail, _currentBrain);
     _renderAuxBrains(detail);
     _renderPrizeTiers(detail);
-    _renderAnalysisGrid(detail);
+    _renderAnalysisGrid(detail, _currentBrain);
     await _loadLearnSummary(_currentBrain);
     _syncDrawControls();
     _updateNavButtons();
@@ -1043,6 +1224,23 @@ function _parseInitialFromUrl() {
   if (re) document.getElementById('tldRangeEnd').value = re;
 }
 
+function _bindHeatmapLinkEvents() {
+  const onFocusClick = (e) => {
+    const el = e.target.closest('[data-hm-focus]');
+    if (!el) return;
+    _focusHeatmapNum(el.dataset.hmFocus);
+  };
+  document.getElementById('tldBrainCompare')?.addEventListener('click', onFocusClick);
+  document.getElementById('tldAnalysisGrid')?.addEventListener('click', onFocusClick);
+  document.getElementById('tldBrainCompare')?.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const el = e.target.closest('[data-hm-focus]');
+    if (!el) return;
+    e.preventDefault();
+    _focusHeatmapNum(el.dataset.hmFocus);
+  });
+}
+
 function _bindEvents() {
   document.getElementById('tldNavPrev')?.addEventListener('click', () => {
     const target = _navDrawStep(1);
@@ -1090,6 +1288,7 @@ async function initTestlottoDetailPage() {
   _parseInitialFromUrl();
   _applyModeUi();
   _bindEvents();
+  _bindHeatmapLinkEvents();
   await Promise.all([_loadDrawList(), _loadProgressMeta(), _loadHitDrawList(_currentBrain)]);
   _syncDrawControls();
   _updateNavButtons();
