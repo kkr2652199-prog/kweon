@@ -987,6 +987,26 @@ function _renderActual(detail) {
   balls.innerHTML = main + bonus;
 }
 
+function _renderLearnFlowHint(brain, brainTag) {
+  const fb = brain.feedback || {};
+  const labels = brain.missed_pattern_labels || [];
+  const adj = fb.adjustments || {};
+  const adjCount = Object.values(adj).filter((v) => Number(v) > 0).length;
+  const learnNote =
+    brainTag === 'markov'
+      ? '흐름술사: 직전 회차 전이·동반쌍 위주 (learn_state 직접 반영은 Phase C 예정)'
+      : '통계요정·복습왕: 다음 회차 예측 시 learn_state 조정값 반영';
+  return `<div class="tld-learn-flow">
+    <h4 class="tld-learn-flow__title">이 회차 오답 → 다음 예측 학습 연결</h4>
+    <ul class="tld-learn-flow__list">
+      <li>walk-forward 복습: <strong>이전 회차만</strong> 참고해 예측 → 당첨 채점 → 오답노트·brain_review 저장</li>
+      <li>놓친 패턴: ${labels.join(' · ') || '특이 패턴 없음'} → 가중치 조정 <strong>${adjCount}건</strong> 누적</li>
+      <li>${learnNote}</li>
+      <li>⑤ 뇌 학습 누적 · 구간별 흐름(↔)에서 전 회차 복습 기록 참고</li>
+    </ul>
+  </div>`;
+}
+
 function _renderBrainDetail(detail, brainTag) {
   const brain = (detail.brains || []).find((b) => b.brain_tag === brainTag);
   const title = document.getElementById('tldBrainTitle');
@@ -1025,6 +1045,7 @@ function _renderBrainDetail(detail, brainTag) {
   if (compare) {
     compare.innerHTML = `
       ${confLine ? `<p class="tld-conf-summary">${confLine}</p>` : ''}
+      ${_renderLearnFlowHint(brain, brainTag)}
       ${_renderWrongNote(detail, brain)}
       <details class="tld-sets-expand">
         <summary class="tld-sets-expand__summary">전체 5세트 펼치기 <span class="tld-muted">(best ${bestNo}세트 · ${tierText})</span></summary>
