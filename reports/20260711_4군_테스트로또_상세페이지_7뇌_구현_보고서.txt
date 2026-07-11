@@ -1,0 +1,61 @@
+20260711_4군_테스트로또_상세페이지_7뇌_구현_보고서
+동생→커서 | 2026-07-11 | 테스트로또 실험군 | 1~3군 간섭 0
+
+3파일 확인:
+✅ RULES_FIXED (R3/R31)
+✅ STATUS_LATEST 갱신
+✅ CURSOR_RULES §2 1~3군 수정금지
+
+=== STEP1 완료 ===
+[7뇌·복습]
+- app/testlotto/ 독립 패키지 + data/lotto_testlotto.db
+- 예측3: stat·markov·review (각 5세트)
+- 보조4: miss/pattern/balance/referee (coordinator)
+- walkforward 2~1231 → reviewed 1230회 완료
+
+[상세페이지 testlotto-detail.html v20260711k]
+①당첨 ②채점(3뇌판정스트립+5세트) ③등수 ④패턴 ⑤학습누적
+
+[등수우선 P0]
+- tier_utils.py: 보너스 포함 1~5등
+- best 세트 = 등수우선 (1등>…>5등>미적중)
+- API brain_verdicts
+- 5등+ 펼침 / 미적중 드롭다운
+
+[아카이브 lt645]
+- draw_archive.py + run_testlotto_sync_archive.py
+- 1~133회 저장 / 134~1231 미완(DB locked)
+
+[복습 스냅샷 1231회]
+stat avg1.69 | markov 1.61 | review 1.66
+
+=== STEP2 버그·잘못 (수정완료) ===
+1) 5세트 1개만 표시 → predict_sets(1) 버그 → 5세트 수정
+2) 뇌탭 클릭 회차점프 → _ensureHitDraw 제거, 회차고정
+3) 드롭다운 잠김 → 전체회차+★5등+ 라벨
+4) ◀▶ 무반응 → select 재생성 제거, _goToDraw()
+5) prize_tiers 미반영 → 서버 재기동 필요
+6) archive 중단 → walkforward 동시실행 DB lock → 순차실행
+7) init race → ALTER try/except
+
+=== STEP3 해야할일 ===
+P0: archive 134~1231 재동기화 (단독)
+P1: 보조4뇌 UI, 구간흐름 등수컬럼
+P2: 판매점수집, 회차필터토글
+P3: 효도로또 동기화(형지시후)
+
+명령: python tools/run_testlotto_sync_archive.py --start 134 --end 1231 --no-stores
+
+=== 변경파일 ===
+신규: app/testlotto/*, static/testlotto*, tools/run_testlotto_*
+수정: main_v13.py, index.html, lotto4.js
+미커밋: *.db, lstm_*.pt, __pycache__
+
+=== 결론 ===
+walk-forward 1230회·상세 P0/P1 완료. archive만 재실행 필요.
+
+=== 체크리스트 ===
+[✅] reports md+txt
+[✅] STATUS_LATEST
+[✅] Drive 커서보고서
+[✅] GitHub push

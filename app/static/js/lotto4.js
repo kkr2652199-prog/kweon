@@ -2989,6 +2989,9 @@
         if (v === 'hyodo' && typeof initHyodoDrawSearch === 'function') {
           initHyodoDrawSearch();
         }
+        if (v === 'testlotto' && typeof initTestlottoDrawSearch === 'function') {
+          initTestlottoDrawSearch();
+        }
         if (v === 'combo-lookup') loadComboLookupView();
         if (v === 'all-combos') loadAllCombosView();
         if (v === 'brain') loadBrainStatus();

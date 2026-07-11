@@ -6,6 +6,7 @@
   <title>나의 지식 도서관 — 4군 AI 예측</title>
   <link rel="stylesheet" href="/static/css/lotto4.css?v=20260620c" />
   <link rel="stylesheet" href="/static/css/hyodo.css?v=20260711" />
+  <link rel="stylesheet" href="/static/css/testlotto.css?v=20260711" />
 </head>
 <body>
   <div class="app-shell">
@@ -21,6 +22,7 @@
       <button type="button" class="nav-btn" data-view="truth">로또의 진실</button>
       <button type="button" class="nav-btn" data-view="strategy-x">전략 X</button>
       <button type="button" class="nav-btn" data-view="hyodo">효도로또</button>
+      <button type="button" class="nav-btn" data-view="testlotto">테스트로또</button>
       <button type="button" class="nav-btn" data-view="combo-lookup">로또 조회</button>
       <button type="button" class="nav-btn" data-view="all-combos">전체 조합</button>
       <button type="button" class="nav-btn" data-view="data">데이터수집</button>
@@ -332,6 +334,44 @@
           </div>
         </section>
 
+        <!-- 테스트로또 (효도로또 복제 — 실험·개발 전용) -->
+        <section id="view-testlotto" class="view-panel" data-view-panel="testlotto">
+          <div class="card">
+            <h2>테스트로또</h2>
+            <p class="stats-hint" role="note">3 미래예측뇌(통계요정·흐름술사·복습왕) + 4 보조뇌 채점 · DB <code>lotto_testlotto.db</code> · 실험 전용</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
+              <div class="lotto-draw-search">
+                <button type="button" class="btn btn-secondary lotto-nav-btn" onclick="testlottoNavDraw(-1)">◀</button>
+                <select id="testlottoDrawSelect" class="lotto-draw-select" onchange="testlottoSelectDraw(this.value)" title="회차 선택"></select>
+                <button type="button" class="btn btn-secondary lotto-nav-btn" onclick="testlottoNavDraw(+1)">▶</button>
+                <input type="number" id="testlottoPredictDrawNo" placeholder="회차 직접 입력" min="1"
+                       style="width:120px;padding:8px;background:#2a2a3e;color:#fff;border:1px solid #444;border-radius:6px;" />
+                <button type="button" class="btn btn-primary" onclick="testlottoPredict()">🧠 두뇌 예측</button>
+              </div>
+              <label class="lotto-elite-filter">
+                <input type="checkbox" id="testlottoEliteBrainToggle" onchange="testlottoOnEliteBrainToggle()" />
+                <span>고적중 뇌만 (1·2·3등 균형 또는 역대 3등≥15회)</span>
+              </label>
+              <button type="button" class="btn btn-secondary" onclick="testlottoOpenTierWinsModal()" title="현재 선택 회차의 1~5등 적중 세트만 표시">
+                📋 이 회차 1~5등 적중
+              </button>
+              <button type="button" class="btn btn-secondary" onclick="testlottoOpenDetailPage()" title="복습·채점·오답분석·학습 상세 (새 탭)">
+                🔍 결과 상세보기
+              </button>
+              <button type="button" id="btn-kakao-copy-testlotto" onclick="void testlottoCopyKakaoText()"
+                style="background:#FEE500;color:#3C1E1E;border:none;padding:8px 16px;border-radius:8px;font-weight:bold;cursor:pointer;">
+                📋 카톡 복사
+              </button>
+              <div id="testlottoActionStatus" class="lotto-action-status" role="status" aria-live="polite"></div>
+            </div>
+            <div class="lotto-tab-content" id="testlotto-tab-predictions">
+              <div id="testlottoPredictionResults" style="color:#ccc;">
+                <p>회차 번호를 입력하고 "두뇌 예측"을 클릭하세요.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- 로또 조회 (814만 순위 · 당첨 이력) -->
         <section id="view-combo-lookup" class="view-panel" data-view-panel="combo-lookup">
           <div class="card">
@@ -520,6 +560,7 @@
   </div>
 
   <script src="/static/js/hyodo.js?v=20260711"></script>
+  <script src="/static/js/testlotto.js?v=20260711d"></script>
   <script src="/static/js/lotto4.js?v=20260620c"></script>
 </body>
 </html>

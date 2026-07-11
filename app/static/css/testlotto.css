@@ -1,0 +1,932 @@
+/* ═══════════════════════════════════════════
+   로또 탭 전용 스타일시트
+   도서관(style.css)과 완전 분리
+   ═══════════════════════════════════════════ */
+
+/* 로또 탭: 수집/예측 상태(한 줄·두 줄 모두) */
+.lotto-action-status {
+  min-width: 12rem;
+  min-height: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  align-self: center;
+  flex: 1 1 200px;
+}
+.lotto-action-status--no-new {
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  max-width: 100%;
+}
+.lotto-action-status--no-new .lotto-action-status__title {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.lotto-action-status--no-new .lotto-action-status__date {
+  color: var(--text-bright);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+/* ============ 도서관 로또 탭: 회차 검색 + 6두뇌 가로 탭 ============ */
+.lotto-draw-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* 1군: 고적중 뇌만 탭 필터(표시 전용) */
+.lotto-elite-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+.lotto-elite-filter input {
+  cursor: pointer;
+}
+.lotto-elite-empty {
+  padding: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* 1군: 회차별 1~5등 적중 요약 모달(읽기 전용) — 상단 고정·본문만 스크롤 */
+.lotto-tier-wins-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: max(1rem, 5vh) 1rem 1rem;
+  box-sizing: border-box;
+}
+.lotto-tier-wins-modal[hidden] {
+  display: none !important;
+}
+.lotto-tier-wins-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+.lotto-tier-wins-modal__panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: min(920px, 100%);
+  max-height: min(85vh, calc(100% - max(2rem, 10vh)));
+  overflow: hidden;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+}
+.lotto-tier-wins-modal__chrome {
+  flex: 0 0 auto;
+  border-bottom: 1px solid var(--border);
+}
+.lotto-tier-wins-modal__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px 12px;
+}
+.lotto-tier-wins-modal__title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  line-height: 1.35;
+  flex: 1;
+  min-width: 0;
+}
+.lotto-tier-wins-modal__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.lotto-tier-wins-modal__close {
+  min-width: 40px;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+.lotto-tier-wins-modal__jump {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 0 18px 14px;
+}
+.lotto-tier-wins-modal__jump-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.lotto-tier-wins-modal__jump-input {
+  width: 7rem;
+  min-height: 36px;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  background: var(--bg-secondary);
+  color: var(--text-bright);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+.lotto-tier-wins-modal__jump-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.lotto-tier-wins-modal__jump-btn {
+  min-height: 36px;
+}
+.lotto-tier-wins-modal__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px 18px 20px;
+  -webkit-overflow-scrolling: touch;
+}
+.lotto-tier-wins-loading,
+.lotto-tier-wins-empty,
+.lotto-tier-wins-error {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.lotto-tier-wins-error {
+  color: var(--danger);
+}
+.lotto-tier-wins-actual {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+.lotto-tier-wins-actual-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.lotto-tier-wins-bonus-wrap {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.lotto-tier-wins-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.lotto-tier-wins-rank-title {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  border-left: 4px solid var(--accent);
+  padding-left: 10px;
+}
+.lotto-tier-wins-rank-title--r2 {
+  opacity: 0.95;
+}
+.lotto-tier-wins-rank-title--r3 {
+  opacity: 0.9;
+}
+.lotto-tier-wins-rank-title--r4 {
+  opacity: 0.85;
+}
+.lotto-tier-wins-rank-title--r5 {
+  opacity: 0.8;
+}
+.lotto-tier-wins-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lotto-tier-wins-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.lotto-tier-wins-item:last-child {
+  border-bottom: none;
+}
+.lotto-tier-wins-brain {
+  min-width: 9rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.lotto-tier-wins-balls-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.lotto-nav-btn {
+  width: 36px;
+  padding: 8px 0 !important;
+}
+
+/* 3군: ◀▶ 회차 전환 시 DOM을 비우지 않고 투명도만 줄여 레이아웃 튐 완화 */
+#lotto3PredictionResults.lotto3-results-pending {
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 0.12s ease-out;
+}
+
+/* 1군: 동일 — predictionResults 영역 */
+#predictionResults.lotto1-results-pending {
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 0.12s ease-out;
+}
+
+/* 2군: ◀▶·셀렉트 회차 전환 시 레이아웃 튐 완화 */
+#lotto2PredictionResults.lotto2-results-pending {
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 0.12s ease-out;
+}
+.lotto-draw-select {
+  min-width: 220px;
+  padding: 8px 12px;
+  background: #2a2a3e;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* 결과 헤더 */
+.lotto-result-header {
+  background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 100%);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+.lotto-result-header h3 {
+  margin: 0 0 12px 0;
+  color: #ffd700;
+  font-size: 18px;
+}
+.lotto-actual-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.lotto-actual-balls {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+.lotto-actual-label {
+  color: #aaa;
+  font-size: 13px;
+  margin-right: 4px;
+}
+.lotto-actual-bonus {
+  color: #ffd700;
+  margin-left: 8px;
+  font-size: 13px;
+}
+.lotto-no-actual {
+  color: #888;
+  font-style: italic;
+}
+
+/* 6두뇌 가로 탭 */
+.lotto-brain-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #333;
+  flex-wrap: wrap;
+}
+.lotto-brain-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+  border-radius: 6px 6px 0 0;
+}
+.lotto-brain-tab-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.lotto-brain-nano {
+  font-size: 0.62rem;
+  line-height: 1.15;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+}
+.lotto-brain-tab:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+.lotto-brain-tab.active {
+  color: var(--brain-color, #8b9cf7);
+  border-bottom-color: var(--brain-color, #8b9cf7);
+  background: rgba(255, 255, 255, 0.03);
+  font-weight: 600;
+}
+.lotto-brain-tab:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.lotto-brain-cnt {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+}
+
+/* 두뇌 세트 카드 그리드 */
+.lotto-brain-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.lotto-set-card {
+  background: #1a1a2e;
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid #2a2a3e;
+  transition: all 0.2s;
+}
+.lotto-set-card:hover {
+  transform: translateY(-2px);
+  border-color: #444;
+}
+.lotto-set-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+/* Dead Zone 뱃지 — 도서관 style.css 변수만 사용 */
+.dz-flag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.12rem 0.4rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.lotto-set-idx { color: #888; }
+.lotto-set-conf { color: #aaa; font-size: 12px; }
+.lotto-set-source {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+.lotto-set-src-sel4 {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.lotto-set-src-v3 {
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.12);
+}
+.lotto-set-balls {
+  display: flex;
+  gap: 6px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 공(미니) — 6개 한 줄 고정 */
+.lotto-mini-ball {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+  color: #000;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  -webkit-user-select: none;
+  user-select: none;
+}
+.lotto-mini-ball.is-actual {
+  width: 38px;
+  height: 38px;
+  font-size: 15px;
+  border-color: rgba(255, 215, 0, 0.95);
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.35), 0 10px 22px rgba(0, 0, 0, 0.45);
+}
+.lotto-mini-ball.is-actual.is-bonus {
+  border-style: dashed;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.25), 0 10px 22px rgba(0, 0, 0, 0.45);
+}
+.lotto-mini-ball.is-hit {
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 2px rgba(245, 196, 0, 0.95), 0 0 16px rgba(46, 213, 115, 0.55);
+  transform: scale(1.06);
+}
+
+/* 등수 분류 */
+.lotto-set-card.rank-1 {
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  background: linear-gradient(135deg, #2a2410 0%, #1a1a2e 100%);
+}
+.lotto-set-card.rank-1 .lotto-set-rank { color: #ffd700; font-weight: 700; }
+
+.lotto-set-card.rank-2 {
+  border: 2px solid #c0c0c0;
+  box-shadow: 0 0 12px rgba(192, 192, 192, 0.2);
+}
+.lotto-set-card.rank-2 .lotto-set-rank { color: #c0c0c0; font-weight: 600; }
+
+.lotto-set-card.rank-3 {
+  border: 2px solid #cd7f32;
+  box-shadow: 0 0 12px rgba(205, 127, 50, 0.2);
+}
+.lotto-set-card.rank-3 .lotto-set-rank { color: #cd7f32; font-weight: 600; }
+
+.lotto-set-card.rank-4 .lotto-set-rank { color: #4ade80; }
+.lotto-set-card.rank-5 .lotto-set-rank { color: #60a5fa; }
+.lotto-set-card.rank-none .lotto-set-rank { color: #666; }
+.lotto-set-card.rank-pending .lotto-set-rank { color: #888; font-style: italic; }
+
+/* === 사이드바 레이아웃 (1단계) === */
+.lotto-layout {
+  display: flex;
+  height: calc(100vh - 60px);
+  background: #1a1a2e;
+}
+
+.lotto-sidebar {
+  width: 200px;
+  min-width: 200px;
+  background: #16213e;
+  border-right: 1px solid #0f3460;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+}
+
+.lotto-sidebar-header {
+  color: #e94560;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 16px 20px;
+  border-bottom: 1px solid #0f3460;
+  margin-bottom: 8px;
+}
+
+.lotto-sidebar-item {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  color: #a0a0b0;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lotto-sidebar-item:hover {
+  background: #1a1a3e;
+  color: #ffffff;
+}
+
+.lotto-sidebar-item.active {
+  background: #0f3460;
+  color: #e94560;
+  font-weight: bold;
+}
+
+.lotto-sidebar-footer {
+  margin-top: auto;
+  border-top: 1px solid #0f3460;
+  padding-top: 8px;
+}
+
+.lotto-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.lotto-page {
+  display: none;
+}
+
+.lotto-page.active {
+  display: block;
+}
+
+/* === 대시보드 컴포넌트 === */
+.lotto-dashboard-countdown {
+  background: linear-gradient(135deg, #0f3460, #16213e);
+  border: 1px solid #e94560;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.lotto-countdown-draw {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.lotto-countdown-timer {
+  color: #e94560;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+.lotto-dashboard-rankings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.lotto-rank-dropdown {
+  background: #16213e;
+  border: 1px solid #0f3460;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.lotto-rank-toggle {
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: none;
+  color: #ffd700;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.lotto-rank-toggle:hover {
+  background: #1a1a3e;
+}
+
+.lotto-rank-list {
+  padding: 0 12px 12px;
+  color: #c0c0d0;
+  font-size: 13px;
+}
+
+.lotto-dashboard-power,
+.lotto-dashboard-progress,
+.lotto-dashboard-scores {
+  background: #16213e;
+  border: 1px solid #0f3460;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.lotto-dashboard-power h3,
+.lotto-dashboard-progress h3,
+.lotto-dashboard-scores h3 {
+  color: #e94560;
+  margin: 0 0 12px 0;
+  font-size: 16px;
+}
+
+/* ===== 명예의전당 리디자인 ===== */
+.fame-filter-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.fame-filter-btn {
+  padding: 8px 16px;
+  border: 1px solid #444;
+  border-radius: 20px;
+  background: transparent;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 0.85em;
+  transition: all 0.2s;
+}
+.fame-filter-btn.active {
+  background: #ffd700;
+  color: #000;
+  border-color: #ffd700;
+  font-weight: bold;
+}
+.fame-filter-btn:hover {
+  border-color: #ffd700;
+}
+
+/* 6컬럼 그리드 - 풀 와이드 */
+.fame-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+@media (max-width: 1200px) {
+  .fame-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .fame-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.fame-column {
+  background: #0d1117;
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 200px;
+}
+.fame-col-header {
+  text-align: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+  margin-bottom: 8px;
+}
+.fame-col-header .brain-name {
+  font-size: 1em;
+  font-weight: bold;
+  color: #e0e0ff;
+}
+.fame-col-header .brain-desc {
+  font-size: 0.7em;
+  color: #888;
+  margin-top: 2px;
+}
+.fame-col-header .fame-count {
+  font-size: 0.75em;
+  color: #ffd700;
+  margin-top: 4px;
+}
+
+/* 카드 */
+.fame-card {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 6px;
+}
+.fame-card.rank-1 { border-color: #ffd70066; }
+.fame-card.rank-2 { border-color: #c0c0c066; }
+.fame-card.rank-3 { border-color: #ff6b6b44; }
+.fame-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 0.8em;
+}
+.fame-card .card-header .draw-info {
+  color: #e0e0ff;
+  font-weight: bold;
+}
+.fame-card .card-header .rank-badge {
+  font-weight: bold;
+}
+.fame-card .card-footer {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.7em;
+  margin-top: 4px;
+}
+
+/* 공 한 줄 정렬 */
+.fame-card .nums-row {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-wrap: nowrap;
+  margin-bottom: 4px;
+}
+.fame-card .nums-row .label {
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 0.7em;
+  color: #888;
+  margin-right: 3px;
+}
+.fame-card .nums-row .lotto-mini-ball,
+.fame-card .nums-row .lotto-ball,
+.fame-card .nums-row span[style*="border-radius"] {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  font-size: 0.7em !important;
+  line-height: 24px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+  margin: 0 1px !important;
+}
+
+/* 더보기 */
+.fame-more-btn {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  background: #1a1a2e;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #aaa;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.8em;
+}
+.fame-more-btn:hover {
+  border-color: #ffd700;
+  color: #ffd700;
+}
+.fame-empty {
+  text-align: center;
+  color: #555;
+  padding: 20px;
+  font-size: 0.85em;
+}
+
+/* 명예의전당 페이지 풀 와이드 */
+#lotto-page-fame {
+  max-width: 100% !important;
+  padding: 10px !important;
+}
+#lotto-page-fame > div {
+  max-width: 100% !important;
+  padding: 12px !important;
+}
+
+/* ===== 특수부대 페이지 ===== */
+.special-page-container {
+  padding: 10px;
+}
+.special-title {
+  color: #ffd700;
+  margin: 0 0 16px 0;
+  font-size: 1.2em;
+}
+.special-summary {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  color: #e0e0ff;
+  font-size: 0.95em;
+}
+.special-brain-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+  .special-brain-grid { grid-template-columns: 1fr; }
+}
+.special-brain-card {
+  background: #0d1117;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 16px;
+}
+.special-brain-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
+}
+.special-brain-icon { font-size: 1.5em; }
+.special-brain-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #e0e0ff;
+}
+.special-brain-desc {
+  font-size: 0.75em;
+  color: #888;
+}
+.special-brain-stats {
+  color: #ccc;
+  font-size: 0.85em;
+  margin-bottom: 12px;
+}
+.special-brain-preds {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.special-pred-card {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 10px;
+}
+.special-pred-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em;
+  color: #aaa;
+  margin-bottom: 6px;
+}
+.special-pred-nums {
+  display: flex;
+  gap: 4px;
+  flex-wrap: nowrap;
+}
+.special-miss-list {
+  background: #0d1117;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 16px;
+}
+.special-miss-list h4 {
+  color: #e0e0ff;
+  margin: 0 0 12px 0;
+  font-size: 0.95em;
+}
+.special-miss-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8em;
+}
+.special-miss-table th {
+  color: #888;
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid #333;
+}
+.special-miss-table td {
+  color: #ccc;
+  padding: 6px 8px;
+  border-bottom: 1px solid #222;
+}
+.special-more-btn {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  background: #1a1a2e;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #aaa;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.8em;
+}
+.special-more-btn:hover {
+  border-color: #ffd700;
+  color: #ffd700;
+}

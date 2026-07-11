@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>테스트로또 · 회차 정밀 분석</title>
+
+  <link rel="stylesheet" href="/static/css/style.css" />
+
+  <link rel="stylesheet" href="/static/css/testlotto-detail.css?v=20260711k" />
+
+</head>
+
+<body class="tld-body">
+
+  <header class="tld-header">
+
+    <div class="tld-header__left">
+
+      <a href="/" class="tld-back" target="_self">← 메인으로</a>
+
+      <div>
+
+        <h1>테스트로또 <span class="tld-accent">회차 정밀 분석</span></h1>
+
+        <p class="tld-header__desc">당첨·채점·등수·패턴·뇌별 학습을 한 페이지에서 기록합니다. 각 뇌가 이 페이지를 학습 재료로 사용합니다.</p>
+
+      </div>
+
+    </div>
+
+    <div class="tld-header__meta" id="tldProgressMeta">불러오는 중…</div>
+
+  </header>
+
+
+
+  <main class="tld-main">
+
+    <section class="tld-toolbar card">
+
+      <div class="tld-toolbar__row">
+
+        <div class="tld-draw-nav">
+
+          <span class="tld-nav-label">회차</span>
+
+          <button type="button" class="btn btn-secondary tld-nav-btn" id="tldNavPrev" title="이전 회차">◀</button>
+
+          <select id="tldDrawSelect" class="lotto-draw-select" title="회차 선택 (★5등+ = 현재 뇌 5등 이상 적중)"></select>
+
+          <button type="button" class="btn btn-secondary tld-nav-btn" id="tldNavNext" title="다음 회차">▶</button>
+
+          <input type="number" id="tldDrawInput" min="1" placeholder="회차 입력" class="tld-draw-input" title="회차 직접 입력" />
+
+        </div>
+
+        <div class="tld-mode-toggle" role="group" aria-label="보기 방식">
+
+          <button type="button" class="tld-mode-btn tld-mode-btn--active" data-mode="single">한 회차 상세</button>
+
+          <button type="button" class="tld-mode-btn" data-mode="range">구간별 흐름</button>
+
+        </div>
+
+      </div>
+
+      <div class="tld-toolbar__row tld-range-row" id="tldRangeRow" hidden>
+
+        <span class="tld-nav-label">구간</span>
+
+        <input type="number" id="tldRangeStart" min="2" value="2" class="tld-range-input" aria-label="시작 회차" />
+
+        <span class="tld-range-sep">~</span>
+
+        <input type="number" id="tldRangeEnd" min="2" value="20" class="tld-range-input" aria-label="끝 회차" />
+
+        <button type="button" class="btn btn-secondary" id="tldRangeApply">구간 불러오기</button>
+
+      </div>
+
+    </section>
+
+
+
+    <div class="tld-grid" id="tldSingleView">
+
+      <!-- ① 당첨 확정 -->
+
+      <section class="tld-panel card tld-panel--full tld-section" id="tldDrawHeaderPanel">
+
+        <div class="tld-section-head">
+
+          <span class="tld-section-num">①</span>
+
+          <div>
+
+            <h2 class="tld-section-title">당첨 확정</h2>
+
+            <p class="tld-section-desc">해당 회차 공식 당첨번호·추첨일·판매 규모</p>
+
+          </div>
+
+        </div>
+
+        <div class="tld-draw-hero">
+
+          <div class="tld-draw-hero__text">
+
+            <h3 id="tldDrawTitle">제 — 회</h3>
+
+            <p class="tld-draw-sub" id="tldDrawSub">추첨일 · 총 판매액</p>
+
+          </div>
+
+          <div class="tld-kpi-strip" id="tldKpiStrip"></div>
+
+        </div>
+
+        <div class="tld-balls-row">
+
+          <span class="tld-balls-label">당첨번호</span>
+
+          <div id="tldActualBalls" class="tld-balls tld-balls--lg"></div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ② 채점·비교 (당첨 바로 아래) -->
+
+      <section class="tld-panel card tld-panel--full tld-section tld-section--grade" id="tldBrainPanel">
+
+        <div class="tld-section-head tld-section-head--compact">
+
+          <span class="tld-section-num">②</span>
+
+          <div>
+
+            <h2 class="tld-section-title" id="tldBrainTitle">채점·비교</h2>
+
+            <p class="tld-section-desc">뇌당 5세트 예측 · best 세트로 채점·학습합니다</p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="tld-brain-verdicts" id="tldBrainVerdicts" role="group" aria-label="3뇌 회차 판정"></div>
+
+
+
+        <div class="tld-brain-scorecards" id="tldBrainScorecards" role="tablist" aria-label="예측 뇌 선택"></div>
+
+
+
+        <div id="tldBrainCompare" class="tld-compare"></div>
+
+        <div class="tld-sub-blocks">
+
+          <div id="tldMissedBlock" class="tld-sub-block"></div>
+
+          <div id="tldFeedbackBlock" class="tld-sub-block"></div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ③ 등수별 + ⑤ 학습 누적 -->
+
+      <div class="tld-mid-row">
+
+        <section class="tld-panel card tld-section" id="tldPrizePanel">
+
+          <div class="tld-section-head tld-section-head--compact">
+
+            <span class="tld-section-num">③</span>
+
+            <div>
+
+              <h2 class="tld-section-title">등수별 당첨 현황</h2>
+
+              <p class="tld-section-desc">1~5등 당첨자 수·1인당 당첨금</p>
+
+            </div>
+
+          </div>
+          <div class="tld-prize-summary" id="tldPrizeSummary"></div>
+          <div class="tld-prize-table-wrap">
+
+            <table class="tld-prize-table" id="tldPrizeTable">
+
+              <thead>
+
+                <tr>
+
+                  <th>등수</th>
+
+                  <th>조건</th>
+
+                  <th>당첨자</th>
+
+                  <th>1게임당</th>
+                  <th>총 지급</th>
+
+                </tr>
+
+              </thead>
+
+              <tbody id="tldPrizeBody"></tbody>
+
+            </table>
+
+          </div>
+
+          <p class="tld-prize-note" id="tldPrizeNote"></p>
+
+        </section>
+
+
+
+        <aside class="tld-panel card tld-section tld-section--sticky" id="tldLearnPanel">
+
+          <div class="tld-section-head tld-section-head--compact">
+
+            <span class="tld-section-num">⑤</span>
+
+            <div>
+
+              <h2 class="tld-section-title">뇌 학습 누적</h2>
+
+              <p class="tld-section-desc">복습·평균 적중·가중치·약점 패턴</p>
+
+            </div>
+
+          </div>
+
+          <div id="tldLearnSummary" class="tld-learn"></div>
+
+        </aside>
+
+      </div>
+
+
+
+      <!-- ④ 패턴·구조 분석 -->
+
+      <section class="tld-panel card tld-panel--full tld-section" id="tldAnalysisPanel">
+
+        <div class="tld-section-head">
+
+          <span class="tld-section-num">④</span>
+
+          <div>
+
+            <h2 class="tld-section-title">패턴·구조 분석</h2>
+
+            <p class="tld-section-desc">이월수·연속수·AC값·814만 순위 등 회차별 분석 지표</p>
+
+          </div>
+
+        </div>
+
+        <div id="tldAnalysisGrid" class="tld-analysis-grid"></div>
+
+      </section>
+
+    </div>
+
+
+
+    <section class="tld-panel card tld-timeline tld-section" id="tldRangeView" hidden>
+
+      <div class="tld-section-head">
+
+        <span class="tld-section-num">↔</span>
+
+        <div>
+
+          <h2 class="tld-section-title" id="tldTimelineTitle">구간별 복습 흐름</h2>
+
+          <p class="tld-section-desc">여러 회차의 예측·적중·놓친 패턴 비교 (행 클릭 → 해당 회차)</p>
+
+        </div>
+
+      </div>
+
+      <div class="tld-timeline-table-wrap">
+
+        <table class="tld-timeline-table" id="tldTimelineTable">
+
+          <thead>
+
+            <tr>
+
+              <th>회차</th>
+
+              <th>예측 번호</th>
+
+              <th>적중</th>
+
+              <th>놓친 패턴</th>
+
+              <th>요약</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="tldTimelineBody"></tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+
+    <div id="tldStatus" class="tld-status" role="status" aria-live="polite"></div>
+
+  </main>
+
+
+
+  <script src="/static/js/testlotto-detail.js?v=20260711k"></script>
+
+</body>
+
+</html>
+

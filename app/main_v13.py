@@ -12,6 +12,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.lotto4.v13_routes import router as lotto4_v13_router
 from app.hyodo.routes import router as hyodo_router
+from app.testlotto.routes import router as testlotto_router
 
 logging.basicConfig(
     level=logging.INFO,
@@ -42,11 +43,18 @@ app.mount("/static", StaticFiles(directory=str(_STATIC_DIR)), name="static")
 
 app.include_router(lotto4_v13_router)
 app.include_router(hyodo_router)
+app.include_router(testlotto_router)
 
 
 @app.get("/")
 async def root():
     return FileResponse(str(_STATIC_DIR / "index.html"))
+
+
+@app.get("/testlotto-detail")
+async def testlotto_detail_page():
+    """테스트로또 복습·학습 상세페이지 (새 탭)."""
+    return FileResponse(str(_STATIC_DIR / "testlotto-detail.html"))
 
 
 @app.on_event("startup")
@@ -63,6 +71,9 @@ async def startup():
     from app.hyodo.models import init_hyodo_db
 
     init_hyodo_db()
+    from app.testlotto.models import init_testlotto_db
+
+    init_testlotto_db()
     from app.lotto.draw_scheduler import start_draw_collect_scheduler
 
     start_draw_collect_scheduler()

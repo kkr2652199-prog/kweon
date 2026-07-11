@@ -1,0 +1,547 @@
+"""테스트로또 상세페이지 데이터 — 회차·뇌별 복습/학습 스냅샷."""
+
+from __future__ import annotations
+
+import json
+from typing import Any
+
+from app.testlotto.brains.registry import DISPLAY_NAMES, PREDICT_BRAINS
+from app.testlotto.models import get_lotto_db
+from app.testlotto.prize_tiers import get_prize_tiers
+from app.testlotto.tier_utils import (
+    best_tier_from_sets,
+    enrich_predicted_sets,
+    prediction_rank_tier,
+)
+
+PATTERN_LABELS: dict[str, str] = {
+    "carry_over": "이월수",
+    "ending_digit": "끝수",
+    "consecutive": "연속수",
+    "overdue": "미출(장기)",
+    "odd_even": "홀짝 균형",
+    "pair": "쌍수(동반출현)",
+}
+
+PHASE_REVIEW = "review"
+
+
+def _parse_json(raw: str | None, default: Any = None) -> Any:
+    if not raw:
+        return default if default is not None else []
+    try:
+        return json.loads(raw)
+    except (json.JSONDecodeError, TypeError):
+        return default if default is not None else []
+
+
+def _draw_nums(draw: dict) -> list[int]:
+    return sorted(int(draw[f"num{k}"]) for k in range(1, 7))
+
+
+def upsert_brain_page_from_review(
+    draw_no: int,
+    brain_tag: str,
+    *,
+    predicted: list[int],
+    actual: list[int],
+    matched_count: int,
+    missed_patterns: list[str],
+    feedback: dict[str, Any],
+    weight_snapshot: dict[str, Any],
+    feature_row: dict[str, Any] | None = None,
+    predicted_sets: list[dict[str, Any]] | None = None,
+    best_set_no: int = 1,
+    bonus_matched: int = 0,
+    tier_rank: int = 0,
+    tier_label: str = "미적중",
+) -> None:
+    """복습 1건 → 뇌별 상세페이지 스냅샷 저장."""
+    pred_set = set(predicted)
+    actual_set = set(actual)
+    hit_nums = sorted(pred_set & actual_set)
+    miss_nums = sorted(pred_set - actual_set)
+    actual_miss = sorted(actual_set - pred_set)
+    tier_label = tier_label or prediction_rank_tier(matched_count, bonus_matched)[1]
+
+    narrative_parts = [
+        f"{DISPLAY_NAMES.get(brain_tag, brain_tag)} · {draw_no}회 복습",
+        f"{tier_label} · 적중 {matched_count}개 ({', '.join(map(str, hit_nums)) or '없음'})",
+    ]
+    if missed_patterns:
+        labels = [PATTERN_LABELS.get(p, p) for p in missed_patterns]
+        narrative_parts.append(f"놓친 패턴: {', '.join(labels)}")
+    narrative = " · ".join(narrative_parts)
+
+    detail_blob = {
+        "missed_pattern_labels": [PATTERN_LABELS.get(p, p) for p in missed_patterns],
+        "actual_missed_nums": actual_miss,
+        "predicted_sets": predicted_sets or [],
+        "best_set_no": best_set_no,
+        "bonus_matched": int(bonus_matched),
+        "tier_rank": int(tier_rank),
+        "tier_label": tier_label,
+    }
+
+    conn = get_lotto_db()
+    try:
+        conn.execute(
+            """
+            INSERT INTO testlotto_brain_page (
+                draw_no, brain_tag, phase,
+                predicted_nums, predicted_sets_json, best_set_no,
+                actual_nums, matched_count,
+                missed_patterns, hit_nums, miss_nums,
+                feature_snapshot, feedback_json, learn_snapshot_json,
+                narrative, detail_json, updated_at
+            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, datetime('now','localtime'))
+            ON CONFLICT(draw_no, brain_tag, phase) DO UPDATE SET
+                predicted_nums=excluded.predicted_nums,
+                predicted_sets_json=excluded.predicted_sets_json,
+                best_set_no=excluded.best_set_no,
+                actual_nums=excluded.actual_nums,
+                matched_count=excluded.matched_count,
+                missed_patterns=excluded.missed_patterns,
+                hit_nums=excluded.hit_nums,
+                miss_nums=excluded.miss_nums,
+                feature_snapshot=excluded.feature_snapshot,
+                feedback_json=excluded.feedback_json,
+                learn_snapshot_json=excluded.learn_snapshot_json,
+                narrative=excluded.narrative,
+                detail_json=excluded.detail_json,
+                updated_at=excluded.updated_at
+            """,
+            (
+                draw_no,
+                brain_tag,
+                PHASE_REVIEW,
+                json.dumps(predicted, ensure_ascii=False),
+                json.dumps(predicted_sets or [], ensure_ascii=False),
+                int(best_set_no),
+                json.dumps(actual, ensure_ascii=False),
+                matched_count,
+                json.dumps(missed_patterns, ensure_ascii=False),
+                json.dumps(hit_nums, ensure_ascii=False),
+                json.dumps(miss_nums, ensure_ascii=False),
+                json.dumps(feature_row or {}, ensure_ascii=False),
+                json.dumps(feedback, ensure_ascii=False),
+                json.dumps(weight_snapshot, ensure_ascii=False),
+                narrative,
+                json.dumps(detail_blob, ensure_ascii=False),
+            ),
+        )
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def sync_brain_pages_from_reviews(start: int = 2, end: int = 1231) -> int:
+    """기존 brain_review → brain_page 백필."""
+    conn = get_lotto_db()
+    synced = 0
+    try:
+        rows = conn.execute(
+            """
+            SELECT r.*, d.num1, d.num2, d.num3, d.num4, d.num5, d.num6, d.bonus
+            FROM testlotto_brain_review r
+            JOIN lotto_draws d ON d.draw_no = r.draw_no
+            WHERE r.draw_no BETWEEN ? AND ?
+            ORDER BY r.draw_no, r.brain_tag
+            """,
+            (start, end),
+        ).fetchall()
+        feat_cache: dict[int, dict] = {}
+        for row in rows:
+            d = dict(row)
+            draw_no = int(d["draw_no"])
+            if draw_no not in feat_cache:
+                fr = conn.execute(
+                    "SELECT * FROM testlotto_draw_features WHERE draw_no = ?", (draw_no,)
+                ).fetchone()
+                feat_cache[draw_no] = dict(fr) if fr else {}
+            actual = _draw_nums(d)
+            bonus = int(d.get("bonus") or 0)
+            predicted = _parse_json(d.get("predicted_nums"), [])
+            predicted_sets = _parse_json(d.get("predicted_sets_json"), [])
+            if not predicted_sets and predicted:
+                predicted_sets = [
+                    {
+                        "set_no": 1,
+                        "nums": predicted,
+                        "matched_count": int(d.get("matched_count") or 0),
+                    }
+                ]
+            predicted_sets = enrich_predicted_sets(predicted_sets, actual, bonus)
+            best_info = best_tier_from_sets(predicted_sets)
+            bm = int(d.get("bonus_matched") or best_info.get("bonus_matched") or 0)
+            tr = int(best_info.get("tier_rank") or 0)
+            tl = best_info.get("tier_label") or prediction_rank_tier(
+                int(d.get("matched_count") or 0), bm
+            )[1]
+            missed = _parse_json(d.get("missed_patterns"), [])
+            feedback = _parse_json(d.get("feedback_json"), {})
+            weight_snap = _parse_json(d.get("weight_snapshot"), {})
+            upsert_brain_page_from_review(
+                draw_no,
+                d["brain_tag"],
+                predicted=predicted,
+                predicted_sets=predicted_sets,
+                best_set_no=int(d.get("best_set_no") or best_info.get("best_set_no") or 1),
+                actual=actual,
+                matched_count=int(d.get("matched_count") or 0),
+                bonus_matched=bm,
+                tier_rank=tr,
+                tier_label=tl,
+                missed_patterns=missed,
+                feedback=feedback,
+                weight_snapshot=weight_snap,
+                feature_row=feat_cache.get(draw_no),
+            )
+            synced += 1
+    finally:
+        conn.close()
+    return synced
+
+
+def get_draw_detail(draw_no: int) -> dict[str, Any]:
+    """단일 회차 상세 — 정답·분석그릇·뇌별 복습."""
+    conn = get_lotto_db()
+    try:
+        draw = conn.execute("SELECT * FROM lotto_draws WHERE draw_no = ?", (draw_no,)).fetchone()
+        if not draw:
+            return {"error": f"{draw_no}회 당첨 데이터 없음"}
+        draw_d = dict(draw)
+        features = conn.execute(
+            "SELECT * FROM testlotto_draw_features WHERE draw_no = ?", (draw_no,)
+        ).fetchone()
+        pages = conn.execute(
+            """
+            SELECT * FROM testlotto_brain_page
+            WHERE draw_no = ? AND phase = ?
+            ORDER BY brain_tag
+            """,
+            (draw_no, PHASE_REVIEW),
+        ).fetchall()
+        if not pages:
+            reviews = conn.execute(
+                "SELECT COUNT(*) FROM testlotto_brain_review WHERE draw_no = ?", (draw_no,)
+            ).fetchone()[0]
+            if reviews:
+                sync_brain_pages_from_reviews(draw_no, draw_no)
+                pages = conn.execute(
+                    """
+                    SELECT * FROM testlotto_brain_page
+                    WHERE draw_no = ? AND phase = ?
+                    ORDER BY brain_tag
+                    """,
+                    (draw_no, PHASE_REVIEW),
+                ).fetchall()
+
+        brains: list[dict[str, Any]] = []
+        for p in pages:
+            pd = dict(p)
+            detail_blob = _parse_json(pd.get("detail_json"), {})
+            predicted_sets = _parse_json(pd.get("predicted_sets_json"), [])
+            if not predicted_sets:
+                predicted_sets = detail_blob.get("predicted_sets") or []
+            if not predicted_sets and pd.get("predicted_nums"):
+                predicted_sets = [
+                    {
+                        "set_no": 1,
+                        "nums": _parse_json(pd.get("predicted_nums"), []),
+                        "matched_count": int(pd.get("matched_count") or 0),
+                    }
+                ]
+            brains.append(
+                {
+                    "brain_tag": pd["brain_tag"],
+                    "brain_name": DISPLAY_NAMES.get(pd["brain_tag"], pd["brain_tag"]),
+                    "predicted_nums": _parse_json(pd.get("predicted_nums"), []),
+                    "predicted_sets": predicted_sets,
+                    "best_set_no": int(pd.get("best_set_no") or detail_blob.get("best_set_no") or 1),
+                    "actual_nums": _parse_json(pd.get("actual_nums"), []),
+                    "matched_count": int(pd.get("matched_count") or 0),
+                    "hit_nums": _parse_json(pd.get("hit_nums"), []),
+                    "miss_nums": _parse_json(pd.get("miss_nums"), []),
+                    "missed_patterns": _parse_json(pd.get("missed_patterns"), []),
+                    "missed_pattern_labels": detail_blob.get(
+                        "missed_pattern_labels", []
+                    ),
+                    "feedback": _parse_json(pd.get("feedback_json"), {}),
+                    "learn_snapshot": _parse_json(pd.get("learn_snapshot_json"), {}),
+                    "narrative": pd.get("narrative") or "",
+                    "updated_at": pd.get("updated_at"),
+                }
+            )
+
+        actual_nums = _draw_nums(draw_d)
+        bonus_num = int(draw_d.get("bonus") or 0)
+        brain_verdicts: list[dict[str, Any]] = []
+        for b in brains:
+            b["predicted_sets"] = enrich_predicted_sets(
+                b.get("predicted_sets") or [], actual_nums, bonus_num
+            )
+            best_info = best_tier_from_sets(b["predicted_sets"])
+            b["best_set_no"] = int(
+                b.get("best_set_no") or best_info.get("best_set_no") or 1
+            )
+            b["matched_count"] = int(b.get("matched_count") or best_info.get("matched_count") or 0)
+            b["bonus_matched"] = int(best_info.get("bonus_matched") or 0)
+            b["tier_rank"] = int(best_info.get("tier_rank") or 0)
+            b["tier_label"] = best_info.get("tier_label") or "미적중"
+            brain_verdicts.append(
+                {
+                    "brain_tag": b["brain_tag"],
+                    "brain_name": b["brain_name"],
+                    "tier_rank": b["tier_rank"],
+                    "tier_label": b["tier_label"],
+                    "matched_count": b["matched_count"],
+                    "bonus_matched": b["bonus_matched"],
+                    "best_set_no": b["best_set_no"],
+                    "has_review": True,
+                }
+            )
+
+        for pb in PREDICT_BRAINS:
+            tag = pb["tag"]
+            if not any(v["brain_tag"] == tag for v in brain_verdicts):
+                brain_verdicts.append(
+                    {
+                        "brain_tag": tag,
+                        "brain_name": DISPLAY_NAMES.get(tag, tag),
+                        "tier_rank": 0,
+                        "tier_label": "기록 없음",
+                        "matched_count": 0,
+                        "bonus_matched": 0,
+                        "best_set_no": 0,
+                        "has_review": False,
+                    }
+                )
+        brain_verdicts.sort(
+            key=lambda v: (
+                0 if v.get("has_review") else 1,
+                int(v.get("tier_rank") or 99),
+                -int(v.get("matched_count") or 0),
+            )
+        )
+
+        feat_d = dict(features) if features else {}
+        prize_tiers = get_prize_tiers(draw_no, auto_fetch=False)
+        if not prize_tiers:
+            prize_tiers = get_prize_tiers(draw_no, auto_fetch=True)
+
+        archive_row = conn.execute(
+            "SELECT * FROM testlotto_draw_detail WHERE draw_no = ?", (draw_no,)
+        ).fetchone()
+        win_stores = conn.execute(
+            """
+            SELECT tier_rank, store_name, pick_method, address, region
+            FROM testlotto_draw_win_stores WHERE draw_no = ?
+            ORDER BY tier_rank, store_name
+            """,
+            (draw_no,),
+        ).fetchall()
+        arch = dict(archive_row) if archive_row else {}
+        win_types = {}
+        if arch:
+            from app.testlotto.draw_archive import WIN_TYPE_LABELS
+
+            win_types = {
+                WIN_TYPE_LABELS[i]: int(arch.get(f"win_type_{i}") or 0) for i in range(4)
+            }
+
+        return {
+            "draw_no": draw_no,
+            "draw_date": draw_d.get("draw_date"),
+            "total_sales": int(arch.get("total_sales") or draw_d.get("total_sales") or 0),
+            "cumulative_sales": int(arch.get("cumulative_sales") or 0),
+            "total_winners": int(arch.get("total_winners") or 0),
+            "win_types": win_types,
+            "win_stores": [dict(s) for s in win_stores],
+            "store_fetch_status": arch.get("store_fetch_status") or "",
+            "actual_nums": actual_nums,
+            "bonus": bonus_num,
+            "prize_tiers": prize_tiers,
+            "prize_tiers_complete": len(prize_tiers) >= 5,
+            "archive_synced_at": arch.get("synced_at"),
+            "features": {
+                "carry_over_count": feat_d.get("carry_over_count"),
+                "carry_over_nums": _parse_json(feat_d.get("carry_over_nums"), []),
+                "consecutive_count": feat_d.get("consecutive_count"),
+                "ending_digits": _parse_json(feat_d.get("ending_digits"), []),
+                "ac_value": feat_d.get("ac_value"),
+                "gap_overdue_nums": _parse_json(feat_d.get("gap_overdue_nums"), []),
+                "sum_total": feat_d.get("sum_total"),
+                "odd_count": feat_d.get("odd_count"),
+                "even_count": feat_d.get("even_count"),
+                "zone_low_mid_high": _parse_json(feat_d.get("zone_low_mid_high"), []),
+                "combo_rank_814": feat_d.get("combo_rank_814"),
+            },
+            "brains": brains,
+            "brain_verdicts": brain_verdicts,
+            "brain_order": [b["tag"] for b in PREDICT_BRAINS],
+        }
+    finally:
+        conn.close()
+
+
+def get_hit_draws(brain_tag: str, *, min_match: int = 3) -> list[int]:
+    """뇌별 5등+(tier_rank 1~5) 이상인 복습 회차 목록 (최신순)."""
+    conn = get_lotto_db()
+    try:
+        rows = conn.execute(
+            """
+            SELECT draw_no, matched_count, predicted_sets_json, bonus_matched
+            FROM testlotto_brain_page
+            WHERE brain_tag = ? AND phase = ?
+            ORDER BY draw_no DESC
+            """,
+            (brain_tag, PHASE_REVIEW),
+        ).fetchall()
+        draw_rows = conn.execute(
+            "SELECT draw_no, bonus FROM lotto_draws"
+        ).fetchall()
+        bonus_map = {int(r[0]): int(r[1] or 0) for r in draw_rows}
+        actual_cache: dict[int, list[int]] = {}
+        out: list[int] = []
+        for r in rows:
+            d = dict(r)
+            draw_no = int(d["draw_no"])
+            if draw_no not in actual_cache:
+                dr = conn.execute(
+                    "SELECT num1,num2,num3,num4,num5,num6 FROM lotto_draws WHERE draw_no=?",
+                    (draw_no,),
+                ).fetchone()
+                actual_cache[draw_no] = (
+                    sorted(int(dr[i]) for i in range(6)) if dr else []
+                )
+            sets = enrich_predicted_sets(
+                _parse_json(d.get("predicted_sets_json"), []),
+                actual_cache[draw_no],
+                bonus_map.get(draw_no, 0),
+            )
+            best = best_tier_from_sets(sets)
+            tr = int(best.get("tier_rank") or 0)
+            mc = int(best.get("matched_count") or d.get("matched_count") or 0)
+            if tr > 0 or mc >= min_match:
+                out.append(draw_no)
+        return out
+    finally:
+        conn.close()
+
+
+def get_reviews_range(
+    start: int,
+    end: int,
+    brain_tag: str | None = None,
+    *,
+    limit: int = 500,
+    offset: int = 0,
+) -> dict[str, Any]:
+    """여러 회차 복습 목록 (상세페이지 타임라인·비교용)."""
+    conn = get_lotto_db()
+    try:
+        clauses = ["draw_no BETWEEN ? AND ?", "phase = ?"]
+        params: list[Any] = [start, end, PHASE_REVIEW]
+        if brain_tag:
+            clauses.append("brain_tag = ?")
+            params.append(brain_tag)
+        where = " AND ".join(clauses)
+        total = conn.execute(
+            f"SELECT COUNT(*) FROM testlotto_brain_page WHERE {where}", params
+        ).fetchone()[0]
+        if total == 0:
+            rev_cnt = conn.execute(
+                """
+                SELECT COUNT(*) FROM testlotto_brain_review
+                WHERE draw_no BETWEEN ? AND ?
+                """ + (" AND brain_tag = ?" if brain_tag else ""),
+                [start, end] + ([brain_tag] if brain_tag else []),
+            ).fetchone()[0]
+            if rev_cnt:
+                sync_brain_pages_from_reviews(start, end)
+                total = conn.execute(
+                    f"SELECT COUNT(*) FROM testlotto_brain_page WHERE {where}", params
+                ).fetchone()[0]
+
+        rows = conn.execute(
+            f"""
+            SELECT draw_no, brain_tag, matched_count, missed_patterns,
+                   narrative, predicted_nums, hit_nums, updated_at
+            FROM testlotto_brain_page
+            WHERE {where}
+            ORDER BY draw_no DESC, brain_tag
+            LIMIT ? OFFSET ?
+            """,
+            params + [limit, offset],
+        ).fetchall()
+
+        items = []
+        for r in rows:
+            d = dict(r)
+            items.append(
+                {
+                    "draw_no": d["draw_no"],
+                    "brain_tag": d["brain_tag"],
+                    "brain_name": DISPLAY_NAMES.get(d["brain_tag"], d["brain_tag"]),
+                    "matched_count": int(d.get("matched_count") or 0),
+                    "missed_patterns": _parse_json(d.get("missed_patterns"), []),
+                    "narrative": d.get("narrative") or "",
+                    "predicted_nums": _parse_json(d.get("predicted_nums"), []),
+                    "hit_nums": _parse_json(d.get("hit_nums"), []),
+                    "updated_at": d.get("updated_at"),
+                }
+            )
+        return {
+            "start": start,
+            "end": end,
+            "brain_tag": brain_tag,
+            "total": int(total),
+            "limit": limit,
+            "offset": offset,
+            "items": items,
+        }
+    finally:
+        conn.close()
+
+
+def get_brain_learning_summary(brain_tag: str) -> dict[str, Any]:
+    """뇌별 누적 학습 요약 (상세페이지 사이드바)."""
+    conn = get_lotto_db()
+    try:
+        learn = conn.execute(
+            "SELECT * FROM testlotto_brain_learn_state WHERE brain_tag = ?", (brain_tag,)
+        ).fetchone()
+        weight = conn.execute(
+            "SELECT * FROM testlotto_brain_weights WHERE brain_tag = ?", (brain_tag,)
+        ).fetchone()
+        stats = conn.execute(
+            """
+            SELECT COUNT(*) AS cnt,
+                   AVG(matched_count) AS avg_match,
+                   MAX(draw_no) AS max_draw,
+                   MIN(draw_no) AS min_draw
+            FROM testlotto_brain_page
+            WHERE brain_tag = ? AND phase = ?
+            """,
+            (brain_tag, PHASE_REVIEW),
+        ).fetchone()
+        state = _parse_json(learn["state_json"] if learn else None, {})
+        return {
+            "brain_tag": brain_tag,
+            "brain_name": DISPLAY_NAMES.get(brain_tag, brain_tag),
+            "review_count": int(learn["review_count"]) if learn else 0,
+            "last_draw_no": int(learn["last_draw_no"]) if learn else 0,
+            "recent_avg_match": float(state.get("recent_avg_match") or 0),
+            "adjustments": state.get("adjustments", {}),
+            "miss_counts": state.get("miss_counts", {}),
+            "current_weight": float(weight["current_weight"]) if weight else 1.0,
+            "page_stats": {
+                "records": int(stats["cnt"] or 0) if stats else 0,
+                "avg_match": round(float(stats["avg_match"] or 0), 3) if stats else 0,
+                "min_draw": int(stats["min_draw"] or 0) if stats else 0,
+                "max_draw": int(stats["max_draw"] or 0) if stats else 0,
+            },
+        }
+    finally:
+        conn.close()
