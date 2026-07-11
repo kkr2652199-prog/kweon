@@ -13,9 +13,9 @@ GitHub raw 링크만 있으면 5분 내 현재 작업을 이해하고 이어갈 
 kweon = 4군 앱 + 효도로또(1.5군) 실험장. memoy(1·2·3군)와 분리 관리.
 
 ## 현재 작업 (이 줄만 매턴 갱신)
-- 관리구조 이식 STEP1 완료 — memoy와 동일 SSOT/복원/압축대비 체계 신설
-- 다음 STEP: **효도로또(1.5군) 탭 신설** (app/lotto → app/hyodo 복사·격리)
-- 목적: **정직한 분석앱** (당첨보장 아님) + 오락비 한도 구매
+- STEP2 완료: 효도로또 app/hyodo 격리 신설 (순수 1군 복제, /api/hyodo)
+- 다음 STEP: **LSTM 누수 walk-forward 실험** (효도로또에서만)
+- 목적: **정직한 분석앱** (당첨보장 아님)
 
 ## 복원 경로 규칙
 - 1순위: GitHub kkr2652199-prog/kweon · main · /My_Drive_Sync/SUMMARY/ raw

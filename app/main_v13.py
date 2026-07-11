@@ -11,6 +11,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.lotto4.v13_routes import router as lotto4_v13_router
+from app.hyodo.routes import router as hyodo_router
 
 logging.basicConfig(
     level=logging.INFO,
@@ -40,6 +41,7 @@ _STATIC_DIR = Path(__file__).resolve().parent / "static"
 app.mount("/static", StaticFiles(directory=str(_STATIC_DIR)), name="static")
 
 app.include_router(lotto4_v13_router)
+app.include_router(hyodo_router)
 
 
 @app.get("/")
@@ -58,6 +60,9 @@ async def startup():
     init_lotto2_db()
     init_lotto4_db()
     init_v13_v2_seeds()
+    from app.hyodo.models import init_hyodo_db
+
+    init_hyodo_db()
     from app.lotto.draw_scheduler import start_draw_collect_scheduler
 
     start_draw_collect_scheduler()

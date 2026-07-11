@@ -2986,6 +2986,9 @@
           syncSxDrawOptions();
           loadStrategyX(getSxDrawNo());
         }
+        if (v === 'hyodo' && typeof initHyodoDrawSearch === 'function') {
+          initHyodoDrawSearch();
+        }
         if (v === 'combo-lookup') loadComboLookupView();
         if (v === 'all-combos') loadAllCombosView();
         if (v === 'brain') loadBrainStatus();
