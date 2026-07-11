@@ -1,5 +1,5 @@
 ---
-description: 구글 드라이브 동기화 저장 위치 — 동생기억·SUMMARY·커서보고서 (절대 경로)
+description: kweon My_Drive_Sync 저장 위치 — 동생기억·SUMMARY·커서보고서 (절대 경로)
 alwaysApply: true
 ---
 
@@ -9,16 +9,23 @@ alwaysApply: true
 
 | 용도 | 절대 경로 |
 |------|-----------|
-| **동생기억** (기억N_v1.md + .txt) | `D:\MONEY lol\My_Drive_Sync\동생기억` |
-| **룰·작업현황** (`STATUS_LATEST.md` + `.txt`) | `D:\MONEY lol\My_Drive_Sync\SUMMARY` |
-| **커서 작업 보고서** (`reports/*.md` + `.txt` 복사) | `D:\MONEY lol\My_Drive_Sync\커서보고서` |
+| **동생기억** (기억N_v1.md) | `D:\3kweon\My_Drive_Sync\동생기억` |
+| **룰·작업현황** (`STATUS_LATEST.md` 등 SUMMARY 5파일) | `D:\3kweon\My_Drive_Sync\SUMMARY` |
+| **커서 작업 보고서** (`reports/*.md` 복사) | `D:\3kweon\My_Drive_Sync\커서보고서` |
+
+## 저장소·경로 지도 (혼동 방지)
+
+| 저장소 | 로컬 경로 | 관할 |
+|--------|-----------|------|
+| memoy | `D:\MONEY lol` | 1·2·3군 앱 |
+| kweon | `D:\3kweon` | 4군 앱 + 효도로또(1.5군) |
 
 ## 에이전트 행동
 
 - 기억 세이브·STATUS 갱신은 위 **동생기억** / **SUMMARY** 에 저장.
 - `d:\3kweon\reports\` 에 작성한 보고서는 갱신 후 **`커서보고서`** 에 복사(덮어쓰기)까지 마친 것으로 간주.
-- **파트너 읽기 호환 (R31)**: STATUS·기억·보고서는 `.md` 와 **동일 내용 `.txt`** 를 함께 저장·복사한다.
+- 복원 SSOT: GitHub kkr2652199-prog/kweon · main · `/My_Drive_Sync/SUMMARY/README_START.md` 먼저 읽기.
 
 ## 4군 코드베이스
 
-- 소스·DB 작업 루트: `d:\3kweon` (Drive는 백업·기록용이며 코드 원본과 혼동 금지).
+- 소스·DB 작업 루트: `d:\3kweon` (My_Drive_Sync는 관리·기록용, 코드 원본과 혼동 금지).
