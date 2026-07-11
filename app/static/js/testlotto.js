@@ -49,6 +49,7 @@ let _testlottoDrawDates = {};
 let _testlottoPredRowsCache = null;
 let _testlottoDetailDrawNo = null;
 let _testlottoDetailRows = null;
+let _testlottoPredDataSource = 'brain_review';
 let _testlottoPredFetchSeq = 0;
 let _testlottoCurrentBrainTab = 'stat';
 
@@ -218,6 +219,56 @@ function testlottoNavDraw(delta) {
   testlottoLoadSavedPrediction(nextNo, { softLoading: true });
 }
 
+function _detailResponseToPredictionRows(detail, drawNo) {
+  const actual = detail.actual_nums || [];
+  const bonus = detail.bonus;
+  const rows = [];
+  (detail.brains || []).forEach((brain) => {
+    (brain.predicted_sets || []).forEach((s) => {
+      const nums = s.nums || [];
+      if (nums.length < 6) return;
+      rows.push({
+        target_draw_no: drawNo,
+        brain_tag: brain.brain_tag,
+        num1: nums[0],
+        num2: nums[1],
+        num3: nums[2],
+        num4: nums[3],
+        num5: nums[4],
+        num6: nums[5],
+        matched_count: s.matched_count != null ? s.matched_count : (brain.matched_count != null ? brain.matched_count : -1),
+        bonus_matched: s.bonus_matched != null ? s.bonus_matched : 0,
+        confidence: s.confidence,
+        reasoning: s.reasoning || brain.narrative || '',
+        actual_1: actual[0] != null ? actual[0] : null,
+        actual_2: actual[1] != null ? actual[1] : null,
+        actual_3: actual[2] != null ? actual[2] : null,
+        actual_4: actual[3] != null ? actual[3] : null,
+        actual_5: actual[4] != null ? actual[4] : null,
+        actual_6: actual[5] != null ? actual[5] : null,
+        actual_bonus: bonus != null ? bonus : null,
+      });
+    });
+  });
+  return rows;
+}
+
+async function _fetchPredictionRowsFromDetail(drawNo) {
+  const r = await fetch(_testlottoResolveApiUrl('/api/testlotto/detail/draw/' + drawNo));
+  const detail = await r.json();
+  if (detail.error || !detail.brains || !detail.brains.length) {
+    return { rows: [], source: 'none', detail };
+  }
+  return { rows: _detailResponseToPredictionRows(detail, drawNo), source: 'brain_review', detail };
+}
+
+async function _fetchPredictionRowsLegacy(drawNo) {
+  const r = await fetch(_testlottoResolveApiUrl('/api/testlotto/predictions/draw/' + drawNo));
+  const data = await r.json();
+  const rows = (data && data.predictions) ? data.predictions : [];
+  return { rows, source: 'lotto_predictions' };
+}
+
 async function testlottoLoadSavedPrediction(drawNo, options) {
   const d = parseInt(drawNo, 10);
   const fromTab = options && options.fromTab;
@@ -242,12 +293,25 @@ async function testlottoLoadSavedPrediction(drawNo, options) {
     container.innerHTML = '<p style="color: #888;">로딩 중...</p>';
   }
   try {
-    const r = await fetch(_testlottoResolveApiUrl('/api/testlotto/predictions/draw/' + d));
-    const data = await r.json();
+    let rows = [];
+    let dataSource = 'brain_review';
+
+    const detailResult = await _fetchPredictionRowsFromDetail(d);
+    if (detailResult.rows.length) {
+      rows = detailResult.rows;
+      dataSource = detailResult.source;
+    } else if (detailResult.detail && detailResult.detail.error) {
+      // 미래 회차(당첨번호 없음): lotto_predictions 폴백
+      const legacy = await _fetchPredictionRowsLegacy(d);
+      if (legacy.rows.length) {
+        rows = legacy.rows;
+        dataSource = legacy.source;
+      }
+    }
+
     if (seq !== _testlottoPredFetchSeq) {
       return;
     }
-    const rows = (data && data.predictions) ? data.predictions : [];
     if (!rows.length) {
       _testlottoDetailDrawNo = null;
       _testlottoDetailRows = null;
@@ -258,6 +322,7 @@ async function testlottoLoadSavedPrediction(drawNo, options) {
     }
     _testlottoDetailDrawNo = d;
     _testlottoDetailRows = rows;
+    _testlottoPredDataSource = dataSource;
     _testlottoPredRowsCache = (_testlottoPredRowsCache || []).filter((p) => parseInt(p.target_draw_no, 10) !== d);
     _testlottoPredRowsCache = rows.concat(_testlottoPredRowsCache || []);
     await renderPredictionsByBrain(d, rows);
@@ -433,7 +498,7 @@ async function renderPredictionsByBrain(drawNo, rows) {
   }
 
   if (!_testlottoCurrentBrainTab || _testlottoCurrentBrainTab === 'legacy') {
-    _testlottoCurrentBrainTab = 'hyena';
+    _testlottoCurrentBrainTab = 'stat';
   }
   const allowedTags = new Set(brainListForTabs.map((b) => b.tag));
   if (eliteOn && allowedTags.size && !allowedTags.has(_testlottoCurrentBrainTab)) {
@@ -441,7 +506,7 @@ async function renderPredictionsByBrain(drawNo, rows) {
   }
   if (!byBrain[_testlottoCurrentBrainTab]) {
     const firstTag = Object.keys(byBrain)[0];
-    _testlottoCurrentBrainTab = firstTag || (brainListForTabs[0] && brainListForTabs[0].tag) || 'hyena';
+    _testlottoCurrentBrainTab = firstTag || (brainListForTabs[0] && brainListForTabs[0].tag) || 'stat';
   }
 
   const tabsHtml = brainListForTabs.map((b) => {
