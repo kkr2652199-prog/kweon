@@ -10,7 +10,7 @@ LOTTO_DB_PATH = _DATA_DIR / "lotto_testlotto.db"
 
 
 def get_lotto_db() -> sqlite3.Connection:
-    conn = sqlite3.connect(str(LOTTO_DB_PATH))
+    conn = sqlite3.connect(str(LOTTO_DB_PATH), timeout=60.0)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode=WAL")
     return conn

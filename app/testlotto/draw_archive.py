@@ -95,12 +95,24 @@ def fetch_win_stores(draw_no: int, *, session: requests.Session | None = None) -
         resp.raise_for_status()
         html = resp.text
         stores = _parse_store_html(html, draw_no, tier_rank=1)
-        status = "ok" if stores else "empty"
-        note = "" if stores else "판매점 HTML 미제공(SPA 전환·구간 미기록 가능)"
-        return {"draw_no": draw_no, "ok": True, "status": status, "stores": stores, "note": note}
+        if stores:
+            return {"draw_no": draw_no, "ok": True, "status": "ok", "stores": stores, "note": ""}
+        return {
+            "draw_no": draw_no,
+            "ok": True,
+            "status": "pending",
+            "stores": [],
+            "note": "판매점 HTML 미제공(SPA 전환·구간 미기록 가능)",
+        }
     except Exception as e:
         logger.warning("판매점 조회 %d회: %s", draw_no, e)
-        return {"draw_no": draw_no, "ok": False, "status": "error", "stores": [], "note": str(e)}
+        return {
+            "draw_no": draw_no,
+            "ok": False,
+            "status": "pending",
+            "stores": [],
+            "note": str(e),
+        }
 
 
 def upsert_draw_row(parsed: dict[str, Any]) -> None:
@@ -253,52 +265,70 @@ def fetch_and_save_draw_archive(
     session: requests.Session | None = None,
 ) -> dict[str, Any]:
     """회차 1건 — lt645 정밀 이력 + 등수 + 판매점(가능 시) 저장."""
-    init_testlotto_db()
-    raw = _fetch_lt645_raw(draw_no)
-    if not raw:
-        parsed = _fetch_from_dhlottery_lt645(draw_no)
-        if not parsed:
-            return {"draw_no": draw_no, "ok": False, "reason": "lt645 조회 실패"}
-        raw = {k: parsed.get(k) for k in parsed}
-    else:
-        parsed = _parse_lt645_item(raw)
+    try:
+        init_testlotto_db()
+        raw = _fetch_lt645_raw(draw_no)
+        if not raw:
+            parsed = _fetch_from_dhlottery_lt645(draw_no)
+            if not parsed:
+                return {"draw_no": draw_no, "ok": False, "reason": "lt645 조회 실패"}
+            raw = {k: parsed.get(k) for k in parsed}
+        else:
+            parsed = _parse_lt645_item(raw)
 
-    upsert_draw_row(parsed)
+        upsert_draw_row(parsed)
 
-    tiers = parsed.get("tiers") or []
-    tier_details = []
-    for t in tiers:
-        rank = int(t["tier_rank"])
-        tier_details.append(
-            {
-                **t,
-                "tier_label": f"{rank}등",
-                "match_hint": TIER_MATCH_HINT.get(rank, ""),
-            }
-        )
-    saved_tiers = upsert_prize_tiers(draw_no, tier_details, source="lt645")
+        tiers = parsed.get("tiers") or []
+        tier_details = []
+        for t in tiers:
+            rank = int(t["tier_rank"])
+            tier_details.append(
+                {
+                    **t,
+                    "tier_label": f"{rank}등",
+                    "match_hint": TIER_MATCH_HINT.get(rank, ""),
+                }
+            )
+        saved_tiers = upsert_prize_tiers(draw_no, tier_details, source="lt645")
 
-    store_result: dict[str, Any] = {"status": "skipped", "stores": [], "note": ""}
-    if fetch_stores:
-        store_result = fetch_win_stores(draw_no, session=session)
-    saved_stores = upsert_win_stores(draw_no, store_result.get("stores") or [])
+        store_result: dict[str, Any] = {"status": "skipped", "stores": [], "note": ""}
+        if fetch_stores:
+            try:
+                store_result = fetch_win_stores(draw_no, session=session)
+            except Exception as e:
+                logger.warning("판매점 처리 %d회: %s", draw_no, e)
+                store_result = {
+                    "status": "pending",
+                    "stores": [],
+                    "note": str(e),
+                }
+        saved_stores = 0
+        try:
+            saved_stores = upsert_win_stores(draw_no, store_result.get("stores") or [])
+        except Exception as e:
+            logger.warning("판매점 저장 %d회: %s", draw_no, e)
+            store_result["status"] = "pending"
+            store_result["note"] = (store_result.get("note") or "") + f" | save:{e}"
 
-    upsert_draw_detail(draw_no, raw, parsed, store_result)
+        upsert_draw_detail(draw_no, raw, parsed, store_result)
 
-    return {
-        "draw_no": draw_no,
-        "ok": True,
-        "draw_date": parsed.get("draw_date"),
-        "total_sales": parsed.get("total_sales"),
-        "first_winners": parsed.get("first_winners"),
-        "saved_tiers": saved_tiers,
-        "saved_stores": saved_stores,
-        "store_status": store_result.get("status"),
-        "store_note": store_result.get("note"),
-        "win_types": {
-            WIN_TYPE_LABELS[i]: int(raw.get(f"winType{i}") or 0) for i in range(4)
-        },
-    }
+        return {
+            "draw_no": draw_no,
+            "ok": True,
+            "draw_date": parsed.get("draw_date"),
+            "total_sales": parsed.get("total_sales"),
+            "first_winners": parsed.get("first_winners"),
+            "saved_tiers": saved_tiers,
+            "saved_stores": saved_stores,
+            "store_status": store_result.get("status"),
+            "store_note": store_result.get("note"),
+            "win_types": {
+                WIN_TYPE_LABELS[i]: int(raw.get(f"winType{i}") or 0) for i in range(4)
+            },
+        }
+    except Exception as e:
+        logger.exception("archive %d회 저장 실패", draw_no)
+        return {"draw_no": draw_no, "ok": False, "reason": str(e)}
 
 
 def sync_draw_archive_range(
@@ -311,15 +341,22 @@ def sync_draw_archive_range(
     """구간 백필."""
     init_testlotto_db()
     sess = requests.Session()
-    ok, fail, store_empty = 0, 0, 0
+    ok, fail, store_ok, store_pending = 0, 0, 0, 0
     results: list[dict[str, Any]] = []
     for draw_no in range(start, end + 1):
-        res = fetch_and_save_draw_archive(draw_no, fetch_stores=fetch_stores, session=sess)
+        try:
+            res = fetch_and_save_draw_archive(draw_no, fetch_stores=fetch_stores, session=sess)
+        except Exception as e:
+            logger.exception("archive 구간 %d회 예외", draw_no)
+            res = {"draw_no": draw_no, "ok": False, "reason": str(e)}
         results.append(res)
         if res.get("ok"):
             ok += 1
-            if res.get("store_status") == "empty":
-                store_empty += 1
+            st = res.get("store_status")
+            if st == "ok" and (res.get("saved_stores") or 0) > 0:
+                store_ok += 1
+            elif st in ("pending", "empty", "error"):
+                store_pending += 1
         else:
             fail += 1
         if sleep_sec:
@@ -329,7 +366,8 @@ def sync_draw_archive_range(
         "end": end,
         "synced": ok,
         "failed": fail,
-        "store_empty": store_empty,
+        "store_ok": store_ok,
+        "store_pending": store_pending,
         "items": results,
     }
 

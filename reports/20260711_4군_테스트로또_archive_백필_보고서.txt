@@ -1,0 +1,25 @@
+4군 테스트로또 archive 백필 보고서
+2026-07-11 KST
+
+[범위] app/testlotto + lotto_testlotto.db (1~3군 미변경)
+
+[STEP0] 서버·walk-forward 정지 → lock 원인 제거
+
+[STEP1] archive 134~1231 (판매점 포함)
+  1차: synced 1076, failed 22 (API timeout)
+  재시도 639~648, 1071~1082: synced 22, failed 0
+
+[STEP2] draw_archive.py 보강
+  - 회차별 try/except, 판매점 실패 시 pending
+  - sqlite timeout 60s
+
+[검증]
+  draw_detail: 1231/1231
+  등수(prize_tiers): 1231 (5등 포함)
+  판매점(win_stores): 0 (pending 1098, skipped 113)
+  detail gap: 0
+  lock 재발: 없음
+
+[API] 500·1000회 — 당첨번호+등수 5개 정상
+
+[다음] 판매점 SPA 파서, 보조4뇌 UI

@@ -1,0 +1,63 @@
+﻿# STATUS_LATEST.md ??kweon ?꾩옱 ?곹깭
+
+?뱟 理쒖쥌 媛깆떊: 2026-07-11 KST (?뚯뒪?몃줈??archive 1231??諛깊븘 ?꾨즺)
+
+## 湲곕낯 ?뺣낫
+| ??ぉ | 媛?|
+|------|-----|
+| ??μ냼 | kkr2652199-prog/kweon |
+| 濡쒖뺄 寃쎈줈 | D:\3kweon |
+| ??| 4援?v13) + ?⑤룄濡쒕삉(蹂댁〈) + **?뚯뒪?몃줈???ㅽ뿕)** |
+| ?쒕쾭 | run_v13.py 쨌 ?ы듃 **6124** |
+
+## ?뚯뒪?몃줈????理쒖떊 (2026-07-11)
+
+### ?명봽??| ??ぉ | 寃쎈줈/媛?|
+|------|---------|
+| ?⑦궎吏 | app/testlotto/ |
+| API | /api/testlotto/* |
+| ?낅┰ DB | data/lotto_testlotto.db (濡쒖뺄, git 誘명룷?? |
+| UI | index.html ??+ **testlotto-detail.html** |
+
+### 7??| 遺꾨쪟 | tag |
+|------|-----|
+| ?덉륫 | stat 쨌 markov 쨌 review (媛?5?명듃) |
+| 蹂댁“ | miss_aux 쨌 pattern_aux 쨌 balance_aux 쨌 referee_aux |
+
+### 蹂듭뒿 猷⑦봽 ??**?꾨즺**
+- 2~1231 walk-forward: **reviewed 1230**, skipped 0
+- ?깆닔 ?곗꽑 best: `tier_utils.py` + 蹂대꼫??梨꾩젏
+- API: `/walkforward/review`, `/progress`, `/detail/draw/{n}`
+
+### ?곸꽭?섏씠吏
+- 3???먯젙 ?ㅽ듃由?쨌 5?? / 誘몄쟻以??쒕∼?ㅼ슫 쨌 brain_verdicts API
+- 罹먯떆 踰꾩쟾: `?v=20260711k`
+
+### ?곗씠???꾪솴
+| ?뚯씠釉?| 踰붿쐞/嫄댁닔 |
+|--------|-----------|
+| brain_review | 1230??횞 3??|
+| draw_features | 1231??|
+| draw_detail (archive) | **1231??* (gap 0) |
+| prize_tiers (?깆닔) | **1231??* (5???ы븿) |
+| win_stores (?먮ℓ?? | **0??* ??pending 1098 (SPA 誘명뙆?? |
+
+### archive 諛깊븘 (2026-07-11)
+- 134~1231 ?⑤룆 ?ㅽ뻾 (?먮ℓ??議고쉶 ?ы븿), lock **?щ컻 ?놁쓬**
+- API timeout 22?????ъ떆???꾨즺
+- `draw_archive.py` ?먮ℓ???ㅽ뙣 ?댁꽦 + `store_fetch_status=pending`
+
+### ?ㅼ쓬 (P0)
+- ?먮ℓ??SPA ?뚯꽌 (pending 1098??
+- 蹂댁“ 4??UI (`aux_analysis_json`)
+
+## ?⑤룄濡쒕삉 ??蹂댁〈
+- app/hyodo/ 쨌 /api/hyodo/* 쨌 ?뚯뒪?몃줈??寃利????숆린??
+## 理쒖떊 蹂닿퀬??- `reports/20260711_4援??뚯뒪?몃줈??archive_諛깊븘_蹂닿퀬??md`
+- `reports/20260711_4援??뚯뒪?몃줈???곸꽭?섏씠吏_7??援ы쁽_蹂닿퀬??md`
+
+## 愿由?臾몄꽌
+| ?뚯씪 | ?⑸룄 |
+|------|------|
+| HYODO_PLAN.md | P1~P5 泥댄겕由ъ뒪??|
+| STATUS_LATEST.md | 蹂??뚯씪 |
