@@ -1,6 +1,6 @@
 # STATUS_LATEST.md — kweon 현재 상태
 
-📅 최종 갱신: 2026-07-11 KST (상세페이지 증거보관소·7뇌 필살기·보조뇌 UI)
+📅 최종 갱신: 2026-07-11 KST (회차 정밀분석 Phase A — analysis_board API)
 
 ## 기본 정보
 | 항목 | 값 |
@@ -31,13 +31,20 @@
 - 등수 우선 best: `tier_utils.py` + 보너스 채점
 - API: `/walkforward/review`, `/progress`, `/detail/draw/{n}`
 
-### 상세페이지 — **증거 보관소** (2026-07-11m)
-- 7뇌 `short_desc` 필살기 한 줄 · `brain_meta` API
-- 5세트 **confidence** 바 + 최고신뢰 세트 강조 + `confidence_summary`
-- **보조 4뇌** `aux_brains` 섹션 (신호/경고, 채점 대상 아님)
-- `aux_analysis_json` lazy 저장 (검증 3회차 9행)
+### 상세페이지
+- **증거 보관소** (7뇌 short_desc · confidence · aux_brains)
+- **오답노트** (번호별 tags · narrative · 예측vs실제)
+- **회차 정밀분석 Phase A** — `analysis_board` API (`draw_snapshot.py`)
+  - freq_grid 1~45 · 급등 · HOT/COLD · 6구간 · 쌍 · 보너스 프로필
+  - num_explainer: 급등/HOT/6구간/핫쌍 태그 병합
+  - UI 그리드(④)는 Phase B
+
+### 탭↔상세 출처 — **단일화**
+- 탭 1순위: `/api/testlotto/detail/draw/{n}` (brain_review)
+- 미래 회차만 `lotto_predictions` 폴백
 
 ### 다음 (P0)
+- Phase B: ④ 1~45 히트맵 UI + ②↔④ 연동
 - aux_analysis_json 전 구간 일괄 백필 (선택)
 - 판매점 SPA 파서 (pending 1098회)
 
@@ -49,18 +56,15 @@
 | draw_detail (archive) | **1231회** (gap 0) |
 | prize_tiers (등수) | **1231회** (5등 포함) |
 | win_stores (판매점) | **0회** — pending 1098 (SPA 미파싱) |
-
-### archive 백필 (2026-07-11)
-- 134~1231 단독 실행 (판매점 조회 포함), lock **재발 없음**
-- API timeout 22회 → 재시도 완료
-- `draw_archive.py` 판매점 실패 내성 + `store_fetch_status=pending`
+| lotto_predictions | 83회 불연속 (탭 폴백용) |
 
 ## 효도로또 — 보존
 - app/hyodo/ · /api/hyodo/* · 테스트로또 검증 후 동기화
 
 ## 최신 보고서
+- `reports/20260711_회차정밀분석_PhaseA.md`
+- `reports/20260711_테스트로또_탭_출처단일화.md`
 - `reports/20260711_4군_테스트로또_상세페이지_증거보관소_보고서.md`
-- `reports/20260711_4군_테스트로또_archive_백필_보고서.md`
 
 ## 관리 문서
 | 파일 | 용도 |

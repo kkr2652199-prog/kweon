@@ -12,6 +12,7 @@ from app.testlotto.aux_analysis import (
     most_confident_set,
     parse_aux_json,
 )
+from app.testlotto.draw_snapshot import build_analysis_board
 from app.testlotto.num_explainer import build_wrong_note
 from app.testlotto.brains.registry import AUX_BRAINS, DISPLAY_NAMES, PREDICT_BRAINS, get_short_desc
 from app.testlotto.data_service import _get_draws_before
@@ -457,6 +458,11 @@ def get_draw_detail(draw_no: int) -> dict[str, Any]:
                 WIN_TYPE_LABELS[i]: int(arch.get(f"win_type_{i}") or 0) for i in range(4)
             }
 
+        draws_inclusive = draws_before + [draw_d]
+        analysis_board = build_analysis_board(
+            draw_no, actual_nums, bonus_num, draws_inclusive
+        )
+
         return {
             "draw_no": draw_no,
             "draw_date": draw_d.get("draw_date"),
@@ -484,6 +490,7 @@ def get_draw_detail(draw_no: int) -> dict[str, Any]:
                 "zone_low_mid_high": _parse_json(feat_d.get("zone_low_mid_high"), []),
                 "combo_rank_814": feat_d.get("combo_rank_814"),
             },
+            "analysis_board": analysis_board,
             "brains": brains,
             "brain_verdicts": brain_verdicts,
             "brain_order": [b["tag"] for b in PREDICT_BRAINS],

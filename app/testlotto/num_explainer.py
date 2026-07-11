@@ -11,9 +11,10 @@ from app.testlotto.features.draw_features import (
     repeat_rate_after_draw,
     sorted_nums,
 )
+from app.testlotto.draw_snapshot import build_snapshot_context, enrich_tags_from_snapshot
 from app.testlotto.predict_statistical import get_statistical_prob_vector
 
-MAX_TAGS = 3
+MAX_TAGS = 4
 
 
 def _top_freq_nums(draws: list[dict], k: int = 15) -> set[int]:
@@ -81,9 +82,12 @@ def explain_best_set(
     brain_tag: str,
     nums: list[int],
     draws: list[dict],
+    *,
+    snapshot_ctx: dict | None = None,
 ) -> list[dict[str, Any]]:
     """best 세트 번호별 기여 태그 (explainerdashboard 스타일)."""
     prev = draws[-1] if draws else None
+    ctx = snapshot_ctx if snapshot_ctx is not None else build_snapshot_context(draws)
     out: list[dict[str, Any]] = []
     for n in sorted(nums):
         if brain_tag == "stat":
@@ -92,7 +96,14 @@ def explain_best_set(
             tags = explain_num_markov(n, draws, prev, nums)
         else:
             tags = explain_num_review(n, draws, prev)
-        out.append({"num": int(n), "tags": tags})
+        tags = enrich_tags_from_snapshot(n, tags, ctx)
+        if brain_tag == "markov" and ctx.get("hot_pair_keys"):
+            hot_pairs = {tuple(sorted(p)) for p in ctx["hot_pair_keys"]}
+            for o in nums:
+                if o != n and tuple(sorted((n, o))) in hot_pairs and "핫쌍" not in tags:
+                    tags.append("핫쌍")
+                    break
+        out.append({"num": int(n), "tags": tags[:MAX_TAGS]})
     return out
 
 
@@ -161,6 +172,8 @@ def build_wrong_note(
     actual_missed = sorted(actual_set - pred_set)
     false_nums = sorted(pred_set - actual_set)
 
+    snapshot_ctx = build_snapshot_context(draws)
+
     return {
         "narrative": build_wrong_note_narrative(
             brain_name,
@@ -174,7 +187,7 @@ def build_wrong_note(
         ),
         "best_set_no": best_set_no,
         "best_nums": list(best_nums),
-        "num_explains": explain_best_set(brain_tag, best_nums, draws),
+        "num_explains": explain_best_set(brain_tag, best_nums, draws, snapshot_ctx=snapshot_ctx),
         "hit_nums": sorted(pred_set & actual_set),
         "false_nums": false_nums,
         "actual_missed_nums": actual_missed,

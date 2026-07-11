@@ -1,0 +1,76 @@
+# 테스트로또 회차 정밀분석 Phase A
+
+📅 2026-07-11 KST
+
+## 목적
+
+상세 API에 **회차별 정밀 분석판(`analysis_board`)** 을 추가하고, 오답노트 번호 설명에 **급등·6구간·핫쌍** 등 스냅샷 태그를 병합한다.  
+Phase A는 **API·계산만** — ④ UI 히트맵 그리드는 Phase B.
+
+---
+
+## 신규 / 변경 파일
+
+| 파일 | 역할 |
+|------|------|
+| `app/testlotto/draw_snapshot.py` | **신규** — 1~45 빈도·급등·쌍·연속·6구간·보너스 프로필 계산 |
+| `app/testlotto/detail_service.py` | `get_draw_detail()` 응답에 `analysis_board` 필드 추가 |
+| `app/testlotto/num_explainer.py` | `build_snapshot_context` + `enrich_tags_from_snapshot` (급등/HOT/6구간/핫쌍) |
+| `tools/verify_draw_snapshot.py` | **신규** — 1228·1231회 sanity 검증 |
+
+### DB / 백엔드 제약 (준수)
+
+- DB 스키마 변경 **없음**
+- INSERT/UPDATE **없음** (기존 aux lazy 저장 로직만 유지)
+- walk-forward / archive **재실행 없음**
+- 계산은 요청 시 READ ONLY 인메모리
+
+---
+
+## `analysis_board` 필드 구성
+
+| 키 | 설명 |
+|----|------|
+| `freq_grid` | 1~45 누적 출현 횟수 (1..N회 포함) |
+| `freq_recent` | 최근 20회 출현 |
+| `hot_top5` / `cold_top5` | 누적 HOT/COLD 상위 5 |
+| `spike_nums` | 당첨 6개 중 급등 신호 |
+| `cold_comeback` | 장기 미출(≥25회 gap) 후 출현 |
+| `zone6` | 1~7 / 8~14 / … / 36~45 구간별 당첨 개수 |
+| `zone5_color` | 1~10 / 11~20 / … / 41~45 색 구간 |
+| `consecutive_runs` | 연속수 런 (2개 이상) |
+| `pairs_in_draw` / `pair_hot_hits` | 당첨 쌍·역사 핫쌍(≥3회) |
+| `bonus_profile` | 보너스 번호·구간·이월·gap·누적빈도 |
+| `sum_total`, `odd_count`, `even_count`, `ac_value`, `ending_digits` | 조합 지표 |
+
+### 컨닝 방지
+
+- **당첨 분석판**: `draws_inclusive` = `_get_draws_before(N)` + N회 당첨 행
+- **오답노트 태그**: `build_snapshot_context(draws_before)` — 예측 시점만 사용
+
+---
+
+## 검증 결과
+
+```text
+python tools/verify_draw_snapshot.py
+
+1228회: ok sum=193 hot=[34,27,12,13,18] spike=[44] zone6=[0,0,0,1,4,1]
+1231회: ok sum=118 hot=[34,27,13,12,18] spike=[13,31] zone6=[1,2,1,0,1,1]
+wrong_note_snapshot_tags: true (양 회차)
+```
+
+---
+
+## Phase B 이후 (미구현)
+
+- ④ UI: 1~45 히트맵 그리드 (이미지 스타일)
+- ②↔④ 오답노트 연동
+- `detect_missed_patterns` 확장 + learn_state 반영
+
+---
+
+## Git
+
+- 커밋: `feat: 테스트로또 draw_snapshot Phase A — analysis_board API`
+- push: origin/main (DB·pyc 제외)
