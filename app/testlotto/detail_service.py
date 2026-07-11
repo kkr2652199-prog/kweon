@@ -12,6 +12,7 @@ from app.testlotto.aux_analysis import (
     most_confident_set,
     parse_aux_json,
 )
+from app.testlotto.num_explainer import build_wrong_note
 from app.testlotto.brains.registry import AUX_BRAINS, DISPLAY_NAMES, PREDICT_BRAINS, get_short_desc
 from app.testlotto.data_service import _get_draws_before
 from app.testlotto.models import get_lotto_db
@@ -322,6 +323,32 @@ def get_draw_detail(draw_no: int) -> dict[str, Any]:
             b["most_confident_score"] = conf_val
             b["confidence_summary"] = confidence_summary_line(
                 b["brain_name"], conf_set_no, conf_val, conf_matched
+            )
+
+            best_set = next(
+                (
+                    s
+                    for s in b["predicted_sets"]
+                    if int(s.get("set_no") or 0) == b["best_set_no"]
+                ),
+                b["predicted_sets"][0] if b["predicted_sets"] else None,
+            )
+            best_nums = list((best_set or {}).get("nums") or b.get("predicted_nums") or [])
+            missed_labels = b.get("missed_pattern_labels") or [
+                PATTERN_LABELS.get(p, p) for p in (b.get("missed_patterns") or [])
+            ]
+            b["wrong_note"] = build_wrong_note(
+                b["brain_tag"],
+                b["brain_name"],
+                best_nums,
+                actual_nums,
+                best_set_no=b["best_set_no"],
+                matched_count=b["matched_count"],
+                tier_label=b["tier_label"],
+                tier_rank=b["tier_rank"],
+                hit_nums=b.get("hit_nums") or [],
+                missed_pattern_labels=missed_labels,
+                draws=draws_before,
             )
 
             aux_stored = b.get("aux_analysis") or []

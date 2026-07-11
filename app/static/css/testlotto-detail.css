@@ -1288,3 +1288,137 @@
   color: #94a3b8;
   word-break: break-word;
 }
+
+/* ── 오답노트 (② 섹션) ── */
+.tld-wrong-note {
+  margin: 0.75rem 0 1rem;
+  padding: 1rem;
+  background: #12121f;
+  border: 1px solid #2a2a3e;
+  border-radius: 12px;
+}
+
+.tld-wn-narrative {
+  margin: 0 0 0.85rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(245, 158, 11, 0.08);
+  border-left: 3px solid #f59e0b;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  color: #e2e8f0;
+  line-height: 1.45;
+}
+
+.tld-wn-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.tld-wn-row {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 0.5rem;
+  align-items: start;
+}
+
+.tld-wn-label {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  padding-top: 0.35rem;
+}
+
+.tld-wn-balls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tld-wn-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  min-width: 3.1rem;
+}
+
+.tld-wn-cell--hit .tld-ball {
+  box-shadow: 0 0 0 2px #4ade80;
+}
+
+.tld-wn-cell--miss .tld-ball {
+  box-shadow: 0 0 0 2px #f87171;
+}
+
+.tld-wn-cell--ghost .tld-ball {
+  opacity: 0.55;
+  filter: grayscale(0.35);
+}
+
+.tld-wn-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  justify-content: center;
+  max-width: 4.5rem;
+}
+
+.tld-wn-tag {
+  font-size: 0.58rem;
+  line-height: 1.2;
+  padding: 0.1rem 0.25rem;
+  border-radius: 4px;
+  background: #1e293b;
+  color: #93c5fd;
+  white-space: nowrap;
+}
+
+.tld-wn-tag--muted {
+  color: #64748b;
+}
+
+.tld-wn-ghost-lbl {
+  font-size: 0.62rem;
+  color: #94a3b8;
+}
+
+.tld-wn-legend {
+  margin: 0.65rem 0 0;
+  font-size: 0.72rem;
+  color: #64748b;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tld-wn-legend__hit { color: #4ade80; }
+.tld-wn-legend__miss { color: #f87171; }
+.tld-wn-legend__ghost { color: #94a3b8; }
+
+.tld-sets-expand {
+  margin-top: 0.75rem;
+  border: 1px solid #252538;
+  border-radius: 10px;
+  background: #0f0f1a;
+}
+
+.tld-sets-expand__summary {
+  cursor: pointer;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  list-style: none;
+}
+
+.tld-sets-expand__summary::-webkit-details-marker { display: none; }
+
+.tld-sets-expand__body {
+  padding: 0 0.85rem 0.85rem;
+  border-top: 1px solid #252538;
+}
+
+@media (max-width: 640px) {
+  .tld-wn-row {
+    grid-template-columns: 1fr;
+  }
+}

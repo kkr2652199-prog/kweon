@@ -416,6 +416,60 @@ function _renderAuxBrains(detail) {
     .join('');
 }
 
+function _renderWrongNote(detail, brain) {
+  const wn = brain.wrong_note;
+  if (!wn) return '';
+  const actual = detail.actual_nums || [];
+  const pred = wn.best_nums || [];
+  const actualSet = new Set(actual);
+  const predSet = new Set(pred);
+  const explainMap = Object.fromEntries((wn.num_explains || []).map((e) => [e.num, e.tags || []]));
+
+  const predCells = pred
+    .map((n) => {
+      const hit = actualSet.has(n);
+      const cls = hit ? 'tld-wn-cell--hit' : 'tld-wn-cell--miss';
+      const tags = (explainMap[n] || [])
+        .map((t) => `<span class="tld-wn-tag">${t}</span>`)
+        .join('');
+      return `<div class="tld-wn-cell ${cls}">
+        ${_ballHtml(n, hit ? 'tld-ball--hit' : 'tld-ball--miss')}
+        <div class="tld-wn-tags">${tags || '<span class="tld-wn-tag tld-wn-tag--muted">근거산출</span>'}</div>
+      </div>`;
+    })
+    .join('');
+
+  const actualCells = actual
+    .map((n) => {
+      const caught = predSet.has(n);
+      const cls = caught ? 'tld-wn-cell--hit' : 'tld-wn-cell--ghost';
+      return `<div class="tld-wn-cell ${cls}">
+        ${_ballHtml(n, caught ? 'tld-ball--hit' : 'tld-ball--actual-miss')}
+        ${caught ? '' : '<span class="tld-wn-ghost-lbl">놓침</span>'}
+      </div>`;
+    })
+    .join('');
+
+  return `<div class="tld-wrong-note">
+    <p class="tld-wn-narrative">${wn.narrative || ''}</p>
+    <div class="tld-wn-compare">
+      <div class="tld-wn-row">
+        <span class="tld-wn-label">예측 <strong>${wn.best_set_no || brain.best_set_no || '?'}세트</strong></span>
+        <div class="tld-wn-balls">${predCells}</div>
+      </div>
+      <div class="tld-wn-row tld-wn-row--actual">
+        <span class="tld-wn-label">실제 당첨</span>
+        <div class="tld-wn-balls">${actualCells}</div>
+      </div>
+    </div>
+    <p class="tld-wn-legend">
+      <span class="tld-wn-legend__hit">● 맞음</span>
+      <span class="tld-wn-legend__miss">● 틀린 예측</span>
+      <span class="tld-wn-legend__ghost">● 놓침(실제만)</span>
+    </p>
+  </div>`;
+}
+
 function _renderAlignedCompare(detail, predNums) {
   const actual = detail.actual_nums || [];
   const pred = predNums || [];
@@ -762,7 +816,7 @@ function _renderBrainDetail(detail, brainTag) {
 
   if (title) {
     const desc = brain?.short_desc || _brainShortDesc(brainTag, detail);
-    title.innerHTML = `${bmeta?.name || '예측 뇌'} · 제 ${detail.draw_no}회 채점` +
+    title.innerHTML = `${bmeta?.name || '예측 뇌'} · 제 ${detail.draw_no}회 오답노트` +
       (desc ? `<span class="tld-brain-short-desc">${desc}</span>` : '');
   }
 
@@ -790,20 +844,11 @@ function _renderBrainDetail(detail, brainTag) {
   if (compare) {
     compare.innerHTML = `
       ${confLine ? `<p class="tld-conf-summary">${confLine}</p>` : ''}
-      <div class="tld-grade-header">
-        <div class="tld-grade-score">
-          <span class="tld-grade-score__num">${mc}<span class="tld-grade-score__den">/6</span></span>
-          <span class="tld-grade-score__label">best 적중</span>
-        </div>
-        <div class="tld-grade-meta">
-          <span class="tld-match-badge ${_matchBadge(mc)}">${tierText} · ${bestNo}세트</span>
-          <span class="tld-grade-hits">맞힌 번호: <strong>${hitNums}</strong></span>
-        </div>
-        <div class="tld-grade-patterns">
-          ${labels.length ? labels.map((l) => `<span class="tld-tag">${l}</span>`).join('') : '<span class="tld-empty-inline">놓친 패턴 없음</span>'}
-        </div>
-      </div>
-      ${_renderBrainSets(detail, brain)}`;
+      ${_renderWrongNote(detail, brain)}
+      <details class="tld-sets-expand">
+        <summary class="tld-sets-expand__summary">전체 5세트 펼치기 <span class="tld-muted">(best ${bestNo}세트 · ${tierText})</span></summary>
+        <div class="tld-sets-expand__body">${_renderBrainSets(detail, brain)}</div>
+      </details>`;
   }
 
   if (missed) {
