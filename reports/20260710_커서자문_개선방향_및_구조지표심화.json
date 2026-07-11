@@ -1,0 +1,117 @@
+{
+  "report_stem": "20260710_커서자문_개선방향_및_구조지표심화",
+  "part_a": "[PART A — 커서 자문 (코드·DB 근거)]\n\n■ Q1. pack_gap 1.28 = wheel 구조적 천장인가? 안 건드린 각도는?\n\n결론: \"완전 천장\"은 아님. 다만 카피0+5세트+25후보풀+greedy wheel 조합 안에서는\n      pack_gap 1.0~1.3대가 **안정적 균형점**에 가깝다. 큰 폭(→0.5) 개선은 미검증.\n\n근거 (postmortem_draw 88~1231, n=1112):\n  - pool_cover=5.889 / lead1_pack=4.605 / pack_gap=1.284\n  - pool_union_size≈42.3 / lead1_union_size≈26.2 (5세트 합집합 ~26개 번호)\n  - pack_gap 분포: gap=0(239), 1(458), 2(290), 3(110), 4(15) — mode=1\n  - gap=0 비율 21.5% — wheel이 pool 커버 거의 전부 lead1에 넣는 회차도 존재\n\noracle갭 실험(20260704, 898회차):\n  - pool oracle(union∩당첨)≈5.89 — pool 자체는 거의 6/6\n  - best_raw(25뇌 세트 중 best)≈3.52 — 단일 세트 선택 상한\n  - F1 best-of-5≈2.07 — 합성 5세트\n  - pack_gap(1.28)은 \"당첨번호 중 pool有·lead1無\" — oracle갭(3.8)과 다른 축\n    (oracle갭=oracle−best_hit, pack_gap=pool_hit−lead1_hit on winning nums)\n\n아직 in-memory로 **미시도**된 각도 (프로덕션 미반영):\n  1) SETS_TO_PICK 5→6·7 — union↑ → pack_gap↓ 가능, 카피0·비용·UI 영향\n  2) wheel metric에 pool_gap 번호 직접 가중 (B2 union-guard 변형, M 튜닝)\n  3) WHEEL_POOL 25→40 — 후보 다양성↑ (copy0 유지하며)\n  4) COPY_OVERLAP 5→4 완화 — 카피0 정체성과 충돌, 실격 리스크\n  5) 5뇌 세트 직접 선택(합성 없음) — best_raw 3.5대, 카피0와 trade-off\n\n시도했으나 HOLD (근거: 각 리포트):\n  - B1 k≥3 boost: 합의↑ → wheel 고가중 클러스터 쏠림, pack_gap 악화\n  - B2 union-guard: 1슬롯 guard, gap 1/3구간만 개선\n  - span/pos_band 필터: best 유지, pack_gap 0/3구간 유의감소\n\n■ Q2. 세 번 실패의 공통 근본 원인?\n\n  wheel greedy (_wheel_pick, predict_brain7.py L426-453):\n    metric = new_cov×12 + score − avg_ov×4\n  → **넓은 커버(new_cov)** 와 **F1 score(합의×신뢰도)** 우선.\n  → pool에만 있고 score 낮은 \"소수의견 1뇌 번호\"는 5슬롯·26 union 한도에서 밀림.\n\n  pack_gap_nums는 대개 1뇌만 보유 (예: 1231 gap=4 → stat만, postmortem_draw).\n  B1(k≥3 boost)은 반대로 합의↑ — 이미 wheel이 잡는 번호와 중복, gap 악화.\n  B2/guard·span/band는 **후보 재정렬** — pool_miss(0.11)가 아닌 lead1_miss(1.28) 축.\n  → 공통: \"5세트 30칸·카피0·greedy\" 안에서 pack_gap 1개 줄이려 하면\n    best-of-5 또는 cov_span과 **트레이드오프** (span 실험: Δgap=-0.038).\n\n■ Q3. pack_gap 말고 실용 가치를 높일 미탐 축?\n\n  코드/DB상 존재·미활용:\n  1) **회차 상세 PostMortem UI** — patterns.db position/structure JSON 축적됨, API/UI 없음\n  2) **brain_weights 자동 갱신** (feedback.py) — 6뇌 풀 품질↑, lead1 간접\n  3) **보너스 번호** — lead1/main6만 최적화, 보너스 적중 별도 축\n  4) **2~5등 회수율** — best-of-5≈2.26, hit4p≈2~4% (oracle 리포트), 3등+ ROI\n  5) **pattern_store consensus** — READ-ONLY 재료, 상세페이지 \"5뇌 합의도\" 표시\n  6) **hyena 6번째 뇌** — 풀 밖, lead1 입력에 미포함 (POOL_BRAINS=5)\n\n  hit6=0 전 구간 — 로또 독립성상 기대값 개선은 hit4p·gap·회수율 서브 지표로 봐야 함.\n\n■ Q4. 성능 개선 vs 분석 신호 축적 — 어디에 무게?\n\n  솔직한 의견: **지금은 분석 축적·상세페이지 쪽으로 축 이동이 맞다.**\n\n  이유:\n  - pack_gap 1.28은 pool_cover 5.89 대비 **양호한 포장** (lead1이 pool의 78% 포장)\n  - 3회 후처리 실험 모두 HOLD — 한계비용 대비 추가 wheel 튜닝 ROI 낮음\n  - 사용자 최종 목표(회차별 상세·미래 예측 보조)는 **관측 신호 DB + UI**가 직접 가치\n  - F1 역주입 금지 원칙 하에 PostMortem→2단계 LLM 해석이 자연스러운 다음 단계\n\n  성능 개선을 계속한다면:\n  - in-memory only, SETS_TO_PICK 6·7 또는 pool-gap-target wheel 1회 검증 후 종료\n  - 프로덕션 이식은 GO 2구간+ 재현 시에만",
+  "migrated": [
+    "postmortem_draw.structure_winning",
+    "postmortem_draw.structure_lead1_contrast"
+  ],
+  "checks": {
+    "predictions_unchanged": true,
+    "processed": 1112,
+    "skipped": 0,
+    "structure_rows": 1112
+  },
+  "global_stats": {
+    "best_set_count": 1770,
+    "other_set_count": 3705,
+    "metric_comparison": {
+      "sum": {
+        "best_mean": 145.034,
+        "other_mean": 143.206,
+        "delta": 1.828,
+        "paired_n_draws": 1095,
+        "paired_ttest": {
+          "p_value": 0.118371,
+          "mean_diff": 1.8276,
+          "n": 1095
+        },
+        "significant": false
+      },
+      "odd": {
+        "best_mean": 3.036,
+        "other_mean": 3.039,
+        "delta": -0.003,
+        "paired_n_draws": 1095,
+        "paired_ttest": {
+          "p_value": 0.950315,
+          "mean_diff": -0.0025,
+          "n": 1095
+        },
+        "significant": false
+      },
+      "consec_pairs": {
+        "best_mean": 0.349,
+        "other_mean": 0.472,
+        "delta": -0.123,
+        "paired_n_draws": 1095,
+        "paired_ttest": {
+          "p_value": 0.0,
+          "mean_diff": -0.1228,
+          "n": 1095
+        },
+        "significant": true
+      },
+      "gap_mean": {
+        "best_mean": 6.497,
+        "other_mean": 6.513,
+        "delta": -0.016,
+        "paired_n_draws": 1095,
+        "paired_ttest": {
+          "p_value": 0.712138,
+          "mean_diff": -0.0158,
+          "n": 1095
+        },
+        "significant": false
+      },
+      "pos_span": {
+        "best_mean": 32.484,
+        "other_mean": 32.563,
+        "delta": -0.079,
+        "paired_n_draws": 1095,
+        "paired_ttest": {
+          "p_value": 0.712176,
+          "mean_diff": -0.0792,
+          "n": 1095
+        },
+        "significant": false
+      },
+      "odd_distribution_chi2": {
+        "chi2": 8.582,
+        "df": 6
+      }
+    },
+    "winning_gap_stats": {
+      "gap1": {
+        "mean": 6.355,
+        "min": 1,
+        "max": 30
+      },
+      "gap2": {
+        "mean": 6.76,
+        "min": 1,
+        "max": 33
+      },
+      "gap3": {
+        "mean": 6.344,
+        "min": 1,
+        "max": 26
+      },
+      "gap4": {
+        "mean": 6.642,
+        "min": 1,
+        "max": 30
+      },
+      "gap5": {
+        "mean": 6.582,
+        "min": 1,
+        "max": 29
+      }
+    },
+    "signal_candidates": [
+      "sum: Δ=+1.828 (미유의 후보)",
+      "consec_pairs: Δ=-0.123 p=0.0 (유의)"
+    ]
+  },
+  "fp_before": "0fe5d19ccbceb829",
+  "fp_after": "0fe5d19ccbceb829"
+}

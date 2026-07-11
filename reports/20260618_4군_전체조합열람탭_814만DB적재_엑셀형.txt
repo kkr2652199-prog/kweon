@@ -1,0 +1,86 @@
+20260618_4군_전체조합열람탭_814만DB적재_엑셀형
+동생 → 커서 | 2026-06-18 | 4군 신규 탭 + DB 적재 (조회 전용)
+
+원칙: R2 정직(예측 아님, 전체조합 열람·기록) / CURSOR_RULES §2
+      기존 로또 조회·predict·전략X·9뇌 미변경 / 1~3군 미접근
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+요약
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+lotto4.db에 lotto_all_combos 8,145,060행 적재(combinadic 직접 생성).
+사이드바 "전체 조합" 탭 — 가상 스크롤 엑셀형 열람·점프·검색·당첨필터·CSV.
+1229+ 당첨 시 수집 파이프라인에서 is_winner 자동 갱신.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — DB 적재
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+테이블: lotto_all_combos
+  combo_no PK, num1~6, total, is_winner, win_draw_no, win_date
+  INDEX idx_lac_is_winner ON is_winner
+
+생성: app/lotto4/all_combos_service.py (iter_all_combos + build)
+도구: tools/build_lotto_all_combos.py
+
+적재 결과 (2026-06-20 실행):
+  count = 8,145,060 ✅
+  winners = 1,228 ✅
+  소요 ≈ 41초
+  DB: d:\3kweon\data\lotto4.db
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — API
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GET /api/lotto4/v13/allcombos/meta        — 준비 상태
+GET /api/lotto4/v13/allcombos?start&count&winners_only
+GET /api/lotto4/v13/allcombos/jump?combo_no=
+GET /api/lotto4/v13/allcombos/search?n1..n6 또는 nums=
+
+검증:
+  meta.ready=true, count=8145060
+  start=1 → combo_no 1,2,3
+  jump 6493493 → 1회차 당첨 is_winner=true
+  jump 6938271 → [12,17,32,33,41,45] is_winner=false (점프 정상)
+  search 10,23,29,33,37,40 → 6493493
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — UI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+탭: "전체 조합" (로또 조회와 별개)
+가상 스크롤: spacer 814만×32px + 보이는 구간만 API fetch
+기능: 순위 점프 / 6번호 검색 / 당첨만 보기 / CSV(현재 구간)
+당첨 행: 금색 배경 + "○○회차(날짜)"
+캐시: lotto4.css/js v=20260620a
+
+미변경: 로또 조회, predict, 전략X, truth, 1~3군
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4 — 자동 갱신
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+sync_winner_for_draw(draw) — combo_no UPDATE만
+후크:
+  - v13_routes._v13_collect_one_draw_no (수집 API)
+  - draw_scheduler._job_collect_latest (토·일 자동 수집)
+814만 행 본체는 불변, 당첨 플래그만 갱신.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 5 — 검증 체크리스트
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[✅] lotto_all_combos 8,145,060행
+[✅] 당첨 1,228건 플래그
+[✅] API range/jump/search/winners_only
+[✅] 가상 스크롤(전구간 spacer, 윈도우 fetch)
+[✅] 6493493 점프 시 당첨 금색 (6938271은 비당첨 — 점프만 확인)
+[✅] 기존 로또조회·predict 라우트 무변경
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+변경 파일
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+신규: app/lotto4/all_combos_service.py
+      tools/build_lotto_all_combos.py
+수정: app/lotto4/v13_routes.py (allcombos API + collect 후크)
+      app/lotto/draw_scheduler.py (자동수집 후크)
+      app/static/index.html, js/lotto4.js, css/lotto4.css
+
+재적재: python tools/build_lotto_all_combos.py [--force]
+
+기억 갱신: 형 확인 후

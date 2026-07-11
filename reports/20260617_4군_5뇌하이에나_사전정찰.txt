@@ -1,0 +1,36 @@
+20260617_4군_5뇌하이에나_사전정찰 (READ-ONLY)
+동생→커서 | 2026-06-17 | 1~3군 간섭 0 | STATUS 갱신 없음
+
+3파일 확인:
+- RULES_FIXED: R2 거짓금지, R13 walk-forward, R14 정찰의무
+- STATUS_LATEST: 기억95 (지시서 기억94와 불일치)
+- CURSOR_RULES §2: 1~3군 수정금지
+
+STEP1 DATA (RAW):
+- lotto4_winners_full: 1228행, bonus 있음
+- number_popularity: 45행
+- pair_popularity: 990행
+- shape_profile: 2행
+- lotto_draw_tiers: 6140행 (1228×5), tier2~5 winner_count 있음
+- cooccur: DB 테이블 lotto_cooccur_2(990)/3(11757)/4(17394) + JSON tools/_cooccur_latest.json + lotto_analysis_army4 cooccur_latest 1행
+- 보너스: lotto_draws.bonus, winners_full.bonus, lotto_bonus_stats 45행. cooccur 테이블엔 보너스 없음
+
+STEP2 코드:
+- 전략X 4뇌: popularity_freq, popularity_pair, shape, coordinator
+- ensemble 별도: cooccur_brain, hyena_scavenger, hyena_commander
+- coordinator: 생성=1뇌시드→2뇌pair체인→3뇌필터(체인), 점수=0.5pair+0.3pop+0.2shape(가중합)
+- strategy_x API 4개만 (cooccur/하이에나 없음)
+
+STEP3 UI:
+- 사이드바 7탭, 전략X 탭 없음
+- lotto4.js strategy-x 함수 0건
+- 재사용: renderBallsHtml, sets-grid, renderBonusBall
+
+STEP4 패치 범위:
+(a) cooccur 5뇌: 데이터 준비됨. 신규 brain+route. cooccur_brain.py는 별계열(재사용X)
+(b) 하이에나: hyena_scavenger 패턴 재사용 가능. strategy X 예측 DB 로그 선행 필요. coordinator 수정/신규
+(c) 보너스: 데이터 있음, 전략X 미사용. shape필터 확장 또는 collect_cooccur bonus 확장 가능
+
+R2: 5뇌·하이에나도 당첨확률 향상 주장 금지. scavenger는 predictions_army4 로그 없으면 즉시 불가.
+
+저장: 커서보고서 md+txt

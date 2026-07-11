@@ -1,0 +1,176 @@
+{
+  "title": "20260704_1군7뇌_방향결정_합법신호검증",
+  "signal_gap": [
+    {
+      "bucket": "1-2",
+      "try": 10005,
+      "win": 1367,
+      "win_rate": 0.1366,
+      "lift_vs_random": 0.0033
+    },
+    {
+      "bucket": "3-5",
+      "try": 10536,
+      "win": 1378,
+      "win_rate": 0.1308,
+      "lift_vs_random": -0.0025
+    },
+    {
+      "bucket": "6-10",
+      "try": 10075,
+      "win": 1345,
+      "win_rate": 0.1335,
+      "lift_vs_random": 0.0002
+    },
+    {
+      "bucket": "11-20",
+      "try": 7357,
+      "win": 990,
+      "win_rate": 0.1346,
+      "lift_vs_random": 0.0012
+    },
+    {
+      "bucket": "21-+",
+      "try": 2437,
+      "win": 308,
+      "win_rate": 0.1264,
+      "lift_vs_random": -0.0069
+    }
+  ],
+  "signal_hot": [
+    {
+      "recent_wins": 0,
+      "try": 2414,
+      "win": 306,
+      "win_rate": 0.1268,
+      "lift_vs_random": -0.0066
+    },
+    {
+      "recent_wins": 1,
+      "try": 7005,
+      "win": 923,
+      "win_rate": 0.1318,
+      "lift_vs_random": -0.0016
+    },
+    {
+      "recent_wins": 2,
+      "try": 10384,
+      "win": 1425,
+      "win_rate": 0.1372,
+      "lift_vs_random": 0.0039
+    },
+    {
+      "recent_wins": "3+",
+      "try": 20607,
+      "win": 2734,
+      "win_rate": 0.1327,
+      "lift_vs_random": -0.0007
+    }
+  ],
+  "gap_signal_exists": false,
+  "hot_signal_exists": false,
+  "periods": [
+    {
+      "label": "A",
+      "range": [
+        330,
+        629
+      ],
+      "n": 298,
+      "arms": {
+        "CAP2": {
+          "best": 3.1812,
+          "avg": 1.9034,
+          "hit6": 0,
+          "copy": 1.0
+        },
+        "F1": {
+          "best": 2.094,
+          "avg": 1.1094,
+          "hit6": 0,
+          "copy": 0.0
+        },
+        "HYBRID": {
+          "best": 3.0705,
+          "avg": 1.7309,
+          "hit6": 0,
+          "copy": 0.6
+        }
+      }
+    },
+    {
+      "label": "B",
+      "range": [
+        630,
+        929
+      ],
+      "n": 300,
+      "arms": {
+        "CAP2": {
+          "best": 3.15,
+          "avg": 1.9067,
+          "hit6": 3,
+          "copy": 1.0
+        },
+        "F1": {
+          "best": 2.11,
+          "avg": 1.0627,
+          "hit6": 0,
+          "copy": 0.0
+        },
+        "HYBRID": {
+          "best": 3.0333,
+          "avg": 1.7193,
+          "hit6": 2,
+          "copy": 0.6
+        }
+      }
+    },
+    {
+      "label": "C",
+      "range": [
+        930,
+        1230
+      ],
+      "n": 300,
+      "arms": {
+        "CAP2": {
+          "best": 3.04,
+          "avg": 1.8313,
+          "hit6": 3,
+          "copy": 1.0
+        },
+        "F1": {
+          "best": 2.0633,
+          "avg": 1.0893,
+          "hit6": 0,
+          "copy": 0.0
+        },
+        "HYBRID": {
+          "best": 2.9733,
+          "avg": 1.688,
+          "hit6": 3,
+          "copy": 0.6
+        }
+      }
+    }
+  ],
+  "overall": {
+    "CAP2": {
+      "best": 3.1237,
+      "hit6": 6,
+      "copy": 1.0
+    },
+    "F1": {
+      "best": 2.0891,
+      "hit6": 0,
+      "copy": 0.0
+    },
+    "HYBRID": {
+      "best": 3.0257,
+      "hit6": 5,
+      "copy": 0.6
+    }
+  },
+  "six_regression_ok": true
+}

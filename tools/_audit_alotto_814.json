@@ -1,0 +1,945 @@
+{
+  "root": "C:\\Users\\user\\Desktop\\A.LOTTO",
+  "step1_parts": {
+    "parts": [
+      {
+        "part": 1,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_01.db",
+        "size_bytes": 26632192,
+        "size_mb": 25.4,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          1,
+          407253
+        ],
+        "db_min_no": 1,
+        "db_max_no": 407253,
+        "past_winners": 74
+      },
+      {
+        "part": 2,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_02.db",
+        "size_bytes": 26836992,
+        "size_mb": 25.59,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          407254,
+          814506
+        ],
+        "db_min_no": 407254,
+        "db_max_no": 814506,
+        "past_winners": 66
+      },
+      {
+        "part": 3,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_03.db",
+        "size_bytes": 27226112,
+        "size_mb": 25.96,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          814507,
+          1221759
+        ],
+        "db_min_no": 814507,
+        "db_max_no": 1221759,
+        "past_winners": 44
+      },
+      {
+        "part": 4,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_04.db",
+        "size_bytes": 27693056,
+        "size_mb": 26.41,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          1221760,
+          1629012
+        ],
+        "db_min_no": 1221760,
+        "db_max_no": 1629012,
+        "past_winners": 60
+      },
+      {
+        "part": 5,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_05.db",
+        "size_bytes": 27881472,
+        "size_mb": 26.59,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          1629013,
+          2036265
+        ],
+        "db_min_no": 1629013,
+        "db_max_no": 2036265,
+        "past_winners": 55
+      },
+      {
+        "part": 6,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_06.db",
+        "size_bytes": 28053504,
+        "size_mb": 26.75,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          2036266,
+          2443518
+        ],
+        "db_min_no": 2036266,
+        "db_max_no": 2443518,
+        "past_winners": 63
+      },
+      {
+        "part": 7,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_07.db",
+        "size_bytes": 28270592,
+        "size_mb": 26.96,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          2443519,
+          2850771
+        ],
+        "db_min_no": 2443519,
+        "db_max_no": 2850771,
+        "past_winners": 65
+      },
+      {
+        "part": 8,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_08.db",
+        "size_bytes": 28164096,
+        "size_mb": 26.86,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          2850772,
+          3258024
+        ],
+        "db_min_no": 2850772,
+        "db_max_no": 3258024,
+        "past_winners": 54
+      },
+      {
+        "part": 9,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_09.db",
+        "size_bytes": 28295168,
+        "size_mb": 26.98,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          3258025,
+          3665277
+        ],
+        "db_min_no": 3258025,
+        "db_max_no": 3665277,
+        "past_winners": 55
+      },
+      {
+        "part": 10,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_10.db",
+        "size_bytes": 28192768,
+        "size_mb": 26.89,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          3665278,
+          4072530
+        ],
+        "db_min_no": 3665278,
+        "db_max_no": 4072530,
+        "past_winners": 63
+      },
+      {
+        "part": 11,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_11.db",
+        "size_bytes": 28270592,
+        "size_mb": 26.96,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          4072531,
+          4479783
+        ],
+        "db_min_no": 4072531,
+        "db_max_no": 4479783,
+        "past_winners": 63
+      },
+      {
+        "part": 12,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_12.db",
+        "size_bytes": 28319744,
+        "size_mb": 27.01,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          4479784,
+          4887036
+        ],
+        "db_min_no": 4479784,
+        "db_max_no": 4887036,
+        "past_winners": 68
+      },
+      {
+        "part": 13,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_13.db",
+        "size_bytes": 28266496,
+        "size_mb": 26.96,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          4887037,
+          5294289
+        ],
+        "db_min_no": 4887037,
+        "db_max_no": 5294289,
+        "past_winners": 64
+      },
+      {
+        "part": 14,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_14.db",
+        "size_bytes": 28311552,
+        "size_mb": 27.0,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          5294290,
+          5701542
+        ],
+        "db_min_no": 5294290,
+        "db_max_no": 5701542,
+        "past_winners": 59
+      },
+      {
+        "part": 15,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_15.db",
+        "size_bytes": 28340224,
+        "size_mb": 27.03,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          5701543,
+          6108795
+        ],
+        "db_min_no": 5701543,
+        "db_max_no": 6108795,
+        "past_winners": 50
+      },
+      {
+        "part": 16,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_16.db",
+        "size_bytes": 28368896,
+        "size_mb": 27.05,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          6108796,
+          6516048
+        ],
+        "db_min_no": 6108796,
+        "db_max_no": 6516048,
+        "past_winners": 59
+      },
+      {
+        "part": 17,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_17.db",
+        "size_bytes": 28364800,
+        "size_mb": 27.05,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          6516049,
+          6923301
+        ],
+        "db_min_no": 6516049,
+        "db_max_no": 6923301,
+        "past_winners": 60
+      },
+      {
+        "part": 18,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_18.db",
+        "size_bytes": 28397568,
+        "size_mb": 27.08,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          6923302,
+          7330554
+        ],
+        "db_min_no": 6923302,
+        "db_max_no": 7330554,
+        "past_winners": 71
+      },
+      {
+        "part": 19,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_19.db",
+        "size_bytes": 28409856,
+        "size_mb": 27.09,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          7330555,
+          7737807
+        ],
+        "db_min_no": 7330555,
+        "db_max_no": 7737807,
+        "past_winners": 72
+      },
+      {
+        "part": 20,
+        "path": "C:\\Users\\user\\Desktop\\A.LOTTO\\db_parts\\lotto_part_20.db",
+        "size_bytes": 28413952,
+        "size_mb": 27.1,
+        "tables": [
+          "lotto_all"
+        ],
+        "columns": [
+          "no:INTEGER",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "total:INTEGER",
+          "is_past_winner:INTEGER",
+          "winner_note:TEXT"
+        ],
+        "rows": 407253,
+        "expected_rows": 407253,
+        "combo_no_range": [
+          7737808,
+          8145060
+        ],
+        "db_min_no": 7737808,
+        "db_max_no": 8145060,
+        "past_winners": 63
+      }
+    ],
+    "total_rows": 8145060,
+    "expected_total": 8145060,
+    "total_match": true,
+    "total_size_mb": 534.73,
+    "part_size_formula": 407253
+  },
+  "step2_indexing": {
+    "rule": "lexicographic ranking (combinadic) — No.1=(1,2,3,4,5,6), No.TOTAL=(40,41,42,43,44,45)",
+    "formula_instant": true,
+    "formula_source": "lotto_common.py combo_to_no / no_to_combo",
+    "db_required_for_lookup": "번호→No는 공식 즉시. No→번호도 공식 즉시. DB는 winner_note/is_past_winner 저장용",
+    "formula_samples": [
+      {
+        "no": 1,
+        "combo": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "combo_to_no_roundtrip": true
+      },
+      {
+        "no": 2,
+        "combo": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "combo_to_no_roundtrip": true
+      },
+      {
+        "no": 100,
+        "combo": [
+          1,
+          2,
+          3,
+          4,
+          7,
+          28
+        ],
+        "combo_to_no_roundtrip": true
+      },
+      {
+        "no": 5005,
+        "combo": [
+          1,
+          2,
+          3,
+          11,
+          14,
+          19
+        ],
+        "combo_to_no_roundtrip": true
+      },
+      {
+        "no": 407253,
+        "combo": [
+          1,
+          5,
+          17,
+          33,
+          35,
+          38
+        ],
+        "combo_to_no_roundtrip": true
+      },
+      {
+        "no": 407254,
+        "combo": [
+          1,
+          5,
+          17,
+          33,
+          35,
+          39
+        ],
+        "combo_to_no_roundtrip": true
+      },
+      {
+        "no": 8145059,
+        "combo": [
+          39,
+          41,
+          42,
+          43,
+          44,
+          45
+        ],
+        "combo_to_no_roundtrip": true
+      },
+      {
+        "no": 8145060,
+        "combo": [
+          40,
+          41,
+          42,
+          43,
+          44,
+          45
+        ],
+        "combo_to_no_roundtrip": true
+      }
+    ],
+    "db_part01_first_rows": [
+      [
+        1,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      [
+        2,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      [
+        3,
+        1,
+        2,
+        3,
+        4,
+        5,
+        8
+      ]
+    ],
+    "db_part20_last_rows": [
+      [
+        8145058,
+        39,
+        40,
+        42,
+        43,
+        44,
+        45
+      ],
+      [
+        8145059,
+        39,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      [
+        8145060,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ]
+    ]
+  },
+  "step3_winner_csv": {
+    "csv_rows": 1228,
+    "sample_checks": [
+      {
+        "round": 1,
+        "csv_combo": [
+          10,
+          23,
+          29,
+          33,
+          37,
+          40
+        ],
+        "csv_combo_no": 6493493,
+        "formula_combo_no": 6493493,
+        "formula_match": true,
+        "expected_part": "lotto_part_16.db",
+        "csv_part_db": "lotto_part_16.db",
+        "part_match": true,
+        "in_part_range": true,
+        "db_row": [
+          6493493,
+          10,
+          23,
+          29,
+          33,
+          37,
+          40
+        ],
+        "db_nums_match": true
+      },
+      {
+        "round": 2,
+        "csv_combo": [
+          9,
+          13,
+          21,
+          25,
+          32,
+          42
+        ],
+        "csv_combo_no": 5984045,
+        "formula_combo_no": 5984045,
+        "formula_match": true,
+        "expected_part": "lotto_part_15.db",
+        "csv_part_db": "lotto_part_15.db",
+        "part_match": true,
+        "in_part_range": true,
+        "db_row": [
+          5984045,
+          9,
+          13,
+          21,
+          25,
+          32,
+          42
+        ],
+        "db_nums_match": true
+      },
+      {
+        "round": 3,
+        "csv_combo": [
+          11,
+          16,
+          19,
+          21,
+          27,
+          31
+        ],
+        "csv_combo_no": 6664260,
+        "formula_combo_no": 6664260,
+        "formula_match": true,
+        "expected_part": "lotto_part_17.db",
+        "csv_part_db": "lotto_part_17.db",
+        "part_match": true,
+        "in_part_range": true,
+        "db_row": [
+          6664260,
+          11,
+          16,
+          19,
+          21,
+          27,
+          31
+        ],
+        "db_nums_match": true
+      },
+      {
+        "round": 100,
+        "csv_combo": [
+          1,
+          7,
+          11,
+          23,
+          37,
+          42
+        ],
+        "csv_combo_no": 536119,
+        "formula_combo_no": 536119,
+        "formula_match": true,
+        "expected_part": "lotto_part_02.db",
+        "csv_part_db": "lotto_part_02.db",
+        "part_match": true,
+        "in_part_range": true,
+        "db_row": [
+          536119,
+          1,
+          7,
+          11,
+          23,
+          37,
+          42
+        ],
+        "db_nums_match": true
+      },
+      {
+        "round": 1228,
+        "csv_combo": [
+          24,
+          29,
+          30,
+          31,
+          35,
+          44
+        ],
+        "csv_combo_no": 8084653,
+        "formula_combo_no": 8084653,
+        "formula_match": true,
+        "expected_part": "lotto_part_20.db",
+        "csv_part_db": "lotto_part_20.db",
+        "part_match": true,
+        "in_part_range": true,
+        "db_row": [
+          8084653,
+          24,
+          29,
+          30,
+          31,
+          35,
+          44
+        ],
+        "db_nums_match": true
+      }
+    ],
+    "combo_no_stats": {
+      "min": 3790,
+      "max": 8144650,
+      "mean": 4121048.3,
+      "median": 4175903.0,
+      "stdev": 2390135.7,
+      "uniform_mean": 4072530.5,
+      "decile_counts": [
+        140,
+        104,
+        118,
+        119,
+        118,
+        131,
+        123,
+        109,
+        131,
+        135
+      ],
+      "chi2_decile_approx": 9.64,
+      "verdict": "균등 분포에 근접 (1228개 샘플, 패턴 예측 불가)"
+    }
+  },
+  "also_found": {
+    "lotto_all_combinations_db_mb": 518.5,
+    "lotto_data_db": "C:\\Users\\user\\Desktop\\A.LOTTO\\lotto_data.db"
+  }
+}

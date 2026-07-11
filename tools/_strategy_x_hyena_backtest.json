@@ -1,0 +1,67 @@
+{
+  "evaluated_draws": 884,
+  "skipped_draws": 80,
+  "hyena_hit": {
+    "avg": 0.7839,
+    "random_avg": 0.81,
+    "delta": -0.0261,
+    "ttest": {
+      "t_stat": -1.2977,
+      "p_value": 0.194382,
+      "n": 884
+    },
+    "honest_random_level": true
+  },
+  "hyena_popularity": {
+    "avg": 0.8537,
+    "random_avg": 0.7988,
+    "delta": 0.0549,
+    "ttest": {
+      "t_stat": 24.8718,
+      "p_value": 0.0,
+      "n": 884
+    },
+    "vs_random_significant": true,
+    "vs_5brain_best": 0.861,
+    "beats_5brain_best": false
+  },
+  "per_brain_popularity": {
+    "strategy_x_popularity_freq": 0.8155,
+    "strategy_x_popularity_pair": 0.8142,
+    "strategy_x_shape": 0.801,
+    "strategy_x_cooccur": 0.861,
+    "strategy_x_coordinator": 0.8514
+  },
+  "analysis_lookahead": {
+    "label": "analysis_lookahead_only_NOT_PREDICTION",
+    "avg_union_hit_count": 5.7907,
+    "avg_union_hit_ratio": 0.1331,
+    "note": "이론적 union 적중 — 예측 아님, 5뇌 보완성 참고용"
+  },
+  "comparison_table": [
+    {
+      "metric": "평균 적중수",
+      "hyena": 0.7839,
+      "random": 0.81,
+      "cooccur_5뇌_hit": 0.8023,
+      "coordinator_4뇌_hit": 0.8081
+    },
+    {
+      "metric": "평균 인기적합도",
+      "hyena": 0.8537,
+      "random": 0.7988,
+      "cooccur_5뇌": 0.861,
+      "coordinator_4뇌": 0.8514,
+      "5뇌최고": 0.861
+    },
+    {
+      "metric": "인기 t-test p (hyena vs random)",
+      "hyena": 0.0,
+      "random": null,
+      "cooccur_5뇌": null,
+      "coordinator_4뇌": null
+    }
+  ],
+  "adoption_verdict": "보조 조율 (5뇌 대비 인기 우위 미달)",
+  "r2_honest": "하이에나도 예측 엔진 아님. 인기적합도는 조합기 성격. 6개 적중·당첨확률 향상 보장 없음."
+}

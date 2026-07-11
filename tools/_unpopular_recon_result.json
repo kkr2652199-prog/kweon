@@ -1,0 +1,387 @@
+{
+  "step0": {
+    "count": 1225,
+    "min_draw": 1,
+    "max_draw": 1225,
+    "zero_winner_draws": [
+      1,
+      4,
+      5,
+      7,
+      8,
+      9,
+      13,
+      18,
+      24,
+      41,
+      71,
+      289,
+      295,
+      463,
+      1221,
+      1222,
+      1223,
+      1224,
+      1225
+    ],
+    "zero_winner_count": 19
+  },
+  "step1_sample10": [
+    {
+      "draw_no": 1,
+      "nums": [
+        10,
+        23,
+        29,
+        33,
+        37,
+        40
+      ],
+      "bonus": 16,
+      "winner_count": 0,
+      "prize_per_game": 0,
+      "low_count": 3,
+      "high_count": 3,
+      "consec_max": 1,
+      "sum6": 172,
+      "odd_count": 4,
+      "decade_spread": 4,
+      "tail_dup": 2,
+      "gap_var": 13.2
+    },
+    {
+      "draw_no": 2,
+      "nums": [
+        9,
+        13,
+        21,
+        25,
+        32,
+        42
+      ],
+      "bonus": 2,
+      "winner_count": 1,
+      "prize_per_game": 2002006800,
+      "low_count": 4,
+      "high_count": 2,
+      "consec_max": 1,
+      "sum6": 142,
+      "odd_count": 4,
+      "decade_spread": 5,
+      "tail_dup": 1,
+      "gap_var": 5.44
+    },
+    {
+      "draw_no": 3,
+      "nums": [
+        11,
+        16,
+        19,
+        21,
+        27,
+        31
+      ],
+      "bonus": 30,
+      "winner_count": 1,
+      "prize_per_game": 2000000000,
+      "low_count": 6,
+      "high_count": 0,
+      "consec_max": 1,
+      "sum6": 125,
+      "odd_count": 5,
+      "decade_spread": 3,
+      "tail_dup": 2,
+      "gap_var": 2
+    },
+    {
+      "draw_no": 4,
+      "nums": [
+        14,
+        27,
+        30,
+        31,
+        40,
+        42
+      ],
+      "bonus": 2,
+      "winner_count": 0,
+      "prize_per_game": 0,
+      "low_count": 4,
+      "high_count": 2,
+      "consec_max": 2,
+      "sum6": 184,
+      "odd_count": 2,
+      "decade_spread": 4,
+      "tail_dup": 1,
+      "gap_var": 21.44
+    },
+    {
+      "draw_no": 5,
+      "nums": [
+        16,
+        24,
+        29,
+        40,
+        41,
+        42
+      ],
+      "bonus": 3,
+      "winner_count": 0,
+      "prize_per_game": 0,
+      "low_count": 3,
+      "high_count": 3,
+      "consec_max": 3,
+      "sum6": 192,
+      "odd_count": 2,
+      "decade_spread": 3,
+      "tail_dup": 0,
+      "gap_var": 15.36
+    },
+    {
+      "draw_no": 6,
+      "nums": [
+        14,
+        15,
+        26,
+        27,
+        40,
+        42
+      ],
+      "bonus": 34,
+      "winner_count": 1,
+      "prize_per_game": 6574451700,
+      "low_count": 4,
+      "high_count": 2,
+      "consec_max": 2,
+      "sum6": 164,
+      "odd_count": 2,
+      "decade_spread": 3,
+      "tail_dup": 0,
+      "gap_var": 27.84
+    },
+    {
+      "draw_no": 7,
+      "nums": [
+        2,
+        9,
+        16,
+        25,
+        26,
+        40
+      ],
+      "bonus": 42,
+      "winner_count": 0,
+      "prize_per_game": 0,
+      "low_count": 5,
+      "high_count": 1,
+      "consec_max": 2,
+      "sum6": 118,
+      "odd_count": 2,
+      "decade_spread": 4,
+      "tail_dup": 1,
+      "gap_var": 17.44
+    },
+    {
+      "draw_no": 8,
+      "nums": [
+        8,
+        19,
+        25,
+        34,
+        37,
+        39
+      ],
+      "bonus": 9,
+      "winner_count": 0,
+      "prize_per_game": 0,
+      "low_count": 3,
+      "high_count": 3,
+      "consec_max": 1,
+      "sum6": 162,
+      "odd_count": 4,
+      "decade_spread": 4,
+      "tail_dup": 1,
+      "gap_var": 11.76
+    },
+    {
+      "draw_no": 9,
+      "nums": [
+        2,
+        4,
+        16,
+        17,
+        36,
+        39
+      ],
+      "bonus": 14,
+      "winner_count": 0,
+      "prize_per_game": 0,
+      "low_count": 4,
+      "high_count": 2,
+      "consec_max": 2,
+      "sum6": 114,
+      "odd_count": 2,
+      "decade_spread": 3,
+      "tail_dup": 1,
+      "gap_var": 49.04
+    },
+    {
+      "draw_no": 10,
+      "nums": [
+        9,
+        25,
+        30,
+        33,
+        41,
+        44
+      ],
+      "bonus": 6,
+      "winner_count": 13,
+      "prize_per_game": 6430437900,
+      "low_count": 3,
+      "high_count": 3,
+      "consec_max": 1,
+      "sum6": 182,
+      "odd_count": 4,
+      "decade_spread": 4,
+      "tail_dup": 0,
+      "gap_var": 23.6
+    }
+  ],
+  "step2": {
+    "analysis_n": 1206,
+    "excluded_zero_winner": 19,
+    "bottom10_pct_n": 120,
+    "top10_pct_n": 120,
+    "bottom10_winner_range": [
+      1,
+      3
+    ],
+    "top10_winner_range": [
+      15,
+      63
+    ],
+    "correlations": [
+      {
+        "feature": "low_count",
+        "pearson": 0.0397,
+        "spearman": 0.0201,
+        "n": 1206
+      },
+      {
+        "feature": "high_count",
+        "pearson": -0.0397,
+        "spearman": -0.0201,
+        "n": 1206
+      },
+      {
+        "feature": "consec_max",
+        "pearson": -0.0534,
+        "spearman": -0.0727,
+        "n": 1206
+      },
+      {
+        "feature": "sum6",
+        "pearson": -0.0857,
+        "spearman": -0.0601,
+        "n": 1206
+      },
+      {
+        "feature": "odd_count",
+        "pearson": 0.0079,
+        "spearman": -0.002,
+        "n": 1206
+      },
+      {
+        "feature": "decade_spread",
+        "pearson": 0.0006,
+        "spearman": 0.0584,
+        "n": 1206
+      },
+      {
+        "feature": "tail_dup",
+        "pearson": 0.0441,
+        "spearman": 0.0564,
+        "n": 1206
+      },
+      {
+        "feature": "gap_var",
+        "pearson": -0.097,
+        "spearman": -0.1154,
+        "n": 1206
+      }
+    ],
+    "decile_compare": [
+      {
+        "feature": "low_count",
+        "bottom10_avg": 4.1333,
+        "top10_avg": 4.2917,
+        "delta_top_minus_bottom": 0.1584
+      },
+      {
+        "feature": "high_count",
+        "bottom10_avg": 1.8667,
+        "top10_avg": 1.7083,
+        "delta_top_minus_bottom": -0.1584
+      },
+      {
+        "feature": "consec_max",
+        "bottom10_avg": 1.6667,
+        "top10_avg": 1.575,
+        "delta_top_minus_bottom": -0.0917
+      },
+      {
+        "feature": "sum6",
+        "bottom10_avg": 139.375,
+        "top10_avg": 127.7583,
+        "delta_top_minus_bottom": -11.6167
+      },
+      {
+        "feature": "odd_count",
+        "bottom10_avg": 3.175,
+        "top10_avg": 3.1417,
+        "delta_top_minus_bottom": -0.0333
+      },
+      {
+        "feature": "decade_spread",
+        "bottom10_avg": 3.6667,
+        "top10_avg": 3.6833,
+        "delta_top_minus_bottom": 0.0166
+      },
+      {
+        "feature": "tail_dup",
+        "bottom10_avg": 1.0417,
+        "top10_avg": 1.1167,
+        "delta_top_minus_bottom": 0.075
+      },
+      {
+        "feature": "gap_var",
+        "bottom10_avg": 28.8127,
+        "top10_avg": 22.6147,
+        "delta_top_minus_bottom": -6.198
+      }
+    ]
+  },
+  "step3": {
+    "popularity_features": [],
+    "unpopularity_features": [
+      {
+        "feature": "consec_max",
+        "pearson": -0.0534,
+        "role": "비인기(-)"
+      },
+      {
+        "feature": "sum6",
+        "pearson": -0.0857,
+        "role": "비인기(-)"
+      },
+      {
+        "feature": "gap_var",
+        "pearson": -0.097,
+        "role": "비인기(-)"
+      }
+    ],
+    "draft_formula": "unpopular_bias_score(combo) = - (0.226) * z(consec_max) - (0.363) * z(sum6) - (0.411) * z(gap_var)",
+    "note": "과거 당첨 조합이 '인기 편향'과 얼마나 일치했는지의 회귀적 점수. 미래 당첨자수 예측 주장 금지."
+  }
+}

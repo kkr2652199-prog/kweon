@@ -1,0 +1,68 @@
+20260617_4군_전략X_5뇌_전회차기록적재
+동생 → 커서 | 2026-06-17 | 4군 전회차 예측 적재 | 1~3군 간섭 0건
+
+작업 전 3파일 확인
+✅ RULES_FIXED.md (R2/R13/R14)
+✅ STATUS_LATEST.md (기억101, strategy_x 0행)
+✅ CURSOR_RULES.md (§2)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP1 — 5뇌 전회차 예측 적재 (era_C 262~1228, R13)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+신규: app/lotto4/strategy_x_fullbackfill.py
+실행: tools/run_strategy_x_fullbackfill.py
+결과: tools/_strategy_x_fullbackfill_result.json
+
+5뇌 (gap·coordinator 제외):
+- strategy_x_popularity_freq
+- strategy_x_popularity_pair
+- strategy_x_shape
+- strategy_x_cooccur (CooccurState 증분, draw_no<N)
+- strategy_x_hyena (cooccur_favor, DB N이전 로그 trust)
+
+적재 결과
+- 대상 회차: 964
+- 처리: 964 / 스킵 0 / 오류 0
+- predictions strategy_x: 0 → 24,100행 (회차당 25 = 5뇌×5세트)
+- v13 predictions: 4,550행 **변경 없음**
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP2 — 회차별 적중 집계 (fullbacktest)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+lotto_fullbacktest_army4 strategy_x 5뇌 태그 적재: 24,100행
+v13 fullbacktest: 4,305행 **보존**
+
+뇌별 평균 적중 (era_C, R2 — 무작위 수준)
+┌────────────────────────────┬──────┬──────────┐
+│ brain_tag                  │ 세트 │ avg 적중 │
+├────────────────────────────┼──────┼──────────┤
+│ strategy_x_popularity_freq │ 4820 │ 0.7734   │
+│ strategy_x_popularity_pair │ 4820 │ 0.8120   │
+│ strategy_x_shape           │ 4820 │ 0.7890   │
+│ strategy_x_cooccur         │ 4820 │ 0.8017   │
+│ strategy_x_hyena           │ 4820 │ 0.8081   │
+└────────────────────────────┴──────┴──────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP3 — 검증
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+(1) strategy_x predictions 0→24,100 ✅
+(2) 대시보드 읽기: GET API 3건 추가 + SQL 5뇌 stats ok=true
+    - /api/lotto4/v13/strategy_x/stats
+    - /api/lotto4/v13/strategy_x/predictions/draw/{n}
+    - /api/lotto4/v13/strategy_x/fullbacktest/stats
+    ※ 서버 재시작 후 라이브 호출 필요 (현재 구버전 404)
+(3) v13 4,550행·predict·1~3군 간섭 0 ✅
+
+검증 스크립트: tools/verify_strategy_x_fullbackfill.py
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+변경 범위 (4군만)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- strategy_x_logging.py: 1~3뇌 개별 save + FIVE_BRAIN_TAGS
+- strategy_x_fullbackfill.py, run/verify 스크립트
+- v13_routes.py: strategy_x GET 3건
+
+R2: 인기적합도·적중 집계는 사람 행동 기록용. 당첨확률 향상 주장 없음.
+
+다음: UI 5뇌 표시 연결

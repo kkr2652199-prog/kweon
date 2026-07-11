@@ -1,0 +1,626 @@
+{
+  "db": "D:\\MONEY lol\\My_Library\\data_audit_readonly\\lotto_audit.db",
+  "db_bytes": 25579520,
+  "step0_lotto_predictions": {
+    "total": 48190,
+    "by_brain_tag": {
+      "fusion": 5995,
+      "hyena": 5990,
+      "llm": 5991,
+      "llm_fallback": 4,
+      "lstm": 5995,
+      "markov": 5990,
+      "miss_analysis": 6115,
+      "snake": 6115,
+      "stat": 5995
+    }
+  },
+  "step0_lotto_predictions_army2": {
+    "total": 42780,
+    "by_brain_tag": {
+      "v11_combo": 6115,
+      "v11_fusion": 6115,
+      "v11_hyena": 6115,
+      "v11_lstm": 6090,
+      "v11_markov": 6115,
+      "v11_snake": 6115,
+      "v11_stat": 6115
+    }
+  },
+  "step0_lotto_predictions_army3": {
+    "total": 48895,
+    "by_brain_tag": {
+      "v12_contrarian": 6115,
+      "v12_fusion": 6115,
+      "v12_hyena": 6115,
+      "v12_lstm": 6090,
+      "v12_offset": 6115,
+      "v12_run": 6115,
+      "v12_snake": 6115,
+      "v12_stat": 6115
+    }
+  },
+  "step1_fusion_rank6": [
+    {
+      "target_draw_no": 198,
+      "created_at": "2026-04-25 11:51:02",
+      "matched_count": 6
+    },
+    {
+      "target_draw_no": 725,
+      "created_at": "2026-04-26 10:54:37",
+      "matched_count": 6
+    },
+    {
+      "target_draw_no": 774,
+      "created_at": "2026-04-26 19:54:44",
+      "matched_count": 6
+    },
+    {
+      "target_draw_no": 800,
+      "created_at": "2026-04-26 20:12:48",
+      "matched_count": 6
+    },
+    {
+      "target_draw_no": 1037,
+      "created_at": "2026-04-26 22:55:02",
+      "matched_count": 6
+    },
+    {
+      "target_draw_no": 1040,
+      "created_at": "2026-04-26 22:57:00",
+      "matched_count": 6
+    },
+    {
+      "target_draw_no": 1122,
+      "created_at": "2026-04-26 23:51:57",
+      "matched_count": 6
+    }
+  ],
+  "step1_fusion_all_at_wins": [
+    {
+      "target_draw_no": 198,
+      "matched_count": 6,
+      "created_at": "2026-04-25 11:51:02",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 198,
+      "matched_count": 2,
+      "created_at": "2026-04-25 11:51:02",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 198,
+      "matched_count": 1,
+      "created_at": "2026-04-25 11:51:02",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 198,
+      "matched_count": 1,
+      "created_at": "2026-04-25 11:51:02",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 198,
+      "matched_count": 1,
+      "created_at": "2026-04-25 11:51:02",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 725,
+      "matched_count": 6,
+      "created_at": "2026-04-26 10:54:37",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 725,
+      "matched_count": 3,
+      "created_at": "2026-04-26 10:54:37",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 725,
+      "matched_count": 2,
+      "created_at": "2026-04-26 10:54:37",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 725,
+      "matched_count": 1,
+      "created_at": "2026-04-26 10:54:37",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 725,
+      "matched_count": 1,
+      "created_at": "2026-04-26 10:54:37",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 774,
+      "matched_count": 6,
+      "created_at": "2026-04-26 19:54:44",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 774,
+      "matched_count": 3,
+      "created_at": "2026-04-26 19:54:44",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 774,
+      "matched_count": 3,
+      "created_at": "2026-04-26 19:54:44",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 774,
+      "matched_count": 2,
+      "created_at": "2026-04-26 19:54:44",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 774,
+      "matched_count": 0,
+      "created_at": "2026-04-26 19:54:44",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 800,
+      "matched_count": 6,
+      "created_at": "2026-04-26 20:12:48",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 800,
+      "matched_count": 3,
+      "created_at": "2026-04-26 20:12:48",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 800,
+      "matched_count": 2,
+      "created_at": "2026-04-26 20:12:48",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 800,
+      "matched_count": 1,
+      "created_at": "2026-04-26 20:12:48",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 800,
+      "matched_count": 0,
+      "created_at": "2026-04-26 20:12:48",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1037,
+      "matched_count": 6,
+      "created_at": "2026-04-26 22:55:02",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1037,
+      "matched_count": 4,
+      "created_at": "2026-04-26 22:55:02",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1037,
+      "matched_count": 3,
+      "created_at": "2026-04-26 22:55:02",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1037,
+      "matched_count": 2,
+      "created_at": "2026-04-26 22:55:02",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1037,
+      "matched_count": 1,
+      "created_at": "2026-04-26 22:55:02",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1040,
+      "matched_count": 6,
+      "created_at": "2026-04-26 22:57:00",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1040,
+      "matched_count": 3,
+      "created_at": "2026-04-26 22:57:00",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1040,
+      "matched_count": 1,
+      "created_at": "2026-04-26 22:57:00",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1040,
+      "matched_count": 0,
+      "created_at": "2026-04-26 22:57:00",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1040,
+      "matched_count": 0,
+      "created_at": "2026-04-26 22:57:00",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1122,
+      "matched_count": 6,
+      "created_at": "2026-04-26 23:51:57",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1122,
+      "matched_count": 2,
+      "created_at": "2026-04-26 23:51:57",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1122,
+      "matched_count": 2,
+      "created_at": "2026-04-26 23:51:57",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1122,
+      "matched_count": 2,
+      "created_at": "2026-04-26 23:51:57",
+      "method": "벡터퓨전두뇌"
+    },
+    {
+      "target_draw_no": 1122,
+      "matched_count": 1,
+      "created_at": "2026-04-26 23:51:57",
+      "method": "벡터퓨전두뇌"
+    }
+  ],
+  "step1_stat_rank6": [],
+  "step1_markov_rank6": [],
+  "step1_llm_rank6": [],
+  "step1_lstm_rank6": [],
+  "step1_hyena_rank6": [
+    {
+      "target_draw_no": 1037,
+      "created_at": "2026-04-26 22:55:02",
+      "matched_count": 6
+    }
+  ],
+  "step1_fusion_per_draw_ts": {
+    "draws_with_predictions": 1199,
+    "draws_all_sets_same_ts": 1199,
+    "sample_first10": [
+      {
+        "target_draw_no": 2,
+        "min_ca": "2026-04-25 02:15:20",
+        "max_ca": "2026-04-25 02:15:20",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 3,
+        "min_ca": "2026-04-25 02:16:01",
+        "max_ca": "2026-04-25 02:16:01",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 4,
+        "min_ca": "2026-04-25 02:16:43",
+        "max_ca": "2026-04-25 02:16:43",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 5,
+        "min_ca": "2026-04-25 02:17:24",
+        "max_ca": "2026-04-25 02:17:24",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 6,
+        "min_ca": "2026-04-25 02:18:09",
+        "max_ca": "2026-04-25 02:18:09",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 7,
+        "min_ca": "2026-04-25 02:18:54",
+        "max_ca": "2026-04-25 02:18:54",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 8,
+        "min_ca": "2026-04-25 02:19:36",
+        "max_ca": "2026-04-25 02:19:36",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 9,
+        "min_ca": "2026-04-25 02:20:20",
+        "max_ca": "2026-04-25 02:20:20",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 10,
+        "min_ca": "2026-04-25 02:21:07",
+        "max_ca": "2026-04-25 02:21:07",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 11,
+        "min_ca": "2026-04-25 02:21:53",
+        "max_ca": "2026-04-25 02:21:53",
+        "cnt": 5
+      }
+    ],
+    "sample_win_draws": [
+      {
+        "target_draw_no": 198,
+        "min_ca": "2026-04-25 11:51:02",
+        "max_ca": "2026-04-25 11:51:02",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 725,
+        "min_ca": "2026-04-26 10:54:37",
+        "max_ca": "2026-04-26 10:54:37",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 774,
+        "min_ca": "2026-04-26 19:54:44",
+        "max_ca": "2026-04-26 19:54:44",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 800,
+        "min_ca": "2026-04-26 20:12:48",
+        "max_ca": "2026-04-26 20:12:48",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 1037,
+        "min_ca": "2026-04-26 22:55:02",
+        "max_ca": "2026-04-26 22:55:02",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 1040,
+        "min_ca": "2026-04-26 22:57:00",
+        "max_ca": "2026-04-26 22:57:00",
+        "cnt": 5
+      },
+      {
+        "target_draw_no": 1122,
+        "min_ca": "2026-04-26 23:51:57",
+        "max_ca": "2026-04-26 23:51:57",
+        "cnt": 5
+      }
+    ]
+  },
+  "step1_fusion_ts_global": {
+    "total_rows": 5995,
+    "distinct_created_at": 1199,
+    "ratio": 0.2
+  },
+  "step1_fusion_ts_range": {
+    "min": "2026-04-25 02:15:20",
+    "max": "2026-06-13 19:03:51"
+  },
+  "step3_draw_800": {
+    "lotto_predictions": [
+      {
+        "brain_tag": "fusion",
+        "matched_count": 6,
+        "created_at": "2026-04-26 20:12:48",
+        "method": "벡터퓨전두뇌",
+        "num1": 1,
+        "num2": 4,
+        "num3": 10,
+        "num4": 12,
+        "num5": 28,
+        "num6": 45
+      }
+    ],
+    "lotto_predictions_army2": [
+      {
+        "brain_tag": "v11_fusion",
+        "matched_count": 6,
+        "created_at": "2026-04-29 17:59:03",
+        "method": "V11_Fusion_V5_TopK",
+        "num1": 1,
+        "num2": 4,
+        "num3": 10,
+        "num4": 12,
+        "num5": 28,
+        "num6": 45
+      }
+    ],
+    "lotto_predictions_army3": [],
+    "lotto_draws": {
+      "draw_no": 800,
+      "num1": 1,
+      "num2": 4,
+      "num3": 10,
+      "num4": 12,
+      "num5": 28,
+      "num6": 45,
+      "bonus": 26,
+      "first_winners": 11
+    }
+  },
+  "step3_draw_1122": {
+    "lotto_predictions": [
+      {
+        "brain_tag": "fusion",
+        "matched_count": 6,
+        "created_at": "2026-04-26 23:51:57",
+        "method": "벡터퓨전두뇌",
+        "num1": 3,
+        "num2": 6,
+        "num3": 21,
+        "num4": 30,
+        "num5": 34,
+        "num6": 35
+      }
+    ],
+    "lotto_predictions_army2": [
+      {
+        "brain_tag": "v11_fusion",
+        "matched_count": 6,
+        "created_at": "2026-04-29 18:01:41",
+        "method": "V11_Fusion_V5_TopK",
+        "num1": 3,
+        "num2": 6,
+        "num3": 21,
+        "num4": 30,
+        "num5": 34,
+        "num6": 35
+      }
+    ],
+    "lotto_predictions_army3": [],
+    "lotto_draws": {
+      "draw_no": 1122,
+      "num1": 3,
+      "num2": 6,
+      "num3": 21,
+      "num4": 30,
+      "num5": 34,
+      "num6": 35,
+      "bonus": 22,
+      "first_winners": 11
+    }
+  },
+  "step3_popularity": {
+    "800": {
+      "nums": [
+        1,
+        4,
+        10,
+        12,
+        28,
+        45
+      ],
+      "first_winners": 11,
+      "avg_historical_freq": 165.67
+    },
+    "1122": {
+      "nums": [
+        3,
+        6,
+        21,
+        30,
+        34,
+        35
+      ],
+      "first_winners": 11,
+      "avg_historical_freq": 166.67
+    },
+    "198": {
+      "nums": [
+        12,
+        19,
+        20,
+        25,
+        41,
+        45
+      ],
+      "first_winners": 6,
+      "avg_historical_freq": 164.0
+    },
+    "725": {
+      "nums": [
+        6,
+        7,
+        19,
+        21,
+        41,
+        43
+      ],
+      "first_winners": 11,
+      "avg_historical_freq": 162.33
+    },
+    "774": {
+      "nums": [
+        12,
+        15,
+        18,
+        28,
+        34,
+        42
+      ],
+      "first_winners": 11,
+      "avg_historical_freq": 168.0
+    },
+    "1037": {
+      "nums": [
+        2,
+        14,
+        15,
+        22,
+        27,
+        33
+      ],
+      "first_winners": 15,
+      "avg_historical_freq": 164.33
+    },
+    "1040": {
+      "nums": [
+        8,
+        16,
+        26,
+        29,
+        31,
+        36
+      ],
+      "first_winners": 7,
+      "avg_historical_freq": 161.33
+    }
+  },
+  "step3_all_brains_ts_draw_800": {
+    "lotto_predictions": {
+      "min": "2026-04-26 20:12:48",
+      "max": "2026-04-28 11:45:02",
+      "cnt": 40
+    },
+    "lotto_predictions_army2": {
+      "min": "2026-04-29 17:59:03",
+      "max": "2026-04-29 17:59:03",
+      "cnt": 35
+    },
+    "lotto_predictions_army3": {
+      "min": "2026-06-06 19:14:58",
+      "max": "2026-06-06 19:14:58",
+      "cnt": 40
+    }
+  },
+  "step3_all_brains_ts_draw_1122": {
+    "lotto_predictions": {
+      "min": "2026-04-26 23:51:57",
+      "max": "2026-04-28 11:59:21",
+      "cnt": 40
+    },
+    "lotto_predictions_army2": {
+      "min": "2026-04-29 18:01:41",
+      "max": "2026-04-29 18:01:41",
+      "cnt": 35
+    },
+    "lotto_predictions_army3": {
+      "min": "2026-06-06 19:19:19",
+      "max": "2026-06-06 19:19:19",
+      "cnt": 40
+    }
+  }
+}

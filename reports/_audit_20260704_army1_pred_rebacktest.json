@@ -1,0 +1,793 @@
+{
+  "timestamp": "2026-07-09T11:45:09",
+  "step0_backup": {
+    "rows": 385,
+    "table": "lotto_predictions_backup_20260704",
+    "json": "d:\\3kweon\\reports\\_backup_20260704_army1_preds_1221_1231.json"
+  },
+  "step1_delete": {
+    "deleted_rows": 385
+  },
+  "delete_range_before": {
+    "fusion": 55,
+    "hyena": 55,
+    "lead1": 55,
+    "llm": 55,
+    "lstm": 55,
+    "markov": 55,
+    "miss_analysis": 50,
+    "snake": 50,
+    "stat": 55
+  },
+  "step2_walkforward": [
+    {
+      "draw": 1221,
+      "max_draw_no_prediction_data": 1220,
+      "draws_before_count": 1220,
+      "draws_before_max_draw_no": 1220,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "hyena": {
+          "w": 36.6422,
+          "ld": 1220
+        },
+        "llm": {
+          "w": 7.8451,
+          "ld": 1220
+        },
+        "lstm": {
+          "w": 43.5603,
+          "ld": 1220
+        },
+        "markov": {
+          "w": 3.4083,
+          "ld": 1220
+        },
+        "stat": {
+          "w": 5.2157,
+          "ld": 1220
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "total_sets": 40,
+      "lead1_sets": 5,
+      "scored": true,
+      "elapsed_sec": 45.45,
+      "by_brain": {
+        "fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "hyena": {
+          "sets": 5,
+          "best_matched": 4
+        },
+        "lead1": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "llm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "lstm": {
+          "sets": 5,
+          "best_matched": 4
+        },
+        "markov": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 4
+    },
+    {
+      "draw": 1222,
+      "max_draw_no_prediction_data": 1221,
+      "draws_before_count": 1221,
+      "draws_before_max_draw_no": 1221,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "hyena": {
+          "w": 36.6715,
+          "ld": 1221
+        },
+        "llm": {
+          "w": 7.9446,
+          "ld": 1221
+        },
+        "lstm": {
+          "w": 43.3951,
+          "ld": 1221
+        },
+        "markov": {
+          "w": 3.3879,
+          "ld": 1221
+        },
+        "stat": {
+          "w": 5.2125,
+          "ld": 1221
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "total_sets": 30,
+      "lead1_sets": 5,
+      "scored": true,
+      "elapsed_sec": 42.04,
+      "by_brain": {
+        "fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "hyena": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "lead1": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "llm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "lstm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "markov": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 3
+    },
+    {
+      "draw": 1223,
+      "max_draw_no_prediction_data": 1222,
+      "draws_before_count": 1222,
+      "draws_before_max_draw_no": 1222,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "hyena": {
+          "w": 35.474,
+          "ld": 1222
+        },
+        "llm": {
+          "w": 7.8029,
+          "ld": 1222
+        },
+        "lstm": {
+          "w": 42.3406,
+          "ld": 1222
+        },
+        "markov": {
+          "w": 3.3475,
+          "ld": 1222
+        },
+        "stat": {
+          "w": 5.1195,
+          "ld": 1222
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "total_sets": 40,
+      "lead1_sets": 5,
+      "scored": true,
+      "elapsed_sec": 43.44,
+      "by_brain": {
+        "fusion": {
+          "sets": 5,
+          "best_matched": 4
+        },
+        "hyena": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "lead1": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "llm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "lstm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "markov": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "stat": {
+          "sets": 5,
+          "best_matched": 1
+        }
+      },
+      "pool_best": 4
+    },
+    {
+      "draw": 1224,
+      "max_draw_no_prediction_data": 1223,
+      "draws_before_count": 1223,
+      "draws_before_max_draw_no": 1223,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "hyena": {
+          "w": 36.5763,
+          "ld": 1223
+        },
+        "llm": {
+          "w": 7.9446,
+          "ld": 1223
+        },
+        "lstm": {
+          "w": 42.8775,
+          "ld": 1223
+        },
+        "markov": {
+          "w": 3.4308,
+          "ld": 1223
+        },
+        "stat": {
+          "w": 5.1813,
+          "ld": 1223
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "total_sets": 40,
+      "lead1_sets": 5,
+      "scored": true,
+      "elapsed_sec": 46.62,
+      "by_brain": {
+        "fusion": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "hyena": {
+          "sets": 5,
+          "best_matched": 4
+        },
+        "lead1": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "llm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "lstm": {
+          "sets": 5,
+          "best_matched": 4
+        },
+        "markov": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "stat": {
+          "sets": 5,
+          "best_matched": 3
+        }
+      },
+      "pool_best": 4
+    },
+    {
+      "draw": 1225,
+      "max_draw_no_prediction_data": 1224,
+      "draws_before_count": 1224,
+      "draws_before_max_draw_no": 1224,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "hyena": {
+          "w": 36.3066,
+          "ld": 1224
+        },
+        "llm": {
+          "w": 7.9972,
+          "ld": 1224
+        },
+        "lstm": {
+          "w": 42.929,
+          "ld": 1224
+        },
+        "markov": {
+          "w": 3.4515,
+          "ld": 1224
+        },
+        "stat": {
+          "w": 5.247,
+          "ld": 1224
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "total_sets": 40,
+      "lead1_sets": 5,
+      "scored": true,
+      "elapsed_sec": 42.69,
+      "by_brain": {
+        "fusion": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "hyena": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "lead1": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "llm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "lstm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "markov": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "stat": {
+          "sets": 5,
+          "best_matched": 1
+        }
+      },
+      "pool_best": 3
+    },
+    {
+      "draw": 1226,
+      "max_draw_no_prediction_data": 1225,
+      "draws_before_count": 1225,
+      "draws_before_max_draw_no": 1225,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "hyena": {
+          "w": 36.5251,
+          "ld": 1225
+        },
+        "llm": {
+          "w": 7.9494,
+          "ld": 1225
+        },
+        "lstm": {
+          "w": 43.1873,
+          "ld": 1225
+        },
+        "markov": {
+          "w": 3.4103,
+          "ld": 1225
+        },
+        "stat": {
+          "w": 5.1226,
+          "ld": 1225
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "total_sets": 40,
+      "lead1_sets": 5,
+      "scored": true,
+      "elapsed_sec": 42.57,
+      "by_brain": {
+        "fusion": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "hyena": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "lead1": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "llm": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "lstm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "markov": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 3
+    },
+    {
+      "draw": 1227,
+      "max_draw_no_prediction_data": 1226,
+      "draws_before_count": 1226,
+      "draws_before_max_draw_no": 1226,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "hyena": {
+          "w": 37.0327,
+          "ld": 1226
+        },
+        "llm": {
+          "w": 7.8545,
+          "ld": 1226
+        },
+        "lstm": {
+          "w": 43.9981,
+          "ld": 1226
+        },
+        "markov": {
+          "w": 3.3899,
+          "ld": 1226
+        },
+        "stat": {
+          "w": 5.0585,
+          "ld": 1226
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "total_sets": 40,
+      "lead1_sets": 5,
+      "scored": true,
+      "elapsed_sec": 42.53,
+      "by_brain": {
+        "fusion": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "hyena": {
+          "sets": 5,
+          "best_matched": 0
+        },
+        "lead1": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "llm": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "lstm": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "markov": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "stat": {
+          "sets": 5,
+          "best_matched": 1
+        }
+      },
+      "pool_best": 2
+    },
+    {
+      "draw": 1228,
+      "max_draw_no_prediction_data": 1227,
+      "draws_before_count": 1227,
+      "draws_before_max_draw_no": 1227,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "hyena": {
+          "w": 35.5095,
+          "ld": 1227
+        },
+        "llm": {
+          "w": 7.8545,
+          "ld": 1227
+        },
+        "lstm": {
+          "w": 42.6978,
+          "ld": 1227
+        },
+        "markov": {
+          "w": 3.3095,
+          "ld": 1227
+        },
+        "stat": {
+          "w": 5.0889,
+          "ld": 1227
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "total_sets": 40,
+      "lead1_sets": 5,
+      "scored": true,
+      "elapsed_sec": 41.44,
+      "by_brain": {
+        "fusion": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "hyena": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "lead1": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "llm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "lstm": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "markov": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 2
+    },
+    {
+      "draw": 1229,
+      "max_draw_no_prediction_data": 1228,
+      "draws_before_count": 1228,
+      "draws_before_max_draw_no": 1228,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "hyena": {
+          "w": 31.7534,
+          "ld": 1228
+        },
+        "llm": {
+          "w": 7.9494,
+          "ld": 1228
+        },
+        "lstm": {
+          "w": 38.8982,
+          "ld": 1228
+        },
+        "markov": {
+          "w": 3.3294,
+          "ld": 1228
+        },
+        "stat": {
+          "w": 5.1195,
+          "ld": 1228
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "total_sets": 40,
+      "lead1_sets": 5,
+      "scored": true,
+      "elapsed_sec": 42.04,
+      "by_brain": {
+        "fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "hyena": {
+          "sets": 5,
+          "best_matched": 0
+        },
+        "lead1": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "llm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "lstm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "markov": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 2
+    },
+    {
+      "draw": 1230,
+      "max_draw_no_prediction_data": 1229,
+      "draws_before_count": 1229,
+      "draws_before_max_draw_no": 1229,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "hyena": {
+          "w": 29.1251,
+          "ld": 1229
+        },
+        "llm": {
+          "w": 7.8545,
+          "ld": 1229
+        },
+        "lstm": {
+          "w": 37.2535,
+          "ld": 1229
+        },
+        "markov": {
+          "w": 3.3294,
+          "ld": 1229
+        },
+        "stat": {
+          "w": 4.9981,
+          "ld": 1229
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "total_sets": 40,
+      "lead1_sets": 5,
+      "scored": true,
+      "elapsed_sec": 52.43,
+      "by_brain": {
+        "fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "hyena": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "lead1": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "llm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "lstm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "markov": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "stat": {
+          "sets": 5,
+          "best_matched": 1
+        }
+      },
+      "pool_best": 2
+    },
+    {
+      "draw": 1231,
+      "max_draw_no_prediction_data": 1230,
+      "draws_before_count": 1230,
+      "draws_before_max_draw_no": 1230,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "hyena": {
+          "w": 27.3249,
+          "ld": 1230
+        },
+        "llm": {
+          "w": 7.8029,
+          "ld": 1230
+        },
+        "lstm": {
+          "w": 35.6285,
+          "ld": 1230
+        },
+        "markov": {
+          "w": 3.4103,
+          "ld": 1230
+        },
+        "stat": {
+          "w": 4.9385,
+          "ld": 1230
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "total_sets": 40,
+      "lead1_sets": 5,
+      "scored": true,
+      "elapsed_sec": 76.94,
+      "by_brain": {
+        "fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "hyena": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "lead1": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "llm": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "lstm": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "markov": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 2
+    }
+  ],
+  "step3_auto_1232": {
+    "draw_1232_exists": false,
+    "draw_1232_has_numbers": false,
+    "pred_1232_count_before": 0,
+    "path": "undrawn_wait",
+    "hook_result": {
+      "updated": false,
+      "reason": "draw_not_scored",
+      "target_draw_no": 1232
+    },
+    "refresh_no_op_expected": true,
+    "pred_1232_count_after": 0,
+    "max_last_weight_draw": 1231
+  },
+  "step4_regression": {
+    "fp_1220_ok": true,
+    "fp_1210_ok": true,
+    "counts_le1220_before": 53385,
+    "counts_le1220_after": 53385,
+    "counts_le1220_ok": true,
+    "army234_before": {
+      "army2": 42885,
+      "army3": 49015
+    },
+    "army234_after": {
+      "army2": 42885,
+      "army3": 49015
+    },
+    "army234_ok": true
+  },
+  "new_range_counts": {
+    "fusion": 55,
+    "hyena": 55,
+    "lead1": 55,
+    "llm": 55,
+    "lstm": 55,
+    "markov": 55,
+    "miss_analysis": 50,
+    "snake": 50,
+    "stat": 55
+  },
+  "backup_vs_new_1231_identical": false,
+  "app_ok": true
+}

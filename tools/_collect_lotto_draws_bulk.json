@@ -1,0 +1,57 @@
+{
+  "ok": false,
+  "saved": 1144,
+  "failed": 84,
+  "range": "1228~1",
+  "descending": true,
+  "errors": [
+    "1138: API 없음",
+    "642: API 없음",
+    "641: API 없음",
+    "640: API 없음",
+    "639: API 없음",
+    "638: API 없음",
+    "637: API 없음",
+    "636: API 없음",
+    "635: API 없음",
+    "634: API 없음",
+    "633: API 없음",
+    "632: API 없음",
+    "631: API 없음",
+    "630: API 없음",
+    "629: API 없음",
+    "628: API 없음",
+    "627: API 없음",
+    "626: API 없음",
+    "625: API 없음",
+    "624: API 없음"
+  ],
+  "after": {
+    "lotto_draws": {
+      "count": 1228,
+      "min": 1,
+      "max": 1228
+    },
+    "lotto_draw_tiers": {
+      "draws": 1228,
+      "rows": 6140
+    },
+    "draws_with_1st_prize_data": 1214,
+    "sample": [
+      {
+        "draw_no": 1228,
+        "first_winners": 11,
+        "first_prize": 2698334421,
+        "tier2_winners": 83,
+        "tier3_winners": 2836
+      },
+      {
+        "draw_no": 1,
+        "first_winners": 0,
+        "first_prize": 0,
+        "tier2_winners": 1,
+        "tier3_winners": 28
+      }
+    ]
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "step0": [
+    {
+      "brain_tag": "v12_hyena",
+      "cnt": 6105,
+      "avg_mc": 2.0532,
+      "max_mc": 6,
+      "hit6": 2
+    },
+    {
+      "brain_tag": "v12_fusion",
+      "cnt": 6105,
+      "avg_mc": 1.9133,
+      "max_mc": 6,
+      "hit6": 5
+    },
+    {
+      "brain_tag": "v12_snake",
+      "cnt": 6105,
+      "avg_mc": 1.8046,
+      "max_mc": 5,
+      "hit6": 0
+    },
+    {
+      "brain_tag": "v12_lstm",
+      "cnt": 6080,
+      "avg_mc": 1.7913,
+      "max_mc": 5,
+      "hit6": 0
+    },
+    {
+      "brain_tag": "v12_contrarian",
+      "cnt": 6105,
+      "avg_mc": 0.8084,
+      "max_mc": 4,
+      "hit6": 0
+    },
+    {
+      "brain_tag": "v12_run",
+      "cnt": 6105,
+      "avg_mc": 0.8077,
+      "max_mc": 4,
+      "hit6": 0
+    },
+    {
+      "brain_tag": "v12_offset",
+      "cnt": 6105,
+      "avg_mc": 0.8062,
+      "max_mc": 4,
+      "hit6": 0
+    },
+    {
+      "brain_tag": "v12_stat",
+      "cnt": 6105,
+      "avg_mc": 0.7921,
+      "max_mc": 4,
+      "hit6": 0
+    }
+  ],
+  "step3": [
+    {
+      "brain_tag": "v12_hyena",
+      "cnt": 6080,
+      "avg_mc": 0.8164,
+      "max_mc": 4,
+      "hit4": 9,
+      "hit6": 0
+    },
+    {
+      "brain_tag": "v12_run",
+      "cnt": 6080,
+      "avg_mc": 0.812,
+      "max_mc": 4,
+      "hit4": 10,
+      "hit6": 0
+    },
+    {
+      "brain_tag": "v12_contrarian",
+      "cnt": 6080,
+      "avg_mc": 0.8107,
+      "max_mc": 4,
+      "hit4": 10,
+      "hit6": 0
+    },
+    {
+      "brain_tag": "v12_offset",
+      "cnt": 6080,
+      "avg_mc": 0.8089,
+      "max_mc": 4,
+      "hit4": 14,
+      "hit6": 0
+    },
+    {
+      "brain_tag": "v12_lstm",
+      "cnt": 6040,
+      "avg_mc": 0.8055,
+      "max_mc": 4,
+      "hit4": 10,
+      "hit6": 0
+    },
+    {
+      "brain_tag": "v12_fusion",
+      "cnt": 6080,
+      "avg_mc": 0.8043,
+      "max_mc": 4,
+      "hit4": 7,
+      "hit6": 0
+    },
+    {
+      "brain_tag": "v12_snake",
+      "cnt": 6080,
+      "avg_mc": 0.8005,
+      "max_mc": 4,
+      "hit4": 7,
+      "hit6": 0
+    },
+    {
+      "brain_tag": "v12_stat",
+      "cnt": 6080,
+      "avg_mc": 0.7939,
+      "max_mc": 4,
+      "hit4": 9,
+      "hit6": 0
+    }
+  ]
+}

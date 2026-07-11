@@ -1,0 +1,76 @@
+{
+  "formula": "B_NO_HYENA",
+  "backfill": {
+    "deleted_rows": 0,
+    "backfilled_draws": 1111,
+    "skipped_draws": [],
+    "elapsed_sec": 56.4,
+    "first_draw": 88,
+    "last_draw": 1230
+  },
+  "six_before": {
+    "fusion": 6005,
+    "hyena": 6000,
+    "llm": 6001,
+    "lstm": 6005,
+    "markov": 6000,
+    "stat": 6005
+  },
+  "six_after": {
+    "fusion": 6005,
+    "hyena": 6000,
+    "llm": 6001,
+    "lstm": 6005,
+    "markov": 6000,
+    "stat": 6005
+  },
+  "six_regression_ok": true,
+  "lead1_before_rows": 0,
+  "lead1_draws": 1111,
+  "lead1_total_rows": 5555,
+  "lead1_scored": 5555,
+  "expected_rows": 5555,
+  "rows_ok": true,
+  "spot_checks": [
+    {
+      "draw_no": 88,
+      "saved_count": 5,
+      "sets_match": true,
+      "max_history_draw": 87,
+      "no_lookahead": true,
+      "v3_count": 2,
+      "pool5_tag": true,
+      "contamination_check": "PASS"
+    },
+    {
+      "draw_no": 600,
+      "saved_count": 5,
+      "sets_match": true,
+      "max_history_draw": 599,
+      "no_lookahead": true,
+      "v3_count": 2,
+      "pool5_tag": true,
+      "contamination_check": "PASS"
+    },
+    {
+      "draw_no": 1230,
+      "saved_count": 5,
+      "sets_match": true,
+      "max_history_draw": 1229,
+      "no_lookahead": true,
+      "v3_count": 2,
+      "pool5_tag": true,
+      "contamination_check": "PASS"
+    }
+  ],
+  "hyena_stats": {
+    "sample_draws": [
+      88,
+      600,
+      1230
+    ],
+    "sets": 15,
+    "origin_hyena_pct": 0.0,
+    "near5_pct": 6.67
+  }
+}

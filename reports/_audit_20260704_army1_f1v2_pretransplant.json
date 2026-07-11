@@ -1,0 +1,135 @@
+{
+  "title": "20260704_1군7뇌_F1v2_이식전검증",
+  "readonly": true,
+  "step1": {
+    "pass": true,
+    "verdict": "PASS_COVERAGE_MECHANISM",
+    "note": "커버리지·union_win 확대와 적중↑ 상관(r_cov=0.031640256490178695, r_union=0.4892868606298309).",
+    "n": 898,
+    "mean_delta_v2_base": 0.2661,
+    "mean_delta_wheel_base": 0.1637,
+    "mean_delta_v2_wheel": 0.1024,
+    "wheel_share_of_lift": 0.6151,
+    "popavoid_share_of_lift": 0.3849,
+    "corr_cov_delta_hit": 0.0316,
+    "corr_union_delta_hit": 0.4893,
+    "corr_oracle_pop_v2": 0.6167,
+    "corr_oracle_f1_wheel": 0.5001,
+    "period_breakdown": {
+      "330-629": {
+        "mean_delta_v2_base": 0.2282,
+        "mean_delta_wheel_base": 0.1242,
+        "mean_delta_v2_wheel": 0.104,
+        "v2_gt_base_pct": 0.3859
+      },
+      "630-929": {
+        "mean_delta_v2_base": 0.29,
+        "mean_delta_wheel_base": 0.1867,
+        "mean_delta_v2_wheel": 0.1033,
+        "v2_gt_base_pct": 0.41
+      },
+      "930-1230": {
+        "mean_delta_v2_base": 0.28,
+        "mean_delta_wheel_base": 0.18,
+        "mean_delta_v2_wheel": 0.1,
+        "v2_gt_base_pct": 0.39
+      }
+    },
+    "bias_asymmetric_only": false
+  },
+  "step2": {
+    "pass": true,
+    "n_draws_with_winners": 1206,
+    "corr_pop_score_first_winners": -0.0138,
+    "corr_low31_count_first_winners": 0.0397,
+    "mean_first_winners_low_pop_quartile": 8.85,
+    "mean_first_winners_high_pop_quartile": 8.22,
+    "pop_benefit_direction_ok": false,
+    "heuristic_aligns_negative_corr": true,
+    "limitation": "first_winners는 회차 단위 — 조합 pop_sc와 1:1 대응 아님. 인과(회피→독식) 미증명, 상관만 참고.",
+    "note": "저pop 1/4분위 평균 당첨자=8.9, 고pop 1/4분위=8.2, r(pop,winners)=-0.013766402504070865."
+  },
+  "step3": {
+    "pass": false,
+    "seed_runs": [
+      {
+        "seed_xor": 0,
+        "mean_base": 2.0902,
+        "mean_v2": 2.3563,
+        "delta": 0.2661,
+        "p_v2_vs_base": 0.0,
+        "v2_wins": true,
+        "max_copy_rate": 0.2,
+        "mean_copy_rate": 0.000891
+      },
+      {
+        "seed_xor": 1000003,
+        "mean_base": 2.0935,
+        "mean_v2": 2.3385,
+        "delta": 0.245,
+        "p_v2_vs_base": 0.0,
+        "v2_wins": true,
+        "max_copy_rate": 0.2,
+        "mean_copy_rate": 0.000223
+      },
+      {
+        "seed_xor": 2000009,
+        "mean_base": 2.1058,
+        "mean_v2": 2.2873,
+        "delta": 0.1815,
+        "p_v2_vs_base": 0.0,
+        "v2_wins": true,
+        "max_copy_rate": 0.0,
+        "mean_copy_rate": 0.0
+      },
+      {
+        "seed_xor": 3000037,
+        "mean_base": 2.0323,
+        "mean_v2": 2.3597,
+        "delta": 0.3274,
+        "p_v2_vs_base": 0.0,
+        "v2_wins": true,
+        "max_copy_rate": 0.2,
+        "mean_copy_rate": 0.000668
+      },
+      {
+        "seed_xor": 4000099,
+        "mean_base": 2.0713,
+        "mean_v2": 2.314,
+        "delta": 0.2428,
+        "p_v2_vs_base": 0.0,
+        "v2_wins": true,
+        "max_copy_rate": 0.2,
+        "mean_copy_rate": 0.000223
+      }
+    ],
+    "v2_wins_seed_count": 5,
+    "n_seed_runs": 5,
+    "max_copy_rate": 0.2,
+    "mean_copy_rate_across_seeds": 0.000401,
+    "copy_ok": false,
+    "note": "V2 우위 5/5 시드, max_copy=0.2."
+  },
+  "final_go": "TRANSPLANT_HOLD",
+  "final_note": "STEP3 미통과 — 이식 보류. F1_BASE 유지.",
+  "all_pass": false,
+  "six_before": {
+    "fusion": 6015,
+    "hyena": 6010,
+    "llm": 6011,
+    "lstm": 6015,
+    "markov": 6010,
+    "stat": 6015
+  },
+  "six_after": {
+    "fusion": 6015,
+    "hyena": 6010,
+    "llm": 6011,
+    "lstm": 6015,
+    "markov": 6010,
+    "stat": 6015
+  },
+  "lead1_before": 5565,
+  "lead1_after": 5565,
+  "regression_ok": true
+}

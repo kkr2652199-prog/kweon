@@ -1,0 +1,848 @@
+{
+  "step1": {
+    "global_avg_winner": 8.558,
+    "analysis_draws": 1206,
+    "all_numbers": [
+      {
+        "number": 1,
+        "appear_count": 167,
+        "avg_winner": 8.7665,
+        "deviation": 0.2084
+      },
+      {
+        "number": 2,
+        "appear_count": 152,
+        "avg_winner": 8.1645,
+        "deviation": -0.3936
+      },
+      {
+        "number": 3,
+        "appear_count": 169,
+        "avg_winner": 8.9527,
+        "deviation": 0.3946
+      },
+      {
+        "number": 4,
+        "appear_count": 157,
+        "avg_winner": 8.7325,
+        "deviation": 0.1744
+      },
+      {
+        "number": 5,
+        "appear_count": 152,
+        "avg_winner": 8.7697,
+        "deviation": 0.2117
+      },
+      {
+        "number": 6,
+        "appear_count": 163,
+        "avg_winner": 8.7607,
+        "deviation": 0.2027
+      },
+      {
+        "number": 7,
+        "appear_count": 167,
+        "avg_winner": 9.2036,
+        "deviation": 0.6455
+      },
+      {
+        "number": 8,
+        "appear_count": 154,
+        "avg_winner": 8.8312,
+        "deviation": 0.2731
+      },
+      {
+        "number": 9,
+        "appear_count": 131,
+        "avg_winner": 9.3817,
+        "deviation": 0.8236
+      },
+      {
+        "number": 10,
+        "appear_count": 160,
+        "avg_winner": 8.7063,
+        "deviation": 0.1482
+      },
+      {
+        "number": 11,
+        "appear_count": 164,
+        "avg_winner": 8.5671,
+        "deviation": 0.009
+      },
+      {
+        "number": 12,
+        "appear_count": 174,
+        "avg_winner": 9.7586,
+        "deviation": 1.2006
+      },
+      {
+        "number": 13,
+        "appear_count": 173,
+        "avg_winner": 9.0,
+        "deviation": 0.442
+      },
+      {
+        "number": 14,
+        "appear_count": 168,
+        "avg_winner": 7.9464,
+        "deviation": -0.6116
+      },
+      {
+        "number": 15,
+        "appear_count": 167,
+        "avg_winner": 8.1257,
+        "deviation": -0.4323
+      },
+      {
+        "number": 16,
+        "appear_count": 161,
+        "avg_winner": 9.0683,
+        "deviation": 0.5103
+      },
+      {
+        "number": 17,
+        "appear_count": 168,
+        "avg_winner": 8.7738,
+        "deviation": 0.2158
+      },
+      {
+        "number": 18,
+        "appear_count": 171,
+        "avg_winner": 8.6959,
+        "deviation": 0.1379
+      },
+      {
+        "number": 19,
+        "appear_count": 165,
+        "avg_winner": 8.697,
+        "deviation": 0.1389
+      },
+      {
+        "number": 20,
+        "appear_count": 167,
+        "avg_winner": 8.3234,
+        "deviation": -0.2347
+      },
+      {
+        "number": 21,
+        "appear_count": 165,
+        "avg_winner": 8.2121,
+        "deviation": -0.3459
+      },
+      {
+        "number": 22,
+        "appear_count": 141,
+        "avg_winner": 8.2979,
+        "deviation": -0.2602
+      },
+      {
+        "number": 23,
+        "appear_count": 143,
+        "avg_winner": 8.1259,
+        "deviation": -0.4322
+      },
+      {
+        "number": 24,
+        "appear_count": 163,
+        "avg_winner": 8.4601,
+        "deviation": -0.0979
+      },
+      {
+        "number": 25,
+        "appear_count": 148,
+        "avg_winner": 7.9054,
+        "deviation": -0.6526
+      },
+      {
+        "number": 26,
+        "appear_count": 163,
+        "avg_winner": 8.1288,
+        "deviation": -0.4292
+      },
+      {
+        "number": 27,
+        "appear_count": 178,
+        "avg_winner": 8.5674,
+        "deviation": 0.0094
+      },
+      {
+        "number": 28,
+        "appear_count": 154,
+        "avg_winner": 8.7792,
+        "deviation": 0.2212
+      },
+      {
+        "number": 29,
+        "appear_count": 148,
+        "avg_winner": 8.6014,
+        "deviation": 0.0433
+      },
+      {
+        "number": 30,
+        "appear_count": 155,
+        "avg_winner": 8.2129,
+        "deviation": -0.3451
+      },
+      {
+        "number": 31,
+        "appear_count": 164,
+        "avg_winner": 8.2988,
+        "deviation": -0.2593
+      },
+      {
+        "number": 32,
+        "appear_count": 141,
+        "avg_winner": 8.922,
+        "deviation": 0.3639
+      },
+      {
+        "number": 33,
+        "appear_count": 170,
+        "avg_winner": 9.2706,
+        "deviation": 0.7125
+      },
+      {
+        "number": 34,
+        "appear_count": 180,
+        "avg_winner": 8.6611,
+        "deviation": 0.1031
+      },
+      {
+        "number": 35,
+        "appear_count": 159,
+        "avg_winner": 8.5346,
+        "deviation": -0.0235
+      },
+      {
+        "number": 36,
+        "appear_count": 160,
+        "avg_winner": 8.25,
+        "deviation": -0.308
+      },
+      {
+        "number": 37,
+        "appear_count": 167,
+        "avg_winner": 8.0838,
+        "deviation": -0.4742
+      },
+      {
+        "number": 38,
+        "appear_count": 165,
+        "avg_winner": 8.9091,
+        "deviation": 0.351
+      },
+      {
+        "number": 39,
+        "appear_count": 164,
+        "avg_winner": 9.0488,
+        "deviation": 0.4907
+      },
+      {
+        "number": 40,
+        "appear_count": 168,
+        "avg_winner": 7.6607,
+        "deviation": -0.8973
+      },
+      {
+        "number": 41,
+        "appear_count": 145,
+        "avg_winner": 7.9034,
+        "deviation": -0.6546
+      },
+      {
+        "number": 42,
+        "appear_count": 150,
+        "avg_winner": 8.0467,
+        "deviation": -0.5114
+      },
+      {
+        "number": 43,
+        "appear_count": 161,
+        "avg_winner": 7.7578,
+        "deviation": -0.8003
+      },
+      {
+        "number": 44,
+        "appear_count": 160,
+        "avg_winner": 8.5312,
+        "deviation": -0.0268
+      },
+      {
+        "number": 45,
+        "appear_count": 174,
+        "avg_winner": 8.5402,
+        "deviation": -0.0178
+      }
+    ],
+    "top_by_avg_winner": [
+      {
+        "number": 12,
+        "appear_count": 174,
+        "avg_winner": 9.7586,
+        "deviation": 1.2006
+      },
+      {
+        "number": 9,
+        "appear_count": 131,
+        "avg_winner": 9.3817,
+        "deviation": 0.8236
+      },
+      {
+        "number": 33,
+        "appear_count": 170,
+        "avg_winner": 9.2706,
+        "deviation": 0.7125
+      },
+      {
+        "number": 7,
+        "appear_count": 167,
+        "avg_winner": 9.2036,
+        "deviation": 0.6455
+      },
+      {
+        "number": 16,
+        "appear_count": 161,
+        "avg_winner": 9.0683,
+        "deviation": 0.5103
+      },
+      {
+        "number": 39,
+        "appear_count": 164,
+        "avg_winner": 9.0488,
+        "deviation": 0.4907
+      },
+      {
+        "number": 13,
+        "appear_count": 173,
+        "avg_winner": 9.0,
+        "deviation": 0.442
+      },
+      {
+        "number": 3,
+        "appear_count": 169,
+        "avg_winner": 8.9527,
+        "deviation": 0.3946
+      },
+      {
+        "number": 32,
+        "appear_count": 141,
+        "avg_winner": 8.922,
+        "deviation": 0.3639
+      },
+      {
+        "number": 38,
+        "appear_count": 165,
+        "avg_winner": 8.9091,
+        "deviation": 0.351
+      },
+      {
+        "number": 8,
+        "appear_count": 154,
+        "avg_winner": 8.8312,
+        "deviation": 0.2731
+      },
+      {
+        "number": 28,
+        "appear_count": 154,
+        "avg_winner": 8.7792,
+        "deviation": 0.2212
+      },
+      {
+        "number": 17,
+        "appear_count": 168,
+        "avg_winner": 8.7738,
+        "deviation": 0.2158
+      },
+      {
+        "number": 5,
+        "appear_count": 152,
+        "avg_winner": 8.7697,
+        "deviation": 0.2117
+      },
+      {
+        "number": 1,
+        "appear_count": 167,
+        "avg_winner": 8.7665,
+        "deviation": 0.2084
+      }
+    ],
+    "bottom_by_avg_winner": [
+      {
+        "number": 22,
+        "appear_count": 141,
+        "avg_winner": 8.2979,
+        "deviation": -0.2602
+      },
+      {
+        "number": 36,
+        "appear_count": 160,
+        "avg_winner": 8.25,
+        "deviation": -0.308
+      },
+      {
+        "number": 30,
+        "appear_count": 155,
+        "avg_winner": 8.2129,
+        "deviation": -0.3451
+      },
+      {
+        "number": 21,
+        "appear_count": 165,
+        "avg_winner": 8.2121,
+        "deviation": -0.3459
+      },
+      {
+        "number": 2,
+        "appear_count": 152,
+        "avg_winner": 8.1645,
+        "deviation": -0.3936
+      },
+      {
+        "number": 26,
+        "appear_count": 163,
+        "avg_winner": 8.1288,
+        "deviation": -0.4292
+      },
+      {
+        "number": 23,
+        "appear_count": 143,
+        "avg_winner": 8.1259,
+        "deviation": -0.4322
+      },
+      {
+        "number": 15,
+        "appear_count": 167,
+        "avg_winner": 8.1257,
+        "deviation": -0.4323
+      },
+      {
+        "number": 37,
+        "appear_count": 167,
+        "avg_winner": 8.0838,
+        "deviation": -0.4742
+      },
+      {
+        "number": 42,
+        "appear_count": 150,
+        "avg_winner": 8.0467,
+        "deviation": -0.5114
+      },
+      {
+        "number": 14,
+        "appear_count": 168,
+        "avg_winner": 7.9464,
+        "deviation": -0.6116
+      },
+      {
+        "number": 25,
+        "appear_count": 148,
+        "avg_winner": 7.9054,
+        "deviation": -0.6526
+      },
+      {
+        "number": 41,
+        "appear_count": 145,
+        "avg_winner": 7.9034,
+        "deviation": -0.6546
+      },
+      {
+        "number": 43,
+        "appear_count": 161,
+        "avg_winner": 7.7578,
+        "deviation": -0.8003
+      },
+      {
+        "number": 40,
+        "appear_count": 168,
+        "avg_winner": 7.6607,
+        "deviation": -0.8973
+      }
+    ],
+    "birthday_1_31_avg": 8.607,
+    "high_32_45_avg": 8.4371,
+    "birthday_minus_high": 0.1698
+  },
+  "step2": {
+    "eligible_pairs": 990,
+    "total_possible_pairs": 990,
+    "min_appear_threshold": 5,
+    "top20_popular_pairs": [
+      {
+        "pair": "8-16",
+        "a": 8,
+        "b": 16,
+        "appear_count": 15,
+        "pair_avg_winner": 13.6
+      },
+      {
+        "pair": "5-33",
+        "a": 5,
+        "b": 33,
+        "appear_count": 12,
+        "pair_avg_winner": 13.0833
+      },
+      {
+        "pair": "16-33",
+        "a": 16,
+        "b": 33,
+        "appear_count": 18,
+        "pair_avg_winner": 13.0
+      },
+      {
+        "pair": "6-12",
+        "a": 6,
+        "b": 12,
+        "appear_count": 22,
+        "pair_avg_winner": 12.6818
+      },
+      {
+        "pair": "17-39",
+        "a": 17,
+        "b": 39,
+        "appear_count": 22,
+        "pair_avg_winner": 12.6364
+      },
+      {
+        "pair": "8-28",
+        "a": 8,
+        "b": 28,
+        "appear_count": 16,
+        "pair_avg_winner": 12.5
+      },
+      {
+        "pair": "5-16",
+        "a": 5,
+        "b": 16,
+        "appear_count": 14,
+        "pair_avg_winner": 12.2143
+      },
+      {
+        "pair": "21-28",
+        "a": 21,
+        "b": 28,
+        "appear_count": 11,
+        "pair_avg_winner": 12.1818
+      },
+      {
+        "pair": "4-12",
+        "a": 4,
+        "b": 12,
+        "appear_count": 18,
+        "pair_avg_winner": 12.1667
+      },
+      {
+        "pair": "5-28",
+        "a": 5,
+        "b": 28,
+        "appear_count": 14,
+        "pair_avg_winner": 12.1429
+      },
+      {
+        "pair": "3-9",
+        "a": 3,
+        "b": 9,
+        "appear_count": 16,
+        "pair_avg_winner": 12.125
+      },
+      {
+        "pair": "16-28",
+        "a": 16,
+        "b": 28,
+        "appear_count": 20,
+        "pair_avg_winner": 12.1
+      },
+      {
+        "pair": "30-32",
+        "a": 30,
+        "b": 32,
+        "appear_count": 14,
+        "pair_avg_winner": 12.0714
+      },
+      {
+        "pair": "5-8",
+        "a": 5,
+        "b": 8,
+        "appear_count": 13,
+        "pair_avg_winner": 12.0
+      },
+      {
+        "pair": "7-17",
+        "a": 7,
+        "b": 17,
+        "appear_count": 18,
+        "pair_avg_winner": 12.0
+      },
+      {
+        "pair": "3-6",
+        "a": 3,
+        "b": 6,
+        "appear_count": 17,
+        "pair_avg_winner": 11.8824
+      },
+      {
+        "pair": "1-5",
+        "a": 1,
+        "b": 5,
+        "appear_count": 18,
+        "pair_avg_winner": 11.8333
+      },
+      {
+        "pair": "4-17",
+        "a": 4,
+        "b": 17,
+        "appear_count": 19,
+        "pair_avg_winner": 11.6842
+      },
+      {
+        "pair": "7-11",
+        "a": 7,
+        "b": 11,
+        "appear_count": 19,
+        "pair_avg_winner": 11.6316
+      },
+      {
+        "pair": "1-39",
+        "a": 1,
+        "b": 39,
+        "appear_count": 17,
+        "pair_avg_winner": 11.5882
+      }
+    ],
+    "bottom20_unpopular_pairs": [
+      {
+        "pair": "4-21",
+        "a": 4,
+        "b": 21,
+        "appear_count": 11,
+        "pair_avg_winner": 6.3636
+      },
+      {
+        "pair": "40-41",
+        "a": 40,
+        "b": 41,
+        "appear_count": 21,
+        "pair_avg_winner": 6.3333
+      },
+      {
+        "pair": "11-43",
+        "a": 11,
+        "b": 43,
+        "appear_count": 15,
+        "pair_avg_winner": 6.3333
+      },
+      {
+        "pair": "21-23",
+        "a": 21,
+        "b": 23,
+        "appear_count": 12,
+        "pair_avg_winner": 6.3333
+      },
+      {
+        "pair": "6-10",
+        "a": 6,
+        "b": 10,
+        "appear_count": 18,
+        "pair_avg_winner": 6.3333
+      },
+      {
+        "pair": "9-31",
+        "a": 9,
+        "b": 31,
+        "appear_count": 12,
+        "pair_avg_winner": 6.3333
+      },
+      {
+        "pair": "22-36",
+        "a": 22,
+        "b": 36,
+        "appear_count": 19,
+        "pair_avg_winner": 6.3158
+      },
+      {
+        "pair": "11-22",
+        "a": 11,
+        "b": 22,
+        "appear_count": 13,
+        "pair_avg_winner": 6.3077
+      },
+      {
+        "pair": "10-26",
+        "a": 10,
+        "b": 26,
+        "appear_count": 11,
+        "pair_avg_winner": 6.2727
+      },
+      {
+        "pair": "15-25",
+        "a": 15,
+        "b": 25,
+        "appear_count": 21,
+        "pair_avg_winner": 6.2381
+      },
+      {
+        "pair": "9-32",
+        "a": 9,
+        "b": 32,
+        "appear_count": 11,
+        "pair_avg_winner": 6.1818
+      },
+      {
+        "pair": "14-32",
+        "a": 14,
+        "b": 32,
+        "appear_count": 20,
+        "pair_avg_winner": 6.05
+      },
+      {
+        "pair": "27-34",
+        "a": 27,
+        "b": 34,
+        "appear_count": 16,
+        "pair_avg_winner": 5.9375
+      },
+      {
+        "pair": "17-41",
+        "a": 17,
+        "b": 41,
+        "appear_count": 12,
+        "pair_avg_winner": 5.9167
+      },
+      {
+        "pair": "20-23",
+        "a": 20,
+        "b": 23,
+        "appear_count": 19,
+        "pair_avg_winner": 5.8421
+      },
+      {
+        "pair": "22-23",
+        "a": 22,
+        "b": 23,
+        "appear_count": 11,
+        "pair_avg_winner": 5.8182
+      },
+      {
+        "pair": "28-35",
+        "a": 28,
+        "b": 35,
+        "appear_count": 11,
+        "pair_avg_winner": 5.7273
+      },
+      {
+        "pair": "35-42",
+        "a": 35,
+        "b": 42,
+        "appear_count": 14,
+        "pair_avg_winner": 5.7143
+      },
+      {
+        "pair": "27-31",
+        "a": 27,
+        "b": 31,
+        "appear_count": 16,
+        "pair_avg_winner": 5.625
+      },
+      {
+        "pair": "5-19",
+        "a": 5,
+        "b": 19,
+        "appear_count": 13,
+        "pair_avg_winner": 5.0769
+      }
+    ]
+  },
+  "step3_note": {
+    "appear_count_min": 131,
+    "appear_count_max": 180,
+    "unstable_threshold": 150,
+    "caveat_future": "과거 avg_winner가 미래에도 유지된다는 보장 없음",
+    "caveat_bias": "인기도는 인간 선택 편향 대리지표 — 번호 무작위성과 다를 수 있음"
+  },
+  "step4": {
+    "first_half": {
+      "draws": 598,
+      "global_avg": 6.1221,
+      "range": "1~612"
+    },
+    "second_half": {
+      "draws": 608,
+      "global_avg": 10.9539,
+      "range": "613~1225"
+    },
+    "number_avg_winner_spearman": 0.2602,
+    "number_deviation_spearman": 0.2602,
+    "common_pairs_for_stability": 974,
+    "pair_avg_winner_spearman_min3": 0.0336,
+    "first_half_top5": [
+      {
+        "number": 12,
+        "appear_count": 77,
+        "avg_winner": 7.1948,
+        "deviation": 1.0727
+      },
+      {
+        "number": 33,
+        "appear_count": 76,
+        "avg_winner": 6.9079,
+        "deviation": 0.7858
+      },
+      {
+        "number": 17,
+        "appear_count": 88,
+        "avg_winner": 6.7727,
+        "deviation": 0.6507
+      },
+      {
+        "number": 18,
+        "appear_count": 84,
+        "avg_winner": 6.6786,
+        "deviation": 0.5565
+      },
+      {
+        "number": 4,
+        "appear_count": 86,
+        "avg_winner": 6.6163,
+        "deviation": 0.4942
+      }
+    ],
+    "second_half_top5": [
+      {
+        "number": 39,
+        "appear_count": 85,
+        "avg_winner": 12.2,
+        "deviation": 1.2461
+      },
+      {
+        "number": 1,
+        "appear_count": 76,
+        "avg_winner": 12.0132,
+        "deviation": 1.0592
+      },
+      {
+        "number": 5,
+        "appear_count": 65,
+        "avg_winner": 11.9846,
+        "deviation": 1.0307
+      },
+      {
+        "number": 9,
+        "appear_count": 70,
+        "avg_winner": 11.8857,
+        "deviation": 0.9318
+      },
+      {
+        "number": 12,
+        "appear_count": 97,
+        "avg_winner": 11.7938,
+        "deviation": 0.8399
+      }
+    ]
+  },
+  "signal_compare": {
+    "number_avg_winner_min": 7.6607,
+    "number_avg_winner_max": 9.7586,
+    "number_avg_winner_spread": 2.0979,
+    "max_abs_deviation": 1.2006,
+    "combo_feature_max_abs_r_prior": 0.097
+  }
+}

@@ -1,0 +1,65 @@
+20260617_4군_전략X_전회차백테스트_기존뇌분리_정찰겸검증
+동생→커서 | 2026-06-17 | 정찰+백테스트 | 삭제 실행 없음 | 1~3군 간섭 0
+
+3파일 확인:
+✅ RULES_FIXED (R2/R13/R14)
+✅ STATUS_LATEST 기억99 → 기억100 갱신
+✅ CURSOR_RULES §2
+
+=== STEP1 기존 9뇌 의존성 정찰 (삭제 안 함) ===
+RAW DB (lotto4.db):
+- lotto_predictions_army4: 4550행, v13_% 만 (strategy_x 0행)
+  · v13_struct/seq/gap/diversity/ev/evolution/ensemble 각 650행
+- lotto_fullbacktest_army4: 4305행 (7뇌×615회차)
+- lotto_brain_weights_army4: 9행
+- lotto_evolution_trust_army4: 615행
+- lotto_draws: 1228 (공통 원천, 9뇌+전략X)
+
+코드 참조 (v13_% predictions/fullback):
+- v13_engine_v2.py: predict INSERT/DELETE v13_%
+- v13_routes.py: predict탭·hall·brain/status·tier-wins
+- evolution_brain.py: lotto_fullbacktest_army4 우선, predictions 폴백
+- diversity_brain.py: v13_ensemble 제출 이력
+- hyena_scavenger.py(ensemble용): v13_% predictions miss
+
+1~3군 참조: app/lotto·lotto2·lotto3 에 army4 테이블 참조 **0건**
+
+삭제 가능 여부 (판정만):
+| 대상 | predict/ensemble | 1~3군 | 판정 |
+|------|------------------|-------|------|
+| v13_% predictions | 탭 빈화→재predict 복구 | 무관 | 조건부 가능 |
+| fullbacktest_army4 | evolution 신뢰 약화 | 무관 | 조건부 가능 |
+| lotto_draws | 전체 파괴 | 공유 | **삭제 금지** |
+| strategy X 프로파일 | 무관 | 무관 | v13와 분리 |
+
+=== STEP2 era별 하이에나 백테스트 (cooccur_favor, R13) ===
+| era | 구간 | 평가회차 | 인기적합도(sum) | 적중 |
+|-----|------|----------|-----------------|------|
+| A | 1~87 | **0** | — | — |
+| B | 88~261 | 170 | **0.8868** | 0.7518 |
+| C | 262~1228 | 964 | **0.8388** | 0.7770 |
+| random(전체) | — | 1134 | 0.7992 | 0.8069 |
+
+※ era A: winner_cnt>0 학습 80회 미달(81회전 이전 유효 69회) → 평가 불가
+
+=== STEP3 데이터 누적 효과 ===
+| 구간 | n | 인기적합도 | 적중 |
+|------|---|-----------|------|
+| C 초기 262~600 | 336 | 0.8409 | 0.7839 |
+| C 후기 601~1228 | 628 | 0.8376 | 0.7732 |
+| Δ(후기-초기) | — | **-0.0033** | — |
+
+800+회차 trunc(학습≤600) vs full: 0.8323 vs 0.8350 (Δ=+0.0027, 미미)
+→ **데이터 누적 인기 강화 ❌** (오히려 era B>C, 후기 약간 하락)
+→ 적중은 전 구간 random(0.81) 전후 **무작위 수준** (R2)
+
+=== STEP4 종합 판정 ===
+- era별 분리: B가 인기 최고(0.8868), C는 0.8388 — 시대 뭉치면 왜곡
+- 누적 효과: 인기 개선 없음 (정직)
+- 9뇌 데이터 삭제: 1~3군 안전, predict는 재생성 필요 — **다음 지시서에서 별도**
+- 전략X(strategy_x_*) predictions 0행 → 9뇌 캐시와 완전 분리 확인
+
+R2: 당첨확률 향상 없음. era B 인기 높음≠미래 예측력.
+
+=== 다음 ===
+9뇌 캐시 삭제 여부 별도 지시 or UI 연결

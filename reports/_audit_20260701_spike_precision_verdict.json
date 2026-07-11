@@ -1,0 +1,340 @@
+{
+  "title": "20260701_1군5뇌_튀는번호_정밀도판정",
+  "k_monotonic": [
+    {
+      "k": 1,
+      "picks": 9736,
+      "wins": 598,
+      "win_rate": 0.0614,
+      "vs_random": -0.0719
+    },
+    {
+      "k": 2,
+      "picks": 30156,
+      "wins": 3052,
+      "win_rate": 0.1012,
+      "vs_random": -0.0321
+    },
+    {
+      "k": 3,
+      "picks": 43203,
+      "wins": 6684,
+      "win_rate": 0.1547,
+      "vs_random": 0.0214
+    },
+    {
+      "k": 4,
+      "picks": 34824,
+      "wins": 7700,
+      "win_rate": 0.2211,
+      "vs_random": 0.0878
+    },
+    {
+      "k": 5,
+      "picks": 13855,
+      "wins": 3895,
+      "win_rate": 0.2811,
+      "vs_random": 0.1478
+    }
+  ],
+  "step1": {
+    "periods": {
+      "A": {
+        "range": [
+          330,
+          629
+        ],
+        "brains": {
+          "stat": {
+            "spike_picks": 2125,
+            "spike_wins": 107,
+            "spike_prec": 0.0504,
+            "overall_prec": 0.1318,
+            "consensus_prec": 0.1702,
+            "p_spike_vs_random": 1.0,
+            "p_bonf_vs_random": 1.0,
+            "spike_beats_random": false,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          },
+          "markov": {
+            "spike_picks": 1504,
+            "spike_wins": 73,
+            "spike_prec": 0.0485,
+            "overall_prec": 0.1325,
+            "consensus_prec": 0.1638,
+            "p_spike_vs_random": 1.0,
+            "p_bonf_vs_random": 1.0,
+            "spike_beats_random": false,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          },
+          "llm": {
+            "spike_picks": 3266,
+            "spike_wins": 172,
+            "spike_prec": 0.0527,
+            "overall_prec": 0.1381,
+            "consensus_prec": 0.1884,
+            "p_spike_vs_random": 1.0,
+            "p_bonf_vs_random": 1.0,
+            "spike_beats_random": false,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          },
+          "lstm": {
+            "spike_picks": 1472,
+            "spike_wins": 282,
+            "spike_prec": 0.1916,
+            "overall_prec": 0.2502,
+            "consensus_prec": 0.2707,
+            "p_spike_vs_random": 0.0,
+            "p_bonf_vs_random": 0.0,
+            "spike_beats_random": true,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          },
+          "fusion": {
+            "spike_picks": 1608,
+            "spike_wins": 218,
+            "spike_prec": 0.1356,
+            "overall_prec": 0.2176,
+            "consensus_prec": 0.247,
+            "p_spike_vs_random": 0.41005,
+            "p_bonf_vs_random": 1.0,
+            "spike_beats_random": false,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          }
+        }
+      },
+      "B": {
+        "range": [
+          630,
+          929
+        ],
+        "brains": {
+          "stat": {
+            "spike_picks": 2123,
+            "spike_wins": 111,
+            "spike_prec": 0.0523,
+            "overall_prec": 0.1275,
+            "consensus_prec": 0.1628,
+            "p_spike_vs_random": 1.0,
+            "p_bonf_vs_random": 1.0,
+            "spike_beats_random": false,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          },
+          "markov": {
+            "spike_picks": 1550,
+            "spike_wins": 86,
+            "spike_prec": 0.0555,
+            "overall_prec": 0.1314,
+            "consensus_prec": 0.1607,
+            "p_spike_vs_random": 1.0,
+            "p_bonf_vs_random": 1.0,
+            "spike_beats_random": false,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          },
+          "llm": {
+            "spike_picks": 3251,
+            "spike_wins": 183,
+            "spike_prec": 0.0563,
+            "overall_prec": 0.1327,
+            "consensus_prec": 0.1772,
+            "p_spike_vs_random": 1.0,
+            "p_bonf_vs_random": 1.0,
+            "spike_beats_random": false,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          },
+          "lstm": {
+            "spike_picks": 1508,
+            "spike_wins": 289,
+            "spike_prec": 0.1916,
+            "overall_prec": 0.2476,
+            "consensus_prec": 0.2677,
+            "p_spike_vs_random": 0.0,
+            "p_bonf_vs_random": 0.0,
+            "spike_beats_random": true,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          },
+          "fusion": {
+            "spike_picks": 1561,
+            "spike_wins": 241,
+            "spike_prec": 0.1544,
+            "overall_prec": 0.2204,
+            "consensus_prec": 0.2431,
+            "p_spike_vs_random": 0.007978,
+            "p_bonf_vs_random": 0.119673,
+            "spike_beats_random": false,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          }
+        }
+      },
+      "C": {
+        "range": [
+          930,
+          1230
+        ],
+        "brains": {
+          "stat": {
+            "spike_picks": 2083,
+            "spike_wins": 107,
+            "spike_prec": 0.0514,
+            "overall_prec": 0.1339,
+            "consensus_prec": 0.1709,
+            "p_spike_vs_random": 1.0,
+            "p_bonf_vs_random": 1.0,
+            "spike_beats_random": false,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          },
+          "markov": {
+            "spike_picks": 1502,
+            "spike_wins": 81,
+            "spike_prec": 0.0539,
+            "overall_prec": 0.1332,
+            "consensus_prec": 0.1625,
+            "p_spike_vs_random": 1.0,
+            "p_bonf_vs_random": 1.0,
+            "spike_beats_random": false,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          },
+          "llm": {
+            "spike_picks": 3354,
+            "spike_wins": 174,
+            "spike_prec": 0.0519,
+            "overall_prec": 0.1311,
+            "consensus_prec": 0.1787,
+            "p_spike_vs_random": 1.0,
+            "p_bonf_vs_random": 1.0,
+            "spike_beats_random": false,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          },
+          "lstm": {
+            "spike_picks": 1509,
+            "spike_wins": 283,
+            "spike_prec": 0.1875,
+            "overall_prec": 0.246,
+            "consensus_prec": 0.2669,
+            "p_spike_vs_random": 0.0,
+            "p_bonf_vs_random": 0.0,
+            "spike_beats_random": true,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          },
+          "fusion": {
+            "spike_picks": 1606,
+            "spike_wins": 241,
+            "spike_prec": 0.1501,
+            "overall_prec": 0.2147,
+            "consensus_prec": 0.2372,
+            "p_spike_vs_random": 0.026466,
+            "p_bonf_vs_random": 0.396992,
+            "spike_beats_random": false,
+            "spike_below_own_overall": true,
+            "p_spike_below_overall": 0.0
+          }
+        }
+      }
+    },
+    "bonferroni_tests": 15
+  },
+  "repro": {
+    "beats_random_3of3": {
+      "stat": 0,
+      "markov": 0,
+      "llm": 0,
+      "lstm": 3,
+      "fusion": 0
+    },
+    "below_own_overall_3of3": {
+      "stat": 3,
+      "markov": 3,
+      "llm": 3,
+      "lstm": 3,
+      "fusion": 3
+    },
+    "any_brain_beats_random_and_own_overall": false
+  },
+  "step2": {
+    "A": {
+      "range": [
+        330,
+        629
+      ],
+      "n_draws": 300,
+      "mean_spike_count": 9.0,
+      "mean_spike_hits": 1.213,
+      "mean_random_exp": 1.2,
+      "spike_prec": 0.1349,
+      "mean_cons_count": 21.31,
+      "mean_cons_hits": 4.217,
+      "cons_prec": 0.1979,
+      "spike_beats_random": true
+    },
+    "B": {
+      "range": [
+        630,
+        929
+      ],
+      "n_draws": 300,
+      "mean_spike_count": 9.12,
+      "mean_spike_hits": 1.377,
+      "mean_random_exp": 1.216,
+      "spike_prec": 0.1509,
+      "mean_cons_count": 21.58,
+      "mean_cons_hits": 4.147,
+      "cons_prec": 0.1922,
+      "spike_beats_random": true
+    },
+    "C": {
+      "range": [
+        930,
+        1230
+      ],
+      "n_draws": 301,
+      "mean_spike_count": 9.05,
+      "mean_spike_hits": 1.282,
+      "mean_random_exp": 1.206,
+      "spike_prec": 0.1418,
+      "mean_cons_count": 21.67,
+      "mean_cons_hits": 4.196,
+      "cons_prec": 0.1937,
+      "spike_beats_random": true
+    }
+  },
+  "verdict": {
+    "k_win_rate_increasing": true,
+    "spike_below_random_globally": true,
+    "real_spike_skill_exists": false,
+    "all_brains_spike_degrade": true,
+    "go": "NO-GO",
+    "final": "🔴 R2 정직 — 형의 '튀는 번호 발굴' 이론 데이터상 기각. (1) k↑일수록 당첨확률↑ 단조성(k=1:0.0614, k=5:0.2811) — 희소 번호(k=1~2)는 랜덤 미만. (2) 모든 뇌에서 spike 정밀도 < 자기 overall < consensus — spike는 그 뇌의 '약한 픽'. (3) lstm/fusion의 spike가 랜덤(13.3%) 넘는 건 spike 능력이 아니라 강뇌 품질 착시. → 튀는 번호는 사후 착시. 합의(consensus)가 당첨에 유리. 기존 CAP2 유지."
+  },
+  "six_before": {
+    "fusion": 6005,
+    "hyena": 6000,
+    "llm": 6001,
+    "lstm": 6005,
+    "markov": 6000,
+    "stat": 6005
+  },
+  "six_after": {
+    "fusion": 6005,
+    "hyena": 6000,
+    "llm": 6001,
+    "lstm": 6005,
+    "markov": 6000,
+    "stat": 6005
+  },
+  "lead1_before": 5555,
+  "lead1_after": 5555,
+  "regression_ok": true
+}

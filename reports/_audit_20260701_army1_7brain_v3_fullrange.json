@@ -1,0 +1,307 @@
+{
+  "title": "20260701_1군7뇌v3_전구간확장검증_이식준비",
+  "date": "2026-07-01",
+  "mode": "READ_ONLY",
+  "army1_modified": false,
+  "db_writes": 0,
+  "eval_range": [
+    88,
+    1230
+  ],
+  "n_eval_full": 1111,
+  "step0_recon": {
+    "db_path": "D:\\MONEY lol\\My_Library\\data\\lotto.db",
+    "table": "lotto_predictions",
+    "schema_summary": {
+      "key_columns": [
+        "target_draw_no (회차)",
+        "brain_tag (뇌 식별: stat/markov/llm/lstm/fusion/hyena)",
+        "method (한글 표시명)",
+        "num1~num6 (세트 6번호)",
+        "confidence (세트 신뢰도)",
+        "matched_count (역대전적: 당첨 적중수, -1=미확정)",
+        "bonus_matched (보너스 적중 0/1)"
+      ],
+      "sets_per_brain_per_draw": 5,
+      "total_sets_per_draw": 30,
+      "ordering": "ORDER BY brain_tag, id (audit 스크립트 기준)"
+    },
+    "six_brain_tags": [
+      "stat",
+      "markov",
+      "llm",
+      "lstm",
+      "fusion",
+      "hyena"
+    ],
+    "per_brain_stats": [
+      {
+        "brain_tag": "fusion",
+        "total_rows": 6005,
+        "draw_count": 1201,
+        "min_draw": 2,
+        "max_draw": 1230
+      },
+      {
+        "brain_tag": "hyena",
+        "total_rows": 6000,
+        "draw_count": 1200,
+        "min_draw": 3,
+        "max_draw": 1230
+      },
+      {
+        "brain_tag": "llm",
+        "total_rows": 6001,
+        "draw_count": 1201,
+        "min_draw": 2,
+        "max_draw": 1230
+      },
+      {
+        "brain_tag": "lstm",
+        "total_rows": 6005,
+        "draw_count": 1201,
+        "min_draw": 2,
+        "max_draw": 1230
+      },
+      {
+        "brain_tag": "markov",
+        "total_rows": 6000,
+        "draw_count": 1200,
+        "min_draw": 3,
+        "max_draw": 1230
+      },
+      {
+        "brain_tag": "stat",
+        "total_rows": 6005,
+        "draw_count": 1201,
+        "min_draw": 2,
+        "max_draw": 1230
+      }
+    ],
+    "example_draw_1000_sets_per_brain": {
+      "fusion": 5,
+      "hyena": 5,
+      "llm": 5,
+      "lstm": 5,
+      "markov": 5,
+      "stat": 5
+    },
+    "sample_row_fields": [
+      "id",
+      "target_draw_no",
+      "brain_tag",
+      "method",
+      "num1..num6",
+      "confidence",
+      "matched_count",
+      "bonus_matched",
+      "created_at"
+    ],
+    "app_source": "app/lotto/engine.py → INSERT lotto_predictions (6뇌 독립 저장)",
+    "audit_reader": "tools/_audit_army1_7brain_selection.py::_load_flat_sets()"
+  },
+  "step1_full_range": {
+    "n_eval": 1111,
+    "range": [
+      88,
+      1230
+    ],
+    "human_random_avg": 1.3796,
+    "sel4_avg": 2.3444,
+    "v3_avg": 2.2515,
+    "individual_best_avg": 3.5761,
+    "sel4_best_of_5": 2.9685,
+    "v3_best_of_5": 3.0243,
+    "sel4_hit6": 3,
+    "v3_hit6": 5,
+    "delta_avg_vs_sel4": -0.0929,
+    "big_win_pass": true,
+    "big_win_detail": {
+      "hit6_v3_ge_sel4": true,
+      "best_of_5_v3_ge_sel4": true
+    },
+    "label": "FULL"
+  },
+  "step1_sub_periods": [
+    {
+      "n_eval": 162,
+      "range": [
+        88,
+        278
+      ],
+      "human_random_avg": 1.3542,
+      "sel4_avg": 2.3543,
+      "v3_avg": 2.1506,
+      "individual_best_avg": 3.4815,
+      "sel4_best_of_5": 2.9815,
+      "v3_best_of_5": 2.9753,
+      "sel4_hit6": 0,
+      "v3_hit6": 0,
+      "delta_avg_vs_sel4": -0.2037,
+      "big_win_pass": false,
+      "big_win_detail": {
+        "hit6_v3_ge_sel4": true,
+        "best_of_5_v3_ge_sel4": false
+      },
+      "label": "S1"
+    },
+    {
+      "n_eval": 190,
+      "range": [
+        279,
+        469
+      ],
+      "human_random_avg": 1.3861,
+      "sel4_avg": 2.34,
+      "v3_avg": 2.2674,
+      "individual_best_avg": 3.6053,
+      "sel4_best_of_5": 2.9526,
+      "v3_best_of_5": 3.0421,
+      "sel4_hit6": 0,
+      "v3_hit6": 1,
+      "delta_avg_vs_sel4": -0.0726,
+      "big_win_pass": true,
+      "big_win_detail": {
+        "hit6_v3_ge_sel4": true,
+        "best_of_5_v3_ge_sel4": true
+      },
+      "label": "S2"
+    },
+    {
+      "n_eval": 190,
+      "range": [
+        470,
+        660
+      ],
+      "human_random_avg": 1.3866,
+      "sel4_avg": 2.3989,
+      "v3_avg": 2.3189,
+      "individual_best_avg": 3.6158,
+      "sel4_best_of_5": 3.0263,
+      "v3_best_of_5": 3.0947,
+      "sel4_hit6": 0,
+      "v3_hit6": 0,
+      "delta_avg_vs_sel4": -0.08,
+      "big_win_pass": true,
+      "big_win_detail": {
+        "hit6_v3_ge_sel4": true,
+        "best_of_5_v3_ge_sel4": true
+      },
+      "label": "S3"
+    },
+    {
+      "n_eval": 191,
+      "range": [
+        661,
+        851
+      ],
+      "human_random_avg": 1.4551,
+      "sel4_avg": 2.4848,
+      "v3_avg": 2.3853,
+      "individual_best_avg": 3.7277,
+      "sel4_best_of_5": 3.1466,
+      "v3_best_of_5": 3.1518,
+      "sel4_hit6": 1,
+      "v3_hit6": 2,
+      "delta_avg_vs_sel4": -0.0995,
+      "big_win_pass": true,
+      "big_win_detail": {
+        "hit6_v3_ge_sel4": true,
+        "best_of_5_v3_ge_sel4": true
+      },
+      "label": "S4"
+    },
+    {
+      "n_eval": 190,
+      "range": [
+        852,
+        1042
+      ],
+      "human_random_avg": 1.3385,
+      "sel4_avg": 2.2095,
+      "v3_avg": 2.1432,
+      "individual_best_avg": 3.5158,
+      "sel4_best_of_5": 2.8053,
+      "v3_best_of_5": 2.9105,
+      "sel4_hit6": 1,
+      "v3_hit6": 1,
+      "delta_avg_vs_sel4": -0.0663,
+      "big_win_pass": true,
+      "big_win_detail": {
+        "hit6_v3_ge_sel4": true,
+        "best_of_5_v3_ge_sel4": true
+      },
+      "label": "S5"
+    },
+    {
+      "n_eval": 188,
+      "range": [
+        1043,
+        1230
+      ],
+      "human_random_avg": 1.3526,
+      "sel4_avg": 2.2787,
+      "v3_avg": 2.2277,
+      "individual_best_avg": 3.4947,
+      "sel4_best_of_5": 2.8989,
+      "v3_best_of_5": 2.9628,
+      "sel4_hit6": 1,
+      "v3_hit6": 1,
+      "delta_avg_vs_sel4": -0.0511,
+      "big_win_pass": true,
+      "big_win_detail": {
+        "hit6_v3_ge_sel4": true,
+        "best_of_5_v3_ge_sel4": true
+      },
+      "label": "S6"
+    }
+  ],
+  "step1_hr_stability": {
+    "seed_bases": [
+      8803,
+      9901,
+      11003,
+      12007,
+      13009
+    ],
+    "per_seed_mean_avg": {
+      "8803": 1.3796,
+      "9901": 1.3786,
+      "11003": 1.3799,
+      "12007": 1.3848,
+      "13009": 1.3809
+    },
+    "overall_mean": 1.3808,
+    "overall_stdev": 0.3305,
+    "default_hr_mean": 1.3796
+  },
+  "step2_judgment": {
+    "sub_periods_total": 6,
+    "sub_periods_big_win_pass": 5,
+    "majority_required": 4,
+    "majority_met": true,
+    "full_range_big_win_pass": true,
+    "signal_recognized": true,
+    "adopted_formula": "HYBRID_SEL4_V3",
+    "go_nogo": "GO-HYBRID",
+    "step2_verdict": "🟢 큰당첨 신호 인정 — 소구간 5/6 + 전구간 통과. 7뇌=하이브리드(SEL4 기본 + v3 기여도 큰당첨 세트) 또는 v3 단독(형 선택)."
+  },
+  "step3_adopted": "HYBRID_SEL4_V3",
+  "step4_migration": {
+    "brain_tag_candidate": "consensus_hybrid",
+    "display_name": "합의체+기여",
+    "formula": "기본 5세트=SEL4(균등 표합). 화면에 v3 기여도 상위 세트 병렬 표시(형 비교용). 또는 5세트 중 3=SEL4+2=v3 혼합(형 GO 시 세부 결정).",
+    "new_file": "app/lotto/predict_brain7.py (6뇌 lotto_predictions READ-ONLY)",
+    "engine_hook": "run_prediction() 마지막 1줄 — 6뇌 로직 무변경",
+    "routes": "brain_tag 필터에 consensus|consensus_hybrid 추가",
+    "frontend": "lotto.js 7번째 슬롯 — 🥇~5️⃣ + matched_count 역대전적",
+    "ui_position": "6뇌 블록 바로 아래",
+    "constraints": [
+      "6뇌 predict_*.py 무변경",
+      "번호 재조합 금지",
+      "walk-forward"
+    ],
+    "code_start": "형 별도 GO 후"
+  },
+  "prior_3period_v3": "hit6 v3=4 sel4=3, best-of-5 v3>sel4, avg v3<sel4"
+}

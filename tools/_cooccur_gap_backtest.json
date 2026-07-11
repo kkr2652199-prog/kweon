@@ -1,0 +1,43 @@
+{
+  "range": "6~1225",
+  "draws_tested": 1220,
+  "sets_per_draw": 5,
+  "baseline_theory": 0.7894,
+  "cooccur": {
+    "n_predictions": 6100,
+    "avg_matched": 0.7931,
+    "std_matched": 0.7762,
+    "max_matched": 4,
+    "hit4_plus": 6,
+    "hit6": 0,
+    "delta_vs_baseline": 0.0037
+  },
+  "gap": {
+    "n_predictions": 6100,
+    "avg_matched": 0.7923,
+    "std_matched": 0.7684,
+    "max_matched": 4,
+    "hit4_plus": 5,
+    "hit6": 0,
+    "delta_vs_baseline": 0.0029
+  },
+  "random": {
+    "n_predictions": 6100,
+    "avg_matched": 0.8107,
+    "std_matched": 0.7937,
+    "max_matched": 5,
+    "hit4_plus": 9,
+    "hit6": 0,
+    "delta_vs_baseline": 0.0213
+  },
+  "cooccur_minus_random": -0.0176,
+  "gap_minus_random": -0.0184,
+  "cooccur_minus_baseline": 0.0037,
+  "gap_minus_baseline": 0.0029,
+  "random_minus_baseline": 0.0213,
+  "verdict": {
+    "cooccur": "❌ 쌍 동반출현: 패턴 존재하나 예측력 없음 (무작위 수준, Δrandom=-0.0176)",
+    "gap": "❌ 출현간격: 패턴 존재하나 예측력 없음 (무작위 수준, Δrandom=-0.0184)",
+    "threshold": 0.05
+  }
+}

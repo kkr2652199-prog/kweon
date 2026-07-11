@@ -1,0 +1,38 @@
+20260617_4군_전략X_하이에나_가중치재튜닝_검증
+동생→커서 | 2026-06-17 | 4군 패치 | 1~3군 간섭 0
+
+3파일 확인:
+✅ RULES_FIXED (R2/R13/R14)
+✅ STATUS_LATEST 기억98 → 기억99 갱신
+✅ CURSOR_RULES §2 1~3군 수정금지
+
+=== STEP1 가중치 재튜닝 ===
+수정: hyena_coordinator_v13.py
+- apply_trust_weight_scheme() 신규
+- 3안: equal(균등) / cooccur_favor(우대) / top2_focus(상위2집중)
+- cooccur_favor: cooccur×2.8, coordinator×1.5, shape×0.25 보완만
+- DEFAULT_WEIGHT_SCHEME → cooccur_favor 확정
+
+=== STEP2 비교 백테스트 (884회, era_C walk-forward) ===
+| 스킴 | 인기적합도(sum) | 적중 | cooccur 0.8610 초과 |
+|------|-----------------|------|---------------------|
+| equal | 0.8537 | 0.7839 | ❌ |
+| cooccur_favor | **0.8679** | 0.7916 | ✅ (+0.0069) |
+| top2_focus | 0.8674 | 0.7930 | ✅ (+0.0064) |
+| cooccur 단독(기준) | 0.8610 | 0.8023 | — |
+| random | 0.7988 | 0.8100 | — |
+
+=== STEP3 종합 판정 ===
+(1) cooccur 0.8610 초과 안: ✅ cooccur_favor(0.8679), top2_focus(0.8674)
+(2) 적중 무작위 수준: ✅ (0.7916 < random 0.8100, R2 정직)
+→ **하이에나 메인 채택 + 가중치 cooccur_favor 확정**
+
+R2: 인기적합도 우위는 조합기 성격. 6개 적중·당첨확률 향상 보장 없음.
+적중은 cooccur 단독(0.8023)보다 낮음 — 메인=인기영역 조합, 적중은 무작위 수준.
+
+=== 변경 파일 ===
+수정: hyena_coordinator_v13.py (스킴+default)
+신규: run_strategy_x_hyena_weight_tuning.py, _strategy_x_hyena_weight_tuning.json
+
+=== 다음 ===
+전략 X UI 연결

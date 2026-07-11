@@ -1,0 +1,935 @@
+{
+  "timestamp": "2026-07-09T22:00:39",
+  "step0_backup": {
+    "rows": 385,
+    "table": "lotto_predictions_army2_backup_20260704",
+    "json": "d:\\3kweon\\reports\\_backup_20260704_army2_preds_1221_1231.json"
+  },
+  "step1_delete": {
+    "deleted_rows": 385
+  },
+  "delete_range_before": {
+    "v11_combo": 55,
+    "v11_fusion": 55,
+    "v11_hyena": 55,
+    "v11_lstm": 55,
+    "v11_markov": 55,
+    "v11_snake": 55,
+    "v11_stat": 55
+  },
+  "step2_walkforward": [
+    {
+      "draw": 1221,
+      "max_draw_no_prediction_data": 1220,
+      "training_count": 1078,
+      "training_max_draw_no": 1220,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v11_stat": {
+          "w": 1.9248,
+          "ld": 1220
+        },
+        "v11_markov": {
+          "w": 1.29,
+          "ld": 1220
+        },
+        "v11_combo": {
+          "w": 3.2858,
+          "ld": 1220
+        },
+        "v11_lstm": {
+          "w": 3.5673,
+          "ld": 1220
+        },
+        "v11_fusion": {
+          "w": 3.3417,
+          "ld": 1220
+        },
+        "v11_hyena": {
+          "w": 3.8183,
+          "ld": 1220
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v11_sets": 35,
+      "total_sets": 35,
+      "scored": true,
+      "elapsed_sec": 3.98,
+      "by_brain": {
+        "v11_combo": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_fusion": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_hyena": {
+          "sets": 5,
+          "best_matched": 4
+        },
+        "v11_lstm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_markov": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_snake": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_stat": {
+          "sets": 5,
+          "best_matched": 1
+        }
+      },
+      "pool_best": 4,
+      "v11_brains": [
+        "v11_stat",
+        "v11_markov",
+        "v11_combo",
+        "v11_lstm",
+        "v11_fusion",
+        "v11_hyena"
+      ]
+    },
+    {
+      "draw": 1222,
+      "max_draw_no_prediction_data": 1221,
+      "training_count": 1079,
+      "training_max_draw_no": 1221,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v11_stat": {
+          "w": 1.9222,
+          "ld": 1221
+        },
+        "v11_markov": {
+          "w": 1.29,
+          "ld": 1221
+        },
+        "v11_combo": {
+          "w": 3.2771,
+          "ld": 1221
+        },
+        "v11_lstm": {
+          "w": 3.596,
+          "ld": 1221
+        },
+        "v11_fusion": {
+          "w": 3.3506,
+          "ld": 1221
+        },
+        "v11_hyena": {
+          "w": 3.849,
+          "ld": 1221
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v11_sets": 35,
+      "total_sets": 35,
+      "scored": true,
+      "elapsed_sec": 0.62,
+      "by_brain": {
+        "v11_combo": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_hyena": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_lstm": {
+          "sets": 5,
+          "best_matched": 4
+        },
+        "v11_markov": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v11_snake": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 4,
+      "v11_brains": [
+        "v11_stat",
+        "v11_markov",
+        "v11_combo",
+        "v11_lstm",
+        "v11_fusion",
+        "v11_hyena"
+      ]
+    },
+    {
+      "draw": 1223,
+      "max_draw_no_prediction_data": 1222,
+      "training_count": 1080,
+      "training_max_draw_no": 1222,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v11_stat": {
+          "w": 1.9196,
+          "ld": 1222
+        },
+        "v11_markov": {
+          "w": 1.29,
+          "ld": 1222
+        },
+        "v11_combo": {
+          "w": 3.2902,
+          "ld": 1222
+        },
+        "v11_lstm": {
+          "w": 3.5864,
+          "ld": 1222
+        },
+        "v11_fusion": {
+          "w": 3.3551,
+          "ld": 1222
+        },
+        "v11_hyena": {
+          "w": 3.849,
+          "ld": 1222
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v11_sets": 35,
+      "total_sets": 35,
+      "scored": true,
+      "elapsed_sec": 0.56,
+      "by_brain": {
+        "v11_combo": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v11_fusion": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_hyena": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_lstm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_markov": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_snake": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_stat": {
+          "sets": 5,
+          "best_matched": 1
+        }
+      },
+      "pool_best": 3,
+      "v11_brains": [
+        "v11_stat",
+        "v11_markov",
+        "v11_combo",
+        "v11_lstm",
+        "v11_fusion",
+        "v11_hyena"
+      ]
+    },
+    {
+      "draw": 1224,
+      "max_draw_no_prediction_data": 1223,
+      "training_count": 1081,
+      "training_max_draw_no": 1223,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v11_stat": {
+          "w": 1.9196,
+          "ld": 1223
+        },
+        "v11_markov": {
+          "w": 1.2952,
+          "ld": 1223
+        },
+        "v11_combo": {
+          "w": 3.2771,
+          "ld": 1223
+        },
+        "v11_lstm": {
+          "w": 3.6104,
+          "ld": 1223
+        },
+        "v11_fusion": {
+          "w": 3.382,
+          "ld": 1223
+        },
+        "v11_hyena": {
+          "w": 3.8747,
+          "ld": 1223
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v11_sets": 35,
+      "total_sets": 35,
+      "scored": true,
+      "elapsed_sec": 0.73,
+      "by_brain": {
+        "v11_combo": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_fusion": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_hyena": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_lstm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_markov": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v11_snake": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_stat": {
+          "sets": 5,
+          "best_matched": 1
+        }
+      },
+      "pool_best": 3,
+      "v11_brains": [
+        "v11_stat",
+        "v11_markov",
+        "v11_combo",
+        "v11_lstm",
+        "v11_fusion",
+        "v11_hyena"
+      ]
+    },
+    {
+      "draw": 1225,
+      "max_draw_no_prediction_data": 1224,
+      "training_count": 1081,
+      "training_max_draw_no": 1224,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v11_stat": {
+          "w": 1.9248,
+          "ld": 1224
+        },
+        "v11_markov": {
+          "w": 1.2969,
+          "ld": 1224
+        },
+        "v11_combo": {
+          "w": 3.2815,
+          "ld": 1224
+        },
+        "v11_lstm": {
+          "w": 3.6104,
+          "ld": 1224
+        },
+        "v11_fusion": {
+          "w": 3.382,
+          "ld": 1224
+        },
+        "v11_hyena": {
+          "w": 3.8955,
+          "ld": 1224
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v11_sets": 35,
+      "total_sets": 35,
+      "scored": true,
+      "elapsed_sec": 0.74,
+      "by_brain": {
+        "v11_combo": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_hyena": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_lstm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_markov": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v11_snake": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 3,
+      "v11_brains": [
+        "v11_stat",
+        "v11_markov",
+        "v11_combo",
+        "v11_lstm",
+        "v11_fusion",
+        "v11_hyena"
+      ]
+    },
+    {
+      "draw": 1226,
+      "max_draw_no_prediction_data": 1225,
+      "training_count": 1082,
+      "training_max_draw_no": 1225,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v11_stat": {
+          "w": 1.9248,
+          "ld": 1225
+        },
+        "v11_markov": {
+          "w": 1.2935,
+          "ld": 1225
+        },
+        "v11_combo": {
+          "w": 3.2902,
+          "ld": 1225
+        },
+        "v11_lstm": {
+          "w": 3.6056,
+          "ld": 1225
+        },
+        "v11_fusion": {
+          "w": 3.3685,
+          "ld": 1225
+        },
+        "v11_hyena": {
+          "w": 3.8903,
+          "ld": 1225
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v11_sets": 35,
+      "total_sets": 35,
+      "scored": true,
+      "elapsed_sec": 0.78,
+      "by_brain": {
+        "v11_combo": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_fusion": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_hyena": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_lstm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_markov": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v11_snake": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 3,
+      "v11_brains": [
+        "v11_stat",
+        "v11_markov",
+        "v11_combo",
+        "v11_lstm",
+        "v11_fusion",
+        "v11_hyena"
+      ]
+    },
+    {
+      "draw": 1227,
+      "max_draw_no_prediction_data": 1226,
+      "training_count": 1083,
+      "training_max_draw_no": 1226,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v11_stat": {
+          "w": 1.9196,
+          "ld": 1226
+        },
+        "v11_markov": {
+          "w": 1.2866,
+          "ld": 1226
+        },
+        "v11_combo": {
+          "w": 3.2946,
+          "ld": 1226
+        },
+        "v11_lstm": {
+          "w": 3.5912,
+          "ld": 1226
+        },
+        "v11_fusion": {
+          "w": 3.373,
+          "ld": 1226
+        },
+        "v11_hyena": {
+          "w": 3.8903,
+          "ld": 1226
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v11_sets": 35,
+      "total_sets": 35,
+      "scored": true,
+      "elapsed_sec": 0.93,
+      "by_brain": {
+        "v11_combo": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_hyena": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v11_lstm": {
+          "sets": 5,
+          "best_matched": 0
+        },
+        "v11_markov": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_snake": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_stat": {
+          "sets": 5,
+          "best_matched": 3
+        }
+      },
+      "pool_best": 3,
+      "v11_brains": [
+        "v11_stat",
+        "v11_markov",
+        "v11_combo",
+        "v11_lstm",
+        "v11_fusion",
+        "v11_hyena"
+      ]
+    },
+    {
+      "draw": 1228,
+      "max_draw_no_prediction_data": 1227,
+      "training_count": 1084,
+      "training_max_draw_no": 1227,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v11_stat": {
+          "w": 1.9299,
+          "ld": 1227
+        },
+        "v11_markov": {
+          "w": 1.2918,
+          "ld": 1227
+        },
+        "v11_combo": {
+          "w": 3.3034,
+          "ld": 1227
+        },
+        "v11_lstm": {
+          "w": 3.5389,
+          "ld": 1227
+        },
+        "v11_fusion": {
+          "w": 3.3506,
+          "ld": 1227
+        },
+        "v11_hyena": {
+          "w": 3.8541,
+          "ld": 1227
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v11_sets": 35,
+      "total_sets": 35,
+      "scored": true,
+      "elapsed_sec": 0.65,
+      "by_brain": {
+        "v11_combo": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_fusion": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v11_hyena": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v11_lstm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_markov": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v11_snake": {
+          "sets": 5,
+          "best_matched": 0
+        },
+        "v11_stat": {
+          "sets": 5,
+          "best_matched": 3
+        }
+      },
+      "pool_best": 3,
+      "v11_brains": [
+        "v11_stat",
+        "v11_markov",
+        "v11_combo",
+        "v11_lstm",
+        "v11_fusion",
+        "v11_hyena"
+      ]
+    },
+    {
+      "draw": 1229,
+      "max_draw_no_prediction_data": 1228,
+      "training_count": 1084,
+      "training_max_draw_no": 1228,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v11_stat": {
+          "w": 1.935,
+          "ld": 1228
+        },
+        "v11_markov": {
+          "w": 1.29,
+          "ld": 1228
+        },
+        "v11_combo": {
+          "w": 3.299,
+          "ld": 1228
+        },
+        "v11_lstm": {
+          "w": 3.5201,
+          "ld": 1228
+        },
+        "v11_fusion": {
+          "w": 3.3195,
+          "ld": 1228
+        },
+        "v11_hyena": {
+          "w": 3.8234,
+          "ld": 1228
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v11_sets": 35,
+      "total_sets": 35,
+      "scored": true,
+      "elapsed_sec": 0.66,
+      "by_brain": {
+        "v11_combo": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_hyena": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_lstm": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v11_markov": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v11_snake": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 3,
+      "v11_brains": [
+        "v11_stat",
+        "v11_markov",
+        "v11_combo",
+        "v11_lstm",
+        "v11_fusion",
+        "v11_hyena"
+      ]
+    },
+    {
+      "draw": 1230,
+      "max_draw_no_prediction_data": 1229,
+      "training_count": 1085,
+      "training_max_draw_no": 1229,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v11_stat": {
+          "w": 1.9454,
+          "ld": 1229
+        },
+        "v11_markov": {
+          "w": 1.2883,
+          "ld": 1229
+        },
+        "v11_combo": {
+          "w": 3.3122,
+          "ld": 1229
+        },
+        "v11_lstm": {
+          "w": 3.4874,
+          "ld": 1229
+        },
+        "v11_fusion": {
+          "w": 3.2974,
+          "ld": 1229
+        },
+        "v11_hyena": {
+          "w": 3.8132,
+          "ld": 1229
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v11_sets": 35,
+      "total_sets": 35,
+      "scored": true,
+      "elapsed_sec": 0.75,
+      "by_brain": {
+        "v11_combo": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_hyena": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v11_lstm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_markov": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_snake": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 3,
+      "v11_brains": [
+        "v11_stat",
+        "v11_markov",
+        "v11_combo",
+        "v11_lstm",
+        "v11_fusion",
+        "v11_hyena"
+      ]
+    },
+    {
+      "draw": 1231,
+      "max_draw_no_prediction_data": 1230,
+      "training_count": 1086,
+      "training_max_draw_no": 1230,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v11_stat": {
+          "w": 1.9454,
+          "ld": 1230
+        },
+        "v11_markov": {
+          "w": 1.2883,
+          "ld": 1230
+        },
+        "v11_combo": {
+          "w": 3.3167,
+          "ld": 1230
+        },
+        "v11_lstm": {
+          "w": 3.4874,
+          "ld": 1230
+        },
+        "v11_fusion": {
+          "w": 3.2843,
+          "ld": 1230
+        },
+        "v11_hyena": {
+          "w": 3.8082,
+          "ld": 1230
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v11_sets": 35,
+      "total_sets": 35,
+      "scored": true,
+      "elapsed_sec": 0.65,
+      "by_brain": {
+        "v11_combo": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_fusion": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v11_hyena": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v11_lstm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_markov": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_snake": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v11_stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 2,
+      "v11_brains": [
+        "v11_stat",
+        "v11_markov",
+        "v11_combo",
+        "v11_lstm",
+        "v11_fusion",
+        "v11_hyena"
+      ]
+    }
+  ],
+  "step3_auto_1232": {
+    "draw_1232_exists": false,
+    "draw_1232_has_numbers": false,
+    "pred_1232_count_before": 0,
+    "path": "undrawn_wait",
+    "hook_weight": {
+      "updated": false,
+      "reason": "draw_not_scored",
+      "target_draw_no": 1232
+    },
+    "hook_predict": {
+      "generated": false,
+      "reason": "scored_draw_not_confirmed",
+      "scored_draw_no": 1232
+    },
+    "refresh_no_op_expected": true,
+    "pred_1232_count_after": 35,
+    "max_last_weight_draw": 1232,
+    "hook_predict_1232_from_1231": {
+      "generated": false,
+      "reason": "already_exists",
+      "target_draw_no": 1232,
+      "v11_sets": 35
+    },
+    "post_fix_note": "refresh_all_army_prediction_scores(1231) → 1232 35세트"
+  },
+  "step4_regression": {
+    "fp_1220_ok": true,
+    "fp_1210_ok": true,
+    "counts_le1220_before": 42500,
+    "counts_le1220_after": 42500,
+    "counts_le1220_ok": true,
+    "army1_before": {
+      "total": 53905,
+      "range_1221_1231": 485,
+      "pred_1232": 35
+    },
+    "army1_after": {
+      "total": 53905,
+      "range_1221_1231": 485,
+      "pred_1232": 35
+    },
+    "army1_ok": true
+  },
+  "new_range_counts": {
+    "v11_combo": 55,
+    "v11_fusion": 55,
+    "v11_hyena": 55,
+    "v11_lstm": 55,
+    "v11_markov": 55,
+    "v11_snake": 55,
+    "v11_stat": 55
+  },
+  "backup_vs_new_1231_identical": false,
+  "app_ok": true
+}

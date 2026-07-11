@@ -1,0 +1,517 @@
+{
+  "phase": "PHASE2",
+  "backfill_range": [
+    1222,
+    1231
+  ],
+  "weights_before": {
+    "hyena": {
+      "weight": 22.915189783707582,
+      "last_draw": 1221,
+      "updated_at": "2026-07-09 11:16:31"
+    },
+    "llm": {
+      "weight": 7.6132544272861535,
+      "last_draw": 1221,
+      "updated_at": "2026-07-09 11:16:31"
+    },
+    "lstm": {
+      "weight": 30.209220143790798,
+      "last_draw": 1221,
+      "updated_at": "2026-07-09 11:16:31"
+    },
+    "markov": {
+      "weight": 3.248521598248849,
+      "last_draw": 1221,
+      "updated_at": "2026-07-09 11:16:31"
+    },
+    "stat": {
+      "weight": 4.824297402415283,
+      "last_draw": 1221,
+      "updated_at": "2026-07-09 11:16:31"
+    }
+  },
+  "weights_after": {
+    "hyena": {
+      "weight": 22.915189783707582,
+      "last_draw": 1231,
+      "updated_at": "2026-07-09 11:17:37"
+    },
+    "llm": {
+      "weight": 7.6132544272861535,
+      "last_draw": 1231,
+      "updated_at": "2026-07-09 11:17:37"
+    },
+    "lstm": {
+      "weight": 30.209220143790798,
+      "last_draw": 1231,
+      "updated_at": "2026-07-09 11:17:37"
+    },
+    "markov": {
+      "weight": 3.248521598248849,
+      "last_draw": 1231,
+      "updated_at": "2026-07-09 11:17:37"
+    },
+    "stat": {
+      "weight": 4.824297402415283,
+      "last_draw": 1231,
+      "updated_at": "2026-07-09 11:17:37"
+    }
+  },
+  "backfill_log": [
+    {
+      "draw": 1222,
+      "updated": true,
+      "target_draw_no": 1222,
+      "scored_draws": 50,
+      "weights": {
+        "stat": 5.119542645998784,
+        "markov": 3.3274292205448637,
+        "llm": 7.705163833943298,
+        "lstm": 39.93076903863429,
+        "hyena": 32.401347129340365
+      },
+      "raw_avg_match": {
+        "stat": 0.816,
+        "markov": 0.796,
+        "llm": 0.748,
+        "lstm": 1.936,
+        "hyena": 2.24
+      },
+      "raw_avg_lottery_score": {
+        "stat": 0.072,
+        "markov": 0.164,
+        "llm": 0.072,
+        "lstm": 1.8,
+        "hyena": 2.364
+      },
+      "score_signals": {
+        "stat": 0.8183999999999999,
+        "markov": 0.8014666666666667,
+        "llm": 0.7504,
+        "lstm": 1.996,
+        "hyena": 2.3188000000000004
+      },
+      "weights_after": {
+        "hyena": 32.4013,
+        "llm": 7.7052,
+        "lstm": 39.9308,
+        "markov": 3.3274,
+        "stat": 5.1195
+      }
+    },
+    {
+      "draw": 1223,
+      "updated": true,
+      "target_draw_no": 1223,
+      "scored_draws": 50,
+      "weights": {
+        "stat": 5.181347243683486,
+        "markov": 3.287738689370602,
+        "llm": 7.798182797507116,
+        "lstm": 38.75063646469971,
+        "hyena": 31.443742602623143
+      },
+      "raw_avg_match": {
+        "stat": 0.824,
+        "markov": 0.788,
+        "llm": 0.756,
+        "lstm": 1.916,
+        "hyena": 2.22
+      },
+      "raw_avg_lottery_score": {
+        "stat": 0.072,
+        "markov": 0.164,
+        "llm": 0.072,
+        "lstm": 1.8,
+        "hyena": 2.364
+      },
+      "score_signals": {
+        "stat": 0.8263999999999999,
+        "markov": 0.7934666666666667,
+        "llm": 0.7584,
+        "lstm": 1.976,
+        "hyena": 2.2988000000000004
+      },
+      "weights_after": {
+        "hyena": 31.4437,
+        "llm": 7.7982,
+        "lstm": 38.7506,
+        "markov": 3.2877,
+        "stat": 5.1813
+      }
+    },
+    {
+      "draw": 1224,
+      "updated": true,
+      "target_draw_no": 1224,
+      "scored_draws": 50,
+      "weights": {
+        "stat": 5.215657233914387,
+        "markov": 3.207847014114286,
+        "llm": 7.845112542738702,
+        "lstm": 36.64024331803504,
+        "hyena": 29.44134561949303
+      },
+      "raw_avg_match": {
+        "stat": 0.828,
+        "markov": 0.772,
+        "llm": 0.76,
+        "lstm": 1.884,
+        "hyena": 2.18
+      },
+      "raw_avg_lottery_score": {
+        "stat": 0.084,
+        "markov": 0.152,
+        "llm": 0.072,
+        "lstm": 1.64,
+        "hyena": 2.248
+      },
+      "score_signals": {
+        "stat": 0.8308,
+        "markov": 0.7770666666666667,
+        "llm": 0.7624,
+        "lstm": 1.9386666666666665,
+        "hyena": 2.2549333333333337
+      },
+      "weights_after": {
+        "hyena": 29.4413,
+        "llm": 7.8451,
+        "lstm": 36.6402,
+        "markov": 3.2078,
+        "stat": 5.2157
+      }
+    },
+    {
+      "draw": 1225,
+      "updated": true,
+      "target_draw_no": 1225,
+      "scored_draws": 50,
+      "weights": {
+        "stat": 5.184456984858757,
+        "markov": 3.150622335029979,
+        "llm": 7.8028631111393025,
+        "lstm": 36.42106006543399,
+        "hyena": 29.796770048417585
+      },
+      "raw_avg_match": {
+        "stat": 0.824,
+        "markov": 0.76,
+        "llm": 0.756,
+        "lstm": 1.88,
+        "hyena": 2.188
+      },
+      "raw_avg_lottery_score": {
+        "stat": 0.084,
+        "markov": 0.152,
+        "llm": 0.084,
+        "lstm": 1.64,
+        "hyena": 2.248
+      },
+      "score_signals": {
+        "stat": 0.8268,
+        "markov": 0.7650666666666667,
+        "llm": 0.7588,
+        "lstm": 1.9346666666666665,
+        "hyena": 2.2629333333333337
+      },
+      "weights_after": {
+        "hyena": 29.7968,
+        "llm": 7.8029,
+        "lstm": 36.4211,
+        "markov": 3.1506,
+        "stat": 5.1845
+      }
+    },
+    {
+      "draw": 1226,
+      "updated": true,
+      "target_draw_no": 1226,
+      "scored_draws": 50,
+      "weights": {
+        "stat": 4.968237294620633,
+        "markov": 3.2271519531011497,
+        "llm": 7.756186103526245,
+        "lstm": 35.74988958343296,
+        "hyena": 28.72592427808716
+      },
+      "raw_avg_match": {
+        "stat": 0.796,
+        "markov": 0.776,
+        "llm": 0.752,
+        "lstm": 1.868,
+        "hyena": 2.164
+      },
+      "raw_avg_lottery_score": {
+        "stat": 0.072,
+        "markov": 0.152,
+        "llm": 0.084,
+        "lstm": 1.628,
+        "hyena": 2.236
+      },
+      "score_signals": {
+        "stat": 0.7984,
+        "markov": 0.7810666666666667,
+        "llm": 0.7548,
+        "lstm": 1.9222666666666668,
+        "hyena": 2.2385333333333337
+      },
+      "weights_after": {
+        "hyena": 28.7259,
+        "llm": 7.7562,
+        "lstm": 35.7499,
+        "markov": 3.2272,
+        "stat": 4.9682
+      }
+    },
+    {
+      "draw": 1227,
+      "updated": true,
+      "target_draw_no": 1227,
+      "scored_draws": 50,
+      "weights": {
+        "stat": 4.9981363257848095,
+        "markov": 3.150622335029979,
+        "llm": 7.709788319450582,
+        "lstm": 35.53603245887703,
+        "hyena": 27.87694491272232
+      },
+      "raw_avg_match": {
+        "stat": 0.8,
+        "markov": 0.76,
+        "llm": 0.748,
+        "lstm": 1.864,
+        "hyena": 2.144
+      },
+      "raw_avg_lottery_score": {
+        "stat": 0.072,
+        "markov": 0.152,
+        "llm": 0.084,
+        "lstm": 1.628,
+        "hyena": 2.236
+      },
+      "score_signals": {
+        "stat": 0.8024,
+        "markov": 0.7650666666666667,
+        "llm": 0.7508,
+        "lstm": 1.9182666666666668,
+        "hyena": 2.2185333333333332
+      },
+      "weights_after": {
+        "hyena": 27.8769,
+        "llm": 7.7098,
+        "lstm": 35.536,
+        "markov": 3.1506,
+        "stat": 4.9981
+      }
+    },
+    {
+      "draw": 1228,
+      "updated": true,
+      "target_draw_no": 1228,
+      "scored_draws": 50,
+      "weights": {
+        "stat": 4.968237294620633,
+        "markov": 3.1714852142102754,
+        "llm": 7.8028631111393025,
+        "lstm": 32.568552662781784,
+        "hyena": 25.078226511328378
+      },
+      "raw_avg_match": {
+        "stat": 0.796,
+        "markov": 0.764,
+        "llm": 0.756,
+        "lstm": 1.812,
+        "hyena": 2.08
+      },
+      "raw_avg_lottery_score": {
+        "stat": 0.072,
+        "markov": 0.164,
+        "llm": 0.084,
+        "lstm": 1.444,
+        "hyena": 2.04
+      },
+      "score_signals": {
+        "stat": 0.7984,
+        "markov": 0.7694666666666666,
+        "llm": 0.7588,
+        "lstm": 1.8601333333333334,
+        "hyena": 2.148
+      },
+      "weights_after": {
+        "hyena": 25.0782,
+        "llm": 7.8029,
+        "lstm": 32.5686,
+        "markov": 3.1715,
+        "stat": 4.9682
+      }
+    },
+    {
+      "draw": 1229,
+      "updated": true,
+      "target_draw_no": 1229,
+      "scored_draws": 50,
+      "weights": {
+        "stat": 4.85041907342442,
+        "markov": 3.1714852142102754,
+        "llm": 7.756186103526245,
+        "lstm": 31.777140546814223,
+        "hyena": 24.27871401493245
+      },
+      "raw_avg_match": {
+        "stat": 0.78,
+        "markov": 0.764,
+        "llm": 0.752,
+        "lstm": 1.796,
+        "hyena": 2.06
+      },
+      "raw_avg_lottery_score": {
+        "stat": 0.072,
+        "markov": 0.164,
+        "llm": 0.084,
+        "lstm": 1.432,
+        "hyena": 1.992
+      },
+      "score_signals": {
+        "stat": 0.7824,
+        "markov": 0.7694666666666666,
+        "llm": 0.7548,
+        "lstm": 1.8437333333333334,
+        "hyena": 2.1264
+      },
+      "weights_after": {
+        "hyena": 24.2787,
+        "llm": 7.7562,
+        "lstm": 31.7771,
+        "markov": 3.1715,
+        "stat": 4.8504
+      }
+    },
+    {
+      "draw": 1230,
+      "updated": true,
+      "target_draw_no": 1230,
+      "scored_draws": 50,
+      "weights": {
+        "stat": 4.792561881976645,
+        "markov": 3.248521598248849,
+        "llm": 7.659071266918332,
+        "lstm": 29.848875891698523,
+        "hyena": 22.104915398177145
+      },
+      "raw_avg_match": {
+        "stat": 0.772,
+        "markov": 0.78,
+        "llm": 0.744,
+        "lstm": 1.756,
+        "hyena": 2.0
+      },
+      "raw_avg_lottery_score": {
+        "stat": 0.072,
+        "markov": 0.164,
+        "llm": 0.072,
+        "lstm": 1.38,
+        "hyena": 1.916
+      },
+      "score_signals": {
+        "stat": 0.7744,
+        "markov": 0.7854666666666666,
+        "llm": 0.7464,
+        "lstm": 1.802,
+        "hyena": 2.0638666666666667
+      },
+      "weights_after": {
+        "hyena": 22.1049,
+        "llm": 7.6591,
+        "lstm": 29.8489,
+        "markov": 3.2485,
+        "stat": 4.7926
+      }
+    },
+    {
+      "draw": 1231,
+      "updated": true,
+      "target_draw_no": 1231,
+      "scored_draws": 50,
+      "weights": {
+        "stat": 4.824297402415283,
+        "markov": 3.248521598248849,
+        "llm": 7.6132544272861535,
+        "lstm": 30.209220143790798,
+        "hyena": 22.915189783707582
+      },
+      "raw_avg_match": {
+        "stat": 0.776,
+        "markov": 0.78,
+        "llm": 0.74,
+        "lstm": 1.764,
+        "hyena": 2.024
+      },
+      "raw_avg_lottery_score": {
+        "stat": 0.084,
+        "markov": 0.164,
+        "llm": 0.072,
+        "lstm": 1.38,
+        "hyena": 1.916
+      },
+      "score_signals": {
+        "stat": 0.7788,
+        "markov": 0.7854666666666666,
+        "llm": 0.7424,
+        "lstm": 1.81,
+        "hyena": 2.0878666666666668
+      },
+      "weights_after": {
+        "hyena": 22.9152,
+        "llm": 7.6133,
+        "lstm": 30.2092,
+        "markov": 3.2485,
+        "stat": 4.8243
+      }
+    }
+  ],
+  "idempotent_1231": {
+    "updated": false,
+    "reason": "already_updated",
+    "target_draw_no": 1231,
+    "last_updated_draw": 1231
+  },
+  "mock_1232_no_draw": {
+    "updated": false,
+    "reason": "draw_not_scored",
+    "target_draw_no": 1232
+  },
+  "hook_1231_idempotent": {
+    "updated": false,
+    "reason": "already_updated",
+    "target_draw_no": 1231,
+    "last_updated_draw": 1231
+  },
+  "regression": {
+    "pred_counts_unchanged": true,
+    "pred_counts_before": {
+      "stat": 6010,
+      "markov": 6005,
+      "llm": 6006,
+      "lstm": 6010,
+      "fusion": 6010,
+      "hyena": 6005,
+      "lead1": 5560
+    },
+    "pred_counts_after": {
+      "stat": 6010,
+      "markov": 6005,
+      "llm": 6006,
+      "lstm": 6010,
+      "fusion": 6010,
+      "hyena": 6005,
+      "lead1": 5560
+    },
+    "hash_1231_unchanged": true,
+    "all_ok": true
+  },
+  "verification": {
+    "last_updated_draw_max": 1231,
+    "app_import": "OK"
+  }
+}

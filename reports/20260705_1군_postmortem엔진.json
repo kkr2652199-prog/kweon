@@ -1,0 +1,546 @@
+{
+  "report_stem": "20260705_1군_postmortem엔진",
+  "fingerprint_before": "count=53905 sha=0fe5d19ccbceb829",
+  "fingerprint_after": "count=53905 sha=0fe5d19ccbceb829",
+  "predictions_unchanged": true,
+  "processed": 1112,
+  "skipped": 0,
+  "total_rows": 1112,
+  "verify_1231": {
+    "pool_6_6": true,
+    "pack_5_6": true,
+    "gap_1": true,
+    "gap_num_4": true,
+    "stat_has_4": true,
+    "no_contamination": true
+  },
+  "sample_draws": [
+    {
+      "draw_no": 1229,
+      "draw_date": "2026-06-20",
+      "winning_numbers": [
+        12,
+        13,
+        29,
+        34,
+        37,
+        42
+      ],
+      "bonus": 16,
+      "pool_union_size": 43,
+      "pool_cover": 6,
+      "pool_missed": [],
+      "lead1_union_size": 26,
+      "lead1_pack": 5,
+      "lead1_pack_missed": [
+        13
+      ],
+      "pack_gap": 1,
+      "pack_gap_nums": [
+        13
+      ],
+      "pack_gap_brains": {
+        "13": [
+          "markov",
+          "llm",
+          "fusion"
+        ]
+      },
+      "lead1_best_hit": 3,
+      "lead1_best_set": [
+        12,
+        22,
+        26,
+        37,
+        42,
+        45
+      ],
+      "brain_summary": {
+        "stat": {
+          "hits": [
+            34,
+            37
+          ],
+          "misses": [
+            12,
+            13,
+            29,
+            42
+          ],
+          "union_hit": 2,
+          "best_set_hit": 2,
+          "union_size": 26
+        },
+        "markov": {
+          "hits": [
+            13,
+            29,
+            42
+          ],
+          "misses": [
+            12,
+            34,
+            37
+          ],
+          "union_hit": 3,
+          "best_set_hit": 2,
+          "union_size": 20
+        },
+        "llm": {
+          "hits": [
+            12,
+            13,
+            29,
+            37
+          ],
+          "misses": [
+            34,
+            42
+          ],
+          "union_hit": 4,
+          "best_set_hit": 2,
+          "union_size": 30
+        },
+        "lstm": {
+          "hits": [
+            12,
+            34,
+            37,
+            42
+          ],
+          "misses": [
+            13,
+            29
+          ],
+          "union_hit": 4,
+          "best_set_hit": 2,
+          "union_size": 21
+        },
+        "fusion": {
+          "hits": [
+            12,
+            13,
+            29,
+            37,
+            42
+          ],
+          "misses": [
+            34
+          ],
+          "union_hit": 5,
+          "best_set_hit": 2,
+          "union_size": 19
+        },
+        "hyena": {
+          "hits": [],
+          "misses": [
+            12,
+            13,
+            29,
+            34,
+            37,
+            42
+          ],
+          "union_hit": 0,
+          "best_set_hit": 0,
+          "union_size": 9
+        },
+        "lead1": {
+          "hits": [
+            12,
+            29,
+            34,
+            37,
+            42
+          ],
+          "misses": [
+            13
+          ],
+          "union_hit": 5,
+          "best_set_hit": 3,
+          "union_size": 26
+        }
+      },
+      "winning_stats": {
+        "odd": 3,
+        "even": 3,
+        "low": 2,
+        "high": 4,
+        "zone_1_9": 0,
+        "zone_10_19": 2,
+        "zone_20_29": 1,
+        "zone_30_39": 2,
+        "zone_40_45": 1,
+        "consec_pairs": 1,
+        "sum": 167
+      },
+      "lead1_union_stats": {
+        "odd": 9,
+        "even": 17,
+        "low": 11,
+        "high": 15,
+        "zone_1_9": 3,
+        "zone_10_19": 7,
+        "zone_20_29": 5,
+        "zone_30_39": 7,
+        "zone_40_45": 4,
+        "consec_pairs": 14,
+        "sum": 657
+      },
+      "built_at": "2026-07-10 12:17:53"
+    },
+    {
+      "draw_no": 1230,
+      "draw_date": "2026-06-27",
+      "winning_numbers": [
+        3,
+        8,
+        9,
+        22,
+        28,
+        42
+      ],
+      "bonus": 45,
+      "pool_union_size": 44,
+      "pool_cover": 6,
+      "pool_missed": [],
+      "lead1_union_size": 27,
+      "lead1_pack": 5,
+      "lead1_pack_missed": [
+        28
+      ],
+      "pack_gap": 1,
+      "pack_gap_nums": [
+        28
+      ],
+      "pack_gap_brains": {
+        "28": [
+          "llm",
+          "fusion"
+        ]
+      },
+      "lead1_best_hit": 3,
+      "lead1_best_set": [
+        9,
+        15,
+        22,
+        29,
+        34,
+        42
+      ],
+      "brain_summary": {
+        "stat": {
+          "hits": [
+            3,
+            42
+          ],
+          "misses": [
+            8,
+            9,
+            22,
+            28
+          ],
+          "union_hit": 2,
+          "best_set_hit": 1,
+          "union_size": 22
+        },
+        "markov": {
+          "hits": [
+            3,
+            9,
+            42
+          ],
+          "misses": [
+            8,
+            22,
+            28
+          ],
+          "union_hit": 3,
+          "best_set_hit": 2,
+          "union_size": 19
+        },
+        "llm": {
+          "hits": [
+            8,
+            9,
+            22,
+            28
+          ],
+          "misses": [
+            3,
+            42
+          ],
+          "union_hit": 4,
+          "best_set_hit": 2,
+          "union_size": 30
+        },
+        "lstm": {
+          "hits": [
+            3,
+            22,
+            42
+          ],
+          "misses": [
+            8,
+            9,
+            28
+          ],
+          "union_hit": 3,
+          "best_set_hit": 2,
+          "union_size": 19
+        },
+        "fusion": {
+          "hits": [
+            8,
+            22,
+            28,
+            42
+          ],
+          "misses": [
+            3,
+            9
+          ],
+          "union_hit": 4,
+          "best_set_hit": 2,
+          "union_size": 21
+        },
+        "hyena": {
+          "hits": [
+            22,
+            42
+          ],
+          "misses": [
+            3,
+            8,
+            9,
+            28
+          ],
+          "union_hit": 2,
+          "best_set_hit": 2,
+          "union_size": 10
+        },
+        "lead1": {
+          "hits": [
+            3,
+            8,
+            9,
+            22,
+            42
+          ],
+          "misses": [
+            28
+          ],
+          "union_hit": 5,
+          "best_set_hit": 3,
+          "union_size": 27
+        }
+      },
+      "winning_stats": {
+        "odd": 2,
+        "even": 4,
+        "low": 4,
+        "high": 2,
+        "zone_1_9": 3,
+        "zone_10_19": 0,
+        "zone_20_29": 2,
+        "zone_30_39": 0,
+        "zone_40_45": 1,
+        "consec_pairs": 1,
+        "sum": 112
+      },
+      "lead1_union_stats": {
+        "odd": 15,
+        "even": 12,
+        "low": 13,
+        "high": 14,
+        "zone_1_9": 5,
+        "zone_10_19": 5,
+        "zone_20_29": 8,
+        "zone_30_39": 4,
+        "zone_40_45": 5,
+        "consec_pairs": 12,
+        "sum": 639
+      },
+      "built_at": "2026-07-10 12:17:53"
+    },
+    {
+      "draw_no": 1231,
+      "draw_date": "2026-07-04",
+      "winning_numbers": [
+        4,
+        13,
+        14,
+        18,
+        31,
+        38
+      ],
+      "bonus": 15,
+      "pool_union_size": 43,
+      "pool_cover": 6,
+      "pool_missed": [],
+      "lead1_union_size": 25,
+      "lead1_pack": 5,
+      "lead1_pack_missed": [
+        4
+      ],
+      "pack_gap": 1,
+      "pack_gap_nums": [
+        4
+      ],
+      "pack_gap_brains": {
+        "4": [
+          "stat"
+        ]
+      },
+      "lead1_best_hit": 2,
+      "lead1_best_set": [
+        1,
+        11,
+        15,
+        18,
+        31,
+        34
+      ],
+      "brain_summary": {
+        "stat": {
+          "hits": [
+            4,
+            13,
+            14,
+            31
+          ],
+          "misses": [
+            18,
+            38
+          ],
+          "union_hit": 4,
+          "best_set_hit": 2,
+          "union_size": 22
+        },
+        "markov": {
+          "hits": [
+            18,
+            31,
+            38
+          ],
+          "misses": [
+            4,
+            13,
+            14
+          ],
+          "union_hit": 3,
+          "best_set_hit": 2,
+          "union_size": 18
+        },
+        "llm": {
+          "hits": [
+            13,
+            18,
+            31,
+            38
+          ],
+          "misses": [
+            4,
+            14
+          ],
+          "union_hit": 4,
+          "best_set_hit": 1,
+          "union_size": 30
+        },
+        "lstm": {
+          "hits": [
+            13
+          ],
+          "misses": [
+            4,
+            14,
+            18,
+            31,
+            38
+          ],
+          "union_hit": 1,
+          "best_set_hit": 1,
+          "union_size": 18
+        },
+        "fusion": {
+          "hits": [
+            13,
+            14,
+            18,
+            38
+          ],
+          "misses": [
+            4,
+            31
+          ],
+          "union_hit": 4,
+          "best_set_hit": 2,
+          "union_size": 20
+        },
+        "hyena": {
+          "hits": [
+            13
+          ],
+          "misses": [
+            4,
+            14,
+            18,
+            31,
+            38
+          ],
+          "union_hit": 1,
+          "best_set_hit": 1,
+          "union_size": 9
+        },
+        "lead1": {
+          "hits": [
+            13,
+            14,
+            18,
+            31,
+            38
+          ],
+          "misses": [
+            4
+          ],
+          "union_hit": 5,
+          "best_set_hit": 2,
+          "union_size": 25
+        }
+      },
+      "winning_stats": {
+        "odd": 2,
+        "even": 4,
+        "low": 4,
+        "high": 2,
+        "zone_1_9": 1,
+        "zone_10_19": 3,
+        "zone_20_29": 0,
+        "zone_30_39": 2,
+        "zone_40_45": 0,
+        "consec_pairs": 1,
+        "sum": 118
+      },
+      "lead1_union_stats": {
+        "odd": 14,
+        "even": 11,
+        "low": 10,
+        "high": 15,
+        "zone_1_9": 2,
+        "zone_10_19": 7,
+        "zone_20_29": 4,
+        "zone_30_39": 8,
+        "zone_40_45": 4,
+        "consec_pairs": 15,
+        "sum": 662
+      },
+      "built_at": "2026-07-10 12:17:53"
+    }
+  ],
+  "aggregates": {
+    "avg_pool_cover": 5.8894,
+    "avg_lead1_pack": 4.6052,
+    "avg_pack_gap": 1.2842,
+    "avg_lead1_best": 2.259
+  }
+}

@@ -1,0 +1,316 @@
+20260618_4군_데이터활용도_전수정찰
+동생 → 커서 | 2026-06-18 | READ-ONLY 정찰 | 1~3군 미접근 0건
+
+원칙: CURSOR_RULES §2 / R2 정직 / R14 정찰의무
+조작: INSERT·DELETE·UPDATE 0건. lotto4.db 읽기만.
+대상 DB: d:\3kweon\data\lotto4.db (28테이블, 1~1228회차)
+정찰 스크립트: tools\audit4_data_utilization.py → tools\_audit4_data_util.json
+
+핵심 질문 답:
+  "모은 데이터가 5뇌 코드에서 실제 계산에 쓰이는가?"
+  → 일부만 LIVE. 정적 cooccur 2/3/4(29,151행)·lotto_draw_tiers(6,140행)은
+    5뇌 생성 경로에서 전혀 읽히지 않음. prize_per·bonus·2~5등 tier는 저장만.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP1 — 테이블 전수 목록 (RAW)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[핵심 입력·가공 데이터]
+
+lotto_draws                          1,228행
+  컬럼: draw_no, draw_date, num1~6, bonus, total_sales, first_prize, first_winners
+  정보: 1~1228회차 당첨번호·보너스·1등 당첨금·당첨자·총판매액
+
+lotto4_winners_full                  1,228행
+  컬럼: drw_no, n1~6, bonus, winner_cnt, prize_per, era
+  정보: era C 인기회차 판정용 1등 당첨자수·당첨금·보너스 (빌드 원천)
+
+lotto4_winners (레거시)              1,225행
+  컬럼: draw_no, num1~6, bonus, winner_count, prize_per_game, total_sales
+  정보: 구버전 당첨 스냅샷 — app/lotto4 코드 참조 0건
+
+number_popularity                       45행
+  컬럼: number, top30_freq, top30_pct, era
+  정보: era C 상위30% 당첨회차에서 번호별 출현 비율
+
+pair_popularity                        990행
+  컬럼: num_a, num_b, freq, freq_pct, era
+  정보: 45C2 전수 쌍의 top30 회차 동반출현 빈도
+
+shape_profile                            2행
+  컬럼: era, segment(top30/all), metric, data_json
+  정보: top30 vs 전체 회차 형태(합·홀짝·구간·AC) 요약 JSON
+
+lotto_cooccur_2                        990행
+  컬럼: num1, num2, count, last_draw_no/date
+  정보: 2번호 동반출현 정적 집계 (전체 이력 1회 빌드)
+
+lotto_cooccur_3                     11,757행
+  컬럼: num1~3, count, last_draw_no/date
+  정보: 3번호 동반출현 정적 집계
+
+lotto_cooccur_4                     17,394행
+  컬럼: num1~4, count, last_draw_no/date
+  정보: 4번호 동반출현 정적 집계
+
+lotto_bonus_stats                       45행
+  컬럼: bonus_no, total_count, last_draw_no, coappear_with
+  정보: 보너스번호별 누적·동반출현 JSON
+
+lotto_draw_tiers                     6,140행
+  컬럼: draw_no, tier_rank(1~5), winner_count, prize_per_game, total_prize
+  정보: 회차별 1~5등 당첨자수·당첨금·총상금 (1228×5)
+
+lotto_number_freq                       45행
+  컬럼: number, total_count, rank_most, rank_least
+  정보: 번호별 전체 출현 횟수·순위
+
+lotto_analysis_army4                     1행
+  컬럼: draw_no, analysis_type, data_json
+  정보: 4군 분석 JSON 스냅샷 — 런타임 SELECT 0건
+
+[출력·로그·가중치]
+
+lotto_predictions_army4             28,650행
+  정보: 4군 예측·전략X 5뇌 로그 (생성 결과 + 하이에나 입력)
+
+lotto_fullbacktest_army4            28,405행
+  정보: 전략X 5뇌 회차별 백테스트 적중 기록
+
+lotto_brain_weights_army4                9행
+  정보: v13 ensemble 뇌 가중치 (strategy_x 미사용)
+
+lotto_evolution_trust_army4            615행
+  정보: evolution_brain 신뢰 점수 (v13 전용)
+
+lotto_weight_log_army4                   0행
+  정보: 가중치 변경 로그 (비어 있음)
+
+[백업·빈·시스템]
+
+lotto_predictions_army4_backup_20260513  1,380행
+lotto_brain_weights_army4_backup_20260513    23행
+lotto_weight_log_army4_backup_20260513        7행
+lotto_analysis / lotto_analysis_army2         0행
+lotto_predictions / lotto_predictions_army2     0행
+lotto_brain_weights                           5행 (구 army)
+sqlite_sequence                               3행
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP2 — 코드 역추적 (5뇌 + 4군 전체)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+판정 기준:
+  🟢 LIVE   = 점수·생성·필터 계산에 SELECT 후 사용
+  🟡 PARTIAL = 일부 컬럼/일부 뇌만, 또는 표시·백테스트 전용
+  🔴 DEAD   = app/lotto4 런타임 SELECT 0건 (저장만)
+
+── 전략 X 5뇌 생성 경로 (핵심) ──
+
+🟢 lotto_draws
+  5뇌 cooccur: cooccur_walkforward.aggregate_cooccur_before()
+    → draw_no < target 만 집계 (R13 walk-forward)
+  fullbackfill·적중채점: num1~6, bonus (bonus_matched만, 생성 미사용)
+  hyena: 간접 (walk-forward 인기가중은 winners_full 경유)
+
+🟢 number_popularity (45행 전부)
+  1뇌: popularity_freq_brain.load_popularity_weights()
+  2뇌·4뇌 coordinator: load_popularity_weights() 체인 보조
+  하이에나 WF: winners_full top30에서 재계산 (정적 테이블과 별도)
+
+🟢 pair_popularity (990행 전부)
+  2뇌: popularity_pair_brain.load_pair_weights() — era C 전수 로드
+  4뇌 coordinator: pair 체인 가중 (combined_score 0.5*pair + 0.3*pop + 0.2*shape)
+
+🟢 shape_profile
+  3뇌: shape_brain.load_shape_profile() → top30 summary JSON
+  4뇌 coordinator: _matches_shape() 필터
+  하이에나: shape_pass 가중
+
+🟢 lotto4_winners_full — winner_cnt 컬럼만
+  빌드: pair/shape/number_popularity 테이블 생성 원천
+  하이에나: _pop_weights_walkforward() — top30% 회차 선별
+  fullbackfill: winner_cnt>0 회차 목록
+  🔴 같은 테이블의 prize_per, bonus → 런타임 생성 SELECT 0건
+
+🟢 lotto_predictions_army4
+  하이에나: _load_logs_before() — 과거 strategy_x 4뇌 로그 읽기
+  UI·fullbackfill·logging: 적중 갱신·표시
+
+🟡 lotto_fullbacktest_army4
+  v13_routes 표시, evolution_brain, fullbackfill 적재
+  5뇌 **생성** 입력 아님 → 결과 저장·조회용
+
+🔴 lotto_draw_tiers (6,140행)
+  app/lotto4 grep: 참조 파일 0건
+  수집만: app/lotto/data_service.py, tools/collect_*.py
+  2~5등 winner_count·prize_per_game 전부 DEAD
+
+🔴 lotto_cooccur_2 (990행)
+  cooccur_walkforward.py 주석만. SELECT 0건
+  5뇌는 WF 동적 집계 사용 → 정적 테이블 미사용
+
+🔴 lotto_cooccur_3 / lotto_cooccur_4 (29,151행) — 5뇌 기준
+  strategy_x cooccur_brain_v13 → aggregate_cooccur_before()만
+  정적 lotto_cooccur_3/4 테이블 SELECT 0건
+
+🔴 lotto_analysis_army4
+  models.py CREATE만. SELECT 0건
+
+🔴 lotto_draws 부가 컬럼
+  first_winners, first_prize, total_sales → app/lotto4 SELECT 0건
+  (winners_full 빌드는 tools/rebuild 경유, 런타임 미참조)
+
+🔴 lotto4_winners (레거시 1,225행)
+  app/lotto4 참조 0건
+
+── v13 ensemble 전용 (5뇌 밖) ──
+
+🟡 lotto_cooccur_3/4
+  bayesian.py, graph.py, trend.py, contrarian_v2.py → load_cooccur3/4()
+  v13_routes /stats/cooccur-3,4 → LIMIT top (표시)
+  graph는 top_n=None 전체 로드 / trend는 상위 N만
+
+🟡 lotto_bonus_stats
+  _utils.load_bonus_stats() → bayesian 뇌
+  v13_routes /stats/bonus
+
+🟡 lotto_number_freq
+  v13_routes /stats/number-freq
+
+🟡 lotto_brain_weights_army4, lotto_evolution_trust_army4
+  v13 ensemble·evolution 전용. strategy_x 미사용
+
+── 1~3군 first_winners 전례 대응 (4군) ──
+  lotto_draws.first_winners  → 🔴 DEAD (저장만)
+  lotto4_winners_full.winner_cnt → 🟢 LIVE (하이에나·빌드)
+  lotto4_winners_full.prize_per  → 🔴 DEAD (저장만, 1,214행 양수 있으나 미참조)
+  lotto_draw_tiers 2~5등        → 🔴 DEAD (6,140행 전부)
+  bonus (draws/winners_full)    → 적중채점만 🟡 / 생성 🔴
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP3 — 1~45번·990쌍 커버리지 (정량)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+철학 점검: "1~45번 모두 역사가 있다" vs 실제 코드
+
+[번호 45개]
+  number_popularity: 45행, zero_pct=0, min_pct=0.09, max_pct=0.2042
+  load_popularity_weights: 45개 전부 로드, 미존재 시 setdefault(0.01)
+  → 로드 커버리지 45/45 (100%)
+  → 단, 가중치는 top30 당첨회차 출현 기반 (저빈도 번호는 바닥 0.01)
+
+[쌍 990개 — pair_popularity]
+  DB: 990행, freq>0 쌍 981개
+  load_pair_weights: era C 전수 SELECT, min 가중 0.001
+  → 로드 커버리지 990/990 (100%)
+  → freq=0 쌍 9개도 바닥 가중으로 체인에 참여
+
+[형태 shape — 번호 개별 아님]
+  shape_profile: top30 segment 1행 + all segment 1행
+  3뇌·coordinator: 합6·홀수개·저구간·AC 필터 (번호별 가중 없음)
+  → 45개 개별 역사 직접 반영 X. "필터 통과/실패" 이분법
+
+[동반출현 cooccur — 5뇌 WF]
+  입력: lotto_draws 전 회차 (draw_no < target)
+  집계: 2쌍 전수 가능(최대 990)이나 시드는 상위 80쌍만 (TOP_PAIR_POOL=80)
+  3쌍: 상위 4,000개만 인덱스 (COOCCUR_TOP_N_3=4000)
+  4쌍: 상위 6,000개만 (COOCCUR_TOP_N_4=6000)
+  → 2쌍 시드 활용률 약 80/990 = 8.1% (나머지는 체인 확장 시 간접 가능)
+  → 정적 lotto_cooccur_2/3/4 테이블: 0쌍 (미사용)
+
+[하이에나 WF 인기가중]
+  winners_full winner_cnt로 top30% 회차 선별 후 45번호 빈도
+  → 45/45 커버, 가중 바닥 0.01
+
+[버려지는 번호·쌍 요약]
+  번호: 버림 없음 (바닥 가중). 철학 대비 "역사 강도" 편차 큼
+  pair_popularity: 버림 없음 (990 전수)
+  cooccur 5뇌: 저빈도 2쌍 ~910개는 시드 풀 밖 (의도적 top-N 절단)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP4 — 🔴 DEAD 데이터 신호 후보 (제안만, 구현 없음)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1) lotto_draw_tiers 2~5등 winner_count
+   신호: 비인기조합 회피 — 4·5등 당첨자 과다 회차와 유사 형태 회피
+   검증: 인기적합도(생성 세트 vs tier4/5 winner 분포 KL), 커버리지(회차별 tier 반영률)
+
+2) prize_per / prize_per_game (1~5등)
+   신호: 당첨금·당첨자 복합 "과열 회차" 프로필 — 고당첨금+소수당첨자 패턴
+   검증: walk-forward 상관 |r| (과열지표 vs 다음회차 1뇌 적중), 과적합 holdout
+
+3) bonus + lotto_bonus_stats.coappear_with
+   신호: 보너스 동반패턴 — 보너스 번호와 자주 같이 나온 본번호 가중
+   검증: bonus_matched 비율 uplift (백테스트), 45보너스 커버리지
+
+4) 정적 lotto_cooccur_2/3/4 → "갑자기 튄 쌍" 이상치
+   신호: WF 집계 vs 정적 count 괴리율 → 최근 급등 쌍 가중
+   검증: gap_signal 유사 타임머신, 이상치 쌍 precision@K
+
+5) lotto_draws.total_sales / first_prize
+   신호: 판매액 대비 1등당첨금(과열지수) → 인기·비인기 경계 조정
+   검증: era C top30 재현율, coordinator combined_score 분산 변화
+
+6) lotto_number_freq (45행, v13만 사용 중)
+   신호: 전체출현 vs top30출현 괴리 → contrarian 보조 (저출현+고인기쌍)
+   검증: 5뇌 coordinator에 넣었을 때 fullbacktest 4·5등 비율 변화 (1등 아님)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP5 — 종합 판정 (R2 정직)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[핵심 11테이블 — 전략 X 5뇌 생성 기준]
+
+테이블                    등급      비고
+lotto_draws               🟢 LIVE   WF cooccur·적중채점
+number_popularity         🟢 LIVE   1뇌·coordinator·하이에나
+pair_popularity           🟢 LIVE   2뇌·coordinator
+shape_profile             🟢 LIVE   3뇌 필터 (top30 프로필)
+lotto4_winners_full       🟡 PARTIAL winner_cnt만 LIVE / prize_per·bonus DEAD
+lotto_predictions_army4   🟢 LIVE   하이에나 로그 입력
+lotto_fullbacktest_army4  🟡 PARTIAL 출력·UI, 생성 입력 아님
+lotto_cooccur_2           🔴 DEAD    990행
+lotto_cooccur_3           🔴 DEAD*   11,757행 (*5뇌 기준; v13은 🟡)
+lotto_cooccur_4           🔴 DEAD*   17,394행 (*5뇌 기준; v13은 🟡)
+lotto_draw_tiers          🔴 DEAD    6,140행
+lotto_bonus_stats         🔴 DEAD*   45행 (*5뇌; v13 bayesian 🟡)
+lotto_analysis_army4      🔴 DEAD    1행
+
+[비율 요약]
+
+A) 핵심 11테이블 개수 기준 (5뇌 생성)
+   🟢 6  🟡 2  🔴 5(동일 테이블 v13 겸용 3개는 5뇌에선 DEAD)
+   → 5뇌 관점 "가동" ≈ 6/11 = 55% (PARTIAL 2개 반영 시 64%)
+
+B) 입력 데이터 행 수 기준 (cooccur 정적+tier 포함)
+   전체 입력 행 ≈ 41,279 (draws+winners_full+pop+pair+shape+cooccur+bonus+tiers+freq+legacy)
+   5뇌가 실제 읽는 행 ≈ 3,500 내외 (draws+pop+pair+shape+winners_cnt)
+   미사용 대형 블록: cooccur_2/3/4 29,151 + tiers 6,140 = 35,291행
+   → 행 기준 5뇌 활용률 ≈ 8~9% (정적 cooccur·tier가 행 수를 압도)
+   → 의미 기준(테이블): 인기 신호 3종+draws는 LIVE, 형이 최근 수집한 tier·정적cooccur는 사실상 낭비
+
+C) 4군 app/lotto4 전체 (v13 포함)
+   🟢 7  🟡 6  🔴 4
+   → cooccur_3/4·bonus_stats·number_freq가 v13에서 살아나 전체 활용률 상승
+   → 그러나 lotto_draw_tiers·cooccur_2·prize_per·first_winners는 여전히 🔴
+
+[정직 결론]
+  형이 모은 "인기 신호 3종"(number/pair/shape)은 5뇌에서 LIVE.
+  walk-forward cooccur·하이에나는 draws·winner_cnt를 LIVE 사용.
+  반면 bulk 수집한 lotto_draw_tiers(2~5등)·정적 cooccur 29k행·prize_per는
+  5뇌 코드가 한 줄도 읽지 않음 — 1~3군 first_winners 전례와 동형.
+
+[다음 업그레이드 우선순위 — 측정 가능한 실력 향상 기준]
+
+1순위: lotto_draw_tiers 2~5등 winner_count
+  이유: 이미 6,140행·1228회차 전수, walk-forward 결합 용이
+  측정: fullbacktest 4·5등 적중률·인기적합도 CV (1등 아님)
+
+2순위: prize_per + winner_cnt 복합 과열지표 (winners_full·tiers)
+  이유: 하이에나가 winner_cnt만 쓰는 구조 확장, 컬럼만 추가 로드
+  측정: top30 재현율·coordinator score 분리도
+
+[미수행·범위]
+  기억 갱신: 형 확인 후
+  1~3군 DB·코드: 접근 0건
+  lotto4.db: INSERT·UPDATE·DELETE 0건
+
+— 끝 —

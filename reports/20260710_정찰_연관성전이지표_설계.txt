@@ -1,0 +1,257 @@
+동생 → 커서 | 20260710 | 정찰: 연관성/전이 지표 PostMortem 확장 설계
+================================================================================
+모드: READ-ONLY (코드/DB 수정 0건)
+근거: sqlite3 실측 + 소스 파일 직접 확인
+================================================================================
+
+[요약]
+- postmortem_draw: 19컬럼, draw_no PK, 현재 1112행(88~1231)
+- "구간" 정의: 코드에 5-band 3종(경계 불일치) 공존. "6구간(pos1~6)+보너스" = 프로덕션 미정의
+- lotto_draws: 1~1231, num1~num6 오름차순 보장(비정렬 0건), 보너스 포함 READ-ONLY 조회 가능
+- 회차간(N-1→N) band/번호 전이 저장·계산 전용 모듈: 현재 없음 (markov는 예측용 번호→번호 전이만)
+- 상세페이지 목표: per-draw 저장이 postmortem_draw 구조와 자연스럽게 일치. 전역 집계는 별도 테이블 후보
+- 자동훅 확장: UPSERT·try/except 격리로 충돌 낮음. 스키마 확장 시 upsert_postmortem_row/compute 동시 갱신 필요
+
+================================================================================
+정찰 1 — PostMortem 스키마와 확장 가능성
+================================================================================
+
+■ postmortem_draw 전체 컬럼 (lotto_patterns.db, sqlite3 .schema 실측)
+
+| 컬럼 | 타입 | PK/인덱스 |
+|------|------|-----------|
+| draw_no | INTEGER | PRIMARY KEY |
+| draw_date | TEXT | |
+| winning_numbers | TEXT NOT NULL | JSON 배열 (정렬 6개) |
+| bonus | INTEGER | |
+| pool_union_size | INTEGER NOT NULL | 5뇌 합집합 크기 |
+| pool_cover | INTEGER NOT NULL | 당첨 6개 중 pool 커버 수 |
+| pool_missed | TEXT NOT NULL | JSON: pool 미커버 당첨번호 |
+| lead1_union_size | INTEGER NOT NULL | lead1 합집합 크기 |
+| lead1_pack | INTEGER NOT NULL | 당첨 6개 중 lead1 커버 수 |
+| lead1_pack_missed | TEXT NOT NULL | JSON: lead1 미커버 당첨번호 |
+| pack_gap | INTEGER NOT NULL | pool_cover - lead1_pack |
+| pack_gap_nums | TEXT NOT NULL | JSON: pool엔 있으나 lead1엔 없는 당첨번호 |
+| pack_gap_brains | TEXT NOT NULL | JSON: {번호: [뇌태그...]} |
+| lead1_best_hit | INTEGER NOT NULL | lead1 5세트 중 최고 적중 |
+| lead1_best_set | TEXT NOT NULL | JSON: 최고적중 세트 |
+| brain_summary | TEXT NOT NULL | JSON: 뇌별 hits/misses/union_hit/best_set_hit |
+| winning_stats | TEXT NOT NULL | JSON: combo_stats(당첨 6개) |
+| lead1_union_stats | TEXT NOT NULL | JSON: combo_stats(lead1 합집합) |
+| built_at | TEXT NOT NULL | |
+
+인덱스: idx_postmortem_built ON postmortem_draw(built_at)
+
+■ 현재 저장 지표 분류
+
+[스칼라 — 예측 커버]
+  pool_union_size, pool_cover, pool_missed
+  lead1_union_size, lead1_pack, lead1_pack_missed
+  pack_gap, pack_gap_nums, pack_gap_brains
+  lead1_best_hit
+
+[JSON — 조합/뇌 요약]
+  winning_numbers, lead1_best_set, brain_summary
+  winning_stats, lead1_union_stats
+
+[winning_stats / lead1_union_stats 내부 키] (combo_stats, postmortem_engine.py L87-112)
+  odd, even, low(≤22), high(>22)
+  zone_1_9, zone_10_19, zone_20_29, zone_30_39, zone_40_45  ← 5-band
+  consec_pairs, sum
+
+■ DB 실측 (2026-07-10)
+  SELECT COUNT(*), MIN(draw_no), MAX(draw_no) FROM postmortem_draw;
+  → 1112 | 88 | 1231
+
+  postmortem_meta:
+    last_build: {"processed": 1112, "min_draw": 88, "max_draw": 1231, ...}
+    last_hook_build: {"draw_no": 1231}
+
+  1231 winning_stats 예:
+    {"odd":2,"even":4,"low":4,"high":2,"zone_1_9":1,"zone_10_19":3,
+     "zone_20_29":0,"zone_30_39":2,"zone_40_45":0,"consec_pairs":1,"sum":118}
+
+■ 스키마 정의 위치
+  app/lotto/postmortem_engine.py L26-55 POSTMORTEM_SCHEMA
+  init_postmortem_schema(): CREATE TABLE IF NOT EXISTS 만 (ALTER TABLE 마이그레이션 없음)
+
+■ 자동 훅(maybe_build_postmortem_after_scoring) 충돌·멱등·격리
+
+[호출 경로]
+  data_service.refresh_all_army_prediction_scores(N) 말미 (L579-582)
+  → maybe_build_postmortem_after_scoring(N)
+
+[동작]
+  1. init_postmortem_schema() — IF NOT EXISTS, 기존 테이블·행 보존
+  2. lotto.db query_only READ — lotto_draws 당첨 + lotto_predictions 5뇌·lead1
+  3. compute_draw_postmortem() — 데이터 부족 시 None → skip
+  4. upsert_postmortem_row() — ON CONFLICT(draw_no) DO UPDATE (전 컬럼 덮어쓰기)
+  5. postmortem_meta last_hook_build 갱신
+
+[멱등성]
+  - PK draw_no + UPSERT → 동일 회차 재실행 시 1행 유지, 지표 갱신
+  - tools/_verify_postmortem_hook.py 검증 PASS:
+    idempotent_single_row, idempotent_data_stable
+
+[격리]
+  - maybe_build_postmortem_after_scoring 전체 try/except (L423-434)
+  - postmortem 실패해도 refresh_all_army_prediction_scores 예측 파이프라인 전파 안 함
+  - lotto.db PRAGMA query_only=ON (_src_conn L61) — patterns.db만 WRITE
+
+[확장 시 충돌 가능성]
+  - 훅 자체는 compute→upsert만 호출 → 훅 시그니처 변경 불필요
+  - 신규 컬럼/테이블 추가 시 반드시 갱신:
+      compute_draw_postmortem(), upsert_postmortem_row(), row_to_dict()
+  - init_postmortem_schema()는 IF NOT EXISTS만 → 기존 DB에 ALTER 필요 시
+      별도 _migrate_postmortem_schema() 패턴 권장 (lotto.db models.py ALTER TABLE 참고)
+  - 별도 테이블(예: postmortem_transition)이면 훅에서 추가 UPSERT만 — 기존 19컬럼 무손상
+
+================================================================================
+정찰 2 — "구간" 정의 확인 (최우선)
+================================================================================
+
+■ 코드에 존재하는 band/zone 정의 (5-band, 경계 3종 — 불일치)
+
+[A] postmortem_engine.combo_stats (L94-98) — PostMortem winning_stats에 사용
+    1~9 | 10~19 | 20~29 | 30~39 | 40~45
+    키: zone_1_9, zone_10_19, ...
+
+[B] data_service.analyze_range_distribution (L801-818) — API /stats/range
+    1~10 | 11~20 | 21~30 | 31~40 | 41~45
+    docstring과 구현 일치
+
+[C] predict_missanalysis._zone_idx (L37-46) — missanalysis 예측 보조
+    n≤9 →0 | ≤19→1 | ≤29→2 | ≤39→3 | else→4
+    bands: range(1,10), range(10,20), range(20,30), range(30,40), range(40,46)
+    → [A]와 동일 경계
+
+[D] tools/_audit_army1_7brain_spike_number.py BANDS (L43)
+    (1,10), (11,20), (21,30), (31,40), (41,45)
+    → [B]와 동일 경계
+
+[E] tools 실험 스크립트의 "3구간"
+    _army1_b1_k3_consensus_boost.py 등: 330~629 / 630~929 / 930~1230
+    → 시간 walk-forward 구간. 번호 band와 무관
+
+■ "6구간(1~6구간)+보너스" 매칭 결과
+
+| 해석 | 코드 매칭 | 판정 |
+|------|-----------|------|
+| sorted position pos1~pos6 + bonus (7슬롯) | 프로덕션 코드·DB·API 어디에도 미정의 | **미정의** |
+| 번호대 1구간~5구간 + 보너스 | YouTube Raw_Materials "1구간" 문맥과 유사하나, 코드는 5-band만 존재 | **5-band만 존재 (6-band 아님)** |
+| pos1~pos6 각각을 band로 | 없음 | **미정의** |
+
+■ YouTube Raw_Materials 근거 (번호대 구간 용어)
+  Raw_Materials/2026-05-29_로또 1225회...md L71-92:
+    "구간별로 같이 보겠습니다" → "1구간", "2구간", "3구간", "5부간"
+    → 채널/AI 예상번호를 번호대별로 묶는 **비공식·외부 용어**. 코드 enum 아님.
+
+■ 설계 시 권고 (정찰 결론, 구현 아님)
+  - PostMortem 확장 시 band 정의를 **하나로 고정**해야 함
+  - 기존 winning_stats와 정합: [A]/[C] (1~9/10~19/...) 채택이 자연스러움
+  - pos1~pos6+보너스 슬롯 전이를 원하면 **신규 정의·명명 규칙** 필요
+
+================================================================================
+정찰 3 — 연관성/전이 원천 데이터
+================================================================================
+
+■ lotto_draws (lotto.db)
+
+CREATE TABLE lotto_draws (
+    draw_no INTEGER PRIMARY KEY,
+    draw_date TEXT NOT NULL,
+    num1..num6 INTEGER NOT NULL,
+    bonus INTEGER NOT NULL,
+    total_sales, first_prize, first_winners, created_at ...
+)
+
+실측:
+  COUNT=1231, MIN(draw_no)=1, MAX(draw_no)=1231
+  num1>num2 OR ... OR num5>num6 위반: 0건 → DB 저장 시 이미 오름차순
+
+샘플:
+  1230: 3,8,9,22,28,42 + bonus 45
+  1231: 4,13,14,18,31,38 + bonus 15
+
+■ READ-ONLY 조회 경로
+  data_service.get_all_draws() — ORDER BY draw_no (L751-756)
+  postmortem _src_conn() — PRAGMA query_only=ON
+
+■ 기존 "연관성" 분석 (전역 집계, per-draw 저장 아님)
+
+| 함수/모듈 | 내용 | 저장 |
+|-----------|------|------|
+| data_service.analyze_pair_frequency | 동회차 6개 번호 쌍 co-occurrence | 없음 (API 즉시) |
+| predict_markov.build_transition_matrix | 회차 i 6개 → 회차 i+1 6개 번호→번호 가중 전이 | 예측 시 in-memory |
+| postmortem combo_stats | 단일 회차 6개 조합 특성 | winning_stats JSON |
+
+■ "회차 간 전이(N-1→N)" 전용
+  - band→band, zone tuple→zone tuple, pos→pos 전이를 **저장하는 테이블/함수: 없음**
+  - markov 전이는 **번호 1~45 쌍**이며 band 집계·PostMortem 저장과 분리됨
+  - N-1→N 계산에 필요한 raw 데이터: lotto_draws 연속 2행 — **READ-ONLY로 확보 가능**
+  - 컨닝 방지: N회차 지표 계산 시 draws WHERE draw_no < N (또는 ≤ N-1)만 사용해야 함
+    (현재 postmortem compute_draw_postmortem은 당회차 당첨·예측만 사용, 전이 미계산)
+
+================================================================================
+정찰 4 — 상세페이지와 저장 단위
+================================================================================
+
+■ 현재 UI/API 연결
+  - load_postmortem(draw_no): postmortem_engine.py L346 — READ-ONLY 1회차
+  - routes.py: postmortem 전용 API **없음** (stats/pairs, stats/range 등 전역만)
+  - lotto.js: postmortem 직접 참조 없음 (/api/lotto/stats/comprehensive 등)
+
+■ per-draw vs 전역
+
+| 목표 | 적합 저장 | 근거 |
+|------|-----------|------|
+| 회차 상세페이지 "1231회차 전이 관찰" | **per-draw** (draw_no PK) | postmortem_draw 1행=1회차, load_postmortem(draw_no) 이미 존재 |
+| "역사 전체 band A→B 누적 빈도" | **전역** 별도 테이블 또는 postmortem_meta | 회차별 JSON 중복 비효율 |
+| "1231회차 시점까지의 누적 전이 스냅샷" | per-draw JSON 컬럼 (walk-forward 스냅샷) | N분석=1..N-1 원칙과 부합 |
+
+■ postmortem_draw 구조상 자연스러운 확장안 (설계 제안, 미구현)
+  1) postmortem_draw에 JSON 컬럼 추가
+     transition_observation: {prev_draw, band_from, band_to, overlap_nums, ...}
+     — 상세페이지 1회차 조회에 최적
+  2) postmortem_transition_global (draw_no 없음, band_pair, count, updated_at)
+     — 대시보드·히트맵용
+  3) 둘 다: per-draw 관찰값 + meta/global 누적 (역주입 없이 patterns.db만)
+
+================================================================================
+절대 원칙 — 설계 반영 확인
+================================================================================
+
+| 원칙 | 현재 코드 상태 |
+|------|----------------|
+| 6뇌/lead1 예측·lotto.db READ-ONLY | postmortem _src_conn query_only=ON ✓ |
+| 연관성 지표 = 분석 관찰값만, F1 역주입 금지 | postmortem은 patterns.db만 WRITE, predict_brain7 미참조 ✓ |
+| N회차 분석 = 1~(N-1)만 | **전이 지표 미구현** — 구현 시 compute에 max_data_draw=N-1 명시 필요 |
+| postmortem은 예측 결과(lotto_predictions) READ | compute_draw_postmortem L170-177 — 당회차 예측 vs 당첨 비교 (복기 목적) |
+
+================================================================================
+근거 파일 목록
+================================================================================
+
+  app/lotto/postmortem_engine.py       — 스키마, combo_stats, compute, upsert, hook
+  app/lotto/data_service.py            — refresh 훅 L579-582, get_all_draws, analyze_*
+  app/lotto/predict_markov.py          — build_transition_matrix (번호 전이)
+  app/lotto/predict_missanalysis.py    — _zone_idx 5-band
+  app/lotto/routes.py                  — /stats/* (전역, postmortem API 없음)
+  app/lotto/pattern_store.py           — patterns.db READ-ONLY (postmortem_draw 미노출)
+  tools/_verify_postmortem_hook.py     — 멱등·격리 검증
+  tools/_build_postmortem_engine.py    — 88~1231 backfill
+  data/lotto.db                        — lotto_draws 1~1231
+  data/lotto_patterns.db               — postmortem_draw 1112행
+
+================================================================================
+미해결 / 다음 설계 결정 필요
+================================================================================
+
+1. band 정의 단일화: 1~9/10~19/... vs 1~10/11~20/... — PostMortem은 전자
+2. "6구간+보너스" 사용자 의도 확인: pos 슬롯 vs 5-band+보너스 band
+3. 전이 단위: 번호→번호 / band→band / zone_tuple→zone_tuple / overlap만
+4. 스키마: ALTER postmortem_draw vs postmortem_transition 신규 테이블
+5. walk-forward 스냅샷 vs 매회 전역 재집계 — 상세페이지 UX에 따라 선택
+6. API/UI: load_postmortem 노출 routes + lotto.js 상세 탭 (현재 없음)
+
+— END —

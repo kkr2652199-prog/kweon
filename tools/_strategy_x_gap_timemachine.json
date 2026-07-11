@@ -1,0 +1,139 @@
+{
+  "evaluated_draws": 884,
+  "skipped_draws": 80,
+  "era": "C",
+  "range": "262~1228",
+  "r13": "draw_no < N 만 gap·trust·cooccur 산출",
+  "baseline_hyena_cooccur_favor": {
+    "popularity_sum": 0.8679,
+    "hit_avg": 0.7916,
+    "reference_json": 0.8679
+  },
+  "gap_only": {
+    "popularity_sum": 0.7834,
+    "hit_avg": 0.8002,
+    "delta_vs_hyena": -0.0845,
+    "paired_ttest_vs_hyena": {
+      "t_stat": -32.3108,
+      "p_value": 0.0,
+      "n": 884
+    }
+  },
+  "hyena_plus_gap_blends": [
+    {
+      "gap_blend": 0.1,
+      "popularity_sum": 0.868,
+      "hit_avg": 0.7821,
+      "delta_vs_hyena_baseline": 0.0001,
+      "beats_hyena_0.8679": true,
+      "paired_ttest_vs_hyena": {
+        "t_stat": 0.15,
+        "p_value": 0.880754,
+        "n": 884
+      }
+    },
+    {
+      "gap_blend": 0.15,
+      "popularity_sum": 0.8678,
+      "hit_avg": 0.7919,
+      "delta_vs_hyena_baseline": -0.0001,
+      "beats_hyena_0.8679": false,
+      "paired_ttest_vs_hyena": {
+        "t_stat": -0.1541,
+        "p_value": 0.877538,
+        "n": 884
+      }
+    },
+    {
+      "gap_blend": 0.2,
+      "popularity_sum": 0.8668,
+      "hit_avg": 0.7873,
+      "delta_vs_hyena_baseline": -0.0011,
+      "beats_hyena_0.8679": false,
+      "paired_ttest_vs_hyena": {
+        "t_stat": -1.2981,
+        "p_value": 0.194264,
+        "n": 884
+      }
+    },
+    {
+      "gap_blend": 0.25,
+      "popularity_sum": 0.8673,
+      "hit_avg": 0.7799,
+      "delta_vs_hyena_baseline": -0.0006,
+      "beats_hyena_0.8679": false,
+      "paired_ttest_vs_hyena": {
+        "t_stat": -0.6299,
+        "p_value": 0.528791,
+        "n": 884
+      }
+    },
+    {
+      "gap_blend": 0.3,
+      "popularity_sum": 0.8673,
+      "hit_avg": 0.7846,
+      "delta_vs_hyena_baseline": -0.0006,
+      "beats_hyena_0.8679": false,
+      "paired_ttest_vs_hyena": {
+        "t_stat": -0.5619,
+        "p_value": 0.574218,
+        "n": 884
+      }
+    }
+  ],
+  "best_hyena_gap_blend": 0.1,
+  "best_hyena_gap_pop": 0.868,
+  "random_reference": {
+    "popularity_sum": 0.7988,
+    "hit_avg": 0.81
+  },
+  "accumulation": {
+    "hyena_early_262_600": 0.8996,
+    "hyena_late_601_1228": 0.855,
+    "hyena_delta": -0.0446,
+    "gap_only_early": 0.7727,
+    "gap_only_late": 0.7878,
+    "gap_only_delta": 0.0151,
+    "hyena_plus_gap_by_blend": [
+      {
+        "gap_blend": 0.1,
+        "early_262_600": 0.9017,
+        "late_601_1228": 0.8542,
+        "delta_late_minus_early": -0.0475
+      },
+      {
+        "gap_blend": 0.15,
+        "early_262_600": 0.9015,
+        "late_601_1228": 0.8541,
+        "delta_late_minus_early": -0.0474
+      },
+      {
+        "gap_blend": 0.2,
+        "early_262_600": 0.8997,
+        "late_601_1228": 0.8534,
+        "delta_late_minus_early": -0.0463
+      },
+      {
+        "gap_blend": 0.25,
+        "early_262_600": 0.9007,
+        "late_601_1228": 0.8537,
+        "delta_late_minus_early": -0.047
+      },
+      {
+        "gap_blend": 0.3,
+        "early_262_600": 0.9006,
+        "late_601_1228": 0.8538,
+        "delta_late_minus_early": -0.0468
+      }
+    ],
+    "data_accum_improves_popularity": false
+  },
+  "verdict": {
+    "gap_signal_popularity_improves": false,
+    "hyena_plus_gap_beats_baseline": false,
+    "six_brain_candidate": "폐기 — gap 신호 인기적합도 미상승",
+    "hit_honest_random_level": true,
+    "accumulation_helps": false
+  },
+  "r2_honest": "gap·hyena+gap 모두 추첨 예측 아님. 인기적합도는 사람 행동(인기) 적합. 적중률은 무작위 수준. 당첨확률 향상 주장 없음."
+}

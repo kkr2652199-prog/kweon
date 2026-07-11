@@ -1,0 +1,51 @@
+20260710_1군7뇌_최종성능검증 (in-memory, 성능개선 종료 실험)
+====================================================================
+
+[STEP 0 — 사전 설계]
+(1) 구현: F1_V2_STRICT 후보풀 동일. arm2=consec_pairs×0.45 score 패널티 후 standard wheel. arm3/3b=n_pick 6·7 동일 wheel. arm4=greedy wheel metric을 new_cov×12 대신 pairwise overlap 분산 최소화+score. Liu et al.(2025) coverage→overlap balance 대응.
+(2) 함정: ① arm4 overlap 균등화 vs copy0: 후보는 ov<5만, wheel은 세트간 overlap만 조정 — 단일뇌 카피(ov≥5)와 무관. 다만 cov_span↓로 pack_gap↑ 가능. ② arm2 consec 패널티는 span필터와 유사 — best 유지·gap 악화 재발 가능. ③ SETS_6·7은 best-of-5 직접 비교 금지 — pack_gap·세트당 hit로 판정. ④ 논문은 소액당첨·예산제약 — 우리 hit4p는 4+ main6, 정의 차이.
+(3) 허점: arm4 metric 가중치(−var×8) 단일점 — grid 없음. consec 패널티 0.45 고정. 이번 실험 후 성능 개선 종료 — GO arm만 이식 논의.
+(4) arm4 vs copy0: 후보 ov<5 필터 유지, wheel은 세트간 overlap만 조정 — 사전 충돌 없음
+
+[논문 대비] Liu, Liu & Teo (2025): 예산·티켓 수 고정 시 coverage 극대화보다 pairwise overlap 균등 분산(majorization)이 소액 당첨 확률↑. 우리 arm4는 greedy overlap-var 최소 wheel로 근사. hit4p(4+ main6)가 논문 소액당첨 proxy — 완전 동일 아님.
+
+contamination: 0건
+
+[STEP 3 — 판정 (각 arm vs arm1)]
+  (a)best-of-5 (arm3는 N/A) | (b)gap/hit4p 2구간+ | (c)카피0 | (d)contamination=0
+--------------------------------------------------------------------
+  CONSEC_FILTER: GO=HOLD | best5=N/A/FAIL | improve=PASS (gap 0/3 hit4p 3/3) | copy=PASS | (a)best-of-5
+  SETS_6: GO=HOLD | best5=PASS | improve=FAIL (gap 3/3 hit4p 3/3) | copy=PASS | (b)pack_gap 3/3 + eff 유지
+  SETS_7: GO=HOLD | best5=PASS | improve=FAIL (gap 3/3 hit4p 3/3) | copy=PASS | (b)pack_gap 3/3 + eff 유지
+  OVERLAP_BALANCE: GO=ADOPT-CANDIDATE | best5=PASS | improve=PASS (gap 1/3 hit4p 3/3) | copy=PASS | 전 규칙 통과
+
+[arm별 seed0 요약 vs arm1]
+--------------------------------------------------------------------
+  arm | best5 Δ | gap Δ | hit4p Δ | cov Δ | pvar Δ | eff Δ | copy0
+  CONSEC_FILTER    | -0.009 | -0.039 | +0.0067 | +0.02 | +0.0002 | -0.013 | True
+  SETS_6           | +0.000 | +0.323 | +0.0022 | +3.19 | +0.0019 | -0.028 | True
+  SETS_7           | +0.000 | +0.592 | +0.0067 | +5.81 | +0.0034 | -0.040 | True
+  OVERLAP_BALANCE  | +0.011 | +0.040 | +0.0000 | -0.00 | -0.0006 | +0.005 | True
+  F1_V2_STRICT     | — | — | — | cov=26.1626 pvar=0.009 (baseline n=898)
+
+[seed0 3구간 — arm4 OVERLAP_BALANCE]
+--------------------------------------------------------------------
+  [A] hit4p arm1=0.0336 arm4=0.0302 Δ=-0.0034 p=0.3173 pass=True
+  [B] hit4p arm1=0.0467 arm4=0.05 Δ=+0.0033 p=0.5641 pass=True
+  [C] hit4p arm1=0.0433 arm4=0.0433 Δ=+0.0000 p=1.0000 pass=True
+  [A] gap arm1=1.3255 arm4=1.2919 Δred=+0.0336 p=0.1566 pass=False
+  [B] gap arm1=1.2333 arm4=1.21 Δred=+0.0233 p=0.2856 pass=False
+  [C] gap arm1=1.2167 arm4=1.1533 Δred=+0.0634 p=0.0020 pass=True
+
+[종료 선언] pack_gap 직접 공략(B1/B2/span) + 최종 3각(consec/SETS/overlap) 모두 HOLD — F1_V2_STRICT 프로덕션 유지, 성능 개선 종료.
+
+[STEP 4 — DB 회귀]
+  sha BEFORE/AFTER: 0fe5d19ccbceb829 / 0fe5d19ccbceb829
+  regression_ok: True
+  stat: 6015 -> 6015 [OK]
+  markov: 6010 -> 6010 [OK]
+  llm: 6011 -> 6011 [OK]
+  lstm: 6015 -> 6015 [OK]
+  fusion: 6015 -> 6015 [OK]
+  hyena: 6010 -> 6010 [OK]
+  lead1: 5565 -> 5565 [OK]

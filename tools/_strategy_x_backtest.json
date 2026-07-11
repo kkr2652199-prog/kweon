@@ -1,0 +1,87 @@
+{
+  "step1_hit_rate": {
+    "era": "C",
+    "range": "262~1228",
+    "evaluated_draws": 876,
+    "skipped_draws": 80,
+    "min_train": 80,
+    "strategy_x_avg_match": 0.8107,
+    "random_avg_match": 0.8087,
+    "theory_avg_match": 0.7894,
+    "delta": 0.002,
+    "hit4_plus": {
+      "strategy_x": 9,
+      "random": 7
+    },
+    "hit6": {
+      "strategy_x": 0,
+      "random": 0
+    },
+    "verdict": "적중률 무작위 수준 = 정직 확인"
+  },
+  "step2_popularity_fit": {
+    "strategy_x_avg_pop_sum": 0.8516,
+    "random_avg_pop_sum": 0.7988,
+    "delta": 0.0528,
+    "paired_ttest": {
+      "t_stat": 23.7983,
+      "p_value": 0.0,
+      "n": 876
+    },
+    "verdict": "✅ 인기영역 적합도 우위 = 전략X의 과학적 근거 확보"
+  },
+  "step3_top30_winner_overlap": {
+    "high_winner_draws_n": 314,
+    "strategy_x_avg_overlap": 2.4694,
+    "random_avg_overlap": 1.9873,
+    "delta": 0.4821,
+    "top_popular_n": 15
+  },
+  "step4_summary_table": [
+    {
+      "metric": "평균 적중수",
+      "strategy_x": 0.8107,
+      "random": 0.8087,
+      "theory": 0.7894,
+      "delta": 0.002,
+      "verdict": "적중률 무작위 수준 = 정직 확인"
+    },
+    {
+      "metric": "평균 인기점수합",
+      "strategy_x": 0.8516,
+      "random": 0.7988,
+      "theory": null,
+      "delta": 0.0528,
+      "verdict": "✅ 인기영역 적합도 우위 = 전략X의 과학적 근거 확보"
+    },
+    {
+      "metric": "hit4+ 건수",
+      "strategy_x": 9,
+      "random": 7,
+      "theory": null,
+      "delta": 2,
+      "verdict": "보조"
+    },
+    {
+      "metric": "hit6 건수",
+      "strategy_x": 0,
+      "random": 0,
+      "theory": null,
+      "delta": 0,
+      "verdict": "보조"
+    },
+    {
+      "metric": "당첨자多 회차 인기번호 겹침",
+      "strategy_x": 2.4694,
+      "random": 1.9873,
+      "theory": null,
+      "delta": 0.4821,
+      "verdict": "보조"
+    }
+  ],
+  "conclusion": {
+    "hit_rate": "적중률 무작위 수준 = 정직 확인",
+    "popularity_fit": "✅ 인기영역 적합도 우위 = 전략X의 과학적 근거 확보",
+    "identity": "예측 엔진 아님, 인기영역 조합 생성기"
+  }
+}

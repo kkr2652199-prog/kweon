@@ -1,0 +1,411 @@
+{
+  "title": "20260620_4군_88to1228_수학적연관성_테스트정찰",
+  "mode": "READ-ONLY",
+  "db": "D:\\3kweon\\data\\lotto4.db",
+  "draw_range": [
+    88,
+    1228
+  ],
+  "step1_raw": {
+    "draw_range": [
+      88,
+      1228
+    ],
+    "expected_count": 1141,
+    "actual_count": 1141,
+    "missing_draws": [],
+    "complete": true,
+    "zero_total_sales_count": 0,
+    "zero_total_sales_sample": [],
+    "zero_first_prize_count": 3,
+    "zero_first_prize_sample": [
+      289,
+      295,
+      463
+    ],
+    "zero_first_winners_count": 3,
+    "zero_first_winners_sample": [
+      289,
+      295,
+      463
+    ],
+    "zero_first_winners_note": "1등 미당첨(0명) 회차 — 정상 0값",
+    "lotto_draw_tiers_rows": 5705,
+    "draws_missing_any_tier": [],
+    "draws_missing_tier_count": 0,
+    "tier_zero_winner_examples": {
+      "tier1": [
+        289,
+        295,
+        463
+      ],
+      "tier2": [],
+      "tier3": [],
+      "tier4": [],
+      "tier5": []
+    },
+    "lotto4_winners_full_count": 1141,
+    "winners_full_missing": [],
+    "winners_full_missing_count": 0
+  },
+  "step2_correlations": {
+    "n_draws": 1141,
+    "pairs": [
+      {
+        "pair": "combo_no ↔ 1등당첨자수",
+        "n": 1141,
+        "pearson_r": -0.043772,
+        "pearson_p": 0.139498,
+        "spearman_r": -0.021073,
+        "spearman_p": 0.477016,
+        "pearson_sig": "무의미",
+        "spearman_sig": "무의미",
+        "significant_p05": false
+      },
+      {
+        "pair": "combo_no ↔ 1등당첨금",
+        "n": 1141,
+        "pearson_r": 0.066598,
+        "pearson_p": 0.024472,
+        "spearman_r": 0.087813,
+        "spearman_p": 0.002991,
+        "pearson_sig": "유의미(극약)",
+        "spearman_sig": "유의미(극약)",
+        "significant_p05": true
+      },
+      {
+        "pair": "combo_no ↔ 총판매량",
+        "n": 1141,
+        "pearson_r": 0.016579,
+        "pearson_p": 0.575853,
+        "spearman_r": 0.020144,
+        "spearman_p": 0.496662,
+        "pearson_sig": "무의미",
+        "spearman_sig": "무의미",
+        "significant_p05": false
+      },
+      {
+        "pair": "본번호합계 ↔ 1등당첨자수",
+        "n": 1141,
+        "pearson_r": -0.088856,
+        "pearson_p": 0.002664,
+        "spearman_r": -0.065489,
+        "spearman_p": 0.02696,
+        "pearson_sig": "유의미(극약)",
+        "spearman_sig": "유의미(극약)",
+        "significant_p05": true
+      },
+      {
+        "pair": "본번호합계 ↔ 1등당첨금",
+        "n": 1141,
+        "pearson_r": 0.068439,
+        "pearson_p": 0.020779,
+        "spearman_r": 0.126363,
+        "spearman_p": 1.9e-05,
+        "pearson_sig": "유의미(극약)",
+        "spearman_sig": "유의미(약)",
+        "significant_p05": true
+      },
+      {
+        "pair": "총판매량 ↔ 1등당첨자수",
+        "n": 1141,
+        "pearson_r": 0.45024,
+        "pearson_p": 0.0,
+        "spearman_r": 0.471066,
+        "spearman_p": 0.0,
+        "pearson_sig": "유의미(강)",
+        "spearman_sig": "유의미(강)",
+        "significant_p05": true
+      },
+      {
+        "pair": "1등당첨금 ↔ 1등당첨자수",
+        "n": 1141,
+        "pearson_r": -0.531706,
+        "pearson_p": 0.0,
+        "spearman_r": -0.680162,
+        "spearman_p": 0.0,
+        "pearson_sig": "유의미(강)",
+        "spearman_sig": "유의미(강)",
+        "significant_p05": true
+      },
+      {
+        "pair": "회차(시간) ↔ 총판매량",
+        "n": 1141,
+        "pearson_r": 0.510451,
+        "pearson_p": 0.0,
+        "spearman_r": 0.521106,
+        "spearman_p": 0.0,
+        "pearson_sig": "유의미(강)",
+        "spearman_sig": "유의미(강)",
+        "significant_p05": true
+      },
+      {
+        "pair": "회차(시간) ↔ 1등당첨금",
+        "n": 1141,
+        "pearson_r": -0.052499,
+        "pearson_p": 0.076289,
+        "spearman_r": 0.067431,
+        "spearman_p": 0.022736,
+        "pearson_sig": "무의미",
+        "spearman_sig": "유의미(극약)",
+        "significant_p05": true
+      },
+      {
+        "pair": "회차 ↔ combo_no",
+        "n": 1141,
+        "pearson_r": 0.037577,
+        "pearson_p": 0.20467,
+        "spearman_r": 0.037575,
+        "spearman_p": 0.204699,
+        "pearson_sig": "무의미",
+        "spearman_sig": "무의미",
+        "significant_p05": false
+      },
+      {
+        "pair": "본번호합계 ↔ 총판매량",
+        "n": 1141,
+        "pearson_r": 0.026725,
+        "pearson_p": 0.3671,
+        "spearman_r": 0.022874,
+        "spearman_p": 0.440171,
+        "pearson_sig": "무의미",
+        "spearman_sig": "무의미",
+        "significant_p05": false
+      },
+      {
+        "pair": "combo_no ↔ 2등당첨자수",
+        "n": 1141,
+        "pearson_r": -0.023879,
+        "pearson_p": 0.420331,
+        "spearman_r": -0.044923,
+        "spearman_p": 0.129381,
+        "pearson_sig": "무의미",
+        "spearman_sig": "무의미",
+        "significant_p05": false
+      },
+      {
+        "pair": "총판매량 ↔ 4등당첨자수",
+        "n": 1141,
+        "pearson_r": 0.734308,
+        "pearson_p": 0.0,
+        "spearman_r": 0.692969,
+        "spearman_p": 0.0,
+        "pearson_sig": "유의미(강)",
+        "spearman_sig": "유의미(강)",
+        "significant_p05": true
+      },
+      {
+        "pair": "총판매량 ↔ 5등당첨자수",
+        "n": 1141,
+        "pearson_r": 0.747416,
+        "pearson_p": 0.0,
+        "spearman_r": 0.706935,
+        "spearman_p": 0.0,
+        "pearson_sig": "유의미(강)",
+        "spearman_sig": "유의미(강)",
+        "significant_p05": true
+      }
+    ],
+    "structural_highlight": {
+      "판매량↔1등당첨자수": {
+        "pair": "총판매량 ↔ 1등당첨자수",
+        "n": 1141,
+        "pearson_r": 0.45024,
+        "pearson_p": 0.0,
+        "spearman_r": 0.471066,
+        "spearman_p": 0.0,
+        "pearson_sig": "유의미(강)",
+        "spearman_sig": "유의미(강)",
+        "significant_p05": true
+      },
+      "당첨금↔당첨자수": {
+        "pair": "1등당첨금 ↔ 1등당첨자수",
+        "n": 1141,
+        "pearson_r": -0.531706,
+        "pearson_p": 0.0,
+        "spearman_r": -0.680162,
+        "spearman_p": 0.0,
+        "pearson_sig": "유의미(강)",
+        "spearman_sig": "유의미(강)",
+        "significant_p05": true
+      }
+    },
+    "combo_no_pairs": [
+      {
+        "pair": "combo_no ↔ 1등당첨자수",
+        "n": 1141,
+        "pearson_r": -0.043772,
+        "pearson_p": 0.139498,
+        "spearman_r": -0.021073,
+        "spearman_p": 0.477016,
+        "pearson_sig": "무의미",
+        "spearman_sig": "무의미",
+        "significant_p05": false
+      },
+      {
+        "pair": "combo_no ↔ 1등당첨금",
+        "n": 1141,
+        "pearson_r": 0.066598,
+        "pearson_p": 0.024472,
+        "spearman_r": 0.087813,
+        "spearman_p": 0.002991,
+        "pearson_sig": "유의미(극약)",
+        "spearman_sig": "유의미(극약)",
+        "significant_p05": true
+      },
+      {
+        "pair": "combo_no ↔ 총판매량",
+        "n": 1141,
+        "pearson_r": 0.016579,
+        "pearson_p": 0.575853,
+        "spearman_r": 0.020144,
+        "spearman_p": 0.496662,
+        "pearson_sig": "무의미",
+        "spearman_sig": "무의미",
+        "significant_p05": false
+      },
+      {
+        "pair": "combo_no ↔ 2등당첨자수",
+        "n": 1141,
+        "pearson_r": -0.023879,
+        "pearson_p": 0.420331,
+        "spearman_r": -0.044923,
+        "spearman_p": 0.129381,
+        "pearson_sig": "무의미",
+        "spearman_sig": "무의미",
+        "significant_p05": false
+      }
+    ],
+    "combo_no_max_abs_pearson": 0.066598
+  },
+  "step3_distributions": {
+    "main_number_freq": {
+      "chi2": 30.1656,
+      "df": 44,
+      "p_value": 0.944379,
+      "fair_uniform_p05": true,
+      "interpretation": "p>=0.05면 공평 출현과 통계적으로 양립",
+      "min_count": 127,
+      "max_count": 176,
+      "expected_per_number": 152.13
+    },
+    "bonus_number_freq": {
+      "chi2": 40.2401,
+      "df": 44,
+      "p_value": 0.63351,
+      "fair_uniform_p05": true
+    },
+    "num_sum_distribution": {
+      "mean": 138.29,
+      "std": 30.8,
+      "min": 48,
+      "max": 238,
+      "shapiro_W": 0.998879,
+      "shapiro_p": 0.713608,
+      "normal_like_p05": true
+    },
+    "combo_no_uniformity_88_1228": {
+      "n_winning_draws": 1141,
+      "bins": 45,
+      "chi2": 48.8379,
+      "df": 44,
+      "p_value": 0.284862,
+      "ks_stat": 0.024969,
+      "ks_p": 0.467886,
+      "uniform_like_p05": true,
+      "note": "1141개 당첨 combo_no가 814만 공간에서 균등한지 (무작위 가설)"
+    },
+    "bonus_main_top_pairs": [
+      {
+        "nums": [
+          4,
+          7
+        ],
+        "count": 17
+      },
+      {
+        "nums": [
+          16,
+          21
+        ],
+        "count": 16
+      },
+      {
+        "nums": [
+          24,
+          35
+        ],
+        "count": 15
+      },
+      {
+        "nums": [
+          3,
+          16
+        ],
+        "count": 15
+      },
+      {
+        "nums": [
+          17,
+          24
+        ],
+        "count": 14
+      },
+      {
+        "nums": [
+          10,
+          27
+        ],
+        "count": 14
+      },
+      {
+        "nums": [
+          1,
+          7
+        ],
+        "count": 14
+      },
+      {
+        "nums": [
+          2,
+          43
+        ],
+        "count": 14
+      },
+      {
+        "nums": [
+          21,
+          30
+        ],
+        "count": 14
+      },
+      {
+        "nums": [
+          2,
+          34
+        ],
+        "count": 14
+      }
+    ]
+  },
+  "step4_verdict": {
+    "green_structural": [
+      "총판매량 ↔ 1등당첨자수: r=0.45024 — 분배·구매 구조상 당연한 관계 (예측 아님)",
+      "1등당첨금 ↔ 1등당첨자수: r=-0.531706 — 분배·구매 구조상 당연한 관계 (예측 아님)",
+      "회차(시간) ↔ 총판매량: r=0.510451 — 시대·인플레 추세 (예측 아님)",
+      "회차(시간) ↔ 1등당첨금: r=-0.052499 — 시대·인플레 추세 (예측 아님)"
+    ],
+    "red_no_signal": [
+      "combo_no ↔ 1등당첨자수: |r|≈0.0438 — 무작위·무관계",
+      "combo_no ↔ 1등당첨금: |r|≈0.0666 — 무작위·무관계",
+      "combo_no ↔ 총판매량: |r|≈0.0166 — 무작위·무관계",
+      "본번호합계 ↔ 1등당첨자수: 예측 신호 없음",
+      "본번호합계 ↔ 1등당첨금: 예측 신호 없음",
+      "본번호합계 ↔ 총판매량: 예측 신호 없음",
+      "combo_no ↔ 2등당첨자수: |r|≈0.0239 — 무작위·무관계"
+    ],
+    "yellow_caution": [],
+    "conclusion": "88~1228 구간에서 combo_no·번호조합은 1등 당첨금/당첨자/판매량과 예측 가능한 수학 관계가 없음(|r|≈0). 유의하게 보이는 상관은 판매량↔당첨자수·당첨금↔당첨자수(역상관)·회차 추세 등 복권 분배 구조·시대 효과이며 미래 번호 예측에 쓸 수 없음.",
+    "predictable": false
+  }
+}

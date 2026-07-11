@@ -1,0 +1,158 @@
+{
+  "era": "C",
+  "top_draws_n": 320,
+  "winner_cnt_min": 11,
+  "total_pairs": 990,
+  "pairs_with_freq_gt0": 980,
+  "freq_mean": 4.8485,
+  "freq_std": 2.3671,
+  "freq_min": 0,
+  "freq_max": 14,
+  "freq_cv": 0.4882,
+  "max_min_ratio": Infinity,
+  "top10_pairs": [
+    {
+      "pair": "6-12",
+      "num_a": 6,
+      "num_b": 12,
+      "freq": 14,
+      "freq_pct": 0.0437
+    },
+    {
+      "pair": "7-12",
+      "num_a": 7,
+      "num_b": 12,
+      "freq": 13,
+      "freq_pct": 0.0406
+    },
+    {
+      "pair": "27-38",
+      "num_a": 27,
+      "num_b": 38,
+      "freq": 13,
+      "freq_pct": 0.0406
+    },
+    {
+      "pair": "7-19",
+      "num_a": 7,
+      "num_b": 19,
+      "freq": 12,
+      "freq_pct": 0.0375
+    },
+    {
+      "pair": "13-45",
+      "num_a": 13,
+      "num_b": 45,
+      "freq": 12,
+      "freq_pct": 0.0375
+    },
+    {
+      "pair": "1-28",
+      "num_a": 1,
+      "num_b": 28,
+      "freq": 11,
+      "freq_pct": 0.0344
+    },
+    {
+      "pair": "5-12",
+      "num_a": 5,
+      "num_b": 12,
+      "freq": 11,
+      "freq_pct": 0.0344
+    },
+    {
+      "pair": "6-7",
+      "num_a": 6,
+      "num_b": 7,
+      "freq": 11,
+      "freq_pct": 0.0344
+    },
+    {
+      "pair": "6-19",
+      "num_a": 6,
+      "num_b": 19,
+      "freq": 11,
+      "freq_pct": 0.0344
+    },
+    {
+      "pair": "7-38",
+      "num_a": 7,
+      "num_b": 38,
+      "freq": 11,
+      "freq_pct": 0.0344
+    }
+  ],
+  "bottom10_pairs": [
+    {
+      "pair": "4-21",
+      "num_a": 4,
+      "num_b": 21,
+      "freq": 0,
+      "freq_pct": 0.0
+    },
+    {
+      "pair": "5-19",
+      "num_a": 5,
+      "num_b": 19,
+      "freq": 0,
+      "freq_pct": 0.0
+    },
+    {
+      "pair": "9-43",
+      "num_a": 9,
+      "num_b": 43,
+      "freq": 0,
+      "freq_pct": 0.0
+    },
+    {
+      "pair": "14-32",
+      "num_a": 14,
+      "num_b": 32,
+      "freq": 0,
+      "freq_pct": 0.0
+    },
+    {
+      "pair": "17-41",
+      "num_a": 17,
+      "num_b": 41,
+      "freq": 0,
+      "freq_pct": 0.0
+    },
+    {
+      "pair": "25-45",
+      "num_a": 25,
+      "num_b": 45,
+      "freq": 0,
+      "freq_pct": 0.0
+    },
+    {
+      "pair": "27-31",
+      "num_a": 27,
+      "num_b": 31,
+      "freq": 0,
+      "freq_pct": 0.0
+    },
+    {
+      "pair": "28-35",
+      "num_a": 28,
+      "num_b": 35,
+      "freq": 0,
+      "freq_pct": 0.0
+    },
+    {
+      "pair": "30-42",
+      "num_a": 30,
+      "num_b": 42,
+      "freq": 0,
+      "freq_pct": 0.0
+    },
+    {
+      "pair": "33-36",
+      "num_a": 33,
+      "num_b": 36,
+      "freq": 0,
+      "freq_pct": 0.0
+    }
+  ],
+  "verdict": "유효"
+}

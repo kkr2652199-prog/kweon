@@ -1,0 +1,138 @@
+20260618_1~3군_백테스트_누수검증_정찰
+동생 → 커서 | 2026-06-18 | READ-ONLY 정찰 | 1~3군 간섭 0건
+
+원칙: CURSOR_RULES §2 1~3군 수정금지 / R2 정직 / R14 정찰의무
+조작: INSERT·DELETE·UPDATE 0건. 원본 data\lotto.db 미쓰기.
+감사 DB: D:\MONEY lol\My_Library\data_audit_readonly\lotto_audit.db
+         (원본 25,579,520 bytes 복사본만 사용)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP0 — DB 확보·행 수 RAW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+lotto_predictions (1군)
+  total: 48190
+  fusion 5995 | hyena 5990 | llm 5991 | lstm 5995 | markov 5990 | stat 5995
+  miss_analysis 6115 | snake 6115 | llm_fallback 4
+
+lotto_predictions_army2 (2군)
+  total: 42780
+  v11_* 각 6090~6115 (7뇌×~6115)
+
+lotto_predictions_army3 (3군)
+  total: 48895
+  v12_* 각 6090~6115 (8뇌×~6115)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP1 — fusion 1등 7건 created_at RAW (핵심)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+target | matched | created_at
+198    | 6       | 2026-04-25 11:51:02
+725    | 6       | 2026-04-26 10:54:37
+774    | 6       | 2026-04-26 19:54:44
+800    | 6       | 2026-04-26 20:12:48
+1037   | 6       | 2026-04-26 22:55:02
+1040   | 6       | 2026-04-26 22:57:00
+1122   | 6       | 2026-04-26 23:51:57
+
+판정 근거:
+- 7건이 **서로 다른 시각** (일괄 INSERT 아님)
+- 725→1122 구간 Apr-26 10:54~23:51 약 13시간에 분산
+- 회차 2~5 샘플: 02:15:20 → 02:16:01 → 02:16:43 → 02:17:24 (약 40초/회차)
+- fusion 전체: 5995행 / distinct created_at **1199** (회차당 5세트 동일 시각 = 정상)
+- fusion ts 범위: min 2026-04-25 02:15:20 ~ max 2026-06-13 19:03:51
+
+다른 brain_tag rank6 (동일 7회차):
+  stat/markov/llm/lstm: **0건**
+  hyena: **1037회 1건만** (2026-04-26 22:55:02 — fusion 1037과 동일 시각)
+
+→ fusion만 1등 다수, **시각은 walk-forward 순차 생성 정황**. 일괄 누수 INSERT 패턴 **아님**.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP2 — 학습 컷 코드 검증
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1군 data_service._get_draws_before:
+  SQL: WHERE draw_no < ?  (등호 없음) ✅
+
+1군 run_prediction / fusion:
+  draws = _get_draws_before(target) 후 _vector_fusion_predict(draws, ...)
+  fusion._hybrid_predict: target_draw_no는 API 대칭용으로 미사용 ✅
+  predict_llm: draws에 target 이전만, prompt에 회차 번호만(당첨번호 없음) ✅
+
+1군 run_backtest:
+  for draw_no in range: run_prediction(draw_no)
+  기존 예측 있으면 재생성 스킵(캐시) — created_at이 회차별 순차이면 캐시도 WF 산물
+  매 회차 후 update_brain_weights(draw_no) — **해당 회차 예측 후** 가중치 갱신(다음 회차용)
+
+2군 get_v11_training_draws:
+  lotto_draws draw_no < target ✅
+  miss 서브쿼리 target_draw_no < target ✅
+  recent 50: draw_no < target LIMIT 50 ✅
+
+3군 get_v12_training_draws → build_balanced_training_draws:
+  draw_no < target ✅ (v12_pattern.py 주석·SQL)
+
+잠재 리스크(누수 확정 아님, 기록만):
+- v11 miss 풀이 lotto_predictions 적중 이력 참조 → 1군 예측이 WF로 쌓였다는 전제
+- feedback get_feedback_summary: 최근 N회차 피드백(이미 채점된 과거) — 동일 회차 미포함 전제
+
+코드상 **<= target 또는 전체 draws를 fusion 입력에 쓰는 지점 없음**.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP3 — 800·1122 교차 분석
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+당첨번호 (lotto_draws):
+800:  1,4,10,12,28,45 bonus26 first_winners=11
+1122: 3,6,21,30,34,35 bonus22 first_winners=11
+
+1군 fusion rank6:
+800  created 2026-04-26 20:12:48 nums=1,4,10,12,28,45 (완전일치)
+1122 created 2026-04-26 23:51:57 nums=3,6,21,30,34,35 (완전일치)
+
+2군 v11_fusion rank6:
+800  created 2026-04-29 17:59:03 nums=1,4,10,12,28,45 (1군과 동일 조합)
+1122 created 2026-04-29 18:01:41 nums=3,6,21,30,34,35 (1군과 동일 조합)
+
+3군 v12_fusion rank6 at 800/1122: **현재 DB 0건**
+  (3군 전체 예측은 2026-06-06 일괄 시각에 40행 존재하나 rank6 없음)
+
+세 앱 created_at 비교 (800회):
+  army1 min/max: 2026-04-26 20:12:48 ~ 2026-04-28 11:45:02 (40행)
+  army2 min/max: 2026-04-29 17:59:03 (35행, 단일 시각)
+  army3 min/max: 2026-06-06 19:14:58 (40행, 단일 시각)
+→ **동시 일괄 스크립트 아님** (일자·시각 완전 분리)
+
+인기번호 여부 (1~1221 출현빈도 평균):
+  800 avg_freq=165.67 | 1122=166.67 | 198=164 | 725=162.33 | 774=168
+  이론 균등 기대 ~163 — **특이하게 “인기만” 모인 패턴 아님**
+
+1·2군 동일 6번호 재현: fusion 계열 구조 유사 + “쉬운” 회차에서 수렴 가능.
+3군 동시 1등(800/1122)은 **본 audit DB에서는 미확인** (과거 보고서 both6=2는 1·2군 테이블 기준).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP4 — 종합 판정 (R2 정직)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+판정: **(a) 누수 없음 (코드·created_at 기준)**
+
+근거 요약:
+1. fusion 1등 7건 created_at **회차별 순차** (일괄 INSERT 아님)
+2. 학습 컷 **draw_no < target** 코드 전 군 일치
+3. 800/1122 세 앱 **동시 생성 아님** — 1군 Apr-26, 2군 Apr-29, 3군 Jun-06
+4. 1~3군 1등(특히 fusion)은 **walk-forward 백테스트 산물**로 보는 것이 타당
+
+유보·후속:
+- 1군 캐시 재사용: 과거 비-WF 삽입분이 있었다면 오염 가능하나, 현재 fusion ts가 순차라 **실질 리스크 낮음**
+- **1229회 실전 재현**은 별도 검증 필요 (백테 1등 ≠ 미래 1등)
+- 4군 strategy_x hit6=0은 “누수 없어서”가 아니라 **생성기 포지션·탐색 폭 차이** (정직성 백테와 일치)
+
+4군 대비:
+- 1~3군: 공격적 다뇌·5005 탐색·가중치 진화 → 백테 꼬리(1등) 발생 가능
+- 4군: 인기영역 조합기, 적중≈랜덤 목표 → 1등 0건이 설계와 부합
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+간섭 0건
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- 1~3군 소스·원본 DB: 읽기만
+- 감사 복사본만 생성 (data_audit_readonly\lotto_audit.db)
+- 4군(d:\3kweon) 미변경
+
+기억: 결과 확정 → 동생기억 갱신은 형 확인 후 (본 보고서만 R30 저장)

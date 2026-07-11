@@ -1,0 +1,359 @@
+{
+  "title": "20260701_1군7뇌v3_기여도가중_필살기공식_정밀검증",
+  "date": "2026-07-01",
+  "mode": "READ_ONLY",
+  "army1_modified": false,
+  "army1_brain_count": 6,
+  "brain7_exists": false,
+  "db_writes": 0,
+  "philosophy": "예측 아님 — 기여도(credit) 정량화",
+  "theory": [
+    "Shapley-style 1/k credit",
+    "Gilbert Fair Score (희소 정답 ↑)"
+  ],
+  "contribution_formula": "정답 v, k뇌 포착 → 각 1/k | 6+보너스 7개",
+  "recency_decay": 0.995,
+  "criteria": {
+    "primary": "ΔHR>0.05, p<0.05, 3/3",
+    "secondary": "ΔSEL4>0, p<0.05, 3/3",
+    "tertiary": "hit6 or best-of-5 gap>=0.05 vs SEL4"
+  },
+  "prior": "v2 MWU → SEL4 채택(avg). v3 = 형 기여도 이론 검증.",
+  "step2_periods": [
+    {
+      "label": "A",
+      "range": [
+        330,
+        629
+      ],
+      "n_eval": 298,
+      "human_random_avg": 1.396,
+      "sel4_avg": 2.3926,
+      "summary_rows": [
+        {
+          "arm": "HUMAN_RANDOM",
+          "n_eval": 298,
+          "avg_matched_5sets": 1.396,
+          "avg_best_of_5": 2.7416,
+          "hit6_best_of_5": 0,
+          "hit5plus_best": 11,
+          "hit4plus_best": 60,
+          "delta_vs_human_random": 0.0,
+          "paired_ttest_vs_human_random": null,
+          "delta_vs_SEL4": -0.9966,
+          "paired_ttest_vs_SEL4": null,
+          "pass_vs_hr": false,
+          "pass_vs_sel4": false
+        },
+        {
+          "arm": "SEL4_consensus_vote",
+          "n_eval": 298,
+          "avg_matched_5sets": 2.3926,
+          "avg_best_of_5": 3.0067,
+          "hit6_best_of_5": 0,
+          "hit5plus_best": 15,
+          "hit4plus_best": 89,
+          "delta_vs_human_random": 0.9966,
+          "paired_ttest_vs_human_random": {
+            "t_stat": 27.7685,
+            "p_value": 0.0,
+            "n": 298,
+            "mean_diff": 0.9966
+          },
+          "delta_vs_SEL4": 0.0,
+          "paired_ttest_vs_SEL4": null,
+          "pass_vs_hr": true,
+          "pass_vs_sel4": false
+        },
+        {
+          "arm": "V3_CONTRIBUTION",
+          "n_eval": 298,
+          "avg_matched_5sets": 2.3114,
+          "avg_best_of_5": 3.0772,
+          "hit6_best_of_5": 0,
+          "hit5plus_best": 19,
+          "hit4plus_best": 99,
+          "delta_vs_human_random": 0.9154,
+          "paired_ttest_vs_human_random": {
+            "t_stat": 26.6965,
+            "p_value": 0.0,
+            "n": 298,
+            "mean_diff": 0.9154
+          },
+          "delta_vs_SEL4": -0.0812,
+          "paired_ttest_vs_SEL4": {
+            "t_stat": -4.4836,
+            "p_value": 7e-06,
+            "n": 298,
+            "mean_diff": -0.0812
+          },
+          "pass_vs_hr": true,
+          "pass_vs_sel4": false
+        },
+        {
+          "arm": "INDIVIDUAL_BEST",
+          "n_eval": 298,
+          "avg_matched_5sets": 3.6074,
+          "avg_best_of_5": 3.6074,
+          "hit6_best_of_5": 0,
+          "hit5plus_best": 35,
+          "hit4plus_best": 160,
+          "delta_vs_human_random": 2.2114,
+          "paired_ttest_vs_human_random": {
+            "t_stat": 62.8208,
+            "p_value": 0.0,
+            "n": 298,
+            "mean_diff": 2.2114
+          },
+          "delta_vs_SEL4": 1.2148,
+          "paired_ttest_vs_SEL4": {
+            "t_stat": 31.0606,
+            "p_value": 0.0,
+            "n": 298,
+            "mean_diff": 1.2148
+          },
+          "pass_vs_hr": true,
+          "pass_vs_sel4": true
+        }
+      ],
+      "tertiary": {
+        "v3_hit6": 0,
+        "sel4_hit6": 0,
+        "v3_best_of_5": 3.0772,
+        "sel4_best_of_5": 3.0067,
+        "hit6_advantage": false,
+        "best_of_5_advantage": true,
+        "decisive": true
+      },
+      "contrib_history_size": 596
+    },
+    {
+      "label": "B",
+      "range": [
+        630,
+        929
+      ],
+      "n_eval": 300,
+      "human_random_avg": 1.4004,
+      "sel4_avg": 2.356,
+      "summary_rows": [
+        {
+          "arm": "HUMAN_RANDOM",
+          "n_eval": 300,
+          "avg_matched_5sets": 1.4004,
+          "avg_best_of_5": 2.68,
+          "hit6_best_of_5": 0,
+          "hit5plus_best": 6,
+          "hit4plus_best": 54,
+          "delta_vs_human_random": 0.0,
+          "paired_ttest_vs_human_random": null,
+          "delta_vs_SEL4": -0.9556,
+          "paired_ttest_vs_SEL4": null,
+          "pass_vs_hr": false,
+          "pass_vs_sel4": false
+        },
+        {
+          "arm": "SEL4_consensus_vote",
+          "n_eval": 300,
+          "avg_matched_5sets": 2.356,
+          "avg_best_of_5": 2.9767,
+          "hit6_best_of_5": 1,
+          "hit5plus_best": 19,
+          "hit4plus_best": 90,
+          "delta_vs_human_random": 0.9556,
+          "paired_ttest_vs_human_random": {
+            "t_stat": 24.9633,
+            "p_value": 0.0,
+            "n": 300,
+            "mean_diff": 0.9556
+          },
+          "delta_vs_SEL4": 0.0,
+          "paired_ttest_vs_SEL4": null,
+          "pass_vs_hr": true,
+          "pass_vs_sel4": false
+        },
+        {
+          "arm": "V3_CONTRIBUTION",
+          "n_eval": 300,
+          "avg_matched_5sets": 2.2613,
+          "avg_best_of_5": 2.99,
+          "hit6_best_of_5": 2,
+          "hit5plus_best": 19,
+          "hit4plus_best": 93,
+          "delta_vs_human_random": 0.8609,
+          "paired_ttest_vs_human_random": {
+            "t_stat": 24.194,
+            "p_value": 0.0,
+            "n": 300,
+            "mean_diff": 0.8609
+          },
+          "delta_vs_SEL4": -0.0947,
+          "paired_ttest_vs_SEL4": {
+            "t_stat": -4.6268,
+            "p_value": 4e-06,
+            "n": 300,
+            "mean_diff": -0.0947
+          },
+          "pass_vs_hr": true,
+          "pass_vs_sel4": false
+        },
+        {
+          "arm": "INDIVIDUAL_BEST",
+          "n_eval": 300,
+          "avg_matched_5sets": 3.6233,
+          "avg_best_of_5": 3.6233,
+          "hit6_best_of_5": 3,
+          "hit5plus_best": 35,
+          "hit4plus_best": 168,
+          "delta_vs_human_random": 2.2229,
+          "paired_ttest_vs_human_random": {
+            "t_stat": 62.9774,
+            "p_value": 0.0,
+            "n": 300,
+            "mean_diff": 2.2229
+          },
+          "delta_vs_SEL4": 1.2673,
+          "paired_ttest_vs_SEL4": {
+            "t_stat": 31.9019,
+            "p_value": 0.0,
+            "n": 300,
+            "mean_diff": 1.2673
+          },
+          "pass_vs_hr": true,
+          "pass_vs_sel4": true
+        }
+      ],
+      "tertiary": {
+        "v3_hit6": 2,
+        "sel4_hit6": 1,
+        "v3_best_of_5": 2.99,
+        "sel4_best_of_5": 2.9767,
+        "hit6_advantage": true,
+        "best_of_5_advantage": false,
+        "decisive": true
+      },
+      "contrib_history_size": 896
+    },
+    {
+      "label": "C",
+      "range": [
+        930,
+        1230
+      ],
+      "n_eval": 300,
+      "human_random_avg": 1.3562,
+      "sel4_avg": 2.2793,
+      "summary_rows": [
+        {
+          "arm": "HUMAN_RANDOM",
+          "n_eval": 300,
+          "avg_matched_5sets": 1.3562,
+          "avg_best_of_5": 2.58,
+          "hit6_best_of_5": 1,
+          "hit5plus_best": 3,
+          "hit4plus_best": 42,
+          "delta_vs_human_random": 0.0,
+          "paired_ttest_vs_human_random": null,
+          "delta_vs_SEL4": -0.9232,
+          "paired_ttest_vs_SEL4": null,
+          "pass_vs_hr": false,
+          "pass_vs_sel4": false
+        },
+        {
+          "arm": "SEL4_consensus_vote",
+          "n_eval": 300,
+          "avg_matched_5sets": 2.2793,
+          "avg_best_of_5": 2.9033,
+          "hit6_best_of_5": 2,
+          "hit5plus_best": 10,
+          "hit4plus_best": 88,
+          "delta_vs_human_random": 0.9232,
+          "paired_ttest_vs_human_random": {
+            "t_stat": 25.8303,
+            "p_value": 0.0,
+            "n": 300,
+            "mean_diff": 0.9232
+          },
+          "delta_vs_SEL4": 0.0,
+          "paired_ttest_vs_SEL4": null,
+          "pass_vs_hr": true,
+          "pass_vs_sel4": false
+        },
+        {
+          "arm": "V3_CONTRIBUTION",
+          "n_eval": 300,
+          "avg_matched_5sets": 2.2253,
+          "avg_best_of_5": 3.0067,
+          "hit6_best_of_5": 2,
+          "hit5plus_best": 12,
+          "hit4plus_best": 93,
+          "delta_vs_human_random": 0.8692,
+          "paired_ttest_vs_human_random": {
+            "t_stat": 25.829,
+            "p_value": 0.0,
+            "n": 300,
+            "mean_diff": 0.8692
+          },
+          "delta_vs_SEL4": -0.054,
+          "paired_ttest_vs_SEL4": {
+            "t_stat": -2.6529,
+            "p_value": 0.00798,
+            "n": 300,
+            "mean_diff": -0.054
+          },
+          "pass_vs_hr": true,
+          "pass_vs_sel4": false
+        },
+        {
+          "arm": "INDIVIDUAL_BEST",
+          "n_eval": 300,
+          "avg_matched_5sets": 3.53,
+          "avg_best_of_5": 3.53,
+          "hit6_best_of_5": 3,
+          "hit5plus_best": 23,
+          "hit4plus_best": 154,
+          "delta_vs_human_random": 2.1738,
+          "paired_ttest_vs_human_random": {
+            "t_stat": 65.1839,
+            "p_value": 0.0,
+            "n": 300,
+            "mean_diff": 2.1738
+          },
+          "delta_vs_SEL4": 1.2507,
+          "paired_ttest_vs_SEL4": {
+            "t_stat": 31.5281,
+            "p_value": 0.0,
+            "n": 300,
+            "mean_diff": 1.2507
+          },
+          "pass_vs_hr": true,
+          "pass_vs_sel4": true
+        }
+      ],
+      "tertiary": {
+        "v3_hit6": 2,
+        "sel4_hit6": 2,
+        "v3_best_of_5": 3.0067,
+        "sel4_best_of_5": 2.9033,
+        "hit6_advantage": false,
+        "best_of_5_advantage": true,
+        "decisive": true
+      },
+      "contrib_history_size": 1196
+    }
+  ],
+  "step3_aggregate": {
+    "hr_pass_periods": 3,
+    "sel4_pass_periods": 0,
+    "tertiary_decisive_periods": 3,
+    "mean_delta_vs_hr": 0.8818,
+    "mean_delta_vs_sel4": -0.0766,
+    "hit6_total_v3": 4,
+    "hit6_total_sel4": 3,
+    "mean_best_of_5_v3": 3.0246,
+    "mean_best_of_5_sel4": 2.9622
+  },
+  "step4_go_nogo": "GO-SEL4",
+  "step4_adopted": "SEL4",
+  "step4_final": "🟡 v3 기여도 — SEL4 3/3 초과 0/3. \"기여도도 avg 신호는 아니었다\"(R2 정직). 7뇌=균등 SEL4 확정. hit6 v3=4 vs SEL4=3, best-of-5 v3=3.0246 vs SEL4=2.9622. 이식 GO 대기(형 확인)."
+}

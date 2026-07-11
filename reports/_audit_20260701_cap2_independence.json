@@ -1,0 +1,272 @@
+{
+  "title": "20260701_1군7뇌_CAP2확定_독립성감사",
+  "audit": {
+    "n_draws": 1111,
+    "total_sets": 5555,
+    "origin_pct": {
+      "stat": 9.88,
+      "markov": 20.47,
+      "llm": 5.02,
+      "lstm": 32.39,
+      "fusion": 32.24
+    },
+    "origin_counts": {
+      "stat": 549,
+      "lstm": 1799,
+      "fusion": 1791,
+      "markov": 1137,
+      "llm": 279
+    },
+    "max_brain_avg": 1.984,
+    "max_brain_p95": 2,
+    "cap2_violations": 0,
+    "cap2_pass": true,
+    "origin_40pct_pass": true,
+    "origin_40pct_violations": [],
+    "hit_correlations": [
+      {
+        "tier": "5등+",
+        "lead1_draws": 819,
+        "brains": {
+          "stat": {
+            "brain_draws": 114,
+            "overlap": 94,
+            "pct_of_lead1": 11.48,
+            "pct_of_brain": 82.46,
+            "jaccard": 0.112
+          },
+          "markov": {
+            "brain_draws": 123,
+            "overlap": 104,
+            "pct_of_lead1": 12.7,
+            "pct_of_brain": 84.55,
+            "jaccard": 0.1241
+          },
+          "llm": {
+            "brain_draws": 134,
+            "overlap": 106,
+            "pct_of_lead1": 12.94,
+            "pct_of_brain": 79.1,
+            "jaccard": 0.1251
+          },
+          "lstm": {
+            "brain_draws": 840,
+            "overlap": 708,
+            "pct_of_lead1": 86.45,
+            "pct_of_brain": 84.29,
+            "jaccard": 0.7445
+          },
+          "fusion": {
+            "brain_draws": 828,
+            "overlap": 740,
+            "pct_of_lead1": 90.35,
+            "pct_of_brain": 89.37,
+            "jaccard": 0.8159
+          }
+        }
+      },
+      {
+        "tier": "4등+",
+        "lead1_draws": 387,
+        "brains": {
+          "stat": {
+            "brain_draws": 2,
+            "overlap": 1,
+            "pct_of_lead1": 0.26,
+            "pct_of_brain": 50.0,
+            "jaccard": 0.0026
+          },
+          "markov": {
+            "brain_draws": 12,
+            "overlap": 6,
+            "pct_of_lead1": 1.55,
+            "pct_of_brain": 50.0,
+            "jaccard": 0.0153
+          },
+          "llm": {
+            "brain_draws": 4,
+            "overlap": 2,
+            "pct_of_lead1": 0.52,
+            "pct_of_brain": 50.0,
+            "jaccard": 0.0051
+          },
+          "lstm": {
+            "brain_draws": 275,
+            "overlap": 200,
+            "pct_of_lead1": 51.68,
+            "pct_of_brain": 72.73,
+            "jaccard": 0.4329
+          },
+          "fusion": {
+            "brain_draws": 370,
+            "overlap": 325,
+            "pct_of_lead1": 83.98,
+            "pct_of_brain": 87.84,
+            "jaccard": 0.7523
+          }
+        }
+      },
+      {
+        "tier": "3등+",
+        "lead1_draws": 65,
+        "brains": {
+          "stat": {
+            "brain_draws": 0,
+            "overlap": 0,
+            "pct_of_lead1": 0.0,
+            "pct_of_brain": 0,
+            "jaccard": 0.0
+          },
+          "markov": {
+            "brain_draws": 0,
+            "overlap": 0,
+            "pct_of_lead1": 0.0,
+            "pct_of_brain": 0,
+            "jaccard": 0.0
+          },
+          "llm": {
+            "brain_draws": 1,
+            "overlap": 0,
+            "pct_of_lead1": 0.0,
+            "pct_of_brain": 0.0,
+            "jaccard": 0.0
+          },
+          "lstm": {
+            "brain_draws": 26,
+            "overlap": 21,
+            "pct_of_lead1": 32.31,
+            "pct_of_brain": 80.77,
+            "jaccard": 0.3
+          },
+          "fusion": {
+            "brain_draws": 64,
+            "overlap": 54,
+            "pct_of_lead1": 83.08,
+            "pct_of_brain": 84.38,
+            "jaccard": 0.72
+          }
+        }
+      },
+      {
+        "tier": "1등",
+        "lead1_draws": 8,
+        "brains": {
+          "stat": {
+            "brain_draws": 0,
+            "overlap": 0,
+            "pct_of_lead1": 0.0,
+            "pct_of_brain": 0,
+            "jaccard": 0.0
+          },
+          "markov": {
+            "brain_draws": 0,
+            "overlap": 0,
+            "pct_of_lead1": 0.0,
+            "pct_of_brain": 0,
+            "jaccard": 0.0
+          },
+          "llm": {
+            "brain_draws": 0,
+            "overlap": 0,
+            "pct_of_lead1": 0.0,
+            "pct_of_brain": 0,
+            "jaccard": 0.0
+          },
+          "lstm": {
+            "brain_draws": 1,
+            "overlap": 1,
+            "pct_of_lead1": 12.5,
+            "pct_of_brain": 100.0,
+            "jaccard": 0.125
+          },
+          "fusion": {
+            "brain_draws": 7,
+            "overlap": 7,
+            "pct_of_lead1": 87.5,
+            "pct_of_brain": 100.0,
+            "jaccard": 0.875
+          }
+        }
+      }
+    ],
+    "structural_note": "7뇌(lead1)는 5뇌 25세트의 부분집합(5/25)이므로 적중 회차가 특정 뇌 적중 회차와 겹치는 것은 구조상 불가피. CAP2는 출처 독점(3세트+)을 제거해 다뇌 합의체에 가깝게 만듦."
+  },
+  "six_regression_ok": true,
+  "backfill": {
+    "formula": "B1_CAP2",
+    "backfill": {
+      "deleted_rows": 5555,
+      "backfilled_draws": 1111,
+      "skipped_draws": [],
+      "elapsed_sec": 58.1,
+      "first_draw": 88,
+      "last_draw": 1230
+    },
+    "six_before": {
+      "fusion": 6005,
+      "hyena": 6000,
+      "llm": 6001,
+      "lstm": 6005,
+      "markov": 6000,
+      "stat": 6005
+    },
+    "six_after": {
+      "fusion": 6005,
+      "hyena": 6000,
+      "llm": 6001,
+      "lstm": 6005,
+      "markov": 6000,
+      "stat": 6005
+    },
+    "six_regression_ok": true,
+    "lead1_before_rows": 5555,
+    "lead1_draws": 1111,
+    "lead1_total_rows": 5555,
+    "lead1_scored": 5555,
+    "expected_rows": 5555,
+    "rows_ok": true,
+    "spot_checks": [
+      {
+        "draw_no": 88,
+        "saved_count": 5,
+        "sets_match": true,
+        "max_history_draw": 87,
+        "no_lookahead": true,
+        "v3_count": 0,
+        "cap2_tag": true,
+        "contamination_check": "PASS"
+      },
+      {
+        "draw_no": 600,
+        "saved_count": 5,
+        "sets_match": true,
+        "max_history_draw": 599,
+        "no_lookahead": true,
+        "v3_count": 0,
+        "cap2_tag": true,
+        "contamination_check": "PASS"
+      },
+      {
+        "draw_no": 1230,
+        "saved_count": 5,
+        "sets_match": true,
+        "max_history_draw": 1229,
+        "no_lookahead": true,
+        "v3_count": 0,
+        "cap2_tag": true,
+        "contamination_check": "PASS"
+      }
+    ],
+    "spot_summary": "3/3 match, CAP2 tag OK",
+    "hyena_stats": {
+      "sample_draws": [
+        88,
+        600,
+        1230
+      ],
+      "sets": 15,
+      "origin_hyena_pct": 0.0,
+      "near5_pct": 6.67
+    }
+  }
+}

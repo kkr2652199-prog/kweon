@@ -1,0 +1,77 @@
+20260701_1군7뇌v3_전구간확장검증_이식준비
+동생 → 커서 | 2026-07-01 | READ-ONLY
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 0 — 6뇌 출력 구조 정찰 (코드 수정 0)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DB: D:\MONEY lol\My_Library\data\lotto.db
+테이블: lotto_predictions
+
+컬럼 | 용도
+  target_draw_no (회차)
+  brain_tag (뇌 식별: stat/markov/llm/lstm/fusion/hyena)
+  method (한글 표시명)
+  num1~num6 (세트 6번호)
+  confidence (세트 신뢰도)
+  matched_count (역대전적: 당첨 적중수, -1=미확정)
+  bonus_matched (보너스 적중 0/1)
+
+구조: 6뇌 × 5세트 = 30세트/회차 | 정렬: ORDER BY brain_tag, id (audit 스크립트 기준)
+앱 저장: app/lotto/engine.py → INSERT lotto_predictions (6뇌 독립 저장)
+audit 읽기: tools/_audit_army1_7brain_selection.py::_load_flat_sets()
+
+뇌별 DB 통계:
+brain_tag | rows | draws | min | max
+  fusion | 6005 | 1201 | 2 | 1230
+  hyena | 6000 | 1200 | 3 | 1230
+  llm | 6001 | 1201 | 2 | 1230
+  lstm | 6005 | 1201 | 2 | 1230
+  markov | 6000 | 1200 | 3 | 1230
+  stat | 6005 | 1201 | 2 | 1230
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — 전구간 [88~1230] n=1111
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+arm | avg(5) | best-of-5 | hit6
+  HUMAN_RANDOM | 1.3796 | - | -
+  SEL4 | 2.3444 | 2.9685 | 3
+  V3 | 2.2515 | 3.0243 | 5
+  INDIVIDUAL_BEST | 3.5761 | - | -
+  Δavg v3-SEL4 = -0.0929
+
+HR 다중seed([8803, 9901, 11003, 12007, 13009]): mean=1.3808 stdev=0.3305 default=1.3796
+
+소구간 6분할 (비겹):
+구간 | n | v3 hit6 | sel4 hit6 | v3 bof5 | sel4 bof5 | big_win PASS
+  S1 [88, 278] | 162 | 0 | 0 | 2.9753 | 2.9815 | False
+  S2 [279, 469] | 190 | 1 | 0 | 3.0421 | 2.9526 | True
+  S3 [470, 660] | 190 | 0 | 0 | 3.0947 | 3.0263 | True
+  S4 [661, 851] | 191 | 2 | 1 | 3.1518 | 3.1466 | True
+  S5 [852, 1042] | 190 | 1 | 1 | 2.9105 | 2.8053 | True
+  S6 [1043, 1230] | 188 | 1 | 1 | 2.9628 | 2.8989 | True
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — 큰당첨 우위 재현성 판정
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+소구간 PASS: 5/6 (과반=4+)
+전구간 PASS: True
+신호 인정: True
+🟢 큰당첨 신호 인정 — 소구간 5/6 + 전구간 통과. 7뇌=하이브리드(SEL4 기본 + v3 기여도 큰당첨 세트) 또는 v3 단독(형 선택).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — 최종 7뇌 공식
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+채택: HYBRID_SEL4_V3 | GO: GO-HYBRID
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4 — 이식 설계 (코드 미착수)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+공식: 기본 5세트=SEL4(균등 표합). 화면에 v3 기여도 상위 세트 병렬 표시(형 비교용). 또는 5세트 중 3=SEL4+2=v3 혼합(형 GO 시 세부 결정).
+brain_tag: consensus_hybrid | 표시명: 합의체+기여
+  new_file: app/lotto/predict_brain7.py (6뇌 lotto_predictions READ-ONLY)
+  engine_hook: run_prediction() 마지막 1줄 — 6뇌 로직 무변경
+  routes: brain_tag 필터에 consensus|consensus_hybrid 추가
+  frontend: lotto.js 7번째 슬롯 — 🥇~5️⃣ + matched_count 역대전적
+  ui_position: 6뇌 블록 바로 아래
+
+1군 6뇌 코드·DB 수정 0건 | 이식: 형 GO 후

@@ -1,0 +1,86 @@
+20260618_4군_로또조회탭_814만순위_당첨이력
+동생 → 커서 | 2026-06-18 | 4군 신규 UI 탭 (조회 전용)
+
+원칙: R2 정직(예측·적중확률 향상 아님, "조회·기록" 기능)
+      CURSOR_RULES §2 — predict·9뇌·전략X 엔진 미변경
+      형 앱 DB 읽기만 / 534MB DB 복사 없음 / 1~3군 간섭 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+요약
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4군 사이드바에 "로또 조회" 탭 신규 추가.
+combinadic 공식으로 6번호↔814만 순위 즉시 계산.
+lotto4.db lotto_draws(1,228회) 기반 당첨 이력 표시·번호 역조회.
+1229+ 회차는 기존 collect 파이프라인으로 lotto_draws 적재 시 자동 반영.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — combinadic 공식 이식
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+파일: app/lotto4/combinadic.py
+함수: combo_to_no(), no_to_combo(), TOTAL_COMBOS=8,145,060
+출처: 형 앱 lotto_common.py 동일 로직 (읽기 참고만, DB 미사용)
+
+검증 (python 직접 실행):
+  No.1     = 1-2-3-4-5-6           ✅
+  No.8145060 = 40-41-42-43-44-45   ✅
+  1회차 당첨(10,23,29,33,37,40) = combo_no 6,493,493 ✅
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — 조회 API
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+prefix: /api/lotto4/v13/combo/
+
+GET /combo/draw/{n}
+  → 회차, 날짜, 6번호, bonus, combo_no, first_prize, first_winners
+
+GET /combo/all?page=&per_page=&order=&q=
+  → 전체 목록 페이지네이션 (최대 per_page=200)
+  → order: draw_no_desc|asc, combo_no_desc|asc, date_desc|asc
+
+GET /combo/lookup?nums= 또는 n1~n6
+  → combo_no, 역대 당첨 출현 회차 목록 (lotto_draws 전수 비교)
+
+데이터 소스: data/lotto4.db lotto_draws (읽기 전용)
+TestClient 검증:
+  /combo/draw/1 → 6493493
+  /combo/all → total 1228
+  /combo/lookup 1회차 번호 → appearance_count 1
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — UI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+index.html: 사이드바 "로또 조회" (전략 X 옆)
+view-combo-lookup 패널:
+  (1) 1~1228 표 — 회차/날짜/번호/combo_no/당첨금/당첨자, 정렬·검색·페이지네이션
+  (2) 6번호 입력 → 순위·역대 출현 즉시 표시
+lotto4.js: loadComboLookupView, loadComboDrawTable, runComboNumberLookup
+lotto4.css: combo-* 스타일 (캐시 v=20260618f)
+
+미변경: predict, truth, 전략X, 두뇌예측, 1~3군, hyena/v13 엔진
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4 — 1229+ 자동 기록
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+별도 814만 DB 적재 없음.
+tools/collect·draw_scheduler로 lotto_draws에 신규 회차 INSERT 시
+/combo/all·표가 COUNT(*) 기준 자동 확장, combo_no는 요청 시 공식 계산.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 5 — 검증 체크리스트
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[✅] combinadic 3건 + 1회차 6493493
+[✅] API 3엔드포인트 TestClient 200
+[✅] lotto_draws 1228건 total 일치
+[✅] predict/전략X/v13_routes 예측 라우트 무변경 (combo 블록만 추가)
+[✅] 형 앱 DB·lotto4.db 쓰기 없음
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+변경 파일
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+신규: app/lotto4/combinadic.py
+수정: app/lotto4/v13_routes.py (combo API 3개)
+      app/static/index.html
+      app/static/js/lotto4.js
+      app/static/css/lotto4.css
+
+기억 갱신: 형 확인 후 (본 작업에서는 STATUS/동생기억 미갱신)

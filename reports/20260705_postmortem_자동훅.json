@@ -1,0 +1,201 @@
+{
+  "report_stem": "20260705_postmortem_자동훅",
+  "test_draw": 1231,
+  "fingerprint_before": "count=53905 sha=0fe5d19ccbceb829",
+  "fingerprint_after": "count=53905 sha=0fe5d19ccbceb829",
+  "checks": {
+    "pipeline_postmortem_exists": true,
+    "pipeline_pool_1231": true,
+    "pipeline_pack_1231": true,
+    "hook_returns_built": true,
+    "idempotent_single_row": true,
+    "idempotent_data_stable": true,
+    "isolation_pipeline_survives": true,
+    "isolation_fp_unchanged": true,
+    "predictions_unchanged": true
+  },
+  "hook_result": {
+    "built": true,
+    "draw_no": 1231,
+    "pool_cover": 6,
+    "lead1_pack": 5,
+    "pack_gap": 1
+  },
+  "postmortem_snapshot": {
+    "draw_no": 1231,
+    "draw_date": "2026-07-04",
+    "winning_numbers": [
+      4,
+      13,
+      14,
+      18,
+      31,
+      38
+    ],
+    "bonus": 15,
+    "pool_union_size": 43,
+    "pool_cover": 6,
+    "pool_missed": [],
+    "lead1_union_size": 25,
+    "lead1_pack": 5,
+    "lead1_pack_missed": [
+      4
+    ],
+    "pack_gap": 1,
+    "pack_gap_nums": [
+      4
+    ],
+    "pack_gap_brains": {
+      "4": [
+        "stat"
+      ]
+    },
+    "lead1_best_hit": 2,
+    "lead1_best_set": [
+      1,
+      11,
+      15,
+      18,
+      31,
+      34
+    ],
+    "brain_summary": {
+      "stat": {
+        "hits": [
+          4,
+          13,
+          14,
+          31
+        ],
+        "misses": [
+          18,
+          38
+        ],
+        "union_hit": 4,
+        "best_set_hit": 2,
+        "union_size": 22
+      },
+      "markov": {
+        "hits": [
+          18,
+          31,
+          38
+        ],
+        "misses": [
+          4,
+          13,
+          14
+        ],
+        "union_hit": 3,
+        "best_set_hit": 2,
+        "union_size": 18
+      },
+      "llm": {
+        "hits": [
+          13,
+          18,
+          31,
+          38
+        ],
+        "misses": [
+          4,
+          14
+        ],
+        "union_hit": 4,
+        "best_set_hit": 1,
+        "union_size": 30
+      },
+      "lstm": {
+        "hits": [
+          13
+        ],
+        "misses": [
+          4,
+          14,
+          18,
+          31,
+          38
+        ],
+        "union_hit": 1,
+        "best_set_hit": 1,
+        "union_size": 18
+      },
+      "fusion": {
+        "hits": [
+          13,
+          14,
+          18,
+          38
+        ],
+        "misses": [
+          4,
+          31
+        ],
+        "union_hit": 4,
+        "best_set_hit": 2,
+        "union_size": 20
+      },
+      "hyena": {
+        "hits": [
+          13
+        ],
+        "misses": [
+          4,
+          14,
+          18,
+          31,
+          38
+        ],
+        "union_hit": 1,
+        "best_set_hit": 1,
+        "union_size": 9
+      },
+      "lead1": {
+        "hits": [
+          13,
+          14,
+          18,
+          31,
+          38
+        ],
+        "misses": [
+          4
+        ],
+        "union_hit": 5,
+        "best_set_hit": 2,
+        "union_size": 25
+      }
+    },
+    "winning_stats": {
+      "odd": 2,
+      "even": 4,
+      "low": 4,
+      "high": 2,
+      "zone_1_9": 1,
+      "zone_10_19": 3,
+      "zone_20_29": 0,
+      "zone_30_39": 2,
+      "zone_40_45": 0,
+      "consec_pairs": 1,
+      "sum": 118
+    },
+    "lead1_union_stats": {
+      "odd": 14,
+      "even": 11,
+      "low": 10,
+      "high": 15,
+      "zone_1_9": 2,
+      "zone_10_19": 7,
+      "zone_20_29": 4,
+      "zone_30_39": 8,
+      "zone_40_45": 4,
+      "consec_pairs": 15,
+      "sum": 662
+    },
+    "built_at": "2026-07-10 12:35:33"
+  },
+  "row_count": {
+    "before": 1,
+    "after": 1
+  }
+}

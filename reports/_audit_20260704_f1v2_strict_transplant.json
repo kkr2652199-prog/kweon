@@ -1,0 +1,124 @@
+{
+  "title": "20260704_1군7뇌_F1v2STRICT_이식완료",
+  "timestamp": "2026-07-10T11:42:46",
+  "cursor_opinion": {
+    "implementation": "predict_brain7.generate_f1_v2_strict_sets 내장 (popavoid 25→wheel 5, ov<COPY_OVERLAP). save_brain7_predictions 경로로 백필·자동훅 공유.",
+    "pitfalls": "① 백필 전 백업 필수 — 되돌림은 BACKUP_TABLE+JSON. ② save_brain7는 _brain_number_reliability(N-1) — 컨닝 아님. ③ 88~87 skip(5뇌 미존재) 정상.",
+    "gaps": "적중 개선은 백업 F1_BASE lead1 matched_count 대비 — in-memory 실험(+0.19)과 DB 백필 수치는 LSTM 무관 lead1만 비교."
+  },
+  "step0": {
+    "rows": 5565,
+    "table": "lotto_predictions_lead1_backup_20260704",
+    "json": "d:\\3kweon\\reports\\_backup_20260704_lead1_f1_base.json"
+  },
+  "step1": {
+    "file": "app/lotto/predict_brain7.py",
+    "formula": "F1_V2_STRICT"
+  },
+  "step2": {
+    "deleted": 5565,
+    "ok": 1112,
+    "skip": 0,
+    "skip_samples": [],
+    "range": [
+      88,
+      1231
+    ],
+    "elapsed_sec": 257.9,
+    "copy_violations": [],
+    "max_data_log_sample": [
+      {
+        "draw": 1227,
+        "max_data_draw": 1226
+      },
+      {
+        "draw": 1228,
+        "max_data_draw": 1227
+      },
+      {
+        "draw": 1229,
+        "max_data_draw": 1228
+      },
+      {
+        "draw": 1230,
+        "max_data_draw": 1229
+      },
+      {
+        "draw": 1231,
+        "max_data_draw": 1230
+      }
+    ],
+    "contamination_skips": 0
+  },
+  "step3": {
+    "copy_rate": 0.0,
+    "copy_zero": true,
+    "total_lead1_sets": 5560,
+    "scored_draws_compared": 1112,
+    "mean_best_old": 2.0962,
+    "mean_best_new": 2.259,
+    "delta_best": 0.1628,
+    "p_new_vs_old": 0.0,
+    "improved": true,
+    "period_delta": {
+      "A": {
+        "n": 298,
+        "mean_old": 2.1242,
+        "mean_new": 2.2517,
+        "delta": 0.1275
+      },
+      "B": {
+        "n": 300,
+        "mean_old": 2.13,
+        "mean_new": 2.34,
+        "delta": 0.21
+      },
+      "C": {
+        "n": 300,
+        "mean_old": 2.0533,
+        "mean_new": 2.2533,
+        "delta": 0.2
+      }
+    },
+    "hook_1231": {
+      "generated": false,
+      "reason": "already_exists",
+      "target_draw_no": 1232
+    },
+    "draw_1232_has_numbers": false,
+    "pred_1232_before": 0,
+    "pred_1232_after": 5,
+    "sample_1232_reasoning": "출처:F1_V2_STRICT | popavoid→wheel | 가중=3.98 | max겹침=4",
+    "formula_ok": true
+  },
+  "step4": {
+    "six_before": {
+      "fusion": 6015,
+      "hyena": 6010,
+      "llm": 6011,
+      "lstm": 6015,
+      "markov": 6010,
+      "stat": 6015
+    },
+    "six_after": {
+      "fusion": 6015,
+      "hyena": 6010,
+      "llm": 6011,
+      "lstm": 6015,
+      "markov": 6010,
+      "stat": 6015
+    },
+    "army2_before": 42920,
+    "army2_after": 42920,
+    "army3_before": 49055,
+    "army3_after": 49055,
+    "army2_ok": true,
+    "army3_ok": true,
+    "regression_ok": true
+  },
+  "lead1_before": 5565,
+  "lead1_after": 5565,
+  "final_verdict": "✅ F1_V2_STRICT 이식 완료 — 카피0·적중개선·회귀 PASS·1232 생성 OK",
+  "all_ok": true,
+  "app_ok": true
+}

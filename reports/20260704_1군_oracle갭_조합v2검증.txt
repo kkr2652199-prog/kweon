@@ -1,0 +1,70 @@
+20260704_1군_oracle갭_조합v2검증 (READ-ONLY in-memory)
+=======================================================
+
+[커서 사전 의견]
+(1) 구현: 5뇌 flat READ-ONLY → 가중함수만 교체해 5세트 in-memory 생성.
+    COVERAGE=1/k×rel, CONSENSUS=k²×rel, HYBRID=2×consensus+3×coverage.
+    oracle=min(union∩당첨,6), gap=oracle−best-of-5. max_data_draw 회차별 기록.
+(2) 함정: ORACLE_BEST는 사후 상한(조합 불가). HYBRID 시드 분리·카피필터.
+    hit4p 희소 → best-of-5·oracle갭 paired t-test 병행. copy≥5% 실격.
+(3) 허점: 저합의 가중≠당첨 보장. F1도 랜덤union 대비 유의 우위(기존 검증).
+    갭 축소≠hit6 증가. 채택은 lead1 이식 전 별도 GO 필요.
+
+분석 회차: 898 | 컨닝 오염: 0건
+
+3구간 walk-forward (기준 F1_CURRENT, 상한 ORACLE)
+-------------------------------------------------------
+
+[330~629] n=298
+  oracle평균=5.8725 best_raw=3.5067 F1갭=3.7785 raw갭=2.3658
+  arm          | best | hit4p% | hit6 | copy | oracle갭 | Δbest | p_f1
+  F1_CURRENT   | 2.094 |   2.4% |    0 | 0.000 | 3.779 | +0.000 | None
+  COVERAGE     | 1.594 |   0.7% |    0 | 0.000 | 4.279 | -0.500 | 0.0
+  CONSENSUS_MAX | 2.188 |   4.0% |    0 | 0.000 | 3.685 | +0.094 | 0.073161
+  HYBRID       | 1.929 |   1.7% |    0 | 0.000 | 3.943 | -0.164 | 0.004529
+  RANDOM_UNION | 1.846 |   0.3% |    0 | 0.000 | 4.027 | -0.248 | 9e-06
+
+[630~929] n=300
+  oracle평균=5.9067 best_raw=3.52 F1갭=3.8 raw갭=2.3867
+  arm          | best | hit4p% | hit6 | copy | oracle갭 | Δbest | p_f1
+  F1_CURRENT   | 2.107 |   3.3% |    0 | 0.000 | 3.800 | +0.000 | None
+  COVERAGE     | 1.633 |   0.7% |    0 | 0.000 | 4.273 | -0.473 | 0.0
+  CONSENSUS_MAX | 2.157 |   3.0% |    0 | 0.000 | 3.750 | +0.050 | 0.37274
+  HYBRID       | 1.923 |   1.0% |    0 | 0.000 | 3.983 | -0.183 | 0.00101
+  RANDOM_UNION | 1.833 |   1.7% |    0 | 0.000 | 4.073 | -0.273 | 1e-06
+
+[930~1230] n=300
+  oracle평균=5.89 best_raw=3.4233 F1갭=3.82 raw갭=2.4667
+  arm          | best | hit4p% | hit6 | copy | oracle갭 | Δbest | p_f1
+  F1_CURRENT   | 2.070 |   2.3% |    0 | 0.000 | 3.820 | +0.000 | None
+  COVERAGE     | 1.587 |   0.7% |    0 | 0.000 | 4.303 | -0.483 | 0.0
+  CONSENSUS_MAX | 2.113 |   3.3% |    0 | 0.000 | 3.777 | +0.043 | 0.382047
+  HYBRID       | 1.880 |   2.0% |    0 | 0.000 | 4.010 | -0.190 | 0.000463
+  RANDOM_UNION | 1.770 |   1.3% |    0 | 0.000 | 4.120 | -0.300 | 0.0
+
+판정
+-------------------------------------------------------
+  COVERAGE: best/hit4p개선 0/3 | 갭개선 0/3 | 후보=False
+  CONSENSUS_MAX: best/hit4p개선 1/3 | 갭개선 0/3 | 후보=False
+  HYBRID: best/hit4p개선 0/3 | 갭개선 0/3 | 후보=False
+  GO: KEEP-F1
+  COVERAGE/CONSENSUS_MAX/HYBRID 모두 F1 대비 2/3+ 유의 개선 없음. F1이 이미 조합 최적에 가깝다 — F1 유지.
+
+max_data_draw 샘플(최근 5)
+-------------------------------------------------------
+  draw=1226 max_data=1225 ok=True
+  draw=1227 max_data=1226 ok=True
+  draw=1228 max_data=1227 ok=True
+  draw=1229 max_data=1228 ok=True
+  draw=1230 max_data=1229 ok=True
+
+6뇌 DB 회귀
+-------------------------------------------------------
+  stat: 6015 → 6015 [OK]
+  markov: 6010 → 6010 [OK]
+  llm: 6011 → 6011 [OK]
+  lstm: 6015 → 6015 [OK]
+  fusion: 6015 → 6015 [OK]
+  hyena: 6010 → 6010 [OK]
+  lead1: 5565 → 5565 [OK]
+  regression_ok: True

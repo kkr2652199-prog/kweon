@@ -1,0 +1,737 @@
+{
+  "readonly": true,
+  "latest_confirmed_draw": 1231,
+  "step1": {
+    "1221": {
+      "draw_confirmed": true,
+      "all_brains_5plus": true,
+      "all_scored_matched_ge0": true,
+      "conning_ok": true,
+      "brains": {
+        "stat": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "markov": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "llm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lstm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 4,
+          "ge4": 2,
+          "hit6": 0
+        },
+        "fusion": {
+          "sets": 5,
+          "min_mc": 1,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "hyena": {
+          "sets": 5,
+          "min_mc": 2,
+          "max_mc": 4,
+          "ge4": 3,
+          "hit6": 0
+        },
+        "lead1": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        }
+      }
+    },
+    "1222": {
+      "draw_confirmed": true,
+      "all_brains_5plus": true,
+      "all_scored_matched_ge0": true,
+      "conning_ok": true,
+      "brains": {
+        "stat": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "markov": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "llm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lstm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "fusion": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "hyena": {
+          "sets": 5,
+          "min_mc": 1,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lead1": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        }
+      }
+    },
+    "1223": {
+      "draw_confirmed": true,
+      "all_brains_5plus": true,
+      "all_scored_matched_ge0": true,
+      "conning_ok": true,
+      "brains": {
+        "stat": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "markov": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "llm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lstm": {
+          "sets": 5,
+          "min_mc": 1,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "fusion": {
+          "sets": 5,
+          "min_mc": 1,
+          "max_mc": 4,
+          "ge4": 1,
+          "hit6": 0
+        },
+        "hyena": {
+          "sets": 5,
+          "min_mc": 1,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lead1": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        }
+      }
+    },
+    "1224": {
+      "draw_confirmed": true,
+      "all_brains_5plus": true,
+      "all_scored_matched_ge0": true,
+      "conning_ok": true,
+      "brains": {
+        "stat": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "markov": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "llm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lstm": {
+          "sets": 5,
+          "min_mc": 2,
+          "max_mc": 4,
+          "ge4": 1,
+          "hit6": 0
+        },
+        "fusion": {
+          "sets": 5,
+          "min_mc": 1,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "hyena": {
+          "sets": 5,
+          "min_mc": 3,
+          "max_mc": 4,
+          "ge4": 1,
+          "hit6": 0
+        },
+        "lead1": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        }
+      }
+    },
+    "1225": {
+      "draw_confirmed": true,
+      "all_brains_5plus": true,
+      "all_scored_matched_ge0": true,
+      "conning_ok": true,
+      "brains": {
+        "stat": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "markov": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "llm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lstm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "fusion": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "hyena": {
+          "sets": 5,
+          "min_mc": 1,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lead1": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        }
+      }
+    },
+    "1226": {
+      "draw_confirmed": true,
+      "all_brains_5plus": true,
+      "all_scored_matched_ge0": true,
+      "conning_ok": true,
+      "brains": {
+        "stat": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "markov": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "llm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lstm": {
+          "sets": 5,
+          "min_mc": 1,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "fusion": {
+          "sets": 5,
+          "min_mc": 1,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "hyena": {
+          "sets": 5,
+          "min_mc": 1,
+          "max_mc": 3,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lead1": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        }
+      }
+    },
+    "1227": {
+      "draw_confirmed": true,
+      "all_brains_5plus": true,
+      "all_scored_matched_ge0": true,
+      "conning_ok": true,
+      "brains": {
+        "stat": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "markov": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "llm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lstm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "fusion": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "hyena": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 0,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lead1": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        }
+      }
+    },
+    "1228": {
+      "draw_confirmed": true,
+      "all_brains_5plus": true,
+      "all_scored_matched_ge0": true,
+      "conning_ok": true,
+      "brains": {
+        "stat": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "markov": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "llm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lstm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "fusion": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "hyena": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lead1": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        }
+      }
+    },
+    "1229": {
+      "draw_confirmed": true,
+      "all_brains_5plus": true,
+      "all_scored_matched_ge0": true,
+      "conning_ok": true,
+      "brains": {
+        "stat": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "markov": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "llm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lstm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "fusion": {
+          "sets": 5,
+          "min_mc": 1,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "hyena": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 0,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lead1": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        }
+      }
+    },
+    "1230": {
+      "draw_confirmed": true,
+      "all_brains_5plus": true,
+      "all_scored_matched_ge0": true,
+      "conning_ok": true,
+      "brains": {
+        "stat": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "markov": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "llm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lstm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "fusion": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "hyena": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lead1": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        }
+      }
+    },
+    "1231": {
+      "draw_confirmed": true,
+      "all_brains_5plus": true,
+      "all_scored_matched_ge0": true,
+      "conning_ok": true,
+      "brains": {
+        "stat": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "markov": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "llm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lstm": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "fusion": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 2,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "hyena": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        },
+        "lead1": {
+          "sets": 5,
+          "min_mc": 0,
+          "max_mc": 1,
+          "ge4": 0,
+          "hit6": 0
+        }
+      }
+    }
+  },
+  "step2": {
+    "weights": [
+      {
+        "brain_tag": "hyena",
+        "current_weight": 27.489387,
+        "last_updated_draw": 1231
+      },
+      {
+        "brain_tag": "llm",
+        "current_weight": 7.802863,
+        "last_updated_draw": 1231
+      },
+      {
+        "brain_tag": "lstm",
+        "current_weight": 35.203559,
+        "last_updated_draw": 1231
+      },
+      {
+        "brain_tag": "markov",
+        "current_weight": 3.410299,
+        "last_updated_draw": 1231
+      },
+      {
+        "brain_tag": "stat",
+        "current_weight": 4.968237,
+        "last_updated_draw": 1231
+      }
+    ],
+    "unique_last_updated": [
+      1231
+    ],
+    "all_last_updated_1231": true
+  },
+  "step3": {
+    "1232_draw_confirmed": false,
+    "brains": {
+      "stat": {
+        "sets": 5,
+        "min_mc": -1,
+        "max_mc": -1
+      },
+      "markov": {
+        "sets": 5,
+        "min_mc": -1,
+        "max_mc": -1
+      },
+      "llm": {
+        "sets": 5,
+        "min_mc": -1,
+        "max_mc": -1
+      },
+      "lstm": {
+        "sets": 5,
+        "min_mc": -1,
+        "max_mc": -1
+      },
+      "fusion": {
+        "sets": 5,
+        "min_mc": -1,
+        "max_mc": -1
+      },
+      "hyena": {
+        "sets": 5,
+        "min_mc": -1,
+        "max_mc": -1
+      },
+      "lead1": {
+        "sets": 5,
+        "min_mc": -1,
+        "max_mc": -1
+      }
+    },
+    "total_sets": 35,
+    "all_brains_5plus": true,
+    "all_matched_minus1": true,
+    "max_data_draw": 1231,
+    "max_data_ok_1231": true,
+    "lead1_f1_reasoning": true
+  },
+  "step4": {
+    "current_counts": {
+      "stat": 6015,
+      "markov": 6010,
+      "llm": 6011,
+      "lstm": 6015,
+      "fusion": 6015,
+      "hyena": 6010,
+      "lead1": 5565
+    },
+    "ab_baseline_counts": {
+      "stat": 6015,
+      "markov": 6010,
+      "llm": 6011,
+      "lstm": 6015,
+      "fusion": 6015,
+      "hyena": 6010,
+      "lead1": 5565
+    },
+    "unchanged_since_ab": true,
+    "diff": {}
+  },
+  "backup_tables": [
+    "lotto_predictions_backup_20260704"
+  ]
+}

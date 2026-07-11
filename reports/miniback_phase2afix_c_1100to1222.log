@@ -1,0 +1,731 @@
+=== 4군 풀 백테스트 (Army4 full backtest) ===
+DB: D:\3kweon\data\lotto4.db
+구간: 1100~1222 (실행 대상 123회차)
+뇌: ['v13_seq', 'v13_struct', 'v13_gap', 'v13_diversity', 'v13_ev', 'v13_evolution', 'v13_ensemble']
+
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:56:42] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:56:43] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:56:45] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:56:46] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+  [진행] 1/123 완료 (0.8%) | draw 1100 OK (5.8s, 누적 6s)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:56:47] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:56:49] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:56:50] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:56:53] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:56:54] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:56:56] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:56:57] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:56:58] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:00] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:01] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:02] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:04] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:05] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:06] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:08] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:09] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:10] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:12] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:13] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:15] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:16] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:17] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:19] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:20] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:21] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:23] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:24] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:25] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:27] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:28] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:29] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:31] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:32] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:34] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:35] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:36] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:38] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:39] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:40] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:42] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:43] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:44] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:46] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:47] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:48] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:50] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:51] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:52] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:54] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:55] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:57] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:58] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:57:59] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:01] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:02] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:03] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:05] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:06] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:07] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:09] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:10] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:11] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:13] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:14] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:16] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:17] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:18] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:20] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:21] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:22] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:24] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:25] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:26] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:28] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:29] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:30] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:32] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:33] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:36] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:37] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:38] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:40] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:42] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:45] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:46] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:47] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:49] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:50] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:51] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:53] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:54] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:56] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:57] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:58:58] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:01] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:02] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:05] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:06] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:08] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:09] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:10] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:12] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:13] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:14] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:17] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:18] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:20] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:21] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:22] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:24] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:25] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:26] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:28] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:29] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:30] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:32] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:33] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:34] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:35] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:37] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:38] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:39] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:40] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:42] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:43] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:44] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:46] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:47] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:48] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:50] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:51] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:52] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:54] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:55] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:56] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:58] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [09:59:59] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:00] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:02] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:03] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:04] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:06] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:07] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:08] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:10] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:11] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:12] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:14] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:15] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:16] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:18] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:19] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:20] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:22] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:23] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:24] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:25] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:27] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:28] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:29] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:31] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:32] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:33] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:36] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:37] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:38] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:40] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:41] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:42] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:45] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:46] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:47] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:49] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:50] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:51] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:52] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:54] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:55] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:56] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:58] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:00:59] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:00] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:02] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:03] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:04] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:06] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:07] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:08] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:10] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:11] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:12] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:15] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:16] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:17] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:19] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:20] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:21] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:23] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:24] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:25] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:27] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:28] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:29] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:31] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:32] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:33] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:35] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:36] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:37] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:38] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:40] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:41] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:42] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:44] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:45] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:46] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:48] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:49] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:50] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:52] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:53] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:54] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:56] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:57] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:01:58] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:00] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:01] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:02] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:04] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:05] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:06] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:08] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:09] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:10] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:12] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:13] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:14] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:17] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:18] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:21] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:22] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:23] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:25] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:26] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:27] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:29] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:30] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:32] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:33] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:34] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:36] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:37] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:38] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:40] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:41] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:44] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:45] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:47] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:48] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:49] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:51] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:52] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:54] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:55] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:56] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:58] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:02:59] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:00] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:02] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:03] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:04] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:06] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:07] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:08] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:10] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:11] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:13] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:14] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:15] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:17] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:18] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:19] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:21] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+  [진행] 100/123 완료 (81.3%) | draw 1199 OK (3.4s, 누적 401s)
+[진화] draw 1199 → 다음예측 nxt=1200: player seq=0.581, struct=0.419 | chief seq=0.280, struct=0.202
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:22] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:24] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:25] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+  [진행] 101/123 완료 (82.1%) | draw 1200 OK (3.5s, 누적 405s)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:26] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:28] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:29] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:31] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:32] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:33] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:35] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:36] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:38] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:39] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:40] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:42] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:43] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:44] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:46] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:47] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:48] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:50] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:51] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:53] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:54] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:55] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:57] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:58] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:03:59] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:01] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:02] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:04] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:05] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:07] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:09] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:10] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:12] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:13] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:14] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:16] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:17] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:18] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:19] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:20] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:21] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:22] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:23] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:24] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:26] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:27] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:28] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:29] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:31] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:32] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:33] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:35] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:36] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:37] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:39] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:40] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:41] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:42] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:44] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:45] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:46] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:48] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:49] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:50] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:52] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:53] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:54] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:56] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+C:\ProgramData\anaconda3\Lib\site-packages\xgboost\sklearn.py:1116: UserWarning: [10:04:57] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\c_api\c_api.cc:1573: Saving model in the UBJSON format as default.  You can use a file extension: `json` or `ubj` to choose between formats.
+  self.get_booster().save_model(fname)
+  [진행] 123/123 완료 (100.0%) | draw 1222 OK (3.8s, 누적 497s)
+[진화] draw 1222 → 다음예측 nxt=1223: player seq=0.526, struct=0.474 | chief seq=0.192, struct=0.173
+
+완료. 총 벽시계: 496.9s (8.3분)

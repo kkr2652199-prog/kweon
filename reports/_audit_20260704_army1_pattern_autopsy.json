@@ -1,0 +1,1268 @@
+{
+  "readonly": true,
+  "diagnosis_A_prev_draw_inclusion": {
+    "random_baseline_per_number": 0.1333,
+    "random_baseline_overlap_per_set": 0.8,
+    "brain_summary": {
+      "stat": {
+        "per_number_rate": 0.1669,
+        "per_number_lift_pp": 3.36,
+        "avg_overlap_per_set": 1.002,
+        "random_expected_overlap": 0.8,
+        "overlap_lift": 0.202,
+        "n_sets": 6010,
+        "biased": true
+      },
+      "markov": {
+        "per_number_rate": 0.1713,
+        "per_number_lift_pp": 3.8,
+        "avg_overlap_per_set": 1.028,
+        "random_expected_overlap": 0.8,
+        "overlap_lift": 0.228,
+        "n_sets": 6005,
+        "biased": true
+      },
+      "llm": {
+        "per_number_rate": 0.1672,
+        "per_number_lift_pp": 3.39,
+        "avg_overlap_per_set": 1.003,
+        "random_expected_overlap": 0.8,
+        "overlap_lift": 0.203,
+        "n_sets": 6006,
+        "biased": true
+      },
+      "lstm": {
+        "per_number_rate": 0.2521,
+        "per_number_lift_pp": 11.87,
+        "avg_overlap_per_set": 1.512,
+        "random_expected_overlap": 0.8,
+        "overlap_lift": 0.712,
+        "n_sets": 6010,
+        "biased": true
+      },
+      "fusion": {
+        "per_number_rate": 0.2378,
+        "per_number_lift_pp": 10.45,
+        "avg_overlap_per_set": 1.427,
+        "random_expected_overlap": 0.8,
+        "overlap_lift": 0.627,
+        "n_sets": 6010,
+        "biased": true
+      },
+      "hyena": {
+        "per_number_rate": 0.3093,
+        "per_number_lift_pp": 17.6,
+        "avg_overlap_per_set": 1.856,
+        "random_expected_overlap": 0.8,
+        "overlap_lift": 1.056,
+        "n_sets": 6005,
+        "biased": true
+      },
+      "lead1": {
+        "per_number_rate": 0.1805,
+        "per_number_lift_pp": 4.72,
+        "avg_overlap_per_set": 1.083,
+        "random_expected_overlap": 0.8,
+        "overlap_lift": 0.283,
+        "n_sets": 5560,
+        "biased": true
+      }
+    },
+    "recent30_per_number_rate": {
+      "stat": 0.1578,
+      "markov": 0.17,
+      "llm": 0.1578,
+      "lstm": 0.2589,
+      "fusion": 0.2189,
+      "hyena": 0.3111,
+      "lead1": 0.1533
+    },
+    "special_1232_vs_1231": {
+      "lstm": {
+        "overlap_with_1231": [],
+        "overlap_count": 0,
+        "nums": [
+          1,
+          7,
+          20,
+          21,
+          44,
+          45
+        ]
+      },
+      "fusion": {
+        "overlap_with_1231": [
+          38
+        ],
+        "overlap_count": 1,
+        "nums": [
+          20,
+          30,
+          33,
+          38,
+          41,
+          43
+        ]
+      },
+      "hyena": {
+        "overlap_with_1231": [
+          13,
+          14
+        ],
+        "overlap_count": 2,
+        "nums": [
+          13,
+          14,
+          16,
+          20,
+          21,
+          44
+        ]
+      },
+      "stat": {
+        "overlap_with_1231": [],
+        "overlap_count": 0,
+        "nums": [
+          8,
+          9,
+          17,
+          22,
+          28,
+          30
+        ]
+      },
+      "markov": {
+        "overlap_with_1231": [
+          31
+        ],
+        "overlap_count": 1,
+        "nums": [
+          15,
+          21,
+          27,
+          30,
+          31,
+          35
+        ]
+      },
+      "llm": {
+        "overlap_with_1231": [],
+        "overlap_count": 0,
+        "nums": [
+          5,
+          9,
+          22,
+          25,
+          29,
+          32
+        ]
+      },
+      "lead1": {
+        "overlap_with_1231": [],
+        "overlap_count": 0,
+        "nums": [
+          8,
+          20,
+          21,
+          24,
+          29,
+          34
+        ]
+      },
+      "_1231_winning": [
+        4,
+        13,
+        14,
+        18,
+        31,
+        38
+      ]
+    },
+    "n_draws_analyzed": 1202
+  },
+  "diagnosis_B_consistency": {
+    "sample_draws": [
+      1212,
+      1213,
+      1214,
+      1215,
+      1216,
+      1217,
+      1218,
+      1219,
+      1220,
+      1221,
+      1222,
+      1223,
+      1224,
+      1225,
+      1226,
+      1227,
+      1228,
+      1229,
+      1230,
+      1231
+    ],
+    "double_run_jaccard": {
+      "stat": {
+        "avg_best_set_jaccard_2runs": 0.206,
+        "interpretation": "high_random",
+        "n_draws": 20
+      },
+      "markov": {
+        "avg_best_set_jaccard_2runs": 0.187,
+        "interpretation": "high_random",
+        "n_draws": 20
+      },
+      "lstm": {
+        "avg_best_set_jaccard_2runs": 0.3,
+        "interpretation": "high_random",
+        "n_draws": 20
+      }
+    },
+    "within_draw_diversity": {
+      "stat": {
+        "avg_within_draw_jaccard": 0.087,
+        "n_pairs": 3020
+      },
+      "markov": {
+        "avg_within_draw_jaccard": 0.149,
+        "n_pairs": 3020
+      },
+      "llm": {
+        "avg_within_draw_jaccard": 0.003,
+        "n_pairs": 3016
+      },
+      "lstm": {
+        "avg_within_draw_jaccard": 0.161,
+        "n_pairs": 3020
+      },
+      "fusion": {
+        "avg_within_draw_jaccard": 0.12,
+        "n_pairs": 3020
+      },
+      "hyena": {
+        "avg_within_draw_jaccard": 0.567,
+        "n_pairs": 3020
+      },
+      "lead1": {
+        "avg_within_draw_jaccard": 0.099,
+        "n_pairs": 3010
+      }
+    },
+    "note": "fusion/llm/hyena/lead1은 fusion·LLM·hyena·F1시드 의존 — stat/markov/lstm 2회 재실행 기준"
+  },
+  "diagnosis_C_hit_profile": {
+    "n_hit_sets_matched_ge4": 1552,
+    "by_brain": {
+      "fusion": 409,
+      "hyena": 738,
+      "lstm": 353,
+      "lead1": 31,
+      "llm": 4,
+      "markov": 14,
+      "stat": 3
+    },
+    "by_matched_count": {
+      "6": 10,
+      "5": 173,
+      "4": 1369
+    },
+    "hit_numbers_prev_draw_rate": 0.2366,
+    "random_expected": 0.1333,
+    "chi2_odd_even": {
+      "chi2": 0.0018,
+      "df": 1
+    },
+    "chi2_prev_draw_in_hits": {
+      "chi2": 499.115,
+      "df": 1
+    },
+    "prev_bias_in_hits": true,
+    "top_hits_sample": [
+      {
+        "draw": 1122,
+        "brain": "fusion",
+        "matched": 6,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          6,
+          21,
+          30,
+          34,
+          35
+        ],
+        "miss_numbers": [
+          3
+        ],
+        "hit_from_prev_draw": [
+          6
+        ],
+        "hit_gaps": {
+          "6": 0,
+          "21": 8,
+          "30": 4,
+          "34": 6,
+          "35": 17
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            6
+          ],
+          "gaps_from_history": {
+            "6": 0,
+            "21": 8,
+            "30": 4,
+            "34": 6,
+            "35": 17
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1040,
+        "brain": "fusion",
+        "matched": 6,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          16,
+          26,
+          29,
+          31,
+          36
+        ],
+        "miss_numbers": [
+          8
+        ],
+        "hit_from_prev_draw": [
+          36
+        ],
+        "hit_gaps": {
+          "16": 1,
+          "26": 5,
+          "29": 9,
+          "31": 5,
+          "36": 0
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            36
+          ],
+          "gaps_from_history": {
+            "16": 1,
+            "26": 5,
+            "29": 9,
+            "31": 5,
+            "36": 0
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1037,
+        "brain": "fusion",
+        "matched": 6,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          14,
+          15,
+          22,
+          27,
+          33
+        ],
+        "miss_numbers": [
+          2
+        ],
+        "hit_from_prev_draw": [
+          22
+        ],
+        "hit_gaps": {
+          "14": 1,
+          "15": 3,
+          "22": 0,
+          "27": 9,
+          "33": 2
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            22
+          ],
+          "gaps_from_history": {
+            "14": 1,
+            "15": 3,
+            "22": 0,
+            "27": 9,
+            "33": 2
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1037,
+        "brain": "hyena",
+        "matched": 6,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          14,
+          15,
+          22,
+          27,
+          33
+        ],
+        "miss_numbers": [
+          2
+        ],
+        "hit_from_prev_draw": [
+          22
+        ],
+        "hit_gaps": {
+          "14": 1,
+          "15": 3,
+          "22": 0,
+          "27": 9,
+          "33": 2
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            22
+          ],
+          "gaps_from_history": {
+            "14": 1,
+            "15": 3,
+            "22": 0,
+            "27": 9,
+            "33": 2
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 800,
+        "brain": "fusion",
+        "matched": 6,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          4,
+          10,
+          12,
+          28,
+          45
+        ],
+        "miss_numbers": [
+          1
+        ],
+        "hit_from_prev_draw": [
+          12,
+          45
+        ],
+        "hit_gaps": {
+          "4": 14,
+          "10": 1,
+          "12": 0,
+          "28": 12,
+          "45": 0
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            12,
+            45
+          ],
+          "gaps_from_history": {
+            "4": 14,
+            "10": 1,
+            "12": 0,
+            "28": 12,
+            "45": 0
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 774,
+        "brain": "fusion",
+        "matched": 6,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          15,
+          18,
+          28,
+          34,
+          42
+        ],
+        "miss_numbers": [
+          12
+        ],
+        "hit_from_prev_draw": [],
+        "hit_gaps": {
+          "15": 6,
+          "18": 2,
+          "28": 17,
+          "34": 6,
+          "42": 6
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [],
+          "gaps_from_history": {
+            "15": 6,
+            "18": 2,
+            "28": 17,
+            "34": 6,
+            "42": 6
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 725,
+        "brain": "fusion",
+        "matched": 6,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          7,
+          19,
+          21,
+          41,
+          43
+        ],
+        "miss_numbers": [
+          6
+        ],
+        "hit_from_prev_draw": [
+          41
+        ],
+        "hit_gaps": {
+          "7": 9,
+          "19": 5,
+          "21": 2,
+          "41": 0,
+          "43": 2
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            41
+          ],
+          "gaps_from_history": {
+            "7": 9,
+            "19": 5,
+            "21": 2,
+            "41": 0,
+            "43": 2
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 310,
+        "brain": "lstm",
+        "matched": 6,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          5,
+          19,
+          28,
+          34,
+          41
+        ],
+        "miss_numbers": [
+          1
+        ],
+        "hit_from_prev_draw": [
+          5
+        ],
+        "hit_gaps": {
+          "5": 0,
+          "19": 1,
+          "28": 12,
+          "34": 3,
+          "41": 3
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            5
+          ],
+          "gaps_from_history": {
+            "5": 0,
+            "19": 1,
+            "28": 12,
+            "34": 3,
+            "41": 3
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 198,
+        "brain": "fusion",
+        "matched": 6,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          19,
+          20,
+          25,
+          41,
+          45
+        ],
+        "miss_numbers": [
+          12
+        ],
+        "hit_from_prev_draw": [
+          45
+        ],
+        "hit_gaps": {
+          "19": 2,
+          "20": 3,
+          "25": 6,
+          "41": 1,
+          "45": 0
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            45
+          ],
+          "gaps_from_history": {
+            "19": 2,
+            "20": 3,
+            "25": 6,
+            "41": 1,
+            "45": 0
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 57,
+        "brain": "hyena",
+        "matched": 6,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          10,
+          16,
+          25,
+          29,
+          44
+        ],
+        "miss_numbers": [
+          7
+        ],
+        "hit_from_prev_draw": [
+          10
+        ],
+        "hit_gaps": {
+          "10": 0,
+          "16": 4,
+          "25": 16,
+          "29": 4,
+          "44": 1
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            10
+          ],
+          "gaps_from_history": {
+            "10": 0,
+            "16": 4,
+            "25": 16,
+            "29": 4,
+            "44": 1
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1219,
+        "brain": "lstm",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          2,
+          15,
+          28,
+          45
+        ],
+        "miss_numbers": [
+          1,
+          17
+        ],
+        "hit_from_prev_draw": [
+          28,
+          45
+        ],
+        "hit_gaps": {
+          "2": 9,
+          "15": 1,
+          "28": 0,
+          "45": 0
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            28,
+            45
+          ],
+          "gaps_from_history": {
+            "2": 9,
+            "15": 1,
+            "28": 0,
+            "45": 0
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1219,
+        "brain": "lstm",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          2,
+          15,
+          28,
+          45
+        ],
+        "miss_numbers": [
+          1,
+          13
+        ],
+        "hit_from_prev_draw": [
+          28,
+          45
+        ],
+        "hit_gaps": {
+          "2": 9,
+          "15": 1,
+          "28": 0,
+          "45": 0
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            28,
+            45
+          ],
+          "gaps_from_history": {
+            "2": 9,
+            "15": 1,
+            "28": 0,
+            "45": 0
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1219,
+        "brain": "fusion",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          2,
+          15,
+          28,
+          45
+        ],
+        "miss_numbers": [
+          1,
+          12
+        ],
+        "hit_from_prev_draw": [
+          28,
+          45
+        ],
+        "hit_gaps": {
+          "2": 9,
+          "15": 1,
+          "28": 0,
+          "45": 0
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            28,
+            45
+          ],
+          "gaps_from_history": {
+            "2": 9,
+            "15": 1,
+            "28": 0,
+            "45": 0
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1219,
+        "brain": "hyena",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          2,
+          15,
+          28,
+          45
+        ],
+        "miss_numbers": [
+          1,
+          17
+        ],
+        "hit_from_prev_draw": [
+          28,
+          45
+        ],
+        "hit_gaps": {
+          "2": 9,
+          "15": 1,
+          "28": 0,
+          "45": 0
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            28,
+            45
+          ],
+          "gaps_from_history": {
+            "2": 9,
+            "15": 1,
+            "28": 0,
+            "45": 0
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1219,
+        "brain": "hyena",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          2,
+          15,
+          28,
+          45
+        ],
+        "miss_numbers": [
+          1,
+          38
+        ],
+        "hit_from_prev_draw": [
+          28,
+          45
+        ],
+        "hit_gaps": {
+          "2": 9,
+          "15": 1,
+          "28": 0,
+          "45": 0
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            28,
+            45
+          ],
+          "gaps_from_history": {
+            "2": 9,
+            "15": 1,
+            "28": 0,
+            "45": 0
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1219,
+        "brain": "hyena",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          15,
+          28,
+          39,
+          45
+        ],
+        "miss_numbers": [
+          1,
+          24
+        ],
+        "hit_from_prev_draw": [
+          28,
+          45
+        ],
+        "hit_gaps": {
+          "15": 1,
+          "28": 0,
+          "39": 9,
+          "45": 0
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            28,
+            45
+          ],
+          "gaps_from_history": {
+            "15": 1,
+            "28": 0,
+            "39": 9,
+            "45": 0
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1216,
+        "brain": "lstm",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          10,
+          15,
+          23,
+          24
+        ],
+        "miss_numbers": [
+          3,
+          19
+        ],
+        "hit_from_prev_draw": [
+          15
+        ],
+        "hit_gaps": {
+          "10": 1,
+          "15": 0,
+          "23": 4,
+          "24": 8
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            15
+          ],
+          "gaps_from_history": {
+            "10": 1,
+            "15": 0,
+            "23": 4,
+            "24": 8
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1205,
+        "brain": "fusion",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          16,
+          23,
+          31,
+          41
+        ],
+        "miss_numbers": [
+          1,
+          3
+        ],
+        "hit_from_prev_draw": [
+          16,
+          31
+        ],
+        "hit_gaps": {
+          "16": 0,
+          "23": 12,
+          "31": 0,
+          "41": 6
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            16,
+            31
+          ],
+          "gaps_from_history": {
+            "16": 0,
+            "23": 12,
+            "31": 0,
+            "41": 6
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1178,
+        "brain": "lstm",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          6,
+          11,
+          27,
+          44
+        ],
+        "miss_numbers": [
+          2,
+          5
+        ],
+        "hit_from_prev_draw": [],
+        "hit_gaps": {
+          "6": 2,
+          "11": 1,
+          "27": 11,
+          "44": 5
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [],
+          "gaps_from_history": {
+            "6": 2,
+            "11": 1,
+            "27": 11,
+            "44": 5
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1178,
+        "brain": "fusion",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          6,
+          11,
+          43,
+          44
+        ],
+        "miss_numbers": [
+          5,
+          16
+        ],
+        "hit_from_prev_draw": [
+          43
+        ],
+        "hit_gaps": {
+          "6": 2,
+          "11": 1,
+          "43": 0,
+          "44": 5
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            43
+          ],
+          "gaps_from_history": {
+            "6": 2,
+            "11": 1,
+            "43": 0,
+            "44": 5
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1178,
+        "brain": "hyena",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          6,
+          11,
+          27,
+          44
+        ],
+        "miss_numbers": [
+          3,
+          5
+        ],
+        "hit_from_prev_draw": [],
+        "hit_gaps": {
+          "6": 2,
+          "11": 1,
+          "27": 11,
+          "44": 5
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [],
+          "gaps_from_history": {
+            "6": 2,
+            "11": 1,
+            "27": 11,
+            "44": 5
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1174,
+        "brain": "lstm",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          11,
+          14,
+          17,
+          36
+        ],
+        "miss_numbers": [
+          7,
+          8
+        ],
+        "hit_from_prev_draw": [],
+        "hit_gaps": {
+          "11": 2,
+          "14": 7,
+          "17": 2,
+          "36": 13
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [],
+          "gaps_from_history": {
+            "11": 2,
+            "14": 7,
+            "17": 2,
+            "36": 13
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1148,
+        "brain": "hyena",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          6,
+          13,
+          15,
+          16
+        ],
+        "miss_numbers": [
+          3,
+          37
+        ],
+        "hit_from_prev_draw": [],
+        "hit_gaps": {
+          "6": 1,
+          "13": 12,
+          "15": 3,
+          "16": 4
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [],
+          "gaps_from_history": {
+            "6": 1,
+            "13": 12,
+            "15": 3,
+            "16": 4
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1137,
+        "brain": "hyena",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          9,
+          12,
+          15,
+          33,
+          45
+        ],
+        "miss_numbers": [
+          14
+        ],
+        "hit_from_prev_draw": [
+          33
+        ],
+        "hit_gaps": {
+          "9": 2,
+          "12": 17,
+          "15": 6,
+          "33": 0,
+          "45": 17
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            33
+          ],
+          "gaps_from_history": {
+            "9": 2,
+            "12": 17,
+            "15": 6,
+            "33": 0,
+            "45": 17
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      },
+      {
+        "draw": 1133,
+        "brain": "hyena",
+        "matched": 5,
+        "bonus_matched": 0,
+        "hit_numbers": [
+          20,
+          28,
+          29,
+          34
+        ],
+        "miss_numbers": [
+          1,
+          13
+        ],
+        "hit_from_prev_draw": [
+          28,
+          34
+        ],
+        "hit_gaps": {
+          "20": 13,
+          "28": 0,
+          "29": 26,
+          "34": 0
+        },
+        "knowable_at_predict": {
+          "prev_draw_inclusion": [
+            28,
+            34
+          ],
+          "gaps_from_history": {
+            "20": 13,
+            "28": 0,
+            "29": 26,
+            "34": 0
+          }
+        },
+        "hindsight_only": "actual winning combo structure (사후)"
+      }
+    ],
+    "hindsight_warning": "matched>=4는 사후 채점 결과. gap·N-1포함은 예측 시점 walk-forward로 알 수 있었음. hit_numbers 목록 자체는 사후 정보."
+  },
+  "improvement_candidates": [
+    {
+      "brain": "stat",
+      "issue": "직전회차 번호 과다 포함 (+3.36%p)",
+      "candidate": "N-1 반복 편향 완화(감쇠·exclude)"
+    },
+    {
+      "brain": "markov",
+      "issue": "직전회차 번호 과다 포함 (+3.8%p)",
+      "candidate": "N-1 반복 편향 완화(감쇠·exclude)"
+    },
+    {
+      "brain": "llm",
+      "issue": "직전회차 번호 과다 포함 (+3.39%p)",
+      "candidate": "N-1 반복 편향 완화(감쇠·exclude)"
+    },
+    {
+      "brain": "lstm",
+      "issue": "직전회차 번호 과다 포함 (+11.87%p)",
+      "candidate": "N-1 반복 편향 완화(감쇠·exclude)"
+    },
+    {
+      "brain": "fusion",
+      "issue": "직전회차 번호 과다 포함 (+10.45%p)",
+      "candidate": "N-1 반복 편향 완화(감쇠·exclude)"
+    },
+    {
+      "brain": "hyena",
+      "issue": "직전회차 번호 과다 포함 (+17.6%p)",
+      "candidate": "N-1 반복 편향 완화(감쇠·exclude)"
+    },
+    {
+      "brain": "lead1",
+      "issue": "직전회차 번호 과다 포함 (+4.72%p)",
+      "candidate": "N-1 반복 편향 완화(감쇠·exclude)"
+    }
+  ]
+}

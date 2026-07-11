@@ -1,0 +1,80 @@
+{
+  "steps": {
+    "missing_collect": {
+      "targets": 116,
+      "saved": 116,
+      "failed": 0,
+      "errors": []
+    },
+    "cooccur": {
+      "ok": true
+    },
+    "cooccur_export": {
+      "ok": true,
+      "out": "D:\\3kweon\\tools\\_cooccur_latest.json"
+    },
+    "strategy_x_profiles": {
+      "winners_full": {
+        "total": 1228,
+        "era_c": 967,
+        "max_drw": 1228
+      },
+      "number_popularity_top10": [
+        {
+          "number": 12,
+          "freq": 59
+        },
+        {
+          "number": 13,
+          "freq": 52
+        },
+        {
+          "number": 7,
+          "freq": 51
+        },
+        {
+          "number": 27,
+          "freq": 49
+        },
+        {
+          "number": 33,
+          "freq": 48
+        },
+        {
+          "number": 18,
+          "freq": 47
+        },
+        {
+          "number": 6,
+          "freq": 46
+        },
+        {
+          "number": 19,
+          "freq": 46
+        },
+        {
+          "number": 39,
+          "freq": 45
+        },
+        {
+          "number": 15,
+          "freq": 43
+        }
+      ],
+      "pair_popularity": {
+        "top_draws_n": 327,
+        "pairs_n": null,
+        "cv": null
+      },
+      "shape_profile": {
+        "top_draws_n": null,
+        "sum_delta": null
+      }
+    }
+  },
+  "final": {
+    "missing_tier2": 0,
+    "tier_draws": 1228,
+    "draws": 1228
+  }
+}

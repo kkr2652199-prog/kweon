@@ -1,0 +1,463 @@
+{
+  "step1": {
+    "source": "lotto_draws (1~1228, 엑셀 미발견 → DB raw 동일 소스)",
+    "total_rows": 1228,
+    "era_counts": {
+      "A": 87,
+      "B": 174,
+      "C": 967
+    },
+    "min_drw": 1,
+    "max_drw": 1228
+  },
+  "step2_sample10": [
+    {
+      "drw_no": 1,
+      "nums": [
+        10,
+        23,
+        29,
+        33,
+        37,
+        40
+      ],
+      "bonus": 16,
+      "winner_cnt": 0,
+      "prize_per": 0,
+      "era": "A",
+      "consec_max": 1,
+      "consec_pairs": 0,
+      "low_cnt": 1,
+      "sum6": 172,
+      "odd_cnt": 4,
+      "decade_var": 0.9167,
+      "tail_dup": 2
+    },
+    {
+      "drw_no": 2,
+      "nums": [
+        9,
+        13,
+        21,
+        25,
+        32,
+        42
+      ],
+      "bonus": 2,
+      "winner_cnt": 1,
+      "prize_per": 2002006800,
+      "era": "A",
+      "consec_max": 1,
+      "consec_pairs": 0,
+      "low_cnt": 3,
+      "sum6": 142,
+      "odd_cnt": 4,
+      "decade_var": 1.6667,
+      "tail_dup": 1
+    },
+    {
+      "drw_no": 3,
+      "nums": [
+        11,
+        16,
+        19,
+        21,
+        27,
+        31
+      ],
+      "bonus": 30,
+      "winner_cnt": 1,
+      "prize_per": 2000000000,
+      "era": "A",
+      "consec_max": 1,
+      "consec_pairs": 0,
+      "low_cnt": 4,
+      "sum6": 125,
+      "odd_cnt": 5,
+      "decade_var": 0.5556,
+      "tail_dup": 2
+    },
+    {
+      "drw_no": 4,
+      "nums": [
+        14,
+        27,
+        30,
+        31,
+        40,
+        42
+      ],
+      "bonus": 2,
+      "winner_cnt": 0,
+      "prize_per": 0,
+      "era": "A",
+      "consec_max": 2,
+      "consec_pairs": 1,
+      "low_cnt": 1,
+      "sum6": 184,
+      "odd_cnt": 2,
+      "decade_var": 1.1389,
+      "tail_dup": 1
+    },
+    {
+      "drw_no": 5,
+      "nums": [
+        16,
+        24,
+        29,
+        40,
+        41,
+        42
+      ],
+      "bonus": 3,
+      "winner_cnt": 0,
+      "prize_per": 0,
+      "era": "A",
+      "consec_max": 3,
+      "consec_pairs": 2,
+      "low_cnt": 1,
+      "sum6": 192,
+      "odd_cnt": 2,
+      "decade_var": 1.4722,
+      "tail_dup": 0
+    },
+    {
+      "drw_no": 6,
+      "nums": [
+        14,
+        15,
+        26,
+        27,
+        40,
+        42
+      ],
+      "bonus": 34,
+      "winner_cnt": 1,
+      "prize_per": 6574451700,
+      "era": "A",
+      "consec_max": 2,
+      "consec_pairs": 2,
+      "low_cnt": 2,
+      "sum6": 164,
+      "odd_cnt": 2,
+      "decade_var": 1.5556,
+      "tail_dup": 0
+    },
+    {
+      "drw_no": 7,
+      "nums": [
+        2,
+        9,
+        16,
+        25,
+        26,
+        40
+      ],
+      "bonus": 42,
+      "winner_cnt": 0,
+      "prize_per": 0,
+      "era": "A",
+      "consec_max": 2,
+      "consec_pairs": 1,
+      "low_cnt": 3,
+      "sum6": 118,
+      "odd_cnt": 2,
+      "decade_var": 1.9167,
+      "tail_dup": 1
+    },
+    {
+      "drw_no": 8,
+      "nums": [
+        8,
+        19,
+        25,
+        34,
+        37,
+        39
+      ],
+      "bonus": 9,
+      "winner_cnt": 0,
+      "prize_per": 0,
+      "era": "A",
+      "consec_max": 1,
+      "consec_pairs": 0,
+      "low_cnt": 2,
+      "sum6": 162,
+      "odd_cnt": 4,
+      "decade_var": 1.3333,
+      "tail_dup": 1
+    },
+    {
+      "drw_no": 9,
+      "nums": [
+        2,
+        4,
+        16,
+        17,
+        36,
+        39
+      ],
+      "bonus": 14,
+      "winner_cnt": 0,
+      "prize_per": 0,
+      "era": "A",
+      "consec_max": 2,
+      "consec_pairs": 1,
+      "low_cnt": 4,
+      "sum6": 114,
+      "odd_cnt": 2,
+      "decade_var": 1.5556,
+      "tail_dup": 1
+    },
+    {
+      "drw_no": 10,
+      "nums": [
+        9,
+        25,
+        30,
+        33,
+        41,
+        44
+      ],
+      "bonus": 6,
+      "winner_cnt": 13,
+      "prize_per": 6430437900,
+      "era": "A",
+      "consec_max": 1,
+      "consec_pairs": 0,
+      "low_cnt": 1,
+      "sum6": 182,
+      "odd_cnt": 4,
+      "decade_var": 1.8889,
+      "tail_dup": 0
+    }
+  ],
+  "step3": {
+    "era": "C",
+    "drw_range": "262~1228",
+    "analysis_n": 956,
+    "excluded_zero_winner": 11,
+    "correlations": [
+      {
+        "feature": "sum6",
+        "pearson": -0.1032,
+        "spearman": -0.0732,
+        "abs_pearson": 0.1032,
+        "abs_spearman": 0.0732
+      },
+      {
+        "feature": "low_cnt",
+        "pearson": 0.0834,
+        "spearman": 0.0651,
+        "abs_pearson": 0.0834,
+        "abs_spearman": 0.0651
+      },
+      {
+        "feature": "consec_max",
+        "pearson": -0.048,
+        "spearman": -0.0702,
+        "abs_pearson": 0.048,
+        "abs_spearman": 0.0702
+      },
+      {
+        "feature": "consec_pairs",
+        "pearson": -0.0173,
+        "spearman": -0.0661,
+        "abs_pearson": 0.0173,
+        "abs_spearman": 0.0661
+      },
+      {
+        "feature": "decade_var",
+        "pearson": -0.0461,
+        "spearman": -0.0122,
+        "abs_pearson": 0.0461,
+        "abs_spearman": 0.0122
+      },
+      {
+        "feature": "tail_dup",
+        "pearson": 0.0275,
+        "spearman": 0.0373,
+        "abs_pearson": 0.0275,
+        "abs_spearman": 0.0373
+      },
+      {
+        "feature": "odd_cnt",
+        "pearson": 0.0179,
+        "spearman": 0.0098,
+        "abs_pearson": 0.0179,
+        "abs_spearman": 0.0098
+      }
+    ],
+    "consec_pairs_priority": {
+      "feature": "consec_pairs",
+      "pearson": -0.0173,
+      "spearman": -0.0661,
+      "abs_pearson": 0.0173,
+      "abs_spearman": 0.0661
+    }
+  },
+  "step4": {
+    "method": "연속수 가중 인기점수 (consec_pairs·consec_max Pearson 가중 z합)",
+    "era": "C",
+    "walkforward_range": "343~1228",
+    "min_train": 80,
+    "predictions_n": 885,
+    "pearson_pred_vs_actual": -0.0626,
+    "spearman_pred_vs_actual": -0.1658,
+    "abs_pearson": 0.0626,
+    "threshold": 0.2,
+    "verdict": "❌ 약함, 단순참고",
+    "sample_details": [
+      {
+        "predict_drw": 344,
+        "train_n": 80,
+        "r_consec_pairs": 0.2375,
+        "r_consec_max": 0.1485,
+        "pred_score": 0.5341,
+        "actual_winner_cnt": 7
+      },
+      {
+        "predict_drw": 345,
+        "train_n": 81,
+        "r_consec_pairs": 0.239,
+        "r_consec_max": 0.1511,
+        "pred_score": -0.8494,
+        "actual_winner_cnt": 2
+      },
+      {
+        "predict_drw": 346,
+        "train_n": 82,
+        "r_consec_pairs": 0.2489,
+        "r_consec_max": 0.1638,
+        "pred_score": 1.296,
+        "actual_winner_cnt": 5
+      },
+      {
+        "predict_drw": 347,
+        "train_n": 83,
+        "r_consec_pairs": 0.2382,
+        "r_consec_max": 0.1606,
+        "pred_score": -0.8533,
+        "actual_winner_cnt": 7
+      },
+      {
+        "predict_drw": 348,
+        "train_n": 84,
+        "r_consec_pairs": 0.2332,
+        "r_consec_max": 0.1555,
+        "pred_score": -0.8443,
+        "actual_winner_cnt": 3
+      }
+    ]
+  },
+  "step5": {
+    "era": "C",
+    "top30_draws_n": 286,
+    "total_valid_era_c": 956,
+    "winner_cnt_threshold_top30": 11,
+    "top10": [
+      {
+        "number": 12,
+        "top30_freq": 60,
+        "top30_pct": 0.2098
+      },
+      {
+        "number": 13,
+        "top30_freq": 52,
+        "top30_pct": 0.1818
+      },
+      {
+        "number": 7,
+        "top30_freq": 51,
+        "top30_pct": 0.1783
+      },
+      {
+        "number": 27,
+        "top30_freq": 48,
+        "top30_pct": 0.1678
+      },
+      {
+        "number": 33,
+        "top30_freq": 47,
+        "top30_pct": 0.1643
+      },
+      {
+        "number": 6,
+        "top30_freq": 45,
+        "top30_pct": 0.1573
+      },
+      {
+        "number": 19,
+        "top30_freq": 45,
+        "top30_pct": 0.1573
+      },
+      {
+        "number": 18,
+        "top30_freq": 44,
+        "top30_pct": 0.1538
+      },
+      {
+        "number": 39,
+        "top30_freq": 44,
+        "top30_pct": 0.1538
+      },
+      {
+        "number": 15,
+        "top30_freq": 43,
+        "top30_pct": 0.1503
+      }
+    ],
+    "bottom10": [
+      {
+        "number": 4,
+        "top30_freq": 32,
+        "top30_pct": 0.1119
+      },
+      {
+        "number": 22,
+        "top30_freq": 32,
+        "top30_pct": 0.1119
+      },
+      {
+        "number": 23,
+        "top30_freq": 32,
+        "top30_pct": 0.1119
+      },
+      {
+        "number": 30,
+        "top30_freq": 32,
+        "top30_pct": 0.1119
+      },
+      {
+        "number": 42,
+        "top30_freq": 31,
+        "top30_pct": 0.1084
+      },
+      {
+        "number": 43,
+        "top30_freq": 28,
+        "top30_pct": 0.0979
+      },
+      {
+        "number": 25,
+        "top30_freq": 27,
+        "top30_pct": 0.0944
+      },
+      {
+        "number": 36,
+        "top30_freq": 27,
+        "top30_pct": 0.0944
+      },
+      {
+        "number": 40,
+        "top30_freq": 26,
+        "top30_pct": 0.0909
+      },
+      {
+        "number": 41,
+        "top30_freq": 25,
+        "top30_pct": 0.0874
+      }
+    ]
+  }
+}

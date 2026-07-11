@@ -1,0 +1,274 @@
+{
+  "title": "20260704_1군_편향완화검증",
+  "readonly": true,
+  "decay_factor": 0.3,
+  "periods_meta": [
+    {
+      "name": "A",
+      "lo": 330,
+      "hi": 629
+    },
+    {
+      "name": "B",
+      "lo": 630,
+      "hi": 929
+    },
+    {
+      "name": "C",
+      "lo": 930,
+      "hi": 1230
+    }
+  ],
+  "n_draws_total": 898,
+  "periods": [
+    {
+      "label": "330-629",
+      "range": [
+        330,
+        629
+      ],
+      "n": 298,
+      "arms": {
+        "CURRENT": {
+          "mean_avg": 1.1081,
+          "mean_best": 2.094,
+          "hit6_count": 0,
+          "hit4p_rate": 0.0235,
+          "copy_rate": 0.0,
+          "delta_best_vs_randunion": 0.2483,
+          "delta_best_vs_current": 0.0,
+          "p_best_vs_randunion": 9e-06,
+          "p_best_vs_current": null,
+          "mean_diff_vs_current": null
+        },
+        "DECAY": {
+          "mean_avg": 1.104,
+          "mean_best": 2.094,
+          "hit6_count": 0,
+          "hit4p_rate": 0.0268,
+          "copy_rate": 0.0,
+          "delta_best_vs_randunion": 0.2483,
+          "delta_best_vs_current": 0.0,
+          "p_best_vs_randunion": 9e-06,
+          "p_best_vs_current": 1.0,
+          "mean_diff_vs_current": 0
+        },
+        "EXCLUDE": {
+          "mean_avg": 1.0966,
+          "mean_best": 2.0369,
+          "hit6_count": 0,
+          "hit4p_rate": 0.0369,
+          "copy_rate": 0.0,
+          "delta_best_vs_randunion": 0.1913,
+          "delta_best_vs_current": -0.057,
+          "p_best_vs_randunion": 0.000463,
+          "p_best_vs_current": 0.322299,
+          "mean_diff_vs_current": -0.057
+        },
+        "RANDOM_UNION": {
+          "mean_avg": 0.8463,
+          "mean_best": 1.8456,
+          "hit6_count": 0,
+          "hit4p_rate": 0.0034,
+          "copy_rate": 0.0,
+          "delta_best_vs_randunion": 0.0,
+          "delta_best_vs_current": 0.0,
+          "p_best_vs_randunion": null,
+          "p_best_vs_current": null,
+          "mean_diff_vs_current": null
+        }
+      }
+    },
+    {
+      "label": "630-929",
+      "range": [
+        630,
+        929
+      ],
+      "n": 300,
+      "arms": {
+        "CURRENT": {
+          "mean_avg": 1.0627,
+          "mean_best": 2.1067,
+          "hit6_count": 0,
+          "hit4p_rate": 0.0333,
+          "copy_rate": 0.0,
+          "delta_best_vs_randunion": 0.2733,
+          "delta_best_vs_current": 0.0,
+          "p_best_vs_randunion": 1e-06,
+          "p_best_vs_current": null,
+          "mean_diff_vs_current": null
+        },
+        "DECAY": {
+          "mean_avg": 1.1327,
+          "mean_best": 2.1333,
+          "hit6_count": 0,
+          "hit4p_rate": 0.0233,
+          "copy_rate": 0.0,
+          "delta_best_vs_randunion": 0.3,
+          "delta_best_vs_current": 0.0267,
+          "p_best_vs_randunion": 0.0,
+          "p_best_vs_current": 0.586654,
+          "mean_diff_vs_current": 0.0267
+        },
+        "EXCLUDE": {
+          "mean_avg": 1.114,
+          "mean_best": 2.06,
+          "hit6_count": 0,
+          "hit4p_rate": 0.0267,
+          "copy_rate": 0.0,
+          "delta_best_vs_randunion": 0.2267,
+          "delta_best_vs_current": -0.0467,
+          "p_best_vs_randunion": 6.4e-05,
+          "p_best_vs_current": 0.412879,
+          "mean_diff_vs_current": -0.0467
+        },
+        "RANDOM_UNION": {
+          "mean_avg": 0.8713,
+          "mean_best": 1.8333,
+          "hit6_count": 0,
+          "hit4p_rate": 0.0167,
+          "copy_rate": 0.0,
+          "delta_best_vs_randunion": 0.0,
+          "delta_best_vs_current": 0.0,
+          "p_best_vs_randunion": null,
+          "p_best_vs_current": null,
+          "mean_diff_vs_current": null
+        }
+      }
+    },
+    {
+      "label": "930-1230",
+      "range": [
+        930,
+        1230
+      ],
+      "n": 300,
+      "arms": {
+        "CURRENT": {
+          "mean_avg": 1.0967,
+          "mean_best": 2.07,
+          "hit6_count": 0,
+          "hit4p_rate": 0.0233,
+          "copy_rate": 0.0,
+          "delta_best_vs_randunion": 0.3,
+          "delta_best_vs_current": 0.0,
+          "p_best_vs_randunion": 0.0,
+          "p_best_vs_current": null,
+          "mean_diff_vs_current": null
+        },
+        "DECAY": {
+          "mean_avg": 1.0733,
+          "mean_best": 2.0567,
+          "hit6_count": 0,
+          "hit4p_rate": 0.02,
+          "copy_rate": 0.0,
+          "delta_best_vs_randunion": 0.2867,
+          "delta_best_vs_current": -0.0133,
+          "p_best_vs_randunion": 0.0,
+          "p_best_vs_current": 0.784844,
+          "mean_diff_vs_current": -0.0133
+        },
+        "EXCLUDE": {
+          "mean_avg": 1.0893,
+          "mean_best": 2.04,
+          "hit6_count": 0,
+          "hit4p_rate": 0.0133,
+          "copy_rate": 0.0,
+          "delta_best_vs_randunion": 0.27,
+          "delta_best_vs_current": -0.03,
+          "p_best_vs_randunion": 1e-06,
+          "p_best_vs_current": 0.567313,
+          "mean_diff_vs_current": -0.03
+        },
+        "RANDOM_UNION": {
+          "mean_avg": 0.8387,
+          "mean_best": 1.77,
+          "hit6_count": 0,
+          "hit4p_rate": 0.0133,
+          "copy_rate": 0.0,
+          "delta_best_vs_randunion": 0.0,
+          "delta_best_vs_current": 0.0,
+          "p_best_vs_randunion": null,
+          "p_best_vs_current": null,
+          "mean_diff_vs_current": null
+        }
+      }
+    }
+  ],
+  "verdict": {
+    "periods_valid": 3,
+    "decay_wins": 0,
+    "exclude_wins": 0,
+    "details": [
+      {
+        "range": [
+          330,
+          629
+        ],
+        "n": 298,
+        "current_best": 2.094,
+        "decay_best": 2.094,
+        "exclude_best": 2.0369,
+        "randunion_best": 1.8456,
+        "decay_improved_sig": false,
+        "exclude_improved_sig": false,
+        "decay_worse_sig": false,
+        "exclude_worse_sig": false
+      },
+      {
+        "range": [
+          630,
+          929
+        ],
+        "n": 300,
+        "current_best": 2.1067,
+        "decay_best": 2.1333,
+        "exclude_best": 2.06,
+        "randunion_best": 1.8333,
+        "decay_improved_sig": false,
+        "exclude_improved_sig": false,
+        "decay_worse_sig": false,
+        "exclude_worse_sig": false
+      },
+      {
+        "range": [
+          930,
+          1230
+        ],
+        "n": 300,
+        "current_best": 2.07,
+        "decay_best": 2.0567,
+        "exclude_best": 2.04,
+        "randunion_best": 1.77,
+        "decay_improved_sig": false,
+        "exclude_improved_sig": false,
+        "decay_worse_sig": false,
+        "exclude_worse_sig": false
+      }
+    ],
+    "go": "KEEP-CURRENT",
+    "final": "N-1 편향 완화(DECAY/EXCLUDE)가 CURRENT 대비 2/3 이상 유의 개선 없음. 편향은 존재하나 성능과 무관 — CURRENT 유지.",
+    "adopt_decay": false,
+    "adopt_exclude": false
+  },
+  "six_before": {
+    "fusion": 6015,
+    "hyena": 6010,
+    "llm": 6011,
+    "lstm": 6015,
+    "markov": 6010,
+    "stat": 6015
+  },
+  "six_after": {
+    "fusion": 6015,
+    "hyena": 6010,
+    "llm": 6011,
+    "lstm": 6015,
+    "markov": 6010,
+    "stat": 6015
+  },
+  "lead1_before": 5565,
+  "lead1_after": 5565,
+  "regression_ok": true
+}

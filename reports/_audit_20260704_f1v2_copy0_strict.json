@@ -1,0 +1,408 @@
+{
+  "title": "20260704_1군7뇌_F1v2_카피0강제_최종판정",
+  "readonly": true,
+  "cursor_opinion": {
+    "implementation": "F1_V2 파이프라인(popavoid 25→wheel 5) 유지. 후보·최종 세트 모두 max_overlap<COPY_OVERLAP(5)만 채택. wheel 결과 카피 세트 폐기 후 strict pool에서 재휠·generate_sets_with_weights(copy_filter=True)로 보충.",
+    "pitfalls": "① popavoid/wheel은 카피 허용 후보를 풀에 넣을 수 있음 → 선필터+사후폐기 필수. ② popavoid 원본은 카피 후보 포함 → 선필터 ov<5 필수. ③ 5세트 미달 시 copy=0은 만족하나 best-of-5 비교 왜곡 → short_strict 로그.",
+    "gaps": "카피0=단일뇌 5개+ 겹침 기준(COPY_OVERLAP) — 다뇌 합성 중복은 별도. 적중 '동등'은 paired t-test p≥0.05 또는 Δ≥0 — 미세 하락 허용 범위는 기존 F1v2 실험과 동일."
+  },
+  "seed_runs": [
+    {
+      "seed_xor": 0,
+      "n": 898,
+      "mean_base": 2.0902,
+      "mean_strict": 2.2817,
+      "delta": 0.1915,
+      "p_strict_vs_base": 0.0,
+      "strict_not_worse": true,
+      "strict_wins_or_tie": true,
+      "max_copy_rate": 0.0,
+      "mean_copy_rate": 0.0,
+      "copy_zero": true,
+      "short_strict_draws": [],
+      "short_strict_count": 0,
+      "periods": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_base": 2.094,
+          "mean_strict": 2.2517,
+          "delta": 0.1577
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_base": 2.1067,
+          "mean_strict": 2.34,
+          "delta": 0.2333
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_base": 2.07,
+          "mean_strict": 2.2533,
+          "delta": 0.1833
+        }
+      },
+      "max_data_sample": [
+        {
+          "draw": 1226,
+          "max_data_draw": 1225,
+          "ok": true
+        },
+        {
+          "draw": 1227,
+          "max_data_draw": 1226,
+          "ok": true
+        },
+        {
+          "draw": 1228,
+          "max_data_draw": 1227,
+          "ok": true
+        },
+        {
+          "draw": 1229,
+          "max_data_draw": 1228,
+          "ok": true
+        },
+        {
+          "draw": 1230,
+          "max_data_draw": 1229,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "seed_xor": 1000003,
+      "n": 898,
+      "mean_base": 2.0935,
+      "mean_strict": 2.2528,
+      "delta": 0.1592,
+      "p_strict_vs_base": 0.0,
+      "strict_not_worse": true,
+      "strict_wins_or_tie": true,
+      "max_copy_rate": 0.0,
+      "mean_copy_rate": 0.0,
+      "copy_zero": true,
+      "short_strict_draws": [],
+      "short_strict_count": 0,
+      "periods": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_base": 2.0872,
+          "mean_strict": 2.245,
+          "delta": 0.1577
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_base": 2.0933,
+          "mean_strict": 2.24,
+          "delta": 0.1467
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_base": 2.1,
+          "mean_strict": 2.2733,
+          "delta": 0.1733
+        }
+      },
+      "max_data_sample": [
+        {
+          "draw": 1226,
+          "max_data_draw": 1225,
+          "ok": true
+        },
+        {
+          "draw": 1227,
+          "max_data_draw": 1226,
+          "ok": true
+        },
+        {
+          "draw": 1228,
+          "max_data_draw": 1227,
+          "ok": true
+        },
+        {
+          "draw": 1229,
+          "max_data_draw": 1228,
+          "ok": true
+        },
+        {
+          "draw": 1230,
+          "max_data_draw": 1229,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "seed_xor": 2000009,
+      "n": 898,
+      "mean_base": 2.1058,
+      "mean_strict": 2.2506,
+      "delta": 0.1448,
+      "p_strict_vs_base": 2e-06,
+      "strict_not_worse": true,
+      "strict_wins_or_tie": true,
+      "max_copy_rate": 0.0,
+      "mean_copy_rate": 0.0,
+      "copy_zero": true,
+      "short_strict_draws": [],
+      "short_strict_count": 0,
+      "periods": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_base": 2.1611,
+          "mean_strict": 2.245,
+          "delta": 0.0839
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_base": 2.0767,
+          "mean_strict": 2.2367,
+          "delta": 0.16
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_base": 2.08,
+          "mean_strict": 2.27,
+          "delta": 0.19
+        }
+      },
+      "max_data_sample": [
+        {
+          "draw": 1226,
+          "max_data_draw": 1225,
+          "ok": true
+        },
+        {
+          "draw": 1227,
+          "max_data_draw": 1226,
+          "ok": true
+        },
+        {
+          "draw": 1228,
+          "max_data_draw": 1227,
+          "ok": true
+        },
+        {
+          "draw": 1229,
+          "max_data_draw": 1228,
+          "ok": true
+        },
+        {
+          "draw": 1230,
+          "max_data_draw": 1229,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "seed_xor": 3000037,
+      "n": 898,
+      "mean_base": 2.0323,
+      "mean_strict": 2.3185,
+      "delta": 0.2862,
+      "p_strict_vs_base": 0.0,
+      "strict_not_worse": true,
+      "strict_wins_or_tie": true,
+      "max_copy_rate": 0.0,
+      "mean_copy_rate": 0.0,
+      "copy_zero": true,
+      "short_strict_draws": [],
+      "short_strict_count": 0,
+      "periods": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_base": 2.0671,
+          "mean_strict": 2.2953,
+          "delta": 0.2282
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_base": 2.04,
+          "mean_strict": 2.34,
+          "delta": 0.3
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_base": 1.99,
+          "mean_strict": 2.32,
+          "delta": 0.33
+        }
+      },
+      "max_data_sample": [
+        {
+          "draw": 1226,
+          "max_data_draw": 1225,
+          "ok": true
+        },
+        {
+          "draw": 1227,
+          "max_data_draw": 1226,
+          "ok": true
+        },
+        {
+          "draw": 1228,
+          "max_data_draw": 1227,
+          "ok": true
+        },
+        {
+          "draw": 1229,
+          "max_data_draw": 1228,
+          "ok": true
+        },
+        {
+          "draw": 1230,
+          "max_data_draw": 1229,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "seed_xor": 4000099,
+      "n": 898,
+      "mean_base": 2.0713,
+      "mean_strict": 2.2472,
+      "delta": 0.1759,
+      "p_strict_vs_base": 0.0,
+      "strict_not_worse": true,
+      "strict_wins_or_tie": true,
+      "max_copy_rate": 0.0,
+      "mean_copy_rate": 0.0,
+      "copy_zero": true,
+      "short_strict_draws": [],
+      "short_strict_count": 0,
+      "periods": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_base": 2.0805,
+          "mean_strict": 2.2248,
+          "delta": 0.1443
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_base": 2.0833,
+          "mean_strict": 2.23,
+          "delta": 0.1467
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_base": 2.05,
+          "mean_strict": 2.2867,
+          "delta": 0.2367
+        }
+      },
+      "max_data_sample": [
+        {
+          "draw": 1226,
+          "max_data_draw": 1225,
+          "ok": true
+        },
+        {
+          "draw": 1227,
+          "max_data_draw": 1226,
+          "ok": true
+        },
+        {
+          "draw": 1228,
+          "max_data_draw": 1227,
+          "ok": true
+        },
+        {
+          "draw": 1229,
+          "max_data_draw": 1228,
+          "ok": true
+        },
+        {
+          "draw": 1230,
+          "max_data_draw": 1229,
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "verdict": {
+    "go": "ADOPT-F1_V2_STRICT",
+    "note": "카피0·적중동등·5시드 재현 전부 통과 — F1_V2_STRICT lead1 이식 GO 권고.",
+    "pass_a_copy_zero": true,
+    "pass_b_hit_parity": true,
+    "pass_c_seed_repro": true,
+    "all_pass": true
+  },
+  "six_before": {
+    "fusion": 6015,
+    "hyena": 6010,
+    "llm": 6011,
+    "lstm": 6015,
+    "markov": 6010,
+    "stat": 6015
+  },
+  "six_after": {
+    "fusion": 6015,
+    "hyena": 6010,
+    "llm": 6011,
+    "lstm": 6015,
+    "markov": 6010,
+    "stat": 6015
+  },
+  "lead1_before": 5565,
+  "lead1_after": 5565,
+  "regression_ok": true
+}

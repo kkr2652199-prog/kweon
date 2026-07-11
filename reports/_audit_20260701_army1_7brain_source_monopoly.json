@@ -1,0 +1,314 @@
+{
+  "title": "20260701_1군7뇌_출처독점_근본교정",
+  "date": "2026-07-01",
+  "mode": "READ_ONLY",
+  "step1": {
+    "n_draws": 1111,
+    "draw_range": [
+      88,
+      1230
+    ],
+    "total_sets": 5555,
+    "origin_pct": {
+      "stat": 8.03,
+      "markov": 12.51,
+      "llm": 6.43,
+      "lstm": 37.82,
+      "fusion": 35.21
+    },
+    "origin_counts": {
+      "stat": 446,
+      "lstm": 2101,
+      "llm": 357,
+      "fusion": 1956,
+      "markov": 695
+    },
+    "exact_copy_pct_by_brain": {
+      "stat": 8.03,
+      "markov": 12.51,
+      "llm": 6.43,
+      "lstm": 37.82,
+      "fusion": 35.21
+    },
+    "fusion_exact_pct": 35.21,
+    "avg_max_brain_per_draw": 2.48,
+    "draws_with_brain_ge3": 499,
+    "draws_with_brain_ge3_pct": 44.91,
+    "sample_1205": {
+      "draw_no": 1205,
+      "picks": [
+        {
+          "rank": 1,
+          "nums": [
+            1,
+            3,
+            16,
+            23,
+            31,
+            41
+          ],
+          "origin": "fusion",
+          "exact_copy": true
+        },
+        {
+          "rank": 2,
+          "nums": [
+            1,
+            3,
+            16,
+            17,
+            26,
+            37
+          ],
+          "origin": "lstm",
+          "exact_copy": true
+        },
+        {
+          "rank": 3,
+          "nums": [
+            3,
+            15,
+            16,
+            21,
+            23,
+            37
+          ],
+          "origin": "stat",
+          "exact_copy": true
+        },
+        {
+          "rank": 4,
+          "nums": [
+            1,
+            16,
+            17,
+            18,
+            23,
+            30
+          ],
+          "origin": "lstm",
+          "exact_copy": true
+        },
+        {
+          "rank": 5,
+          "nums": [
+            1,
+            3,
+            4,
+            16,
+            31,
+            44
+          ],
+          "origin": "lstm",
+          "exact_copy": true
+        }
+      ]
+    }
+  },
+  "periods": [
+    {
+      "label": "A",
+      "range": [
+        330,
+        629
+      ],
+      "rows": [
+        {
+          "arm": "B0_CURRENT",
+          "n_eval": 298,
+          "avg_best_of_5": 3.2114,
+          "avg_matched_5sets": 1.9275,
+          "hit6": 0,
+          "mean_max_brain_share": 2.477,
+          "draws_brain_ge3": 131,
+          "draws_brain_ge3_pct": 43.96
+        },
+        {
+          "arm": "B1_CAP2",
+          "n_eval": 298,
+          "avg_best_of_5": 3.1812,
+          "avg_matched_5sets": 1.9034,
+          "hit6": 0,
+          "mean_max_brain_share": 1.98,
+          "draws_brain_ge3": 0,
+          "draws_brain_ge3_pct": 0.0
+        },
+        {
+          "arm": "B2_DEDUP5",
+          "n_eval": 298,
+          "avg_best_of_5": 3.1812,
+          "avg_matched_5sets": 1.9517,
+          "hit6": 0,
+          "mean_max_brain_share": 2.443,
+          "draws_brain_ge3": 128,
+          "draws_brain_ge3_pct": 42.95
+        },
+        {
+          "arm": "B3_CAP2_DEDUP5",
+          "n_eval": 298,
+          "avg_best_of_5": 3.1745,
+          "avg_matched_5sets": 1.8872,
+          "hit6": 0,
+          "mean_max_brain_share": 1.98,
+          "draws_brain_ge3": 0,
+          "draws_brain_ge3_pct": 0.0
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "range": [
+        630,
+        929
+      ],
+      "rows": [
+        {
+          "arm": "B0_CURRENT",
+          "n_eval": 300,
+          "avg_best_of_5": 3.1633,
+          "avg_matched_5sets": 1.934,
+          "hit6": 2,
+          "mean_max_brain_share": 2.513,
+          "draws_brain_ge3": 144,
+          "draws_brain_ge3_pct": 48.0
+        },
+        {
+          "arm": "B1_CAP2",
+          "n_eval": 300,
+          "avg_best_of_5": 3.15,
+          "avg_matched_5sets": 1.9067,
+          "hit6": 3,
+          "mean_max_brain_share": 1.98,
+          "draws_brain_ge3": 0,
+          "draws_brain_ge3_pct": 0.0
+        },
+        {
+          "arm": "B2_DEDUP5",
+          "n_eval": 300,
+          "avg_best_of_5": 3.1767,
+          "avg_matched_5sets": 1.9673,
+          "hit6": 3,
+          "mean_max_brain_share": 2.503,
+          "draws_brain_ge3": 141,
+          "draws_brain_ge3_pct": 47.0
+        },
+        {
+          "arm": "B3_CAP2_DEDUP5",
+          "n_eval": 300,
+          "avg_best_of_5": 3.13,
+          "avg_matched_5sets": 1.8907,
+          "hit6": 3,
+          "mean_max_brain_share": 1.98,
+          "draws_brain_ge3": 0,
+          "draws_brain_ge3_pct": 0.0
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "range": [
+        930,
+        1230
+      ],
+      "rows": [
+        {
+          "arm": "B0_CURRENT",
+          "n_eval": 300,
+          "avg_best_of_5": 3.0633,
+          "avg_matched_5sets": 1.8593,
+          "hit6": 3,
+          "mean_max_brain_share": 2.43,
+          "draws_brain_ge3": 121,
+          "draws_brain_ge3_pct": 40.33
+        },
+        {
+          "arm": "B1_CAP2",
+          "n_eval": 300,
+          "avg_best_of_5": 3.04,
+          "avg_matched_5sets": 1.8313,
+          "hit6": 3,
+          "mean_max_brain_share": 1.987,
+          "draws_brain_ge3": 0,
+          "draws_brain_ge3_pct": 0.0
+        },
+        {
+          "arm": "B2_DEDUP5",
+          "n_eval": 300,
+          "avg_best_of_5": 3.05,
+          "avg_matched_5sets": 1.8687,
+          "hit6": 3,
+          "mean_max_brain_share": 2.43,
+          "draws_brain_ge3": 123,
+          "draws_brain_ge3_pct": 41.0
+        },
+        {
+          "arm": "B3_CAP2_DEDUP5",
+          "n_eval": 300,
+          "avg_best_of_5": 3.03,
+          "avg_matched_5sets": 1.8107,
+          "hit6": 3,
+          "mean_max_brain_share": 1.99,
+          "draws_brain_ge3": 0,
+          "draws_brain_ge3_pct": 0.0
+        }
+      ]
+    }
+  ],
+  "aggregate": {
+    "B0_CURRENT": {
+      "mean_best_of_5": 3.146,
+      "mean_avg": 1.9069,
+      "mean_max_brain_share": 2.473,
+      "hit6_total": 5,
+      "draws_brain_ge3": 396,
+      "draws_brain_ge3_pct": 44.1
+    },
+    "B1_CAP2": {
+      "mean_best_of_5": 3.1237,
+      "mean_avg": 1.8805,
+      "mean_max_brain_share": 1.982,
+      "hit6_total": 6,
+      "draws_brain_ge3": 0,
+      "draws_brain_ge3_pct": 0.0
+    },
+    "B2_DEDUP5": {
+      "mean_best_of_5": 3.136,
+      "mean_avg": 1.9292,
+      "mean_max_brain_share": 2.459,
+      "hit6_total": 6,
+      "draws_brain_ge3": 392,
+      "draws_brain_ge3_pct": 43.65
+    },
+    "B3_CAP2_DEDUP5": {
+      "mean_best_of_5": 3.1115,
+      "mean_avg": 1.8629,
+      "mean_max_brain_share": 1.983,
+      "hit6_total": 6,
+      "draws_brain_ge3": 0,
+      "draws_brain_ge3_pct": 0.0
+    }
+  },
+  "verdict": {
+    "scores": {
+      "B0_CURRENT": 12.05,
+      "B1_CAP2": 74.33,
+      "B2_DEDUP5": 15.24,
+      "B3_CAP2_DEDUP5": 74.2
+    },
+    "ranked": [
+      "B1_CAP2",
+      "B3_CAP2_DEDUP5",
+      "B2_DEDUP5",
+      "B0_CURRENT"
+    ],
+    "notes": [
+      "B0_CURRENT: best=3.146 hit6=5 max_share=2.473 ge3=44.1%",
+      "B1_CAP2: best=3.1237 hit6=6 max_share=1.982 ge3=0.0%",
+      "B2_DEDUP5: best=3.136 hit6=6 max_share=2.459 ge3=43.65%",
+      "B3_CAP2_DEDUP5: best=3.1115 hit6=6 max_share=1.983 ge3=0.0%"
+    ],
+    "go": "GO-B1_CAP2",
+    "adopt": "B1_CAP2",
+    "final": "🟢 B1_CAP2 — 독점≤2·best-of-5/hit6 유지. 형 GO 후 predict_brain7.py 교체(6뇌 무변경)."
+  }
+}

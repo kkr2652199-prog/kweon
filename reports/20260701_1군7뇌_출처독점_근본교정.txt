@@ -1,0 +1,85 @@
+20260701_1군7뇌_출처독점_근본교정
+동생 → 커서 | 2026-07-01 | READ-ONLY (이식은 형 GO 후)
+
+절대 원칙: 6뇌 코드·DB 수정 0건 | walk-forward | R2 정직
+JSON: _audit_20260701_army1_7brain_source_monopoly.json
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — B공식 lead1 출처 점유·복사율
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+lead1: [88, 1230] n=1111 | 총 5555세트
+
+뇌별 출처 점유율 (origin %):
+  시간여행자 (stat): 8.03% (exact copy 8.03%)
+  탐정 (markov): 12.51% (exact copy 12.51%)
+  지식박사 (llm): 6.43% (exact copy 6.43%)
+  예언자 (lstm): 37.82% (exact copy 37.82%)
+  작전본부장 (fusion): 35.21% (exact copy 35.21%)
+
+작전본부장(fusion) exact: 35.21%
+회차당 최대 뇌 점유 평균: 2.48 / 5
+한 뇌 3세트+ 회차: 499 (44.91%)
+
+1205회 사례:
+  #1 [1, 3, 16, 23, 31, 41] ← fusion (exact=True)
+  #2 [1, 3, 16, 17, 26, 37] ← lstm (exact=True)
+  #3 [3, 15, 16, 21, 23, 37] ← stat (exact=True)
+  #4 [1, 16, 17, 18, 23, 30] ← lstm (exact=True)
+  #5 [1, 3, 4, 16, 31, 44] ← lstm (exact=True)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — 근본 교정 후보
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  B0: 현행 5뇌 SEL4 3 + v3 2
+  B1: 출처 상한 — 5세트 중 한 뇌 최대 2세트
+  B2: 세트 dedup — 이미 고른 세트와 5개+ 겹치면 제외
+  B3: B1 + B2 결합
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — 3구간 walk-forward
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[A] [330, 629]
+arm | best-of-5 | avg | hit6 | max_share | ge3%
+  B0_CURRENT | 3.2114 | 1.9275 | 0 | 2.477 | 43.96
+  B1_CAP2 | 3.1812 | 1.9034 | 0 | 1.98 | 0.0
+  B2_DEDUP5 | 3.1812 | 1.9517 | 0 | 2.443 | 42.95
+  B3_CAP2_DEDUP5 | 3.1745 | 1.8872 | 0 | 1.98 | 0.0
+
+[B] [630, 929]
+arm | best-of-5 | avg | hit6 | max_share | ge3%
+  B0_CURRENT | 3.1633 | 1.934 | 2 | 2.513 | 48.0
+  B1_CAP2 | 3.15 | 1.9067 | 3 | 1.98 | 0.0
+  B2_DEDUP5 | 3.1767 | 1.9673 | 3 | 2.503 | 47.0
+  B3_CAP2_DEDUP5 | 3.13 | 1.8907 | 3 | 1.98 | 0.0
+
+[C] [930, 1230]
+arm | best-of-5 | avg | hit6 | max_share | ge3%
+  B0_CURRENT | 3.0633 | 1.8593 | 3 | 2.43 | 40.33
+  B1_CAP2 | 3.04 | 1.8313 | 3 | 1.987 | 0.0
+  B2_DEDUP5 | 3.05 | 1.8687 | 3 | 2.43 | 41.0
+  B3_CAP2_DEDUP5 | 3.03 | 1.8107 | 3 | 1.99 | 0.0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3b — 3구간 통합
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  B0_CURRENT: best=3.146 avg=1.9069 hit6=5 max_share=2.473 ge3=44.1%
+  B1_CAP2: best=3.1237 avg=1.8805 hit6=6 max_share=1.982 ge3=0.0%
+  B2_DEDUP5: best=3.136 avg=1.9292 hit6=6 max_share=2.459 ge3=43.65%
+  B3_CAP2_DEDUP5: best=3.1115 avg=1.8629 hit6=6 max_share=1.983 ge3=0.0%
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4 — 판정 (독점≤2 + best-of-5/hit6)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  B0_CURRENT: best=3.146 hit6=5 max_share=2.473 ge3=44.1%
+  B1_CAP2: best=3.1237 hit6=6 max_share=1.982 ge3=0.0%
+  B2_DEDUP5: best=3.136 hit6=6 max_share=2.459 ge3=43.65%
+  B3_CAP2_DEDUP5: best=3.1115 hit6=6 max_share=1.983 ge3=0.0%
+  score: {'B0_CURRENT': 12.05, 'B1_CAP2': 74.33, 'B2_DEDUP5': 15.24, 'B3_CAP2_DEDUP5': 74.2}
+  rank: ['B1_CAP2', 'B3_CAP2_DEDUP5', 'B2_DEDUP5', 'B0_CURRENT']
+
+GO: GO-B1_CAP2
+채택: B1_CAP2
+🟢 B1_CAP2 — 독점≤2·best-of-5/hit6 유지. 형 GO 후 predict_brain7.py 교체(6뇌 무변경).
+
+STEP 5 — 형 GO 후 predict_brain7.py 교체 | 본 검증 READ-ONLY 완료

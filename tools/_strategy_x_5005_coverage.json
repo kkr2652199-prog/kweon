@@ -1,0 +1,61 @@
+{
+  "evaluated_draws": 884,
+  "skipped_draws": 80,
+  "era": "C",
+  "step1_army1_readonly": {
+    "pool": "합의 점수 상위 15번호 (_select_candidate_pool)",
+    "score": "5005 각 조합 consensus 가중 합",
+    "selection": "1세트 tier1 통과 최고점, 2~5세트 top50 가중 랜덤+tier1",
+    "jaccard": "snake만 0.4 (hyena 5005는 중복회피만)",
+    "source": "My_Library/app/lotto/predict_hyena.py, v12_engine.py"
+  },
+  "step2_coverage_optimizer": {
+    "module": "coverage_optimizer_walkforward.py",
+    "pool": "5뇌 pool_weight 상위 15",
+    "eval": "15C6=5005 인기적합도 전수",
+    "pick": "greedy union 최대화 + 인기 tie-break + shape + Jaccard<0.5"
+  },
+  "comparison": {
+    "baseline_hyena": {
+      "union_coverage_avg": 18.75,
+      "union_pct": 41.7,
+      "popularity_sum": 0.8679,
+      "hit_avg": 0.7916,
+      "pool15_hit_avg": 1.99
+    },
+    "coverage_5005": {
+      "union_coverage_avg": 15.0,
+      "union_pct": 33.3,
+      "popularity_sum": 0.9419,
+      "hit_avg": 0.7957,
+      "pool15_hit_avg": 1.99,
+      "delta_union": -3.75,
+      "delta_popularity": 0.074,
+      "delta_pool15_hit": 0.0
+    },
+    "paired_ttest_union": {
+      "t_stat": -74.3642,
+      "p_value": 0.0,
+      "n": 884
+    },
+    "paired_ttest_popularity": {
+      "t_stat": 42.6378,
+      "p_value": 0.0,
+      "n": 884
+    }
+  },
+  "step4_covering_guarantee": {
+    "min_guarantee_match_avg": 2,
+    "rate_4plus_avg": 0.4697,
+    "rate_3plus_avg": 0.9803,
+    "sample_n": 28
+  },
+  "verdict": {
+    "summary": "폐기 — union·인기 개선 미달, 현 상태 유지",
+    "union_significant": false,
+    "popularity_maintained": true,
+    "hit_random_level": true
+  },
+  "r2_honest": "5005 greedy는 조합 최적화(덮기)이며 추첨 예측 아님. 적중률 무작위 수준. covering 보장은 15풀⊇당첨6 가정 하 조합론.",
+  "next_if_discard": "4군 현 상태 완성, 1229 실전 대기"
+}

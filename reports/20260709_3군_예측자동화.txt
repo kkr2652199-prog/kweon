@@ -1,0 +1,67 @@
+20260709_3군_예측자동화 (V12 walk-forward 재백테스트)
+=======================================================
+
+[커서 사전 의견]
+(1) 구현: backup → DELETE v12_* 1221~1231 → for N: update_v12(N-1)+run_prediction_v12(N).
+(2) 함정: LSTM 난수·DZ필터 → 재생성 번호는 원본과 다를 수 있음(정상).
+    run_prediction_v12 캐시(>=40): DELETE 후 호출 필수.
+(3) 1·2군 테이블 침범 금지 — army1/2 회귀 검증 포함.
+
+[경계] v12 예측 알고리즘 코드 수정 0건 | lotto_predictions_army3 1221~1231 재생성
+
+STEP 0 — 백업
+----------------------------------------
+  rows=440 table=lotto_predictions_army3_backup_20260709
+  json=d:\3kweon\reports\_backup_20260709_army3_preds_1221_1231.json
+
+STEP 1 — 삭제
+----------------------------------------
+  deleted_rows=440
+  before: {'v12_contrarian': 55, 'v12_fusion': 55, 'v12_hyena': 55, 'v12_lstm': 55, 'v12_offset': 55, 'v12_run': 55, 'v12_snake': 55, 'v12_stat': 55}
+
+STEP 2 — walk-forward 재예측
+----------------------------------------
+  draw | sets | pool_best | max_data | train_max | contam_OK | sec
+  1221 | 40 | 4 | 1220 | 1220 | True | 3.44
+  1222 | 40 | 4 | 1221 | 1221 | True | 1.88
+  1223 | 40 | 4 | 1222 | 1222 | True | 1.37
+  1224 | 40 | 3 | 1223 | 1223 | True | 1.39
+  1225 | 40 | 2 | 1224 | 1224 | True | 1.45
+  1226 | 40 | 3 | 1225 | 1225 | True | 1.43
+  1227 | 40 | 3 | 1226 | 1226 | True | 1.86
+  1228 | 40 | 2 | 1227 | 1227 | True | 1.77
+  1229 | 40 | 3 | 1228 | 1228 | True | 1.44
+  1230 | 40 | 2 | 1229 | 1229 | True | 1.28
+  1231 | 40 | 3 | 1230 | 1230 | True | 1.44
+
+  [회차별 max_draw_no 컨닝 증거]
+  1221: weight_ld={'v12_stat': {'w': 9.4368, 'ld': 1220}, 'v12_run': {'w': 4.7332, 'ld': 1220}, 'v12_offset': {'w': 4.901, 'ld': 1220}, 'v12_contrarian': {'w': 14.6749, 'ld': 1220}, 'v12_lstm': {'w': 18.6295, 'ld': 1220}, 'v12_fusion': {'w': 15.9935, 'ld': 1220}, 'v12_hyena': {'w': 37.3528, 'ld': 1220}} train_max=1220 (must <= 1220)
+  1222: weight_ld={'v12_stat': {'w': 9.3123, 'ld': 1221}, 'v12_run': {'w': 4.7656, 'ld': 1221}, 'v12_offset': {'w': 4.8629, 'ld': 1221}, 'v12_contrarian': {'w': 14.5706, 'ld': 1221}, 'v12_lstm': {'w': 21.4093, 'ld': 1221}, 'v12_fusion': {'w': 17.4678, 'ld': 1221}, 'v12_hyena': {'w': 48.5056, 'ld': 1221}} train_max=1221 (must <= 1221)
+  1223: weight_ld={'v12_stat': {'w': 9.1188, 'ld': 1222}, 'v12_run': {'w': 4.5832, 'ld': 1222}, 'v12_offset': {'w': 4.7966, 'ld': 1222}, 'v12_contrarian': {'w': 14.292, 'ld': 1222}, 'v12_lstm': {'w': 23.0195, 'ld': 1222}, 'v12_fusion': {'w': 17.6309, 'ld': 1222}, 'v12_hyena': {'w': 51.5684, 'ld': 1222}} train_max=1222 (must <= 1222)
+  1224: weight_ld={'v12_stat': {'w': 9.1714, 'ld': 1223}, 'v12_run': {'w': 4.4554, 'ld': 1223}, 'v12_offset': {'w': 4.8342, 'ld': 1223}, 'v12_contrarian': {'w': 14.2981, 'ld': 1223}, 'v12_lstm': {'w': 24.8053, 'ld': 1223}, 'v12_fusion': {'w': 17.8133, 'ld': 1223}, 'v12_hyena': {'w': 55.5509, 'ld': 1223}} train_max=1223 (must <= 1223)
+  1225: weight_ld={'v12_stat': {'w': 9.1275, 'ld': 1224}, 'v12_run': {'w': 4.5243, 'ld': 1224}, 'v12_offset': {'w': 4.8166, 'ld': 1224}, 'v12_contrarian': {'w': 14.127, 'ld': 1224}, 'v12_lstm': {'w': 25.912, 'ld': 1224}, 'v12_fusion': {'w': 17.9676, 'ld': 1224}, 'v12_hyena': {'w': 56.6446, 'ld': 1224}} train_max=1224 (must <= 1224)
+  1226: weight_ld={'v12_stat': {'w': 9.0105, 'ld': 1225}, 'v12_run': {'w': 4.5964, 'ld': 1225}, 'v12_offset': {'w': 4.8117, 'ld': 1225}, 'v12_contrarian': {'w': 13.9987, 'ld': 1225}, 'v12_lstm': {'w': 25.8627, 'ld': 1225}, 'v12_fusion': {'w': 17.9995, 'ld': 1225}, 'v12_hyena': {'w': 55.9312, 'ld': 1225}} train_max=1225 (must <= 1225)
+  1227: weight_ld={'v12_stat': {'w': 9.0306, 'ld': 1226}, 'v12_run': {'w': 4.6162, 'ld': 1226}, 'v12_offset': {'w': 4.8384, 'ld': 1226}, 'v12_contrarian': {'w': 14.3765, 'ld': 1226}, 'v12_lstm': {'w': 25.5025, 'ld': 1226}, 'v12_fusion': {'w': 18.0187, 'ld': 1226}, 'v12_hyena': {'w': 56.0921, 'ld': 1226}} train_max=1226 (must <= 1226)
+  1228: weight_ld={'v12_stat': {'w': 9.0414, 'ld': 1227}, 'v12_run': {'w': 4.5684, 'ld': 1227}, 'v12_offset': {'w': 4.874, 'ld': 1227}, 'v12_contrarian': {'w': 14.3963, 'ld': 1227}, 'v12_lstm': {'w': 24.369, 'ld': 1227}, 'v12_fusion': {'w': 17.5012, 'ld': 1227}, 'v12_hyena': {'w': 52.4473, 'ld': 1227}} train_max=1227 (must <= 1227)
+  1229: weight_ld={'v12_stat': {'w': 9.0444, 'ld': 1228}, 'v12_run': {'w': 4.4744, 'ld': 1228}, 'v12_offset': {'w': 4.8499, 'ld': 1228}, 'v12_contrarian': {'w': 14.7415, 'ld': 1228}, 'v12_lstm': {'w': 22.7697, 'ld': 1228}, 'v12_fusion': {'w': 16.5495, 'ld': 1228}, 'v12_hyena': {'w': 44.1708, 'ld': 1228}} train_max=1228 (must <= 1228)
+  1230: weight_ld={'v12_stat': {'w': 9.0979, 'ld': 1229}, 'v12_run': {'w': 4.498, 'ld': 1229}, 'v12_offset': {'w': 4.9895, 'ld': 1229}, 'v12_contrarian': {'w': 14.9229, 'ld': 1229}, 'v12_lstm': {'w': 21.9075, 'ld': 1229}, 'v12_fusion': {'w': 16.071, 'ld': 1229}, 'v12_hyena': {'w': 39.6385, 'ld': 1229}} train_max=1229 (must <= 1229)
+  1231: weight_ld={'v12_stat': {'w': 9.1657, 'ld': 1230}, 'v12_run': {'w': 4.6378, 'ld': 1230}, 'v12_offset': {'w': 4.9669, 'ld': 1230}, 'v12_contrarian': {'w': 14.6218, 'ld': 1230}, 'v12_lstm': {'w': 21.9231, 'ld': 1230}, 'v12_fusion': {'w': 16.0322, 'ld': 1230}, 'v12_hyena': {'w': 38.8375, 'ld': 1230}} train_max=1230 (must <= 1230)
+
+STEP 3 — 1232 자동동작
+----------------------------------------
+  path=undrawn_wait
+  1232 당첨존재=False
+  hook_predict_1232_from_1231={'generated': False, 'reason': 'already_exists', 'target_draw_no': 1232, 'v12_sets': 40}
+  pred_1232 before/after=0/40
+  max_last_weight_draw=1232
+
+STEP 4 — 회귀
+----------------------------------------
+  <=1220 fingerprint(1220)=True
+  <=1220 row count=True
+  1·2군 unchanged=True
+  backup vs new 1231 identical=False (LSTM/DZ→False 정상)
+
+STEP 5 — 재생성 후 1221~1231 세트수
+----------------------------------------
+  {'v12_contrarian': 55, 'v12_fusion': 55, 'v12_hyena': 55, 'v12_lstm': 55, 'v12_offset': 55, 'v12_run': 55, 'v12_snake': 55, 'v12_stat': 55}

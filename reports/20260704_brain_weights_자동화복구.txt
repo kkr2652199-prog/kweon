@@ -1,0 +1,53 @@
+20260704_brain_weights_자동화복구 (PHASE 2)
+==================================================
+
+[경계 명시]
+- 수정: feedback.py(get_brain_tag_ranking max_draw_no, update 멱등성, auto 훅)
+- 수정: data_service.refresh_all_army_prediction_scores → auto 갱신 연결
+- READ-ONLY: lotto_predictions 6뇌/lead1 예측값·예측 알고리즘 (회귀 검증 통과)
+
+[PHASE 1 확정 원인]
+  run_backtest() 외 호출 경로 없음 → 1221 이후 백테스트 미실행으로 정지
+
+[STEP 5] 자동 갱신 훅
+  maybe_update_brain_weights_after_scoring()
+  → refresh_all_army_prediction_scores() 마지막에 연결
+  → max_draw_no=target_draw_no (컨닝 방지)
+  → last_updated_draw >= N 이면 skip (멱등)
+
+[STEP 6] 백필 1222~1231 walk-forward
+----------------------------------------
+  1222: OK
+  1223: OK
+  1224: OK
+  1225: OK
+  1226: OK
+  1227: OK
+  1228: OK
+  1229: OK
+  1230: OK
+  1231: OK
+
+[STEP 7] 검증
+----------------------------------------
+  last_updated_draw(max) = 1231 (기대: 1231)
+  1231 멱등 재호출: already_updated
+  1232 모의(미추첨): draw_not_scored
+  6뇌/lead1 예측 회귀: PASS
+  app import: OK
+
+[갱신 후 weights]
+----------------------------------------
+  hyena    weight=22.9152 last_draw=1231
+  llm      weight=7.6133 last_draw=1231
+  lstm     weight=30.2092 last_draw=1231
+  markov   weight=3.2485 last_draw=1231
+  stat     weight=4.8243 last_draw=1231
+
+[갱신 전 weights (1221 정지)]
+----------------------------------------
+  hyena    weight=22.9152 last_draw=1221
+  llm      weight=7.6133 last_draw=1221
+  lstm     weight=30.2092 last_draw=1221
+  markov   weight=3.2485 last_draw=1221
+  stat     weight=4.8243 last_draw=1221

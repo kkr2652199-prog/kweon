@@ -1,0 +1,57 @@
+20260704_1군_예측패턴해부 (READ-ONLY)
+=======================================================
+
+[커서 사전 의견]
+(1) 구현: lotto_predictions×lotto_draws JOIN, 번호단위·세트단위 overlap.
+    B는 in-memory 2회 재실행(DB 미기록). C는 matched>=4 프로파일+chi2.
+(2) 함정: LSTM/hyena/stat/markov 전부 random 요소 → B 재현율 낮음 정상.
+    lead1 F1은 고정시드 → B에서 재현 높음(별도).
+(3) 허점: C는 '맞힌 번호' 프로파일=사후편향. gap·N-1만 예측 시점 가능.
+
+진단 A — 직전 회차(N-1) 번호 반영률
+----------------------------------------
+  랜덤 기대: 번호당 13.3% | 세트당 overlap 0.8
+  분석 회차: 1202
+
+  brain | 번호재등장률 | lift(%p) | 세트overlap | random | biased?
+  stat     |  16.7% |   +3.4 | 1.00 | 0.80 | YES
+  markov   |  17.1% |   +3.8 | 1.03 | 0.80 | YES
+  llm      |  16.7% |   +3.4 | 1.00 | 0.80 | YES
+  lstm     |  25.2% |  +11.9 | 1.51 | 0.80 | YES
+  fusion   |  23.8% |  +10.4 | 1.43 | 0.80 | YES
+  hyena    |  30.9% |  +17.6 | 1.86 | 0.80 | YES
+  lead1    |  18.1% |   +4.7 | 1.08 | 0.80 | YES
+
+  [1231→1232 형 직감 검증]
+  1231 당첨: [4, 13, 14, 18, 31, 38]
+  lstm: overlap=0 nums=[]
+  fusion: overlap=1 nums=[38]
+  hyena: overlap=2 nums=[13, 14]
+  stat: overlap=0 nums=[]
+  markov: overlap=1 nums=[31]
+  llm: overlap=0 nums=[]
+  lead1: overlap=0 nums=[]
+
+진단 B — 일관성 (2회 재생성 Jaccard)
+----------------------------------------
+  stat: avg_jaccard=0.206 → high_random
+  markov: avg_jaccard=0.187 → high_random
+  lstm: avg_jaccard=0.3 → high_random
+
+진단 C — matched>=4 적중 프로파일
+----------------------------------------
+  적중세트 수: 1552
+  뇌별: {'fusion': 409, 'hyena': 738, 'lstm': 353, 'lead1': 31, 'llm': 4, 'markov': 14, 'stat': 3}
+  적중번호 중 N-1 포함률: 23.7% (random 13.3%)
+  chi2(prev in hits): {'chi2': 499.115, 'df': 1}
+  matched>=4는 사후 채점 결과. gap·N-1포함은 예측 시점 walk-forward로 알 수 있었음. hit_numbers 목록 자체는 사후 정보.
+
+개선 후보
+----------------------------------------
+  [stat] 직전회차 번호 과다 포함 (+3.36%p) → N-1 반복 편향 완화(감쇠·exclude)
+  [markov] 직전회차 번호 과다 포함 (+3.8%p) → N-1 반복 편향 완화(감쇠·exclude)
+  [llm] 직전회차 번호 과다 포함 (+3.39%p) → N-1 반복 편향 완화(감쇠·exclude)
+  [lstm] 직전회차 번호 과다 포함 (+11.87%p) → N-1 반복 편향 완화(감쇠·exclude)
+  [fusion] 직전회차 번호 과다 포함 (+10.45%p) → N-1 반복 편향 완화(감쇠·exclude)
+  [hyena] 직전회차 번호 과다 포함 (+17.6%p) → N-1 반복 편향 완화(감쇠·exclude)
+  [lead1] 직전회차 번호 과다 포함 (+4.72%p) → N-1 반복 편향 완화(감쇠·exclude)

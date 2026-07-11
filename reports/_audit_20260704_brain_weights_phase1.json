@@ -1,0 +1,173 @@
+{
+  "max_draw": 1231,
+  "step1_weights_dump": [
+    {
+      "brain_tag": "hyena",
+      "current_weight": 33.89949101612192,
+      "recent_avg_match": 2.268,
+      "total_predictions": 250,
+      "total_matches": 567,
+      "last_updated_draw": 1221,
+      "updated_at": "2026-04-28 12:04:21"
+    },
+    {
+      "brain_tag": "llm",
+      "current_weight": 7.892324712869101,
+      "recent_avg_match": 0.764,
+      "total_predictions": 250,
+      "total_matches": 191,
+      "last_updated_draw": 1221,
+      "updated_at": "2026-04-28 12:04:21"
+    },
+    {
+      "brain_tag": "lstm",
+      "current_weight": 41.44416835293366,
+      "recent_avg_match": 1.96,
+      "total_predictions": 250,
+      "total_matches": 490,
+      "last_updated_draw": 1221,
+      "updated_at": "2026-04-28 12:04:21"
+    },
+    {
+      "brain_tag": "markov",
+      "current_weight": 3.38786523891633,
+      "recent_avg_match": 0.808,
+      "total_predictions": 250,
+      "total_matches": 202,
+      "last_updated_draw": 1221,
+      "updated_at": "2026-04-28 12:04:21"
+    },
+    {
+      "brain_tag": "stat",
+      "current_weight": 5.212528778204604,
+      "recent_avg_match": 0.828,
+      "total_predictions": 250,
+      "total_matches": 207,
+      "last_updated_draw": 1221,
+      "updated_at": "2026-04-28 12:04:21"
+    }
+  ],
+  "step1_note": "lotto_brain_weights는 현재값만 저장(시계열 히스토리 테이블 없음)",
+  "weight_related_tables": [
+    "lotto_brain_weights",
+    "lotto_brain_weights_army2",
+    "lotto_brain_weights_army3",
+    "lotto_weight_log_army3"
+  ],
+  "analysis_recent": [],
+  "step3_gap_1222_plus": [
+    {
+      "draw": 1222,
+      "date": "2026-05-02",
+      "brains_scored": 6,
+      "best_mc": 2
+    },
+    {
+      "draw": 1223,
+      "date": "2026-05-09",
+      "brains_scored": 6,
+      "best_mc": 2
+    },
+    {
+      "draw": 1224,
+      "date": "2026-05-16",
+      "brains_scored": 6,
+      "best_mc": 3
+    },
+    {
+      "draw": 1225,
+      "date": "2026-05-23",
+      "brains_scored": 6,
+      "best_mc": 3
+    },
+    {
+      "draw": 1226,
+      "date": "2026-05-30",
+      "brains_scored": 6,
+      "best_mc": 2
+    },
+    {
+      "draw": 1227,
+      "date": "2026-06-06",
+      "brains_scored": 6,
+      "best_mc": 2
+    },
+    {
+      "draw": 1228,
+      "date": "2026-06-13",
+      "brains_scored": 6,
+      "best_mc": 3
+    },
+    {
+      "draw": 1229,
+      "date": "2026-06-20",
+      "brains_scored": 6,
+      "best_mc": 3
+    },
+    {
+      "draw": 1230,
+      "date": "2026-06-27",
+      "brains_scored": 6,
+      "best_mc": 2
+    },
+    {
+      "draw": 1231,
+      "date": "2026-07-04",
+      "brains_scored": 6,
+      "best_mc": 3
+    }
+  ],
+  "get_brain_tag_ranking_has_max_draw_no": false,
+  "rank_scored_draws_global": 50,
+  "rank_scored_draws_wf_1231": null,
+  "update_1221_retry": {
+    "updated": true,
+    "target_draw_no": 1221,
+    "scored_draws": 50,
+    "weights": {
+      "stat": 4.824297402415283,
+      "markov": 3.248521598248849,
+      "llm": 7.6132544272861535,
+      "lstm": 30.209220143790798,
+      "hyena": 22.915189783707582
+    },
+    "raw_avg_match": {
+      "stat": 0.776,
+      "markov": 0.78,
+      "llm": 0.74,
+      "lstm": 1.764,
+      "hyena": 2.024
+    },
+    "raw_avg_lottery_score": {
+      "stat": 0.084,
+      "markov": 0.164,
+      "llm": 0.072,
+      "lstm": 1.38,
+      "hyena": 1.916
+    },
+    "score_signals": {
+      "stat": 0.7788,
+      "markov": 0.7854666666666666,
+      "llm": 0.7424,
+      "lstm": 1.81,
+      "hyena": 2.0878666666666668
+    }
+  },
+  "six_brain_row_counts": {
+    "stat": 6010,
+    "markov": 6005,
+    "llm": 6006,
+    "lstm": 6010,
+    "fusion": 6010,
+    "hyena": 6005,
+    "lead1": 5560
+  },
+  "call_sites": [
+    "app/lotto/engine.py:606 run_backtest() only"
+  ],
+  "live_path_hooks": {
+    "data_service.save_draw": "NO update_brain_weights",
+    "data_service.refresh_all_army_prediction_scores": "NO update_brain_weights",
+    "engine.refresh_prediction_scores_for_target_draw": "NO update_brain_weights"
+  }
+}

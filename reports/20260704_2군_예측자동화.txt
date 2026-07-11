@@ -1,0 +1,69 @@
+20260704_2군_예측자동화 (V11 walk-forward 재백테스트)
+=======================================================
+
+[커서 사전 의견]
+(1) 구현: backup → DELETE v11_* 1221~1231 → for N: update_v11(N-1)+run_prediction_v11(N).
+(2) 함정: LSTM 난수 → 재생성 번호는 원본과 다를 수 있음(정상).
+    run_prediction_v11 캐시: DELETE 후 호출 필수.
+(3) 1군 lotto_predictions 침범 금지 — army1 회귀 검증 포함.
+
+[경계] v11 예측 알고리즘 코드 수정 0건 | lotto_predictions_army2 1221~1231 재생성
+
+STEP 0 — 백업
+----------------------------------------
+  rows=385 table=lotto_predictions_army2_backup_20260704
+  json=d:\3kweon\reports\_backup_20260704_army2_preds_1221_1231.json
+
+STEP 1 — 삭제
+----------------------------------------
+  deleted_rows=385
+  before: {'v11_combo': 55, 'v11_fusion': 55, 'v11_hyena': 55, 'v11_lstm': 55, 'v11_markov': 55, 'v11_snake': 55, 'v11_stat': 55}
+
+STEP 2 — walk-forward 재예측
+----------------------------------------
+  draw | sets | pool_best | max_data | train_max | contam_OK | sec
+  1221 | 35 | 4 | 1220 | 1220 | True | 3.98
+  1222 | 35 | 4 | 1221 | 1221 | True | 0.62
+  1223 | 35 | 3 | 1222 | 1222 | True | 0.56
+  1224 | 35 | 3 | 1223 | 1223 | True | 0.73
+  1225 | 35 | 3 | 1224 | 1224 | True | 0.74
+  1226 | 35 | 3 | 1225 | 1225 | True | 0.78
+  1227 | 35 | 3 | 1226 | 1226 | True | 0.93
+  1228 | 35 | 3 | 1227 | 1227 | True | 0.65
+  1229 | 35 | 3 | 1228 | 1228 | True | 0.66
+  1230 | 35 | 3 | 1229 | 1229 | True | 0.75
+  1231 | 35 | 2 | 1230 | 1230 | True | 0.65
+
+  [회차별 max_draw_no 컨닝 증거]
+  1221: weight_ld={'v11_stat': {'w': 1.9248, 'ld': 1220}, 'v11_markov': {'w': 1.29, 'ld': 1220}, 'v11_combo': {'w': 3.2858, 'ld': 1220}, 'v11_lstm': {'w': 3.5673, 'ld': 1220}, 'v11_fusion': {'w': 3.3417, 'ld': 1220}, 'v11_hyena': {'w': 3.8183, 'ld': 1220}} train_max=1220 (must <= 1220)
+  1222: weight_ld={'v11_stat': {'w': 1.9222, 'ld': 1221}, 'v11_markov': {'w': 1.29, 'ld': 1221}, 'v11_combo': {'w': 3.2771, 'ld': 1221}, 'v11_lstm': {'w': 3.596, 'ld': 1221}, 'v11_fusion': {'w': 3.3506, 'ld': 1221}, 'v11_hyena': {'w': 3.849, 'ld': 1221}} train_max=1221 (must <= 1221)
+  1223: weight_ld={'v11_stat': {'w': 1.9196, 'ld': 1222}, 'v11_markov': {'w': 1.29, 'ld': 1222}, 'v11_combo': {'w': 3.2902, 'ld': 1222}, 'v11_lstm': {'w': 3.5864, 'ld': 1222}, 'v11_fusion': {'w': 3.3551, 'ld': 1222}, 'v11_hyena': {'w': 3.849, 'ld': 1222}} train_max=1222 (must <= 1222)
+  1224: weight_ld={'v11_stat': {'w': 1.9196, 'ld': 1223}, 'v11_markov': {'w': 1.2952, 'ld': 1223}, 'v11_combo': {'w': 3.2771, 'ld': 1223}, 'v11_lstm': {'w': 3.6104, 'ld': 1223}, 'v11_fusion': {'w': 3.382, 'ld': 1223}, 'v11_hyena': {'w': 3.8747, 'ld': 1223}} train_max=1223 (must <= 1223)
+  1225: weight_ld={'v11_stat': {'w': 1.9248, 'ld': 1224}, 'v11_markov': {'w': 1.2969, 'ld': 1224}, 'v11_combo': {'w': 3.2815, 'ld': 1224}, 'v11_lstm': {'w': 3.6104, 'ld': 1224}, 'v11_fusion': {'w': 3.382, 'ld': 1224}, 'v11_hyena': {'w': 3.8955, 'ld': 1224}} train_max=1224 (must <= 1224)
+  1226: weight_ld={'v11_stat': {'w': 1.9248, 'ld': 1225}, 'v11_markov': {'w': 1.2935, 'ld': 1225}, 'v11_combo': {'w': 3.2902, 'ld': 1225}, 'v11_lstm': {'w': 3.6056, 'ld': 1225}, 'v11_fusion': {'w': 3.3685, 'ld': 1225}, 'v11_hyena': {'w': 3.8903, 'ld': 1225}} train_max=1225 (must <= 1225)
+  1227: weight_ld={'v11_stat': {'w': 1.9196, 'ld': 1226}, 'v11_markov': {'w': 1.2866, 'ld': 1226}, 'v11_combo': {'w': 3.2946, 'ld': 1226}, 'v11_lstm': {'w': 3.5912, 'ld': 1226}, 'v11_fusion': {'w': 3.373, 'ld': 1226}, 'v11_hyena': {'w': 3.8903, 'ld': 1226}} train_max=1226 (must <= 1226)
+  1228: weight_ld={'v11_stat': {'w': 1.9299, 'ld': 1227}, 'v11_markov': {'w': 1.2918, 'ld': 1227}, 'v11_combo': {'w': 3.3034, 'ld': 1227}, 'v11_lstm': {'w': 3.5389, 'ld': 1227}, 'v11_fusion': {'w': 3.3506, 'ld': 1227}, 'v11_hyena': {'w': 3.8541, 'ld': 1227}} train_max=1227 (must <= 1227)
+  1229: weight_ld={'v11_stat': {'w': 1.935, 'ld': 1228}, 'v11_markov': {'w': 1.29, 'ld': 1228}, 'v11_combo': {'w': 3.299, 'ld': 1228}, 'v11_lstm': {'w': 3.5201, 'ld': 1228}, 'v11_fusion': {'w': 3.3195, 'ld': 1228}, 'v11_hyena': {'w': 3.8234, 'ld': 1228}} train_max=1228 (must <= 1228)
+  1230: weight_ld={'v11_stat': {'w': 1.9454, 'ld': 1229}, 'v11_markov': {'w': 1.2883, 'ld': 1229}, 'v11_combo': {'w': 3.3122, 'ld': 1229}, 'v11_lstm': {'w': 3.4874, 'ld': 1229}, 'v11_fusion': {'w': 3.2974, 'ld': 1229}, 'v11_hyena': {'w': 3.8132, 'ld': 1229}} train_max=1229 (must <= 1229)
+  1231: weight_ld={'v11_stat': {'w': 1.9454, 'ld': 1230}, 'v11_markov': {'w': 1.2883, 'ld': 1230}, 'v11_combo': {'w': 3.3167, 'ld': 1230}, 'v11_lstm': {'w': 3.4874, 'ld': 1230}, 'v11_fusion': {'w': 3.2843, 'ld': 1230}, 'v11_hyena': {'w': 3.8082, 'ld': 1230}} train_max=1230 (must <= 1230)
+
+STEP 3 — 1232 자동동작
+----------------------------------------
+  path=undrawn_wait
+  1232 당첨존재=False
+  hook_weight={'updated': False, 'reason': 'draw_not_scored', 'target_draw_no': 1232}
+  hook_predict={'generated': False, 'reason': 'scored_draw_not_confirmed', 'scored_draw_no': 1232}
+  pred_1232 before/after=0/35
+  hook_predict_1232_from_1231={'generated': False, 'reason': 'already_exists', 'target_draw_no': 1232, 'v11_sets': 35}
+  max_last_weight_draw=1232
+
+STEP 4 — 회귀
+----------------------------------------
+  <=1220 fingerprint(1220)=True
+  <=1220 row count=True
+  1군 unchanged=True
+  backup vs new 1231 identical=False (LSTM 난수→False 정상)
+
+STEP 5 — 재생성 후 1221~1231 세트수
+----------------------------------------
+  {'v11_combo': 55, 'v11_fusion': 55, 'v11_hyena': 55, 'v11_lstm': 55, 'v11_markov': 55, 'v11_snake': 55, 'v11_stat': 55}

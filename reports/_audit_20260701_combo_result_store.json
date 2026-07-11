@@ -1,0 +1,30 @@
+{
+  "title": "20260701_1군_조합결과_저장소",
+  "build": {
+    "processed": 1200,
+    "elapsed_sec": 2.9,
+    "combo_rows": 3600,
+    "global_raw_hist": [
+      8782,
+      11450,
+      6444,
+      2541,
+      681,
+      90,
+      8
+    ],
+    "oracle_dist": [
+      0,
+      0,
+      0,
+      0,
+      9,
+      126,
+      1065
+    ],
+    "mean_consensus_hit": 1.457,
+    "mean_best_raw_hit": 3.41,
+    "mean_oracle": 5.88
+  },
+  "regression_ok": true
+}

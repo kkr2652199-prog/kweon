@@ -1,0 +1,68 @@
+{
+  "timestamp": "2026-07-09T11:53:21",
+  "step1_automation_state": {
+    "fetch_latest_draw": "routes POST + scheduler(weekly/startup) — 반자동(설정 ON 시)",
+    "fetch_all_draws": "routes background — 수동 트리거",
+    "score_weight_hook": "refresh_all_army_prediction_scores → connected",
+    "predict_before": "run_prediction 수동(routes) only"
+  },
+  "step2_hook": {
+    "function": "maybe_generate_army1_next_predictions",
+    "wired_in": "refresh_all_army_prediction_scores (after weight hook)"
+  },
+  "step3_simulation": {
+    "method": "refresh_all_army_prediction_scores(1231) full pipeline",
+    "pred_1232_before": 0,
+    "pred_1232_after": 35,
+    "by_brain": {
+      "fusion": {
+        "sets": 5,
+        "best_mc": -1
+      },
+      "hyena": {
+        "sets": 5,
+        "best_mc": -1
+      },
+      "lead1": {
+        "sets": 5,
+        "best_mc": -1
+      },
+      "llm": {
+        "sets": 5,
+        "best_mc": -1
+      },
+      "lstm": {
+        "sets": 5,
+        "best_mc": -1
+      },
+      "markov": {
+        "sets": 5,
+        "best_mc": -1
+      },
+      "stat": {
+        "sets": 5,
+        "best_mc": -1
+      }
+    },
+    "max_data_draw": 1231,
+    "contamination_ok": true,
+    "idempotent_second_call": {
+      "generated": false,
+      "reason": "already_exists",
+      "target_draw_no": 1232
+    }
+  },
+  "step3_1232_undrawn_hook": {
+    "updated": false,
+    "reason": "draw_not_scored",
+    "target_draw_no": 1232
+  },
+  "step4_regression": {
+    "fp_1220_ok": true,
+    "le1220_count_ok": true,
+    "army2_ok": true,
+    "army3_ok": true
+  },
+  "max_drawn": 1231,
+  "app_ok": true
+}

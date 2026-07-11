@@ -1,0 +1,144 @@
+{
+  "title": "20260627_4군_A안통합검증_비인기회피_논문근거",
+  "mode": "READ_ONLY",
+  "step1": {
+    "era": "262~1228",
+    "min_train": 80,
+    "evaluated": 887,
+    "skipped": 80,
+    "baseline_theory": 0.7894,
+    "threshold_abs_delta": 0.05,
+    "rows": [
+      {
+        "arm": "RANDOM",
+        "n_eval": 887,
+        "avg_matched": 0.8135,
+        "std_matched": 0.3597,
+        "avg_popularity": 0.7997,
+        "avg_union_coverage": 22.96,
+        "avg_jaccard": 0.0778,
+        "delta_vs_baseline": 0.0241,
+        "delta_vs_random": 0.0,
+        "verdict": "기준선 (랜덤)"
+      },
+      {
+        "arm": "V13_ensemble",
+        "n_eval": 887,
+        "avg_matched": 0.8273,
+        "std_matched": 0.5728,
+        "avg_popularity": 0.8675,
+        "avg_union_coverage": 12.81,
+        "avg_jaccard": 0.3331,
+        "delta_vs_baseline": 0.0379,
+        "delta_vs_random": 0.0138,
+        "paired_ttest_vs_random": {
+          "t_stat": 0.5999,
+          "p_value": 0.54859,
+          "n": 887,
+          "mean_diff": 0.0138
+        },
+        "verdict": "❌ 예측력 없음 (랜덤과 구분 안 됨)"
+      },
+      {
+        "arm": "STRATEGY_X_hyena",
+        "n_eval": 887,
+        "avg_matched": 0.7995,
+        "std_matched": 0.4979,
+        "avg_popularity": 0.8675,
+        "avg_union_coverage": 18.64,
+        "avg_jaccard": 0.2079,
+        "delta_vs_baseline": 0.0101,
+        "delta_vs_random": -0.014,
+        "paired_ttest_vs_random": {
+          "t_stat": -0.6855,
+          "p_value": 0.493044,
+          "n": 887,
+          "mean_diff": -0.014
+        },
+        "verdict": "❌ 예측력 없음 (랜덤과 구분 안 됨)"
+      }
+    ]
+  },
+  "step2": {
+    "note": "1등 확률 향상 아님 — 역대 당첨번호의 winner_cnt(분할자) 비교",
+    "n_draws_1228": 1228,
+    "n_era_c": 967,
+    "matheson_vs_winner_cnt_pearson": {
+      "r": 0.0397,
+      "p": 0.167333
+    },
+    "matheson_vs_winner_cnt_spearman": {
+      "r": 0.0642,
+      "p": 0.025394
+    },
+    "era_c_correlation": {
+      "r": 0.0352,
+      "p": 0.274844
+    },
+    "min_num_ge_29": {
+      "count_draws": 4,
+      "count_with_1st_winners": 4,
+      "mean_winner_cnt_all": 19.75,
+      "mean_winner_cnt_lt29": 8.46,
+      "mannwhitney_p_less": 0.99285
+    },
+    "quartile_compare": {
+      "high_matheson_score_mean_winner_cnt": 8.937,
+      "low_matheson_score_mean_winner_cnt": 7.817
+    },
+    "texas_analogy": "논문: min≥29 → 더 큰 1등금. 한국 데이터 재현 여부 위 통계로 판정.",
+    "verdict": "🔴 폐기 (winner_cnt와 무상관)",
+    "significant_p05": false
+  },
+  "step3": {
+    "paper_claim_pct": 0.766,
+    "paper_note": "Stömmer: 15픽 covering design 0.766% — Mandel condensation, 예측 아님",
+    "random_15pick": {
+      "trials": 1228,
+      "hits_all6_in_15": 2,
+      "empirical_rate_pct": 0.1629,
+      "theoretical_rate_pct": 0.0614,
+      "formula": "C(39,9)/C(45,15)"
+    },
+    "combo_no_correlation": {
+      "draw_no_vs_combo_no": {
+        "r": 0.0354,
+        "p": 0.215551
+      },
+      "combo_no_lag1": {
+        "r": -0.0036,
+        "p": 0.898673
+      },
+      "note": "|r|≈0 이면 순번·조합 무작위 가설 유지"
+    },
+    "verdict": "🔴 예측불가 확정 — 15픽 실측≈이론, combo_no 연속 무상관"
+  },
+  "step4": {
+    "table": [
+      {
+        "step": "STEP1 A안",
+        "verdict": "🔴 예측력 없음",
+        "detail": "SX hit=0.7995 vs RANDOM, Δ=-0.014"
+      },
+      {
+        "step": "STEP2 Matheson",
+        "verdict": "🔴 폐기 (winner_cnt와 무상관)",
+        "detail": "1등 확률 향상 아님 — 역대 당첨번호의 winner_cnt(분할자) 비교"
+      },
+      {
+        "step": "STEP3 Stömmer",
+        "verdict": "🔴 예측불가 확정 — 15픽 실측≈이론, combo_no 연속 무상관",
+        "detail": {
+          "trials": 1228,
+          "hits_all6_in_15": 2,
+          "empirical_rate_pct": 0.1629,
+          "theoretical_rate_pct": 0.0614,
+          "formula": "C(39,9)/C(45,15)"
+        }
+      }
+    ],
+    "recommendation": "4군 완성 매듭 + 1229+ 실전 봉인 (예측 신호 없음 재확인)",
+    "hyena_vs_random_hit_delta": -0.014,
+    "v13_vs_random_hit_delta": 0.0138
+  }
+}

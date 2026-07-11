@@ -1,0 +1,95 @@
+20260701_1군7뇌_하이에나복사_교정검증
+동생 → 커서 | 2026-07-01 | READ-ONLY (이식 코드 수정은 형 GO 후)
+
+절대 원칙: 6뇌 코드·DB 수정 0건 | walk-forward | 컨닝 금지 | R2 정직
+JSON: _audit_20260701_army1_7brain_hyena_copy.json
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — 백필 lead1 하이에나 복사율 정량화
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+lead1 회차: [88, 1230] n=1111 | 총 5555세트
+
+집계 (5세트×회차 전체):
+  exact_copy (하이에나 세트와 6개 동일): 4118 / 5555 = 74.13%
+  near5plus (하이에나와 5개+ 겹침): 4504 / 5555 = 81.08%
+  origin_hyena (선택 세트 출처 brain_tag=hyena): 4102 / 5555 = 73.84%
+
+회차별 origin_hyena≥3: 1085회
+회차별 exact≥2: 1111회
+회차별 near5≥3: 1107회
+
+최근 15회차 per-draw (origin_hyena / near5 / exact):
+  1216: origin=4/5 near5=5/5 exact=4/5 tags=['hyena', 'fusion', 'hyena', 'hyena', 'hyena']
+  1217: origin=4/5 near5=5/5 exact=4/5 tags=['hyena', 'hyena', 'hyena', 'fusion', 'hyena']
+  1218: origin=4/5 near5=4/5 exact=4/5 tags=['hyena', 'hyena', 'hyena', 'fusion', 'hyena']
+  1219: origin=3/5 near5=5/5 exact=3/5 tags=['fusion', 'hyena', 'hyena', 'lstm', 'hyena']
+  1220: origin=4/5 near5=5/5 exact=4/5 tags=['lstm', 'hyena', 'hyena', 'hyena', 'hyena']
+  1221: origin=3/5 near5=4/5 exact=3/5 tags=['hyena', 'lstm', 'hyena', 'hyena', 'fusion']
+  1222: origin=4/5 near5=5/5 exact=4/5 tags=['hyena', 'hyena', 'hyena', 'hyena', 'lstm']
+  1223: origin=3/5 near5=3/5 exact=3/5 tags=['hyena', 'hyena', 'hyena', 'lstm', 'fusion']
+  1224: origin=3/5 near5=3/5 exact=3/5 tags=['hyena', 'hyena', 'hyena', 'lstm', 'stat']
+  1225: origin=3/5 near5=3/5 exact=3/5 tags=['hyena', 'hyena', 'hyena', 'fusion', 'fusion']
+  1226: origin=3/5 near5=3/5 exact=3/5 tags=['hyena', 'hyena', 'hyena', 'stat', 'lstm']
+  1227: origin=4/5 near5=4/5 exact=4/5 tags=['hyena', 'hyena', 'hyena', 'lstm', 'hyena']
+  1228: origin=4/5 near5=5/5 exact=4/5 tags=['hyena', 'hyena', 'markov', 'hyena', 'hyena']
+  1229: origin=4/5 near5=4/5 exact=4/5 tags=['hyena', 'hyena', 'hyena', 'lstm', 'hyena']
+  1230: origin=4/5 near5=4/5 exact=4/5 tags=['hyena', 'hyena', 'hyena', 'lstm', 'hyena']
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — 후보 정의
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  (a) A_CURRENT: 현행 6뇌 30세트 → SEL4(전체표합) 3 + v3(기여도) 2
+  (b) B_NO_HYENA: hyena 제외 25세트 → SEL4 3 + v3 2 (v3 이력도 5뇌만)
+  (c) C_NORM_CAP: 6뇌 유지, SEL4=뇌별1표 dedup, v3=기여 몰빵상한(평균×4/3)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — 3구간 walk-forward (330~629 / 630~929 / 930~1230)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[A] [330, 629] n=298 HR=1.396 IB=3.6074
+arm | avg(5) | best-of-5 | hit6 | hyena_near5% | hyena_origin%
+  A_CURRENT | 2.3342 | 3.0738 | 0 | 82.35 | 74.63
+  B_NO_HYENA | 1.9094 | 3.2013 | 0 | 14.9 | 0.0
+  C_NORM_CAP | 2.3134 | 3.0839 | 0 | 78.39 | 69.87
+  HUMAN_RANDOM | 1.396 | 2.7416 | 0 | - | -
+  INDIVIDUAL_BEST | 3.6074 | 3.6074 | 0 | - | -
+
+[B] [630, 929] n=300 HR=1.4004 IB=3.6233
+arm | avg(5) | best-of-5 | hit6 | hyena_near5% | hyena_origin%
+  A_CURRENT | 2.3127 | 3.0167 | 1 | 82.07 | 74.47
+  B_NO_HYENA | 1.9173 | 3.1567 | 2 | 15.73 | 0.0
+  C_NORM_CAP | 2.262 | 2.99 | 2 | 77.4 | 69.47
+  HUMAN_RANDOM | 1.4004 | 2.68 | 0 | - | -
+  INDIVIDUAL_BEST | 3.6233 | 3.6233 | 3 | - | -
+
+[C] [930, 1230] n=300 HR=1.3562 IB=3.53
+arm | avg(5) | best-of-5 | hit6 | hyena_near5% | hyena_origin%
+  A_CURRENT | 2.2547 | 2.99 | 2 | 81.33 | 74.67
+  B_NO_HYENA | 1.8373 | 3.0433 | 3 | 13.4 | 0.0
+  C_NORM_CAP | 2.2247 | 3.0033 | 2 | 75.53 | 68.33
+  HUMAN_RANDOM | 1.3562 | 2.58 | 1 | - | -
+  INDIVIDUAL_BEST | 3.53 | 3.53 | 3 | - | -
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3b — 3구간 통합
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  A_CURRENT: mean_best=3.0268 mean_avg=2.3005 hit6=3 near5=81.92% origin=74.59%
+  B_NO_HYENA: mean_best=3.1338 mean_avg=1.888 hit6=5 near5=14.68% origin=0.0%
+  C_NORM_CAP: mean_best=3.0257 mean_avg=2.2667 hit6=4 near5=77.11% origin=69.22%
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4 — 판정 (하이에나 복사↓ + best-of-5/hit6, B 우선 가중)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  B: near5 14.68% < A 81.92%
+  B best-of-5 3.1338 vs A 3.0268 (유지/근접)
+  종합 score: [('B_NO_HYENA', 56.658), ('C_NORM_CAP', -73.463), ('A_CURRENT', -82.947)]
+
+GO/NO-GO: GO-B
+채택 후보: B_NO_HYENA (하이에나 제외 5뇌 SEL4+v3)
+🟢 형 원래 의도(하이에나 제외) 우선 — 복사율 최저·성능 유지/개선 시 predict_brain7.py를 5뇌 풀로 교체(형 GO 후).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 5 — 이식 (형 GO 후에만)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  predict_brain7.py 공식 교체 | 6뇌 engine/DB 변경 0건
+  본 검증은 READ-ONLY 완료 — 코드 수정 없음.

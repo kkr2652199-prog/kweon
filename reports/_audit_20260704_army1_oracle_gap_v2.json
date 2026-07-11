@@ -1,0 +1,4924 @@
+{
+  "title": "20260704_1군_oracle갭_조합v2검증",
+  "readonly": true,
+  "n_draws": 898,
+  "contamination_draws": 0,
+  "global_summary": {
+    "mean_oracle": 5.8898,
+    "mean_best_raw": 3.4833,
+    "mean_f1_best": 2.0902,
+    "mean_f1_oracle_gap": 3.7996
+  },
+  "periods": [
+    {
+      "range": [
+        330,
+        629
+      ],
+      "n": 298,
+      "arms": {
+        "F1_CURRENT": {
+          "mean_best": 2.094,
+          "mean_hit4p_rate": 0.0235,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 3.7785,
+          "delta_best_vs_f1": 0.0,
+          "delta_hit4p_vs_f1": 0.0,
+          "delta_gap_vs_f1": 0.0,
+          "p_best_vs_f1": null,
+          "p_best_vs_randunion": 9e-06,
+          "p_gap_vs_f1": null
+        },
+        "COVERAGE": {
+          "mean_best": 1.594,
+          "mean_hit4p_rate": 0.0067,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 4.2785,
+          "delta_best_vs_f1": -0.5,
+          "delta_hit4p_vs_f1": -0.0168,
+          "delta_gap_vs_f1": -0.5,
+          "p_best_vs_f1": 0.0,
+          "p_best_vs_randunion": 3e-06,
+          "p_gap_vs_f1": 0.0
+        },
+        "CONSENSUS_MAX": {
+          "mean_best": 2.1879,
+          "mean_hit4p_rate": 0.0403,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 3.6846,
+          "delta_best_vs_f1": 0.094,
+          "delta_hit4p_vs_f1": 0.0168,
+          "delta_gap_vs_f1": 0.094,
+          "p_best_vs_f1": 0.073161,
+          "p_best_vs_randunion": 0.0,
+          "p_gap_vs_f1": 0.073161
+        },
+        "HYBRID": {
+          "mean_best": 1.9295,
+          "mean_hit4p_rate": 0.0168,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 3.943,
+          "delta_best_vs_f1": -0.1644,
+          "delta_hit4p_vs_f1": -0.0067,
+          "delta_gap_vs_f1": -0.1644,
+          "p_best_vs_f1": 0.004529,
+          "p_best_vs_randunion": 0.136454,
+          "p_gap_vs_f1": 0.004529
+        },
+        "RANDOM_UNION": {
+          "mean_best": 1.8456,
+          "mean_hit4p_rate": 0.0034,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 4.0268,
+          "delta_best_vs_f1": -0.2483,
+          "delta_hit4p_vs_f1": -0.0201,
+          "delta_gap_vs_f1": -0.2483,
+          "p_best_vs_f1": 9e-06,
+          "p_best_vs_randunion": null,
+          "p_gap_vs_f1": 9e-06
+        }
+      },
+      "refs": {
+        "mean_oracle": 5.8725,
+        "mean_best_raw": 3.5067,
+        "mean_oracle_gap_f1": 3.7785,
+        "mean_oracle_gap_best_raw": 2.3658
+      }
+    },
+    {
+      "range": [
+        630,
+        929
+      ],
+      "n": 300,
+      "arms": {
+        "F1_CURRENT": {
+          "mean_best": 2.1067,
+          "mean_hit4p_rate": 0.0333,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 3.8,
+          "delta_best_vs_f1": 0.0,
+          "delta_hit4p_vs_f1": 0.0,
+          "delta_gap_vs_f1": 0.0,
+          "p_best_vs_f1": null,
+          "p_best_vs_randunion": 1e-06,
+          "p_gap_vs_f1": null
+        },
+        "COVERAGE": {
+          "mean_best": 1.6333,
+          "mean_hit4p_rate": 0.0067,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 4.2733,
+          "delta_best_vs_f1": -0.4733,
+          "delta_hit4p_vs_f1": -0.0267,
+          "delta_gap_vs_f1": -0.4733,
+          "p_best_vs_f1": 0.0,
+          "p_best_vs_randunion": 8.4e-05,
+          "p_gap_vs_f1": 0.0
+        },
+        "CONSENSUS_MAX": {
+          "mean_best": 2.1567,
+          "mean_hit4p_rate": 0.03,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 3.75,
+          "delta_best_vs_f1": 0.05,
+          "delta_hit4p_vs_f1": -0.0033,
+          "delta_gap_vs_f1": 0.05,
+          "p_best_vs_f1": 0.37274,
+          "p_best_vs_randunion": 0.0,
+          "p_gap_vs_f1": 0.37274
+        },
+        "HYBRID": {
+          "mean_best": 1.9233,
+          "mean_hit4p_rate": 0.01,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 3.9833,
+          "delta_best_vs_f1": -0.1833,
+          "delta_hit4p_vs_f1": -0.0233,
+          "delta_gap_vs_f1": -0.1833,
+          "p_best_vs_f1": 0.00101,
+          "p_best_vs_randunion": 0.101276,
+          "p_gap_vs_f1": 0.00101
+        },
+        "RANDOM_UNION": {
+          "mean_best": 1.8333,
+          "mean_hit4p_rate": 0.0167,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 4.0733,
+          "delta_best_vs_f1": -0.2733,
+          "delta_hit4p_vs_f1": -0.0167,
+          "delta_gap_vs_f1": -0.2733,
+          "p_best_vs_f1": 1e-06,
+          "p_best_vs_randunion": null,
+          "p_gap_vs_f1": 1e-06
+        }
+      },
+      "refs": {
+        "mean_oracle": 5.9067,
+        "mean_best_raw": 3.52,
+        "mean_oracle_gap_f1": 3.8,
+        "mean_oracle_gap_best_raw": 2.3867
+      }
+    },
+    {
+      "range": [
+        930,
+        1230
+      ],
+      "n": 300,
+      "arms": {
+        "F1_CURRENT": {
+          "mean_best": 2.07,
+          "mean_hit4p_rate": 0.0233,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 3.82,
+          "delta_best_vs_f1": 0.0,
+          "delta_hit4p_vs_f1": 0.0,
+          "delta_gap_vs_f1": 0.0,
+          "p_best_vs_f1": null,
+          "p_best_vs_randunion": 0.0,
+          "p_gap_vs_f1": null
+        },
+        "COVERAGE": {
+          "mean_best": 1.5867,
+          "mean_hit4p_rate": 0.0067,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 4.3033,
+          "delta_best_vs_f1": -0.4833,
+          "delta_hit4p_vs_f1": -0.0167,
+          "delta_gap_vs_f1": -0.4833,
+          "p_best_vs_f1": 0.0,
+          "p_best_vs_randunion": 0.001097,
+          "p_gap_vs_f1": 0.0
+        },
+        "CONSENSUS_MAX": {
+          "mean_best": 2.1133,
+          "mean_hit4p_rate": 0.0333,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 3.7767,
+          "delta_best_vs_f1": 0.0433,
+          "delta_hit4p_vs_f1": 0.01,
+          "delta_gap_vs_f1": 0.0433,
+          "p_best_vs_f1": 0.382047,
+          "p_best_vs_randunion": 0.0,
+          "p_gap_vs_f1": 0.382047
+        },
+        "HYBRID": {
+          "mean_best": 1.88,
+          "mean_hit4p_rate": 0.02,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 4.01,
+          "delta_best_vs_f1": -0.19,
+          "delta_hit4p_vs_f1": -0.0033,
+          "delta_gap_vs_f1": -0.19,
+          "p_best_vs_f1": 0.000463,
+          "p_best_vs_randunion": 0.063575,
+          "p_gap_vs_f1": 0.000463
+        },
+        "RANDOM_UNION": {
+          "mean_best": 1.77,
+          "mean_hit4p_rate": 0.0133,
+          "hit6_count": 0,
+          "mean_copy_rate": 0.0,
+          "mean_oracle_gap": 4.12,
+          "delta_best_vs_f1": -0.3,
+          "delta_hit4p_vs_f1": -0.01,
+          "delta_gap_vs_f1": -0.3,
+          "p_best_vs_f1": 0.0,
+          "p_best_vs_randunion": null,
+          "p_gap_vs_f1": 0.0
+        }
+      },
+      "refs": {
+        "mean_oracle": 5.89,
+        "mean_best_raw": 3.4233,
+        "mean_oracle_gap_f1": 3.82,
+        "mean_oracle_gap_best_raw": 2.4667
+      }
+    }
+  ],
+  "verdict": {
+    "per_arm": {
+      "COVERAGE": {
+        "wins_best_or_hit4p": 0,
+        "wins_hit4p": 0,
+        "wins_gap": 0,
+        "disqualified_copy": false,
+        "period_details": [
+          {
+            "range": [
+              330,
+              629
+            ],
+            "delta_best": -0.5,
+            "p_best": 0.0,
+            "delta_gap": -0.5,
+            "copy_rate": 0.0
+          },
+          {
+            "range": [
+              630,
+              929
+            ],
+            "delta_best": -0.4733,
+            "p_best": 0.0,
+            "delta_gap": -0.4733,
+            "copy_rate": 0.0
+          },
+          {
+            "range": [
+              930,
+              1230
+            ],
+            "delta_best": -0.4833,
+            "p_best": 0.0,
+            "delta_gap": -0.4833,
+            "copy_rate": 0.0
+          }
+        ],
+        "adopt_candidate": false
+      },
+      "CONSENSUS_MAX": {
+        "wins_best_or_hit4p": 1,
+        "wins_hit4p": 2,
+        "wins_gap": 0,
+        "disqualified_copy": false,
+        "period_details": [
+          {
+            "range": [
+              330,
+              629
+            ],
+            "delta_best": 0.094,
+            "p_best": 0.073161,
+            "delta_gap": 0.094,
+            "copy_rate": 0.0
+          },
+          {
+            "range": [
+              630,
+              929
+            ],
+            "delta_best": 0.05,
+            "p_best": 0.37274,
+            "delta_gap": 0.05,
+            "copy_rate": 0.0
+          },
+          {
+            "range": [
+              930,
+              1230
+            ],
+            "delta_best": 0.0433,
+            "p_best": 0.382047,
+            "delta_gap": 0.0433,
+            "copy_rate": 0.0
+          }
+        ],
+        "adopt_candidate": false
+      },
+      "HYBRID": {
+        "wins_best_or_hit4p": 0,
+        "wins_hit4p": 0,
+        "wins_gap": 0,
+        "disqualified_copy": false,
+        "period_details": [
+          {
+            "range": [
+              330,
+              629
+            ],
+            "delta_best": -0.1644,
+            "p_best": 0.004529,
+            "delta_gap": -0.1644,
+            "copy_rate": 0.0
+          },
+          {
+            "range": [
+              630,
+              929
+            ],
+            "delta_best": -0.1833,
+            "p_best": 0.00101,
+            "delta_gap": -0.1833,
+            "copy_rate": 0.0
+          },
+          {
+            "range": [
+              930,
+              1230
+            ],
+            "delta_best": -0.19,
+            "p_best": 0.000463,
+            "delta_gap": -0.19,
+            "copy_rate": 0.0
+          }
+        ],
+        "adopt_candidate": false
+      }
+    },
+    "go": "KEEP-F1",
+    "final": "COVERAGE/CONSENSUS_MAX/HYBRID 모두 F1 대비 2/3+ 유의 개선 없음. F1이 이미 조합 최적에 가깝다 — F1 유지."
+  },
+  "max_data_log": [
+    {
+      "draw": 330,
+      "max_data_draw": 329,
+      "contamination": false
+    },
+    {
+      "draw": 331,
+      "max_data_draw": 330,
+      "contamination": false
+    },
+    {
+      "draw": 332,
+      "max_data_draw": 331,
+      "contamination": false
+    },
+    {
+      "draw": 333,
+      "max_data_draw": 332,
+      "contamination": false
+    },
+    {
+      "draw": 334,
+      "max_data_draw": 333,
+      "contamination": false
+    },
+    {
+      "draw": 335,
+      "max_data_draw": 334,
+      "contamination": false
+    },
+    {
+      "draw": 336,
+      "max_data_draw": 335,
+      "contamination": false
+    },
+    {
+      "draw": 337,
+      "max_data_draw": 336,
+      "contamination": false
+    },
+    {
+      "draw": 338,
+      "max_data_draw": 337,
+      "contamination": false
+    },
+    {
+      "draw": 340,
+      "max_data_draw": 339,
+      "contamination": false
+    },
+    {
+      "draw": 341,
+      "max_data_draw": 340,
+      "contamination": false
+    },
+    {
+      "draw": 342,
+      "max_data_draw": 341,
+      "contamination": false
+    },
+    {
+      "draw": 343,
+      "max_data_draw": 342,
+      "contamination": false
+    },
+    {
+      "draw": 344,
+      "max_data_draw": 343,
+      "contamination": false
+    },
+    {
+      "draw": 345,
+      "max_data_draw": 344,
+      "contamination": false
+    },
+    {
+      "draw": 346,
+      "max_data_draw": 345,
+      "contamination": false
+    },
+    {
+      "draw": 347,
+      "max_data_draw": 346,
+      "contamination": false
+    },
+    {
+      "draw": 348,
+      "max_data_draw": 347,
+      "contamination": false
+    },
+    {
+      "draw": 349,
+      "max_data_draw": 348,
+      "contamination": false
+    },
+    {
+      "draw": 350,
+      "max_data_draw": 349,
+      "contamination": false
+    },
+    {
+      "draw": 351,
+      "max_data_draw": 350,
+      "contamination": false
+    },
+    {
+      "draw": 352,
+      "max_data_draw": 351,
+      "contamination": false
+    },
+    {
+      "draw": 353,
+      "max_data_draw": 352,
+      "contamination": false
+    },
+    {
+      "draw": 354,
+      "max_data_draw": 353,
+      "contamination": false
+    },
+    {
+      "draw": 355,
+      "max_data_draw": 354,
+      "contamination": false
+    },
+    {
+      "draw": 356,
+      "max_data_draw": 355,
+      "contamination": false
+    },
+    {
+      "draw": 357,
+      "max_data_draw": 356,
+      "contamination": false
+    },
+    {
+      "draw": 358,
+      "max_data_draw": 357,
+      "contamination": false
+    },
+    {
+      "draw": 359,
+      "max_data_draw": 358,
+      "contamination": false
+    },
+    {
+      "draw": 360,
+      "max_data_draw": 359,
+      "contamination": false
+    },
+    {
+      "draw": 361,
+      "max_data_draw": 360,
+      "contamination": false
+    },
+    {
+      "draw": 362,
+      "max_data_draw": 361,
+      "contamination": false
+    },
+    {
+      "draw": 363,
+      "max_data_draw": 362,
+      "contamination": false
+    },
+    {
+      "draw": 364,
+      "max_data_draw": 363,
+      "contamination": false
+    },
+    {
+      "draw": 365,
+      "max_data_draw": 364,
+      "contamination": false
+    },
+    {
+      "draw": 366,
+      "max_data_draw": 365,
+      "contamination": false
+    },
+    {
+      "draw": 367,
+      "max_data_draw": 366,
+      "contamination": false
+    },
+    {
+      "draw": 368,
+      "max_data_draw": 367,
+      "contamination": false
+    },
+    {
+      "draw": 369,
+      "max_data_draw": 368,
+      "contamination": false
+    },
+    {
+      "draw": 370,
+      "max_data_draw": 369,
+      "contamination": false
+    },
+    {
+      "draw": 371,
+      "max_data_draw": 370,
+      "contamination": false
+    },
+    {
+      "draw": 372,
+      "max_data_draw": 371,
+      "contamination": false
+    },
+    {
+      "draw": 373,
+      "max_data_draw": 372,
+      "contamination": false
+    },
+    {
+      "draw": 374,
+      "max_data_draw": 373,
+      "contamination": false
+    },
+    {
+      "draw": 375,
+      "max_data_draw": 374,
+      "contamination": false
+    },
+    {
+      "draw": 376,
+      "max_data_draw": 375,
+      "contamination": false
+    },
+    {
+      "draw": 377,
+      "max_data_draw": 376,
+      "contamination": false
+    },
+    {
+      "draw": 378,
+      "max_data_draw": 377,
+      "contamination": false
+    },
+    {
+      "draw": 379,
+      "max_data_draw": 378,
+      "contamination": false
+    },
+    {
+      "draw": 380,
+      "max_data_draw": 379,
+      "contamination": false
+    },
+    {
+      "draw": 381,
+      "max_data_draw": 380,
+      "contamination": false
+    },
+    {
+      "draw": 382,
+      "max_data_draw": 381,
+      "contamination": false
+    },
+    {
+      "draw": 383,
+      "max_data_draw": 382,
+      "contamination": false
+    },
+    {
+      "draw": 384,
+      "max_data_draw": 383,
+      "contamination": false
+    },
+    {
+      "draw": 385,
+      "max_data_draw": 384,
+      "contamination": false
+    },
+    {
+      "draw": 386,
+      "max_data_draw": 385,
+      "contamination": false
+    },
+    {
+      "draw": 387,
+      "max_data_draw": 386,
+      "contamination": false
+    },
+    {
+      "draw": 388,
+      "max_data_draw": 387,
+      "contamination": false
+    },
+    {
+      "draw": 389,
+      "max_data_draw": 388,
+      "contamination": false
+    },
+    {
+      "draw": 390,
+      "max_data_draw": 389,
+      "contamination": false
+    },
+    {
+      "draw": 391,
+      "max_data_draw": 390,
+      "contamination": false
+    },
+    {
+      "draw": 392,
+      "max_data_draw": 391,
+      "contamination": false
+    },
+    {
+      "draw": 393,
+      "max_data_draw": 392,
+      "contamination": false
+    },
+    {
+      "draw": 394,
+      "max_data_draw": 393,
+      "contamination": false
+    },
+    {
+      "draw": 395,
+      "max_data_draw": 394,
+      "contamination": false
+    },
+    {
+      "draw": 396,
+      "max_data_draw": 395,
+      "contamination": false
+    },
+    {
+      "draw": 397,
+      "max_data_draw": 396,
+      "contamination": false
+    },
+    {
+      "draw": 398,
+      "max_data_draw": 397,
+      "contamination": false
+    },
+    {
+      "draw": 399,
+      "max_data_draw": 398,
+      "contamination": false
+    },
+    {
+      "draw": 400,
+      "max_data_draw": 399,
+      "contamination": false
+    },
+    {
+      "draw": 401,
+      "max_data_draw": 400,
+      "contamination": false
+    },
+    {
+      "draw": 402,
+      "max_data_draw": 401,
+      "contamination": false
+    },
+    {
+      "draw": 403,
+      "max_data_draw": 402,
+      "contamination": false
+    },
+    {
+      "draw": 404,
+      "max_data_draw": 403,
+      "contamination": false
+    },
+    {
+      "draw": 405,
+      "max_data_draw": 404,
+      "contamination": false
+    },
+    {
+      "draw": 406,
+      "max_data_draw": 405,
+      "contamination": false
+    },
+    {
+      "draw": 407,
+      "max_data_draw": 406,
+      "contamination": false
+    },
+    {
+      "draw": 408,
+      "max_data_draw": 407,
+      "contamination": false
+    },
+    {
+      "draw": 409,
+      "max_data_draw": 408,
+      "contamination": false
+    },
+    {
+      "draw": 410,
+      "max_data_draw": 409,
+      "contamination": false
+    },
+    {
+      "draw": 411,
+      "max_data_draw": 410,
+      "contamination": false
+    },
+    {
+      "draw": 412,
+      "max_data_draw": 411,
+      "contamination": false
+    },
+    {
+      "draw": 413,
+      "max_data_draw": 412,
+      "contamination": false
+    },
+    {
+      "draw": 414,
+      "max_data_draw": 413,
+      "contamination": false
+    },
+    {
+      "draw": 415,
+      "max_data_draw": 414,
+      "contamination": false
+    },
+    {
+      "draw": 416,
+      "max_data_draw": 415,
+      "contamination": false
+    },
+    {
+      "draw": 417,
+      "max_data_draw": 416,
+      "contamination": false
+    },
+    {
+      "draw": 418,
+      "max_data_draw": 417,
+      "contamination": false
+    },
+    {
+      "draw": 419,
+      "max_data_draw": 418,
+      "contamination": false
+    },
+    {
+      "draw": 420,
+      "max_data_draw": 419,
+      "contamination": false
+    },
+    {
+      "draw": 421,
+      "max_data_draw": 420,
+      "contamination": false
+    },
+    {
+      "draw": 422,
+      "max_data_draw": 421,
+      "contamination": false
+    },
+    {
+      "draw": 423,
+      "max_data_draw": 422,
+      "contamination": false
+    },
+    {
+      "draw": 424,
+      "max_data_draw": 423,
+      "contamination": false
+    },
+    {
+      "draw": 425,
+      "max_data_draw": 424,
+      "contamination": false
+    },
+    {
+      "draw": 426,
+      "max_data_draw": 425,
+      "contamination": false
+    },
+    {
+      "draw": 427,
+      "max_data_draw": 426,
+      "contamination": false
+    },
+    {
+      "draw": 428,
+      "max_data_draw": 427,
+      "contamination": false
+    },
+    {
+      "draw": 429,
+      "max_data_draw": 428,
+      "contamination": false
+    },
+    {
+      "draw": 430,
+      "max_data_draw": 429,
+      "contamination": false
+    },
+    {
+      "draw": 431,
+      "max_data_draw": 430,
+      "contamination": false
+    },
+    {
+      "draw": 432,
+      "max_data_draw": 431,
+      "contamination": false
+    },
+    {
+      "draw": 433,
+      "max_data_draw": 432,
+      "contamination": false
+    },
+    {
+      "draw": 434,
+      "max_data_draw": 433,
+      "contamination": false
+    },
+    {
+      "draw": 435,
+      "max_data_draw": 434,
+      "contamination": false
+    },
+    {
+      "draw": 436,
+      "max_data_draw": 435,
+      "contamination": false
+    },
+    {
+      "draw": 437,
+      "max_data_draw": 436,
+      "contamination": false
+    },
+    {
+      "draw": 438,
+      "max_data_draw": 437,
+      "contamination": false
+    },
+    {
+      "draw": 439,
+      "max_data_draw": 438,
+      "contamination": false
+    },
+    {
+      "draw": 440,
+      "max_data_draw": 439,
+      "contamination": false
+    },
+    {
+      "draw": 441,
+      "max_data_draw": 440,
+      "contamination": false
+    },
+    {
+      "draw": 442,
+      "max_data_draw": 441,
+      "contamination": false
+    },
+    {
+      "draw": 443,
+      "max_data_draw": 442,
+      "contamination": false
+    },
+    {
+      "draw": 444,
+      "max_data_draw": 443,
+      "contamination": false
+    },
+    {
+      "draw": 445,
+      "max_data_draw": 444,
+      "contamination": false
+    },
+    {
+      "draw": 446,
+      "max_data_draw": 445,
+      "contamination": false
+    },
+    {
+      "draw": 447,
+      "max_data_draw": 446,
+      "contamination": false
+    },
+    {
+      "draw": 448,
+      "max_data_draw": 447,
+      "contamination": false
+    },
+    {
+      "draw": 449,
+      "max_data_draw": 448,
+      "contamination": false
+    },
+    {
+      "draw": 450,
+      "max_data_draw": 449,
+      "contamination": false
+    },
+    {
+      "draw": 451,
+      "max_data_draw": 450,
+      "contamination": false
+    },
+    {
+      "draw": 452,
+      "max_data_draw": 451,
+      "contamination": false
+    },
+    {
+      "draw": 453,
+      "max_data_draw": 452,
+      "contamination": false
+    },
+    {
+      "draw": 454,
+      "max_data_draw": 453,
+      "contamination": false
+    },
+    {
+      "draw": 455,
+      "max_data_draw": 454,
+      "contamination": false
+    },
+    {
+      "draw": 456,
+      "max_data_draw": 455,
+      "contamination": false
+    },
+    {
+      "draw": 457,
+      "max_data_draw": 456,
+      "contamination": false
+    },
+    {
+      "draw": 458,
+      "max_data_draw": 457,
+      "contamination": false
+    },
+    {
+      "draw": 459,
+      "max_data_draw": 458,
+      "contamination": false
+    },
+    {
+      "draw": 460,
+      "max_data_draw": 459,
+      "contamination": false
+    },
+    {
+      "draw": 461,
+      "max_data_draw": 460,
+      "contamination": false
+    },
+    {
+      "draw": 462,
+      "max_data_draw": 461,
+      "contamination": false
+    },
+    {
+      "draw": 463,
+      "max_data_draw": 462,
+      "contamination": false
+    },
+    {
+      "draw": 464,
+      "max_data_draw": 463,
+      "contamination": false
+    },
+    {
+      "draw": 465,
+      "max_data_draw": 464,
+      "contamination": false
+    },
+    {
+      "draw": 466,
+      "max_data_draw": 465,
+      "contamination": false
+    },
+    {
+      "draw": 467,
+      "max_data_draw": 466,
+      "contamination": false
+    },
+    {
+      "draw": 468,
+      "max_data_draw": 467,
+      "contamination": false
+    },
+    {
+      "draw": 469,
+      "max_data_draw": 468,
+      "contamination": false
+    },
+    {
+      "draw": 470,
+      "max_data_draw": 469,
+      "contamination": false
+    },
+    {
+      "draw": 472,
+      "max_data_draw": 471,
+      "contamination": false
+    },
+    {
+      "draw": 473,
+      "max_data_draw": 472,
+      "contamination": false
+    },
+    {
+      "draw": 474,
+      "max_data_draw": 473,
+      "contamination": false
+    },
+    {
+      "draw": 475,
+      "max_data_draw": 474,
+      "contamination": false
+    },
+    {
+      "draw": 476,
+      "max_data_draw": 475,
+      "contamination": false
+    },
+    {
+      "draw": 477,
+      "max_data_draw": 476,
+      "contamination": false
+    },
+    {
+      "draw": 478,
+      "max_data_draw": 477,
+      "contamination": false
+    },
+    {
+      "draw": 479,
+      "max_data_draw": 478,
+      "contamination": false
+    },
+    {
+      "draw": 480,
+      "max_data_draw": 479,
+      "contamination": false
+    },
+    {
+      "draw": 481,
+      "max_data_draw": 480,
+      "contamination": false
+    },
+    {
+      "draw": 482,
+      "max_data_draw": 481,
+      "contamination": false
+    },
+    {
+      "draw": 483,
+      "max_data_draw": 482,
+      "contamination": false
+    },
+    {
+      "draw": 484,
+      "max_data_draw": 483,
+      "contamination": false
+    },
+    {
+      "draw": 485,
+      "max_data_draw": 484,
+      "contamination": false
+    },
+    {
+      "draw": 486,
+      "max_data_draw": 485,
+      "contamination": false
+    },
+    {
+      "draw": 487,
+      "max_data_draw": 486,
+      "contamination": false
+    },
+    {
+      "draw": 488,
+      "max_data_draw": 487,
+      "contamination": false
+    },
+    {
+      "draw": 489,
+      "max_data_draw": 488,
+      "contamination": false
+    },
+    {
+      "draw": 490,
+      "max_data_draw": 489,
+      "contamination": false
+    },
+    {
+      "draw": 491,
+      "max_data_draw": 490,
+      "contamination": false
+    },
+    {
+      "draw": 492,
+      "max_data_draw": 491,
+      "contamination": false
+    },
+    {
+      "draw": 493,
+      "max_data_draw": 492,
+      "contamination": false
+    },
+    {
+      "draw": 494,
+      "max_data_draw": 493,
+      "contamination": false
+    },
+    {
+      "draw": 495,
+      "max_data_draw": 494,
+      "contamination": false
+    },
+    {
+      "draw": 496,
+      "max_data_draw": 495,
+      "contamination": false
+    },
+    {
+      "draw": 497,
+      "max_data_draw": 496,
+      "contamination": false
+    },
+    {
+      "draw": 498,
+      "max_data_draw": 497,
+      "contamination": false
+    },
+    {
+      "draw": 499,
+      "max_data_draw": 498,
+      "contamination": false
+    },
+    {
+      "draw": 500,
+      "max_data_draw": 499,
+      "contamination": false
+    },
+    {
+      "draw": 501,
+      "max_data_draw": 500,
+      "contamination": false
+    },
+    {
+      "draw": 502,
+      "max_data_draw": 501,
+      "contamination": false
+    },
+    {
+      "draw": 503,
+      "max_data_draw": 502,
+      "contamination": false
+    },
+    {
+      "draw": 504,
+      "max_data_draw": 503,
+      "contamination": false
+    },
+    {
+      "draw": 505,
+      "max_data_draw": 504,
+      "contamination": false
+    },
+    {
+      "draw": 506,
+      "max_data_draw": 505,
+      "contamination": false
+    },
+    {
+      "draw": 507,
+      "max_data_draw": 506,
+      "contamination": false
+    },
+    {
+      "draw": 508,
+      "max_data_draw": 507,
+      "contamination": false
+    },
+    {
+      "draw": 509,
+      "max_data_draw": 508,
+      "contamination": false
+    },
+    {
+      "draw": 510,
+      "max_data_draw": 509,
+      "contamination": false
+    },
+    {
+      "draw": 511,
+      "max_data_draw": 510,
+      "contamination": false
+    },
+    {
+      "draw": 512,
+      "max_data_draw": 511,
+      "contamination": false
+    },
+    {
+      "draw": 513,
+      "max_data_draw": 512,
+      "contamination": false
+    },
+    {
+      "draw": 514,
+      "max_data_draw": 513,
+      "contamination": false
+    },
+    {
+      "draw": 515,
+      "max_data_draw": 514,
+      "contamination": false
+    },
+    {
+      "draw": 516,
+      "max_data_draw": 515,
+      "contamination": false
+    },
+    {
+      "draw": 517,
+      "max_data_draw": 516,
+      "contamination": false
+    },
+    {
+      "draw": 518,
+      "max_data_draw": 517,
+      "contamination": false
+    },
+    {
+      "draw": 519,
+      "max_data_draw": 518,
+      "contamination": false
+    },
+    {
+      "draw": 520,
+      "max_data_draw": 519,
+      "contamination": false
+    },
+    {
+      "draw": 521,
+      "max_data_draw": 520,
+      "contamination": false
+    },
+    {
+      "draw": 522,
+      "max_data_draw": 521,
+      "contamination": false
+    },
+    {
+      "draw": 523,
+      "max_data_draw": 522,
+      "contamination": false
+    },
+    {
+      "draw": 524,
+      "max_data_draw": 523,
+      "contamination": false
+    },
+    {
+      "draw": 525,
+      "max_data_draw": 524,
+      "contamination": false
+    },
+    {
+      "draw": 526,
+      "max_data_draw": 525,
+      "contamination": false
+    },
+    {
+      "draw": 527,
+      "max_data_draw": 526,
+      "contamination": false
+    },
+    {
+      "draw": 528,
+      "max_data_draw": 527,
+      "contamination": false
+    },
+    {
+      "draw": 529,
+      "max_data_draw": 528,
+      "contamination": false
+    },
+    {
+      "draw": 530,
+      "max_data_draw": 529,
+      "contamination": false
+    },
+    {
+      "draw": 531,
+      "max_data_draw": 530,
+      "contamination": false
+    },
+    {
+      "draw": 532,
+      "max_data_draw": 531,
+      "contamination": false
+    },
+    {
+      "draw": 533,
+      "max_data_draw": 532,
+      "contamination": false
+    },
+    {
+      "draw": 534,
+      "max_data_draw": 533,
+      "contamination": false
+    },
+    {
+      "draw": 535,
+      "max_data_draw": 534,
+      "contamination": false
+    },
+    {
+      "draw": 536,
+      "max_data_draw": 535,
+      "contamination": false
+    },
+    {
+      "draw": 537,
+      "max_data_draw": 536,
+      "contamination": false
+    },
+    {
+      "draw": 538,
+      "max_data_draw": 537,
+      "contamination": false
+    },
+    {
+      "draw": 539,
+      "max_data_draw": 538,
+      "contamination": false
+    },
+    {
+      "draw": 540,
+      "max_data_draw": 539,
+      "contamination": false
+    },
+    {
+      "draw": 541,
+      "max_data_draw": 540,
+      "contamination": false
+    },
+    {
+      "draw": 542,
+      "max_data_draw": 541,
+      "contamination": false
+    },
+    {
+      "draw": 543,
+      "max_data_draw": 542,
+      "contamination": false
+    },
+    {
+      "draw": 544,
+      "max_data_draw": 543,
+      "contamination": false
+    },
+    {
+      "draw": 545,
+      "max_data_draw": 544,
+      "contamination": false
+    },
+    {
+      "draw": 546,
+      "max_data_draw": 545,
+      "contamination": false
+    },
+    {
+      "draw": 547,
+      "max_data_draw": 546,
+      "contamination": false
+    },
+    {
+      "draw": 548,
+      "max_data_draw": 547,
+      "contamination": false
+    },
+    {
+      "draw": 549,
+      "max_data_draw": 548,
+      "contamination": false
+    },
+    {
+      "draw": 550,
+      "max_data_draw": 549,
+      "contamination": false
+    },
+    {
+      "draw": 551,
+      "max_data_draw": 550,
+      "contamination": false
+    },
+    {
+      "draw": 552,
+      "max_data_draw": 551,
+      "contamination": false
+    },
+    {
+      "draw": 553,
+      "max_data_draw": 552,
+      "contamination": false
+    },
+    {
+      "draw": 554,
+      "max_data_draw": 553,
+      "contamination": false
+    },
+    {
+      "draw": 555,
+      "max_data_draw": 554,
+      "contamination": false
+    },
+    {
+      "draw": 556,
+      "max_data_draw": 555,
+      "contamination": false
+    },
+    {
+      "draw": 557,
+      "max_data_draw": 556,
+      "contamination": false
+    },
+    {
+      "draw": 558,
+      "max_data_draw": 557,
+      "contamination": false
+    },
+    {
+      "draw": 559,
+      "max_data_draw": 558,
+      "contamination": false
+    },
+    {
+      "draw": 560,
+      "max_data_draw": 559,
+      "contamination": false
+    },
+    {
+      "draw": 561,
+      "max_data_draw": 560,
+      "contamination": false
+    },
+    {
+      "draw": 562,
+      "max_data_draw": 561,
+      "contamination": false
+    },
+    {
+      "draw": 563,
+      "max_data_draw": 562,
+      "contamination": false
+    },
+    {
+      "draw": 564,
+      "max_data_draw": 563,
+      "contamination": false
+    },
+    {
+      "draw": 565,
+      "max_data_draw": 564,
+      "contamination": false
+    },
+    {
+      "draw": 566,
+      "max_data_draw": 565,
+      "contamination": false
+    },
+    {
+      "draw": 567,
+      "max_data_draw": 566,
+      "contamination": false
+    },
+    {
+      "draw": 568,
+      "max_data_draw": 567,
+      "contamination": false
+    },
+    {
+      "draw": 569,
+      "max_data_draw": 568,
+      "contamination": false
+    },
+    {
+      "draw": 570,
+      "max_data_draw": 569,
+      "contamination": false
+    },
+    {
+      "draw": 571,
+      "max_data_draw": 570,
+      "contamination": false
+    },
+    {
+      "draw": 572,
+      "max_data_draw": 571,
+      "contamination": false
+    },
+    {
+      "draw": 573,
+      "max_data_draw": 572,
+      "contamination": false
+    },
+    {
+      "draw": 574,
+      "max_data_draw": 573,
+      "contamination": false
+    },
+    {
+      "draw": 575,
+      "max_data_draw": 574,
+      "contamination": false
+    },
+    {
+      "draw": 576,
+      "max_data_draw": 575,
+      "contamination": false
+    },
+    {
+      "draw": 577,
+      "max_data_draw": 576,
+      "contamination": false
+    },
+    {
+      "draw": 578,
+      "max_data_draw": 577,
+      "contamination": false
+    },
+    {
+      "draw": 579,
+      "max_data_draw": 578,
+      "contamination": false
+    },
+    {
+      "draw": 580,
+      "max_data_draw": 579,
+      "contamination": false
+    },
+    {
+      "draw": 581,
+      "max_data_draw": 580,
+      "contamination": false
+    },
+    {
+      "draw": 582,
+      "max_data_draw": 581,
+      "contamination": false
+    },
+    {
+      "draw": 583,
+      "max_data_draw": 582,
+      "contamination": false
+    },
+    {
+      "draw": 584,
+      "max_data_draw": 583,
+      "contamination": false
+    },
+    {
+      "draw": 585,
+      "max_data_draw": 584,
+      "contamination": false
+    },
+    {
+      "draw": 586,
+      "max_data_draw": 585,
+      "contamination": false
+    },
+    {
+      "draw": 587,
+      "max_data_draw": 586,
+      "contamination": false
+    },
+    {
+      "draw": 588,
+      "max_data_draw": 587,
+      "contamination": false
+    },
+    {
+      "draw": 589,
+      "max_data_draw": 588,
+      "contamination": false
+    },
+    {
+      "draw": 590,
+      "max_data_draw": 589,
+      "contamination": false
+    },
+    {
+      "draw": 591,
+      "max_data_draw": 590,
+      "contamination": false
+    },
+    {
+      "draw": 592,
+      "max_data_draw": 591,
+      "contamination": false
+    },
+    {
+      "draw": 593,
+      "max_data_draw": 592,
+      "contamination": false
+    },
+    {
+      "draw": 594,
+      "max_data_draw": 593,
+      "contamination": false
+    },
+    {
+      "draw": 595,
+      "max_data_draw": 594,
+      "contamination": false
+    },
+    {
+      "draw": 596,
+      "max_data_draw": 595,
+      "contamination": false
+    },
+    {
+      "draw": 597,
+      "max_data_draw": 596,
+      "contamination": false
+    },
+    {
+      "draw": 598,
+      "max_data_draw": 597,
+      "contamination": false
+    },
+    {
+      "draw": 599,
+      "max_data_draw": 598,
+      "contamination": false
+    },
+    {
+      "draw": 600,
+      "max_data_draw": 599,
+      "contamination": false
+    },
+    {
+      "draw": 601,
+      "max_data_draw": 600,
+      "contamination": false
+    },
+    {
+      "draw": 602,
+      "max_data_draw": 601,
+      "contamination": false
+    },
+    {
+      "draw": 603,
+      "max_data_draw": 602,
+      "contamination": false
+    },
+    {
+      "draw": 604,
+      "max_data_draw": 603,
+      "contamination": false
+    },
+    {
+      "draw": 605,
+      "max_data_draw": 604,
+      "contamination": false
+    },
+    {
+      "draw": 606,
+      "max_data_draw": 605,
+      "contamination": false
+    },
+    {
+      "draw": 607,
+      "max_data_draw": 606,
+      "contamination": false
+    },
+    {
+      "draw": 608,
+      "max_data_draw": 607,
+      "contamination": false
+    },
+    {
+      "draw": 609,
+      "max_data_draw": 608,
+      "contamination": false
+    },
+    {
+      "draw": 610,
+      "max_data_draw": 609,
+      "contamination": false
+    },
+    {
+      "draw": 611,
+      "max_data_draw": 610,
+      "contamination": false
+    },
+    {
+      "draw": 612,
+      "max_data_draw": 611,
+      "contamination": false
+    },
+    {
+      "draw": 613,
+      "max_data_draw": 612,
+      "contamination": false
+    },
+    {
+      "draw": 614,
+      "max_data_draw": 613,
+      "contamination": false
+    },
+    {
+      "draw": 615,
+      "max_data_draw": 614,
+      "contamination": false
+    },
+    {
+      "draw": 616,
+      "max_data_draw": 615,
+      "contamination": false
+    },
+    {
+      "draw": 617,
+      "max_data_draw": 616,
+      "contamination": false
+    },
+    {
+      "draw": 618,
+      "max_data_draw": 617,
+      "contamination": false
+    },
+    {
+      "draw": 619,
+      "max_data_draw": 618,
+      "contamination": false
+    },
+    {
+      "draw": 620,
+      "max_data_draw": 619,
+      "contamination": false
+    },
+    {
+      "draw": 621,
+      "max_data_draw": 620,
+      "contamination": false
+    },
+    {
+      "draw": 622,
+      "max_data_draw": 621,
+      "contamination": false
+    },
+    {
+      "draw": 623,
+      "max_data_draw": 622,
+      "contamination": false
+    },
+    {
+      "draw": 624,
+      "max_data_draw": 623,
+      "contamination": false
+    },
+    {
+      "draw": 625,
+      "max_data_draw": 624,
+      "contamination": false
+    },
+    {
+      "draw": 626,
+      "max_data_draw": 625,
+      "contamination": false
+    },
+    {
+      "draw": 627,
+      "max_data_draw": 626,
+      "contamination": false
+    },
+    {
+      "draw": 628,
+      "max_data_draw": 627,
+      "contamination": false
+    },
+    {
+      "draw": 629,
+      "max_data_draw": 628,
+      "contamination": false
+    },
+    {
+      "draw": 630,
+      "max_data_draw": 629,
+      "contamination": false
+    },
+    {
+      "draw": 631,
+      "max_data_draw": 630,
+      "contamination": false
+    },
+    {
+      "draw": 632,
+      "max_data_draw": 631,
+      "contamination": false
+    },
+    {
+      "draw": 633,
+      "max_data_draw": 632,
+      "contamination": false
+    },
+    {
+      "draw": 634,
+      "max_data_draw": 633,
+      "contamination": false
+    },
+    {
+      "draw": 635,
+      "max_data_draw": 634,
+      "contamination": false
+    },
+    {
+      "draw": 636,
+      "max_data_draw": 635,
+      "contamination": false
+    },
+    {
+      "draw": 637,
+      "max_data_draw": 636,
+      "contamination": false
+    },
+    {
+      "draw": 638,
+      "max_data_draw": 637,
+      "contamination": false
+    },
+    {
+      "draw": 639,
+      "max_data_draw": 638,
+      "contamination": false
+    },
+    {
+      "draw": 640,
+      "max_data_draw": 639,
+      "contamination": false
+    },
+    {
+      "draw": 641,
+      "max_data_draw": 640,
+      "contamination": false
+    },
+    {
+      "draw": 642,
+      "max_data_draw": 641,
+      "contamination": false
+    },
+    {
+      "draw": 643,
+      "max_data_draw": 642,
+      "contamination": false
+    },
+    {
+      "draw": 644,
+      "max_data_draw": 643,
+      "contamination": false
+    },
+    {
+      "draw": 645,
+      "max_data_draw": 644,
+      "contamination": false
+    },
+    {
+      "draw": 646,
+      "max_data_draw": 645,
+      "contamination": false
+    },
+    {
+      "draw": 647,
+      "max_data_draw": 646,
+      "contamination": false
+    },
+    {
+      "draw": 648,
+      "max_data_draw": 647,
+      "contamination": false
+    },
+    {
+      "draw": 649,
+      "max_data_draw": 648,
+      "contamination": false
+    },
+    {
+      "draw": 650,
+      "max_data_draw": 649,
+      "contamination": false
+    },
+    {
+      "draw": 651,
+      "max_data_draw": 650,
+      "contamination": false
+    },
+    {
+      "draw": 652,
+      "max_data_draw": 651,
+      "contamination": false
+    },
+    {
+      "draw": 653,
+      "max_data_draw": 652,
+      "contamination": false
+    },
+    {
+      "draw": 654,
+      "max_data_draw": 653,
+      "contamination": false
+    },
+    {
+      "draw": 655,
+      "max_data_draw": 654,
+      "contamination": false
+    },
+    {
+      "draw": 656,
+      "max_data_draw": 655,
+      "contamination": false
+    },
+    {
+      "draw": 657,
+      "max_data_draw": 656,
+      "contamination": false
+    },
+    {
+      "draw": 658,
+      "max_data_draw": 657,
+      "contamination": false
+    },
+    {
+      "draw": 659,
+      "max_data_draw": 658,
+      "contamination": false
+    },
+    {
+      "draw": 660,
+      "max_data_draw": 659,
+      "contamination": false
+    },
+    {
+      "draw": 661,
+      "max_data_draw": 660,
+      "contamination": false
+    },
+    {
+      "draw": 662,
+      "max_data_draw": 661,
+      "contamination": false
+    },
+    {
+      "draw": 663,
+      "max_data_draw": 662,
+      "contamination": false
+    },
+    {
+      "draw": 664,
+      "max_data_draw": 663,
+      "contamination": false
+    },
+    {
+      "draw": 665,
+      "max_data_draw": 664,
+      "contamination": false
+    },
+    {
+      "draw": 666,
+      "max_data_draw": 665,
+      "contamination": false
+    },
+    {
+      "draw": 667,
+      "max_data_draw": 666,
+      "contamination": false
+    },
+    {
+      "draw": 668,
+      "max_data_draw": 667,
+      "contamination": false
+    },
+    {
+      "draw": 669,
+      "max_data_draw": 668,
+      "contamination": false
+    },
+    {
+      "draw": 670,
+      "max_data_draw": 669,
+      "contamination": false
+    },
+    {
+      "draw": 671,
+      "max_data_draw": 670,
+      "contamination": false
+    },
+    {
+      "draw": 672,
+      "max_data_draw": 671,
+      "contamination": false
+    },
+    {
+      "draw": 673,
+      "max_data_draw": 672,
+      "contamination": false
+    },
+    {
+      "draw": 674,
+      "max_data_draw": 673,
+      "contamination": false
+    },
+    {
+      "draw": 675,
+      "max_data_draw": 674,
+      "contamination": false
+    },
+    {
+      "draw": 676,
+      "max_data_draw": 675,
+      "contamination": false
+    },
+    {
+      "draw": 677,
+      "max_data_draw": 676,
+      "contamination": false
+    },
+    {
+      "draw": 678,
+      "max_data_draw": 677,
+      "contamination": false
+    },
+    {
+      "draw": 679,
+      "max_data_draw": 678,
+      "contamination": false
+    },
+    {
+      "draw": 680,
+      "max_data_draw": 679,
+      "contamination": false
+    },
+    {
+      "draw": 681,
+      "max_data_draw": 680,
+      "contamination": false
+    },
+    {
+      "draw": 682,
+      "max_data_draw": 681,
+      "contamination": false
+    },
+    {
+      "draw": 683,
+      "max_data_draw": 682,
+      "contamination": false
+    },
+    {
+      "draw": 684,
+      "max_data_draw": 683,
+      "contamination": false
+    },
+    {
+      "draw": 685,
+      "max_data_draw": 684,
+      "contamination": false
+    },
+    {
+      "draw": 686,
+      "max_data_draw": 685,
+      "contamination": false
+    },
+    {
+      "draw": 687,
+      "max_data_draw": 686,
+      "contamination": false
+    },
+    {
+      "draw": 688,
+      "max_data_draw": 687,
+      "contamination": false
+    },
+    {
+      "draw": 689,
+      "max_data_draw": 688,
+      "contamination": false
+    },
+    {
+      "draw": 690,
+      "max_data_draw": 689,
+      "contamination": false
+    },
+    {
+      "draw": 691,
+      "max_data_draw": 690,
+      "contamination": false
+    },
+    {
+      "draw": 692,
+      "max_data_draw": 691,
+      "contamination": false
+    },
+    {
+      "draw": 693,
+      "max_data_draw": 692,
+      "contamination": false
+    },
+    {
+      "draw": 694,
+      "max_data_draw": 693,
+      "contamination": false
+    },
+    {
+      "draw": 695,
+      "max_data_draw": 694,
+      "contamination": false
+    },
+    {
+      "draw": 696,
+      "max_data_draw": 695,
+      "contamination": false
+    },
+    {
+      "draw": 697,
+      "max_data_draw": 696,
+      "contamination": false
+    },
+    {
+      "draw": 698,
+      "max_data_draw": 697,
+      "contamination": false
+    },
+    {
+      "draw": 699,
+      "max_data_draw": 698,
+      "contamination": false
+    },
+    {
+      "draw": 700,
+      "max_data_draw": 699,
+      "contamination": false
+    },
+    {
+      "draw": 701,
+      "max_data_draw": 700,
+      "contamination": false
+    },
+    {
+      "draw": 702,
+      "max_data_draw": 701,
+      "contamination": false
+    },
+    {
+      "draw": 703,
+      "max_data_draw": 702,
+      "contamination": false
+    },
+    {
+      "draw": 704,
+      "max_data_draw": 703,
+      "contamination": false
+    },
+    {
+      "draw": 705,
+      "max_data_draw": 704,
+      "contamination": false
+    },
+    {
+      "draw": 706,
+      "max_data_draw": 705,
+      "contamination": false
+    },
+    {
+      "draw": 707,
+      "max_data_draw": 706,
+      "contamination": false
+    },
+    {
+      "draw": 708,
+      "max_data_draw": 707,
+      "contamination": false
+    },
+    {
+      "draw": 709,
+      "max_data_draw": 708,
+      "contamination": false
+    },
+    {
+      "draw": 710,
+      "max_data_draw": 709,
+      "contamination": false
+    },
+    {
+      "draw": 711,
+      "max_data_draw": 710,
+      "contamination": false
+    },
+    {
+      "draw": 712,
+      "max_data_draw": 711,
+      "contamination": false
+    },
+    {
+      "draw": 713,
+      "max_data_draw": 712,
+      "contamination": false
+    },
+    {
+      "draw": 714,
+      "max_data_draw": 713,
+      "contamination": false
+    },
+    {
+      "draw": 715,
+      "max_data_draw": 714,
+      "contamination": false
+    },
+    {
+      "draw": 716,
+      "max_data_draw": 715,
+      "contamination": false
+    },
+    {
+      "draw": 717,
+      "max_data_draw": 716,
+      "contamination": false
+    },
+    {
+      "draw": 718,
+      "max_data_draw": 717,
+      "contamination": false
+    },
+    {
+      "draw": 719,
+      "max_data_draw": 718,
+      "contamination": false
+    },
+    {
+      "draw": 720,
+      "max_data_draw": 719,
+      "contamination": false
+    },
+    {
+      "draw": 721,
+      "max_data_draw": 720,
+      "contamination": false
+    },
+    {
+      "draw": 722,
+      "max_data_draw": 721,
+      "contamination": false
+    },
+    {
+      "draw": 723,
+      "max_data_draw": 722,
+      "contamination": false
+    },
+    {
+      "draw": 724,
+      "max_data_draw": 723,
+      "contamination": false
+    },
+    {
+      "draw": 725,
+      "max_data_draw": 724,
+      "contamination": false
+    },
+    {
+      "draw": 726,
+      "max_data_draw": 725,
+      "contamination": false
+    },
+    {
+      "draw": 727,
+      "max_data_draw": 726,
+      "contamination": false
+    },
+    {
+      "draw": 728,
+      "max_data_draw": 727,
+      "contamination": false
+    },
+    {
+      "draw": 729,
+      "max_data_draw": 728,
+      "contamination": false
+    },
+    {
+      "draw": 730,
+      "max_data_draw": 729,
+      "contamination": false
+    },
+    {
+      "draw": 731,
+      "max_data_draw": 730,
+      "contamination": false
+    },
+    {
+      "draw": 732,
+      "max_data_draw": 731,
+      "contamination": false
+    },
+    {
+      "draw": 733,
+      "max_data_draw": 732,
+      "contamination": false
+    },
+    {
+      "draw": 734,
+      "max_data_draw": 733,
+      "contamination": false
+    },
+    {
+      "draw": 735,
+      "max_data_draw": 734,
+      "contamination": false
+    },
+    {
+      "draw": 736,
+      "max_data_draw": 735,
+      "contamination": false
+    },
+    {
+      "draw": 737,
+      "max_data_draw": 736,
+      "contamination": false
+    },
+    {
+      "draw": 738,
+      "max_data_draw": 737,
+      "contamination": false
+    },
+    {
+      "draw": 739,
+      "max_data_draw": 738,
+      "contamination": false
+    },
+    {
+      "draw": 740,
+      "max_data_draw": 739,
+      "contamination": false
+    },
+    {
+      "draw": 741,
+      "max_data_draw": 740,
+      "contamination": false
+    },
+    {
+      "draw": 742,
+      "max_data_draw": 741,
+      "contamination": false
+    },
+    {
+      "draw": 743,
+      "max_data_draw": 742,
+      "contamination": false
+    },
+    {
+      "draw": 744,
+      "max_data_draw": 743,
+      "contamination": false
+    },
+    {
+      "draw": 745,
+      "max_data_draw": 744,
+      "contamination": false
+    },
+    {
+      "draw": 746,
+      "max_data_draw": 745,
+      "contamination": false
+    },
+    {
+      "draw": 747,
+      "max_data_draw": 746,
+      "contamination": false
+    },
+    {
+      "draw": 748,
+      "max_data_draw": 747,
+      "contamination": false
+    },
+    {
+      "draw": 749,
+      "max_data_draw": 748,
+      "contamination": false
+    },
+    {
+      "draw": 750,
+      "max_data_draw": 749,
+      "contamination": false
+    },
+    {
+      "draw": 751,
+      "max_data_draw": 750,
+      "contamination": false
+    },
+    {
+      "draw": 752,
+      "max_data_draw": 751,
+      "contamination": false
+    },
+    {
+      "draw": 753,
+      "max_data_draw": 752,
+      "contamination": false
+    },
+    {
+      "draw": 754,
+      "max_data_draw": 753,
+      "contamination": false
+    },
+    {
+      "draw": 755,
+      "max_data_draw": 754,
+      "contamination": false
+    },
+    {
+      "draw": 756,
+      "max_data_draw": 755,
+      "contamination": false
+    },
+    {
+      "draw": 757,
+      "max_data_draw": 756,
+      "contamination": false
+    },
+    {
+      "draw": 758,
+      "max_data_draw": 757,
+      "contamination": false
+    },
+    {
+      "draw": 759,
+      "max_data_draw": 758,
+      "contamination": false
+    },
+    {
+      "draw": 760,
+      "max_data_draw": 759,
+      "contamination": false
+    },
+    {
+      "draw": 761,
+      "max_data_draw": 760,
+      "contamination": false
+    },
+    {
+      "draw": 762,
+      "max_data_draw": 761,
+      "contamination": false
+    },
+    {
+      "draw": 763,
+      "max_data_draw": 762,
+      "contamination": false
+    },
+    {
+      "draw": 764,
+      "max_data_draw": 763,
+      "contamination": false
+    },
+    {
+      "draw": 765,
+      "max_data_draw": 764,
+      "contamination": false
+    },
+    {
+      "draw": 766,
+      "max_data_draw": 765,
+      "contamination": false
+    },
+    {
+      "draw": 767,
+      "max_data_draw": 766,
+      "contamination": false
+    },
+    {
+      "draw": 768,
+      "max_data_draw": 767,
+      "contamination": false
+    },
+    {
+      "draw": 769,
+      "max_data_draw": 768,
+      "contamination": false
+    },
+    {
+      "draw": 770,
+      "max_data_draw": 769,
+      "contamination": false
+    },
+    {
+      "draw": 771,
+      "max_data_draw": 770,
+      "contamination": false
+    },
+    {
+      "draw": 772,
+      "max_data_draw": 771,
+      "contamination": false
+    },
+    {
+      "draw": 773,
+      "max_data_draw": 772,
+      "contamination": false
+    },
+    {
+      "draw": 774,
+      "max_data_draw": 773,
+      "contamination": false
+    },
+    {
+      "draw": 775,
+      "max_data_draw": 774,
+      "contamination": false
+    },
+    {
+      "draw": 776,
+      "max_data_draw": 775,
+      "contamination": false
+    },
+    {
+      "draw": 777,
+      "max_data_draw": 776,
+      "contamination": false
+    },
+    {
+      "draw": 778,
+      "max_data_draw": 777,
+      "contamination": false
+    },
+    {
+      "draw": 779,
+      "max_data_draw": 778,
+      "contamination": false
+    },
+    {
+      "draw": 780,
+      "max_data_draw": 779,
+      "contamination": false
+    },
+    {
+      "draw": 781,
+      "max_data_draw": 780,
+      "contamination": false
+    },
+    {
+      "draw": 782,
+      "max_data_draw": 781,
+      "contamination": false
+    },
+    {
+      "draw": 783,
+      "max_data_draw": 782,
+      "contamination": false
+    },
+    {
+      "draw": 784,
+      "max_data_draw": 783,
+      "contamination": false
+    },
+    {
+      "draw": 785,
+      "max_data_draw": 784,
+      "contamination": false
+    },
+    {
+      "draw": 786,
+      "max_data_draw": 785,
+      "contamination": false
+    },
+    {
+      "draw": 787,
+      "max_data_draw": 786,
+      "contamination": false
+    },
+    {
+      "draw": 788,
+      "max_data_draw": 787,
+      "contamination": false
+    },
+    {
+      "draw": 789,
+      "max_data_draw": 788,
+      "contamination": false
+    },
+    {
+      "draw": 790,
+      "max_data_draw": 789,
+      "contamination": false
+    },
+    {
+      "draw": 791,
+      "max_data_draw": 790,
+      "contamination": false
+    },
+    {
+      "draw": 792,
+      "max_data_draw": 791,
+      "contamination": false
+    },
+    {
+      "draw": 793,
+      "max_data_draw": 792,
+      "contamination": false
+    },
+    {
+      "draw": 794,
+      "max_data_draw": 793,
+      "contamination": false
+    },
+    {
+      "draw": 795,
+      "max_data_draw": 794,
+      "contamination": false
+    },
+    {
+      "draw": 796,
+      "max_data_draw": 795,
+      "contamination": false
+    },
+    {
+      "draw": 797,
+      "max_data_draw": 796,
+      "contamination": false
+    },
+    {
+      "draw": 798,
+      "max_data_draw": 797,
+      "contamination": false
+    },
+    {
+      "draw": 799,
+      "max_data_draw": 798,
+      "contamination": false
+    },
+    {
+      "draw": 800,
+      "max_data_draw": 799,
+      "contamination": false
+    },
+    {
+      "draw": 801,
+      "max_data_draw": 800,
+      "contamination": false
+    },
+    {
+      "draw": 802,
+      "max_data_draw": 801,
+      "contamination": false
+    },
+    {
+      "draw": 803,
+      "max_data_draw": 802,
+      "contamination": false
+    },
+    {
+      "draw": 804,
+      "max_data_draw": 803,
+      "contamination": false
+    },
+    {
+      "draw": 805,
+      "max_data_draw": 804,
+      "contamination": false
+    },
+    {
+      "draw": 806,
+      "max_data_draw": 805,
+      "contamination": false
+    },
+    {
+      "draw": 807,
+      "max_data_draw": 806,
+      "contamination": false
+    },
+    {
+      "draw": 808,
+      "max_data_draw": 807,
+      "contamination": false
+    },
+    {
+      "draw": 809,
+      "max_data_draw": 808,
+      "contamination": false
+    },
+    {
+      "draw": 810,
+      "max_data_draw": 809,
+      "contamination": false
+    },
+    {
+      "draw": 811,
+      "max_data_draw": 810,
+      "contamination": false
+    },
+    {
+      "draw": 812,
+      "max_data_draw": 811,
+      "contamination": false
+    },
+    {
+      "draw": 813,
+      "max_data_draw": 812,
+      "contamination": false
+    },
+    {
+      "draw": 814,
+      "max_data_draw": 813,
+      "contamination": false
+    },
+    {
+      "draw": 815,
+      "max_data_draw": 814,
+      "contamination": false
+    },
+    {
+      "draw": 816,
+      "max_data_draw": 815,
+      "contamination": false
+    },
+    {
+      "draw": 817,
+      "max_data_draw": 816,
+      "contamination": false
+    },
+    {
+      "draw": 818,
+      "max_data_draw": 817,
+      "contamination": false
+    },
+    {
+      "draw": 819,
+      "max_data_draw": 818,
+      "contamination": false
+    },
+    {
+      "draw": 820,
+      "max_data_draw": 819,
+      "contamination": false
+    },
+    {
+      "draw": 821,
+      "max_data_draw": 820,
+      "contamination": false
+    },
+    {
+      "draw": 822,
+      "max_data_draw": 821,
+      "contamination": false
+    },
+    {
+      "draw": 823,
+      "max_data_draw": 822,
+      "contamination": false
+    },
+    {
+      "draw": 824,
+      "max_data_draw": 823,
+      "contamination": false
+    },
+    {
+      "draw": 825,
+      "max_data_draw": 824,
+      "contamination": false
+    },
+    {
+      "draw": 826,
+      "max_data_draw": 825,
+      "contamination": false
+    },
+    {
+      "draw": 827,
+      "max_data_draw": 826,
+      "contamination": false
+    },
+    {
+      "draw": 828,
+      "max_data_draw": 827,
+      "contamination": false
+    },
+    {
+      "draw": 829,
+      "max_data_draw": 828,
+      "contamination": false
+    },
+    {
+      "draw": 830,
+      "max_data_draw": 829,
+      "contamination": false
+    },
+    {
+      "draw": 831,
+      "max_data_draw": 830,
+      "contamination": false
+    },
+    {
+      "draw": 832,
+      "max_data_draw": 831,
+      "contamination": false
+    },
+    {
+      "draw": 833,
+      "max_data_draw": 832,
+      "contamination": false
+    },
+    {
+      "draw": 834,
+      "max_data_draw": 833,
+      "contamination": false
+    },
+    {
+      "draw": 835,
+      "max_data_draw": 834,
+      "contamination": false
+    },
+    {
+      "draw": 836,
+      "max_data_draw": 835,
+      "contamination": false
+    },
+    {
+      "draw": 837,
+      "max_data_draw": 836,
+      "contamination": false
+    },
+    {
+      "draw": 838,
+      "max_data_draw": 837,
+      "contamination": false
+    },
+    {
+      "draw": 839,
+      "max_data_draw": 838,
+      "contamination": false
+    },
+    {
+      "draw": 840,
+      "max_data_draw": 839,
+      "contamination": false
+    },
+    {
+      "draw": 841,
+      "max_data_draw": 840,
+      "contamination": false
+    },
+    {
+      "draw": 842,
+      "max_data_draw": 841,
+      "contamination": false
+    },
+    {
+      "draw": 843,
+      "max_data_draw": 842,
+      "contamination": false
+    },
+    {
+      "draw": 844,
+      "max_data_draw": 843,
+      "contamination": false
+    },
+    {
+      "draw": 845,
+      "max_data_draw": 844,
+      "contamination": false
+    },
+    {
+      "draw": 846,
+      "max_data_draw": 845,
+      "contamination": false
+    },
+    {
+      "draw": 847,
+      "max_data_draw": 846,
+      "contamination": false
+    },
+    {
+      "draw": 848,
+      "max_data_draw": 847,
+      "contamination": false
+    },
+    {
+      "draw": 849,
+      "max_data_draw": 848,
+      "contamination": false
+    },
+    {
+      "draw": 850,
+      "max_data_draw": 849,
+      "contamination": false
+    },
+    {
+      "draw": 851,
+      "max_data_draw": 850,
+      "contamination": false
+    },
+    {
+      "draw": 852,
+      "max_data_draw": 851,
+      "contamination": false
+    },
+    {
+      "draw": 853,
+      "max_data_draw": 852,
+      "contamination": false
+    },
+    {
+      "draw": 854,
+      "max_data_draw": 853,
+      "contamination": false
+    },
+    {
+      "draw": 855,
+      "max_data_draw": 854,
+      "contamination": false
+    },
+    {
+      "draw": 856,
+      "max_data_draw": 855,
+      "contamination": false
+    },
+    {
+      "draw": 857,
+      "max_data_draw": 856,
+      "contamination": false
+    },
+    {
+      "draw": 858,
+      "max_data_draw": 857,
+      "contamination": false
+    },
+    {
+      "draw": 859,
+      "max_data_draw": 858,
+      "contamination": false
+    },
+    {
+      "draw": 860,
+      "max_data_draw": 859,
+      "contamination": false
+    },
+    {
+      "draw": 861,
+      "max_data_draw": 860,
+      "contamination": false
+    },
+    {
+      "draw": 862,
+      "max_data_draw": 861,
+      "contamination": false
+    },
+    {
+      "draw": 863,
+      "max_data_draw": 862,
+      "contamination": false
+    },
+    {
+      "draw": 864,
+      "max_data_draw": 863,
+      "contamination": false
+    },
+    {
+      "draw": 865,
+      "max_data_draw": 864,
+      "contamination": false
+    },
+    {
+      "draw": 866,
+      "max_data_draw": 865,
+      "contamination": false
+    },
+    {
+      "draw": 867,
+      "max_data_draw": 866,
+      "contamination": false
+    },
+    {
+      "draw": 868,
+      "max_data_draw": 867,
+      "contamination": false
+    },
+    {
+      "draw": 869,
+      "max_data_draw": 868,
+      "contamination": false
+    },
+    {
+      "draw": 870,
+      "max_data_draw": 869,
+      "contamination": false
+    },
+    {
+      "draw": 871,
+      "max_data_draw": 870,
+      "contamination": false
+    },
+    {
+      "draw": 872,
+      "max_data_draw": 871,
+      "contamination": false
+    },
+    {
+      "draw": 873,
+      "max_data_draw": 872,
+      "contamination": false
+    },
+    {
+      "draw": 874,
+      "max_data_draw": 873,
+      "contamination": false
+    },
+    {
+      "draw": 875,
+      "max_data_draw": 874,
+      "contamination": false
+    },
+    {
+      "draw": 876,
+      "max_data_draw": 875,
+      "contamination": false
+    },
+    {
+      "draw": 877,
+      "max_data_draw": 876,
+      "contamination": false
+    },
+    {
+      "draw": 878,
+      "max_data_draw": 877,
+      "contamination": false
+    },
+    {
+      "draw": 879,
+      "max_data_draw": 878,
+      "contamination": false
+    },
+    {
+      "draw": 880,
+      "max_data_draw": 879,
+      "contamination": false
+    },
+    {
+      "draw": 881,
+      "max_data_draw": 880,
+      "contamination": false
+    },
+    {
+      "draw": 882,
+      "max_data_draw": 881,
+      "contamination": false
+    },
+    {
+      "draw": 883,
+      "max_data_draw": 882,
+      "contamination": false
+    },
+    {
+      "draw": 884,
+      "max_data_draw": 883,
+      "contamination": false
+    },
+    {
+      "draw": 885,
+      "max_data_draw": 884,
+      "contamination": false
+    },
+    {
+      "draw": 886,
+      "max_data_draw": 885,
+      "contamination": false
+    },
+    {
+      "draw": 887,
+      "max_data_draw": 886,
+      "contamination": false
+    },
+    {
+      "draw": 888,
+      "max_data_draw": 887,
+      "contamination": false
+    },
+    {
+      "draw": 889,
+      "max_data_draw": 888,
+      "contamination": false
+    },
+    {
+      "draw": 890,
+      "max_data_draw": 889,
+      "contamination": false
+    },
+    {
+      "draw": 891,
+      "max_data_draw": 890,
+      "contamination": false
+    },
+    {
+      "draw": 892,
+      "max_data_draw": 891,
+      "contamination": false
+    },
+    {
+      "draw": 893,
+      "max_data_draw": 892,
+      "contamination": false
+    },
+    {
+      "draw": 894,
+      "max_data_draw": 893,
+      "contamination": false
+    },
+    {
+      "draw": 895,
+      "max_data_draw": 894,
+      "contamination": false
+    },
+    {
+      "draw": 896,
+      "max_data_draw": 895,
+      "contamination": false
+    },
+    {
+      "draw": 897,
+      "max_data_draw": 896,
+      "contamination": false
+    },
+    {
+      "draw": 898,
+      "max_data_draw": 897,
+      "contamination": false
+    },
+    {
+      "draw": 899,
+      "max_data_draw": 898,
+      "contamination": false
+    },
+    {
+      "draw": 900,
+      "max_data_draw": 899,
+      "contamination": false
+    },
+    {
+      "draw": 901,
+      "max_data_draw": 900,
+      "contamination": false
+    },
+    {
+      "draw": 902,
+      "max_data_draw": 901,
+      "contamination": false
+    },
+    {
+      "draw": 903,
+      "max_data_draw": 902,
+      "contamination": false
+    },
+    {
+      "draw": 904,
+      "max_data_draw": 903,
+      "contamination": false
+    },
+    {
+      "draw": 905,
+      "max_data_draw": 904,
+      "contamination": false
+    },
+    {
+      "draw": 906,
+      "max_data_draw": 905,
+      "contamination": false
+    },
+    {
+      "draw": 907,
+      "max_data_draw": 906,
+      "contamination": false
+    },
+    {
+      "draw": 908,
+      "max_data_draw": 907,
+      "contamination": false
+    },
+    {
+      "draw": 909,
+      "max_data_draw": 908,
+      "contamination": false
+    },
+    {
+      "draw": 910,
+      "max_data_draw": 909,
+      "contamination": false
+    },
+    {
+      "draw": 911,
+      "max_data_draw": 910,
+      "contamination": false
+    },
+    {
+      "draw": 912,
+      "max_data_draw": 911,
+      "contamination": false
+    },
+    {
+      "draw": 913,
+      "max_data_draw": 912,
+      "contamination": false
+    },
+    {
+      "draw": 914,
+      "max_data_draw": 913,
+      "contamination": false
+    },
+    {
+      "draw": 915,
+      "max_data_draw": 914,
+      "contamination": false
+    },
+    {
+      "draw": 916,
+      "max_data_draw": 915,
+      "contamination": false
+    },
+    {
+      "draw": 917,
+      "max_data_draw": 916,
+      "contamination": false
+    },
+    {
+      "draw": 918,
+      "max_data_draw": 917,
+      "contamination": false
+    },
+    {
+      "draw": 919,
+      "max_data_draw": 918,
+      "contamination": false
+    },
+    {
+      "draw": 920,
+      "max_data_draw": 919,
+      "contamination": false
+    },
+    {
+      "draw": 921,
+      "max_data_draw": 920,
+      "contamination": false
+    },
+    {
+      "draw": 922,
+      "max_data_draw": 921,
+      "contamination": false
+    },
+    {
+      "draw": 923,
+      "max_data_draw": 922,
+      "contamination": false
+    },
+    {
+      "draw": 924,
+      "max_data_draw": 923,
+      "contamination": false
+    },
+    {
+      "draw": 925,
+      "max_data_draw": 924,
+      "contamination": false
+    },
+    {
+      "draw": 926,
+      "max_data_draw": 925,
+      "contamination": false
+    },
+    {
+      "draw": 927,
+      "max_data_draw": 926,
+      "contamination": false
+    },
+    {
+      "draw": 928,
+      "max_data_draw": 927,
+      "contamination": false
+    },
+    {
+      "draw": 929,
+      "max_data_draw": 928,
+      "contamination": false
+    },
+    {
+      "draw": 930,
+      "max_data_draw": 929,
+      "contamination": false
+    },
+    {
+      "draw": 931,
+      "max_data_draw": 930,
+      "contamination": false
+    },
+    {
+      "draw": 932,
+      "max_data_draw": 931,
+      "contamination": false
+    },
+    {
+      "draw": 934,
+      "max_data_draw": 933,
+      "contamination": false
+    },
+    {
+      "draw": 935,
+      "max_data_draw": 934,
+      "contamination": false
+    },
+    {
+      "draw": 936,
+      "max_data_draw": 935,
+      "contamination": false
+    },
+    {
+      "draw": 937,
+      "max_data_draw": 936,
+      "contamination": false
+    },
+    {
+      "draw": 938,
+      "max_data_draw": 937,
+      "contamination": false
+    },
+    {
+      "draw": 939,
+      "max_data_draw": 938,
+      "contamination": false
+    },
+    {
+      "draw": 940,
+      "max_data_draw": 939,
+      "contamination": false
+    },
+    {
+      "draw": 941,
+      "max_data_draw": 940,
+      "contamination": false
+    },
+    {
+      "draw": 942,
+      "max_data_draw": 941,
+      "contamination": false
+    },
+    {
+      "draw": 943,
+      "max_data_draw": 942,
+      "contamination": false
+    },
+    {
+      "draw": 944,
+      "max_data_draw": 943,
+      "contamination": false
+    },
+    {
+      "draw": 945,
+      "max_data_draw": 944,
+      "contamination": false
+    },
+    {
+      "draw": 946,
+      "max_data_draw": 945,
+      "contamination": false
+    },
+    {
+      "draw": 947,
+      "max_data_draw": 946,
+      "contamination": false
+    },
+    {
+      "draw": 948,
+      "max_data_draw": 947,
+      "contamination": false
+    },
+    {
+      "draw": 949,
+      "max_data_draw": 948,
+      "contamination": false
+    },
+    {
+      "draw": 950,
+      "max_data_draw": 949,
+      "contamination": false
+    },
+    {
+      "draw": 951,
+      "max_data_draw": 950,
+      "contamination": false
+    },
+    {
+      "draw": 952,
+      "max_data_draw": 951,
+      "contamination": false
+    },
+    {
+      "draw": 953,
+      "max_data_draw": 952,
+      "contamination": false
+    },
+    {
+      "draw": 954,
+      "max_data_draw": 953,
+      "contamination": false
+    },
+    {
+      "draw": 955,
+      "max_data_draw": 954,
+      "contamination": false
+    },
+    {
+      "draw": 956,
+      "max_data_draw": 955,
+      "contamination": false
+    },
+    {
+      "draw": 957,
+      "max_data_draw": 956,
+      "contamination": false
+    },
+    {
+      "draw": 958,
+      "max_data_draw": 957,
+      "contamination": false
+    },
+    {
+      "draw": 959,
+      "max_data_draw": 958,
+      "contamination": false
+    },
+    {
+      "draw": 960,
+      "max_data_draw": 959,
+      "contamination": false
+    },
+    {
+      "draw": 961,
+      "max_data_draw": 960,
+      "contamination": false
+    },
+    {
+      "draw": 962,
+      "max_data_draw": 961,
+      "contamination": false
+    },
+    {
+      "draw": 963,
+      "max_data_draw": 962,
+      "contamination": false
+    },
+    {
+      "draw": 964,
+      "max_data_draw": 963,
+      "contamination": false
+    },
+    {
+      "draw": 965,
+      "max_data_draw": 964,
+      "contamination": false
+    },
+    {
+      "draw": 966,
+      "max_data_draw": 965,
+      "contamination": false
+    },
+    {
+      "draw": 967,
+      "max_data_draw": 966,
+      "contamination": false
+    },
+    {
+      "draw": 968,
+      "max_data_draw": 967,
+      "contamination": false
+    },
+    {
+      "draw": 969,
+      "max_data_draw": 968,
+      "contamination": false
+    },
+    {
+      "draw": 970,
+      "max_data_draw": 969,
+      "contamination": false
+    },
+    {
+      "draw": 971,
+      "max_data_draw": 970,
+      "contamination": false
+    },
+    {
+      "draw": 972,
+      "max_data_draw": 971,
+      "contamination": false
+    },
+    {
+      "draw": 973,
+      "max_data_draw": 972,
+      "contamination": false
+    },
+    {
+      "draw": 974,
+      "max_data_draw": 973,
+      "contamination": false
+    },
+    {
+      "draw": 975,
+      "max_data_draw": 974,
+      "contamination": false
+    },
+    {
+      "draw": 976,
+      "max_data_draw": 975,
+      "contamination": false
+    },
+    {
+      "draw": 977,
+      "max_data_draw": 976,
+      "contamination": false
+    },
+    {
+      "draw": 978,
+      "max_data_draw": 977,
+      "contamination": false
+    },
+    {
+      "draw": 979,
+      "max_data_draw": 978,
+      "contamination": false
+    },
+    {
+      "draw": 980,
+      "max_data_draw": 979,
+      "contamination": false
+    },
+    {
+      "draw": 981,
+      "max_data_draw": 980,
+      "contamination": false
+    },
+    {
+      "draw": 982,
+      "max_data_draw": 981,
+      "contamination": false
+    },
+    {
+      "draw": 983,
+      "max_data_draw": 982,
+      "contamination": false
+    },
+    {
+      "draw": 984,
+      "max_data_draw": 983,
+      "contamination": false
+    },
+    {
+      "draw": 985,
+      "max_data_draw": 984,
+      "contamination": false
+    },
+    {
+      "draw": 986,
+      "max_data_draw": 985,
+      "contamination": false
+    },
+    {
+      "draw": 987,
+      "max_data_draw": 986,
+      "contamination": false
+    },
+    {
+      "draw": 988,
+      "max_data_draw": 987,
+      "contamination": false
+    },
+    {
+      "draw": 989,
+      "max_data_draw": 988,
+      "contamination": false
+    },
+    {
+      "draw": 990,
+      "max_data_draw": 989,
+      "contamination": false
+    },
+    {
+      "draw": 991,
+      "max_data_draw": 990,
+      "contamination": false
+    },
+    {
+      "draw": 992,
+      "max_data_draw": 991,
+      "contamination": false
+    },
+    {
+      "draw": 993,
+      "max_data_draw": 992,
+      "contamination": false
+    },
+    {
+      "draw": 994,
+      "max_data_draw": 993,
+      "contamination": false
+    },
+    {
+      "draw": 995,
+      "max_data_draw": 994,
+      "contamination": false
+    },
+    {
+      "draw": 996,
+      "max_data_draw": 995,
+      "contamination": false
+    },
+    {
+      "draw": 997,
+      "max_data_draw": 996,
+      "contamination": false
+    },
+    {
+      "draw": 998,
+      "max_data_draw": 997,
+      "contamination": false
+    },
+    {
+      "draw": 999,
+      "max_data_draw": 998,
+      "contamination": false
+    },
+    {
+      "draw": 1000,
+      "max_data_draw": 999,
+      "contamination": false
+    },
+    {
+      "draw": 1001,
+      "max_data_draw": 1000,
+      "contamination": false
+    },
+    {
+      "draw": 1002,
+      "max_data_draw": 1001,
+      "contamination": false
+    },
+    {
+      "draw": 1003,
+      "max_data_draw": 1002,
+      "contamination": false
+    },
+    {
+      "draw": 1004,
+      "max_data_draw": 1003,
+      "contamination": false
+    },
+    {
+      "draw": 1005,
+      "max_data_draw": 1004,
+      "contamination": false
+    },
+    {
+      "draw": 1006,
+      "max_data_draw": 1005,
+      "contamination": false
+    },
+    {
+      "draw": 1007,
+      "max_data_draw": 1006,
+      "contamination": false
+    },
+    {
+      "draw": 1008,
+      "max_data_draw": 1007,
+      "contamination": false
+    },
+    {
+      "draw": 1009,
+      "max_data_draw": 1008,
+      "contamination": false
+    },
+    {
+      "draw": 1010,
+      "max_data_draw": 1009,
+      "contamination": false
+    },
+    {
+      "draw": 1011,
+      "max_data_draw": 1010,
+      "contamination": false
+    },
+    {
+      "draw": 1012,
+      "max_data_draw": 1011,
+      "contamination": false
+    },
+    {
+      "draw": 1013,
+      "max_data_draw": 1012,
+      "contamination": false
+    },
+    {
+      "draw": 1014,
+      "max_data_draw": 1013,
+      "contamination": false
+    },
+    {
+      "draw": 1015,
+      "max_data_draw": 1014,
+      "contamination": false
+    },
+    {
+      "draw": 1016,
+      "max_data_draw": 1015,
+      "contamination": false
+    },
+    {
+      "draw": 1017,
+      "max_data_draw": 1016,
+      "contamination": false
+    },
+    {
+      "draw": 1018,
+      "max_data_draw": 1017,
+      "contamination": false
+    },
+    {
+      "draw": 1019,
+      "max_data_draw": 1018,
+      "contamination": false
+    },
+    {
+      "draw": 1020,
+      "max_data_draw": 1019,
+      "contamination": false
+    },
+    {
+      "draw": 1021,
+      "max_data_draw": 1020,
+      "contamination": false
+    },
+    {
+      "draw": 1022,
+      "max_data_draw": 1021,
+      "contamination": false
+    },
+    {
+      "draw": 1023,
+      "max_data_draw": 1022,
+      "contamination": false
+    },
+    {
+      "draw": 1024,
+      "max_data_draw": 1023,
+      "contamination": false
+    },
+    {
+      "draw": 1025,
+      "max_data_draw": 1024,
+      "contamination": false
+    },
+    {
+      "draw": 1026,
+      "max_data_draw": 1025,
+      "contamination": false
+    },
+    {
+      "draw": 1027,
+      "max_data_draw": 1026,
+      "contamination": false
+    },
+    {
+      "draw": 1028,
+      "max_data_draw": 1027,
+      "contamination": false
+    },
+    {
+      "draw": 1029,
+      "max_data_draw": 1028,
+      "contamination": false
+    },
+    {
+      "draw": 1030,
+      "max_data_draw": 1029,
+      "contamination": false
+    },
+    {
+      "draw": 1031,
+      "max_data_draw": 1030,
+      "contamination": false
+    },
+    {
+      "draw": 1032,
+      "max_data_draw": 1031,
+      "contamination": false
+    },
+    {
+      "draw": 1033,
+      "max_data_draw": 1032,
+      "contamination": false
+    },
+    {
+      "draw": 1034,
+      "max_data_draw": 1033,
+      "contamination": false
+    },
+    {
+      "draw": 1035,
+      "max_data_draw": 1034,
+      "contamination": false
+    },
+    {
+      "draw": 1036,
+      "max_data_draw": 1035,
+      "contamination": false
+    },
+    {
+      "draw": 1037,
+      "max_data_draw": 1036,
+      "contamination": false
+    },
+    {
+      "draw": 1038,
+      "max_data_draw": 1037,
+      "contamination": false
+    },
+    {
+      "draw": 1039,
+      "max_data_draw": 1038,
+      "contamination": false
+    },
+    {
+      "draw": 1040,
+      "max_data_draw": 1039,
+      "contamination": false
+    },
+    {
+      "draw": 1041,
+      "max_data_draw": 1040,
+      "contamination": false
+    },
+    {
+      "draw": 1042,
+      "max_data_draw": 1041,
+      "contamination": false
+    },
+    {
+      "draw": 1043,
+      "max_data_draw": 1042,
+      "contamination": false
+    },
+    {
+      "draw": 1044,
+      "max_data_draw": 1043,
+      "contamination": false
+    },
+    {
+      "draw": 1045,
+      "max_data_draw": 1044,
+      "contamination": false
+    },
+    {
+      "draw": 1046,
+      "max_data_draw": 1045,
+      "contamination": false
+    },
+    {
+      "draw": 1047,
+      "max_data_draw": 1046,
+      "contamination": false
+    },
+    {
+      "draw": 1048,
+      "max_data_draw": 1047,
+      "contamination": false
+    },
+    {
+      "draw": 1049,
+      "max_data_draw": 1048,
+      "contamination": false
+    },
+    {
+      "draw": 1050,
+      "max_data_draw": 1049,
+      "contamination": false
+    },
+    {
+      "draw": 1051,
+      "max_data_draw": 1050,
+      "contamination": false
+    },
+    {
+      "draw": 1052,
+      "max_data_draw": 1051,
+      "contamination": false
+    },
+    {
+      "draw": 1053,
+      "max_data_draw": 1052,
+      "contamination": false
+    },
+    {
+      "draw": 1054,
+      "max_data_draw": 1053,
+      "contamination": false
+    },
+    {
+      "draw": 1055,
+      "max_data_draw": 1054,
+      "contamination": false
+    },
+    {
+      "draw": 1056,
+      "max_data_draw": 1055,
+      "contamination": false
+    },
+    {
+      "draw": 1057,
+      "max_data_draw": 1056,
+      "contamination": false
+    },
+    {
+      "draw": 1058,
+      "max_data_draw": 1057,
+      "contamination": false
+    },
+    {
+      "draw": 1059,
+      "max_data_draw": 1058,
+      "contamination": false
+    },
+    {
+      "draw": 1060,
+      "max_data_draw": 1059,
+      "contamination": false
+    },
+    {
+      "draw": 1061,
+      "max_data_draw": 1060,
+      "contamination": false
+    },
+    {
+      "draw": 1062,
+      "max_data_draw": 1061,
+      "contamination": false
+    },
+    {
+      "draw": 1063,
+      "max_data_draw": 1062,
+      "contamination": false
+    },
+    {
+      "draw": 1064,
+      "max_data_draw": 1063,
+      "contamination": false
+    },
+    {
+      "draw": 1065,
+      "max_data_draw": 1064,
+      "contamination": false
+    },
+    {
+      "draw": 1066,
+      "max_data_draw": 1065,
+      "contamination": false
+    },
+    {
+      "draw": 1067,
+      "max_data_draw": 1066,
+      "contamination": false
+    },
+    {
+      "draw": 1068,
+      "max_data_draw": 1067,
+      "contamination": false
+    },
+    {
+      "draw": 1069,
+      "max_data_draw": 1068,
+      "contamination": false
+    },
+    {
+      "draw": 1070,
+      "max_data_draw": 1069,
+      "contamination": false
+    },
+    {
+      "draw": 1071,
+      "max_data_draw": 1070,
+      "contamination": false
+    },
+    {
+      "draw": 1072,
+      "max_data_draw": 1071,
+      "contamination": false
+    },
+    {
+      "draw": 1073,
+      "max_data_draw": 1072,
+      "contamination": false
+    },
+    {
+      "draw": 1074,
+      "max_data_draw": 1073,
+      "contamination": false
+    },
+    {
+      "draw": 1075,
+      "max_data_draw": 1074,
+      "contamination": false
+    },
+    {
+      "draw": 1076,
+      "max_data_draw": 1075,
+      "contamination": false
+    },
+    {
+      "draw": 1077,
+      "max_data_draw": 1076,
+      "contamination": false
+    },
+    {
+      "draw": 1078,
+      "max_data_draw": 1077,
+      "contamination": false
+    },
+    {
+      "draw": 1079,
+      "max_data_draw": 1078,
+      "contamination": false
+    },
+    {
+      "draw": 1080,
+      "max_data_draw": 1079,
+      "contamination": false
+    },
+    {
+      "draw": 1081,
+      "max_data_draw": 1080,
+      "contamination": false
+    },
+    {
+      "draw": 1082,
+      "max_data_draw": 1081,
+      "contamination": false
+    },
+    {
+      "draw": 1083,
+      "max_data_draw": 1082,
+      "contamination": false
+    },
+    {
+      "draw": 1084,
+      "max_data_draw": 1083,
+      "contamination": false
+    },
+    {
+      "draw": 1085,
+      "max_data_draw": 1084,
+      "contamination": false
+    },
+    {
+      "draw": 1086,
+      "max_data_draw": 1085,
+      "contamination": false
+    },
+    {
+      "draw": 1087,
+      "max_data_draw": 1086,
+      "contamination": false
+    },
+    {
+      "draw": 1088,
+      "max_data_draw": 1087,
+      "contamination": false
+    },
+    {
+      "draw": 1089,
+      "max_data_draw": 1088,
+      "contamination": false
+    },
+    {
+      "draw": 1090,
+      "max_data_draw": 1089,
+      "contamination": false
+    },
+    {
+      "draw": 1091,
+      "max_data_draw": 1090,
+      "contamination": false
+    },
+    {
+      "draw": 1092,
+      "max_data_draw": 1091,
+      "contamination": false
+    },
+    {
+      "draw": 1093,
+      "max_data_draw": 1092,
+      "contamination": false
+    },
+    {
+      "draw": 1094,
+      "max_data_draw": 1093,
+      "contamination": false
+    },
+    {
+      "draw": 1095,
+      "max_data_draw": 1094,
+      "contamination": false
+    },
+    {
+      "draw": 1096,
+      "max_data_draw": 1095,
+      "contamination": false
+    },
+    {
+      "draw": 1097,
+      "max_data_draw": 1096,
+      "contamination": false
+    },
+    {
+      "draw": 1098,
+      "max_data_draw": 1097,
+      "contamination": false
+    },
+    {
+      "draw": 1099,
+      "max_data_draw": 1098,
+      "contamination": false
+    },
+    {
+      "draw": 1100,
+      "max_data_draw": 1099,
+      "contamination": false
+    },
+    {
+      "draw": 1101,
+      "max_data_draw": 1100,
+      "contamination": false
+    },
+    {
+      "draw": 1102,
+      "max_data_draw": 1101,
+      "contamination": false
+    },
+    {
+      "draw": 1103,
+      "max_data_draw": 1102,
+      "contamination": false
+    },
+    {
+      "draw": 1104,
+      "max_data_draw": 1103,
+      "contamination": false
+    },
+    {
+      "draw": 1105,
+      "max_data_draw": 1104,
+      "contamination": false
+    },
+    {
+      "draw": 1106,
+      "max_data_draw": 1105,
+      "contamination": false
+    },
+    {
+      "draw": 1107,
+      "max_data_draw": 1106,
+      "contamination": false
+    },
+    {
+      "draw": 1108,
+      "max_data_draw": 1107,
+      "contamination": false
+    },
+    {
+      "draw": 1109,
+      "max_data_draw": 1108,
+      "contamination": false
+    },
+    {
+      "draw": 1110,
+      "max_data_draw": 1109,
+      "contamination": false
+    },
+    {
+      "draw": 1111,
+      "max_data_draw": 1110,
+      "contamination": false
+    },
+    {
+      "draw": 1112,
+      "max_data_draw": 1111,
+      "contamination": false
+    },
+    {
+      "draw": 1113,
+      "max_data_draw": 1112,
+      "contamination": false
+    },
+    {
+      "draw": 1114,
+      "max_data_draw": 1113,
+      "contamination": false
+    },
+    {
+      "draw": 1115,
+      "max_data_draw": 1114,
+      "contamination": false
+    },
+    {
+      "draw": 1116,
+      "max_data_draw": 1115,
+      "contamination": false
+    },
+    {
+      "draw": 1117,
+      "max_data_draw": 1116,
+      "contamination": false
+    },
+    {
+      "draw": 1118,
+      "max_data_draw": 1117,
+      "contamination": false
+    },
+    {
+      "draw": 1119,
+      "max_data_draw": 1118,
+      "contamination": false
+    },
+    {
+      "draw": 1120,
+      "max_data_draw": 1119,
+      "contamination": false
+    },
+    {
+      "draw": 1121,
+      "max_data_draw": 1120,
+      "contamination": false
+    },
+    {
+      "draw": 1122,
+      "max_data_draw": 1121,
+      "contamination": false
+    },
+    {
+      "draw": 1123,
+      "max_data_draw": 1122,
+      "contamination": false
+    },
+    {
+      "draw": 1124,
+      "max_data_draw": 1123,
+      "contamination": false
+    },
+    {
+      "draw": 1125,
+      "max_data_draw": 1124,
+      "contamination": false
+    },
+    {
+      "draw": 1126,
+      "max_data_draw": 1125,
+      "contamination": false
+    },
+    {
+      "draw": 1127,
+      "max_data_draw": 1126,
+      "contamination": false
+    },
+    {
+      "draw": 1128,
+      "max_data_draw": 1127,
+      "contamination": false
+    },
+    {
+      "draw": 1129,
+      "max_data_draw": 1128,
+      "contamination": false
+    },
+    {
+      "draw": 1130,
+      "max_data_draw": 1129,
+      "contamination": false
+    },
+    {
+      "draw": 1131,
+      "max_data_draw": 1130,
+      "contamination": false
+    },
+    {
+      "draw": 1132,
+      "max_data_draw": 1131,
+      "contamination": false
+    },
+    {
+      "draw": 1133,
+      "max_data_draw": 1132,
+      "contamination": false
+    },
+    {
+      "draw": 1134,
+      "max_data_draw": 1133,
+      "contamination": false
+    },
+    {
+      "draw": 1135,
+      "max_data_draw": 1134,
+      "contamination": false
+    },
+    {
+      "draw": 1136,
+      "max_data_draw": 1135,
+      "contamination": false
+    },
+    {
+      "draw": 1137,
+      "max_data_draw": 1136,
+      "contamination": false
+    },
+    {
+      "draw": 1138,
+      "max_data_draw": 1137,
+      "contamination": false
+    },
+    {
+      "draw": 1139,
+      "max_data_draw": 1138,
+      "contamination": false
+    },
+    {
+      "draw": 1140,
+      "max_data_draw": 1139,
+      "contamination": false
+    },
+    {
+      "draw": 1141,
+      "max_data_draw": 1140,
+      "contamination": false
+    },
+    {
+      "draw": 1142,
+      "max_data_draw": 1141,
+      "contamination": false
+    },
+    {
+      "draw": 1143,
+      "max_data_draw": 1142,
+      "contamination": false
+    },
+    {
+      "draw": 1144,
+      "max_data_draw": 1143,
+      "contamination": false
+    },
+    {
+      "draw": 1145,
+      "max_data_draw": 1144,
+      "contamination": false
+    },
+    {
+      "draw": 1146,
+      "max_data_draw": 1145,
+      "contamination": false
+    },
+    {
+      "draw": 1147,
+      "max_data_draw": 1146,
+      "contamination": false
+    },
+    {
+      "draw": 1148,
+      "max_data_draw": 1147,
+      "contamination": false
+    },
+    {
+      "draw": 1149,
+      "max_data_draw": 1148,
+      "contamination": false
+    },
+    {
+      "draw": 1150,
+      "max_data_draw": 1149,
+      "contamination": false
+    },
+    {
+      "draw": 1151,
+      "max_data_draw": 1150,
+      "contamination": false
+    },
+    {
+      "draw": 1152,
+      "max_data_draw": 1151,
+      "contamination": false
+    },
+    {
+      "draw": 1153,
+      "max_data_draw": 1152,
+      "contamination": false
+    },
+    {
+      "draw": 1154,
+      "max_data_draw": 1153,
+      "contamination": false
+    },
+    {
+      "draw": 1155,
+      "max_data_draw": 1154,
+      "contamination": false
+    },
+    {
+      "draw": 1156,
+      "max_data_draw": 1155,
+      "contamination": false
+    },
+    {
+      "draw": 1157,
+      "max_data_draw": 1156,
+      "contamination": false
+    },
+    {
+      "draw": 1158,
+      "max_data_draw": 1157,
+      "contamination": false
+    },
+    {
+      "draw": 1159,
+      "max_data_draw": 1158,
+      "contamination": false
+    },
+    {
+      "draw": 1160,
+      "max_data_draw": 1159,
+      "contamination": false
+    },
+    {
+      "draw": 1161,
+      "max_data_draw": 1160,
+      "contamination": false
+    },
+    {
+      "draw": 1162,
+      "max_data_draw": 1161,
+      "contamination": false
+    },
+    {
+      "draw": 1163,
+      "max_data_draw": 1162,
+      "contamination": false
+    },
+    {
+      "draw": 1164,
+      "max_data_draw": 1163,
+      "contamination": false
+    },
+    {
+      "draw": 1165,
+      "max_data_draw": 1164,
+      "contamination": false
+    },
+    {
+      "draw": 1166,
+      "max_data_draw": 1165,
+      "contamination": false
+    },
+    {
+      "draw": 1167,
+      "max_data_draw": 1166,
+      "contamination": false
+    },
+    {
+      "draw": 1168,
+      "max_data_draw": 1167,
+      "contamination": false
+    },
+    {
+      "draw": 1169,
+      "max_data_draw": 1168,
+      "contamination": false
+    },
+    {
+      "draw": 1170,
+      "max_data_draw": 1169,
+      "contamination": false
+    },
+    {
+      "draw": 1171,
+      "max_data_draw": 1170,
+      "contamination": false
+    },
+    {
+      "draw": 1172,
+      "max_data_draw": 1171,
+      "contamination": false
+    },
+    {
+      "draw": 1173,
+      "max_data_draw": 1172,
+      "contamination": false
+    },
+    {
+      "draw": 1174,
+      "max_data_draw": 1173,
+      "contamination": false
+    },
+    {
+      "draw": 1175,
+      "max_data_draw": 1174,
+      "contamination": false
+    },
+    {
+      "draw": 1176,
+      "max_data_draw": 1175,
+      "contamination": false
+    },
+    {
+      "draw": 1177,
+      "max_data_draw": 1176,
+      "contamination": false
+    },
+    {
+      "draw": 1178,
+      "max_data_draw": 1177,
+      "contamination": false
+    },
+    {
+      "draw": 1179,
+      "max_data_draw": 1178,
+      "contamination": false
+    },
+    {
+      "draw": 1180,
+      "max_data_draw": 1179,
+      "contamination": false
+    },
+    {
+      "draw": 1181,
+      "max_data_draw": 1180,
+      "contamination": false
+    },
+    {
+      "draw": 1182,
+      "max_data_draw": 1181,
+      "contamination": false
+    },
+    {
+      "draw": 1183,
+      "max_data_draw": 1182,
+      "contamination": false
+    },
+    {
+      "draw": 1184,
+      "max_data_draw": 1183,
+      "contamination": false
+    },
+    {
+      "draw": 1185,
+      "max_data_draw": 1184,
+      "contamination": false
+    },
+    {
+      "draw": 1186,
+      "max_data_draw": 1185,
+      "contamination": false
+    },
+    {
+      "draw": 1187,
+      "max_data_draw": 1186,
+      "contamination": false
+    },
+    {
+      "draw": 1188,
+      "max_data_draw": 1187,
+      "contamination": false
+    },
+    {
+      "draw": 1189,
+      "max_data_draw": 1188,
+      "contamination": false
+    },
+    {
+      "draw": 1190,
+      "max_data_draw": 1189,
+      "contamination": false
+    },
+    {
+      "draw": 1191,
+      "max_data_draw": 1190,
+      "contamination": false
+    },
+    {
+      "draw": 1192,
+      "max_data_draw": 1191,
+      "contamination": false
+    },
+    {
+      "draw": 1193,
+      "max_data_draw": 1192,
+      "contamination": false
+    },
+    {
+      "draw": 1194,
+      "max_data_draw": 1193,
+      "contamination": false
+    },
+    {
+      "draw": 1195,
+      "max_data_draw": 1194,
+      "contamination": false
+    },
+    {
+      "draw": 1196,
+      "max_data_draw": 1195,
+      "contamination": false
+    },
+    {
+      "draw": 1197,
+      "max_data_draw": 1196,
+      "contamination": false
+    },
+    {
+      "draw": 1198,
+      "max_data_draw": 1197,
+      "contamination": false
+    },
+    {
+      "draw": 1199,
+      "max_data_draw": 1198,
+      "contamination": false
+    },
+    {
+      "draw": 1200,
+      "max_data_draw": 1199,
+      "contamination": false
+    },
+    {
+      "draw": 1201,
+      "max_data_draw": 1200,
+      "contamination": false
+    },
+    {
+      "draw": 1202,
+      "max_data_draw": 1201,
+      "contamination": false
+    },
+    {
+      "draw": 1203,
+      "max_data_draw": 1202,
+      "contamination": false
+    },
+    {
+      "draw": 1204,
+      "max_data_draw": 1203,
+      "contamination": false
+    },
+    {
+      "draw": 1205,
+      "max_data_draw": 1204,
+      "contamination": false
+    },
+    {
+      "draw": 1206,
+      "max_data_draw": 1205,
+      "contamination": false
+    },
+    {
+      "draw": 1207,
+      "max_data_draw": 1206,
+      "contamination": false
+    },
+    {
+      "draw": 1208,
+      "max_data_draw": 1207,
+      "contamination": false
+    },
+    {
+      "draw": 1209,
+      "max_data_draw": 1208,
+      "contamination": false
+    },
+    {
+      "draw": 1210,
+      "max_data_draw": 1209,
+      "contamination": false
+    },
+    {
+      "draw": 1211,
+      "max_data_draw": 1210,
+      "contamination": false
+    },
+    {
+      "draw": 1212,
+      "max_data_draw": 1211,
+      "contamination": false
+    },
+    {
+      "draw": 1213,
+      "max_data_draw": 1212,
+      "contamination": false
+    },
+    {
+      "draw": 1214,
+      "max_data_draw": 1213,
+      "contamination": false
+    },
+    {
+      "draw": 1215,
+      "max_data_draw": 1214,
+      "contamination": false
+    },
+    {
+      "draw": 1216,
+      "max_data_draw": 1215,
+      "contamination": false
+    },
+    {
+      "draw": 1217,
+      "max_data_draw": 1216,
+      "contamination": false
+    },
+    {
+      "draw": 1218,
+      "max_data_draw": 1217,
+      "contamination": false
+    },
+    {
+      "draw": 1219,
+      "max_data_draw": 1218,
+      "contamination": false
+    },
+    {
+      "draw": 1220,
+      "max_data_draw": 1219,
+      "contamination": false
+    },
+    {
+      "draw": 1221,
+      "max_data_draw": 1220,
+      "contamination": false
+    },
+    {
+      "draw": 1222,
+      "max_data_draw": 1221,
+      "contamination": false
+    },
+    {
+      "draw": 1223,
+      "max_data_draw": 1222,
+      "contamination": false
+    },
+    {
+      "draw": 1224,
+      "max_data_draw": 1223,
+      "contamination": false
+    },
+    {
+      "draw": 1225,
+      "max_data_draw": 1224,
+      "contamination": false
+    },
+    {
+      "draw": 1226,
+      "max_data_draw": 1225,
+      "contamination": false
+    },
+    {
+      "draw": 1227,
+      "max_data_draw": 1226,
+      "contamination": false
+    },
+    {
+      "draw": 1228,
+      "max_data_draw": 1227,
+      "contamination": false
+    },
+    {
+      "draw": 1229,
+      "max_data_draw": 1228,
+      "contamination": false
+    },
+    {
+      "draw": 1230,
+      "max_data_draw": 1229,
+      "contamination": false
+    }
+  ],
+  "max_data_sample": [
+    {
+      "draw": 1226,
+      "max_data_draw": 1225,
+      "contamination": false
+    },
+    {
+      "draw": 1227,
+      "max_data_draw": 1226,
+      "contamination": false
+    },
+    {
+      "draw": 1228,
+      "max_data_draw": 1227,
+      "contamination": false
+    },
+    {
+      "draw": 1229,
+      "max_data_draw": 1228,
+      "contamination": false
+    },
+    {
+      "draw": 1230,
+      "max_data_draw": 1229,
+      "contamination": false
+    }
+  ],
+  "six_before": {
+    "fusion": 6015,
+    "hyena": 6010,
+    "llm": 6011,
+    "lstm": 6015,
+    "markov": 6010,
+    "stat": 6015
+  },
+  "six_after": {
+    "fusion": 6015,
+    "hyena": 6010,
+    "llm": 6011,
+    "lstm": 6015,
+    "markov": 6010,
+    "stat": 6015
+  },
+  "lead1_before": 5565,
+  "lead1_after": 5565,
+  "baseline_counts": {
+    "stat": 6015,
+    "markov": 6010,
+    "llm": 6011,
+    "lstm": 6015,
+    "fusion": 6015,
+    "hyena": 6010,
+    "lead1": 5565
+  },
+  "regression_ok": true
+}

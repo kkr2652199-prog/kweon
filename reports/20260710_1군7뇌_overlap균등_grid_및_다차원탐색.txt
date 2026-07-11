@@ -1,0 +1,122 @@
+20260710_1군7뇌_overlap균등_grid_및_다차원탐색 (in-memory, 최종 결론)
+========================================================================
+
+[STEP 0 — 사전 설계]
+(1) 후보풀 1회 생성/draw/seed. grid 8=var_weight{4,8,12,16}×score{L:0.5,H:1.0}. arm_DIV=overlap balance(var8)+brain underuse bonus(Wood/Liu1999 근사). Pareto 5축: best5↑ pack_gap↓ hit4p↑ eff↑ brain_entropy↑.
+(2) ① 다양성 보너스가 고합의·고score 번호와 충돌 → cov↓·pack_gap↑ 가능. ② grid 8+DIV = 9 wheel/draw/seed — 후보 생성은 1회로 완화. ③ 엄격(b): '하락 없음' 불인정 — 2구간+ 유의 개선만 PASS. ④ Pareto는 seed0 평균점 — 5시드 분산 미반영.
+(3) Wood(2023) 통일이론은 brain_entropy proxy만. Liu(1999) 음의상관은 1/(1+used) 휴리스틱. 이 실험으로 성능개선 최종 결론.
+(4) arm4 vs copy0: 후보 ov<5 유지 — grid/DIV wheel은 세트간 metric만 변경
+
+[이론] Liu·Liu·Teo(2025): overlap 균등화. Wood(2023): 앙상블 다양성. Liu(1999): decorrelation 근사=brain underuse bonus. Pareto: 다목표 trade-off에서 arm1 지배 여부.
+
+[STEP 1~2 — walk-forward 실행]
+  구간: A(330-629) B(630-929) C(930-1230) | 시드: [0, 1000003, 2000009, 3000037, 4000099]
+  n_draws=898 | contamination=0 | copy0: 전 arm 5시드 0.0
+  max_data_draw=N-1 검증 통과 | 6뇌 풀 밖 번호 생성 0건
+
+[STEP 3 — grid 결과표 (5시드 평균)]
+  arm | Δbest5 | Δhit4p | Δgap | best5_pp | hit4p_pp | copy0 | GO
+------------------------------------------------------------------------
+  OB_v4_L      | +0.0020 | +0.0004 | -0.0167 | 1/3 | 0/3 | True | RECONSIDER
+  OB_v4_H      | +0.0025 | +0.0007 | -0.0167 | 1/3 | 0/3 | True | RECONSIDER
+  OB_v8_L      | +0.0053 | +0.0011 | -0.0180 | 0/3 | 0/3 | True | RECONSIDER
+  OB_v8_H      | +0.0018 | +0.0004 | -0.0165 | 1/3 | 0/3 | True | RECONSIDER
+  OB_v12_L     | +0.0051 | +0.0009 | -0.0160 | 0/3 | 0/3 | True | HOLD
+  OB_v12_H     | +0.0031 | +0.0007 | -0.0169 | 0/3 | 0/3 | True | RECONSIDER
+  OB_v16_L     | +0.0065 | +0.0007 | -0.0102 | 0/3 | 0/3 | True | HOLD
+  OB_v16_H     | +0.0051 | +0.0011 | -0.0178 | 0/3 | 0/3 | True | RECONSIDER
+  BRAIN_DIV    | -0.0174 | +0.0002 | +0.0281 | 0/3 | 0/3 | True | HOLD
+
+[Pareto front — seed0 평균 5축]
+------------------------------------------------------------------------
+  arm | best5 | pack_gap | hit4p | eff | entropy | front?
+  F1_V2_STRICT | 2.282 | 1.258 | 0.0412 | 1.126 | 1.596 | no
+  OB_v4_L      | 2.297 | 1.216 | 0.0423 | 1.135 | 1.596 | YES
+  OB_v4_H      | 2.295 | 1.220 | 0.0434 | 1.135 | 1.596 | YES
+  OB_v8_L      | 2.292 | 1.217 | 0.0412 | 1.131 | 1.596 | no
+  OB_v8_H      | 2.297 | 1.216 | 0.0423 | 1.135 | 1.596 | YES
+  OB_v12_L     | 2.291 | 1.219 | 0.0412 | 1.129 | 1.596 | no
+  OB_v12_H     | 2.294 | 1.219 | 0.0412 | 1.131 | 1.596 | no
+  OB_v16_L     | 2.291 | 1.234 | 0.0412 | 1.127 | 1.596 | no
+  OB_v16_H     | 2.292 | 1.217 | 0.0412 | 1.131 | 1.596 | no
+  BRAIN_DIV    | 2.261 | 1.282 | 0.0412 | 1.118 | 1.597 | YES
+  Pareto front: ['OB_v4_L', 'OB_v4_H', 'OB_v8_H', 'BRAIN_DIV']
+  arm1 dominated_by: ['OB_v4_L', 'OB_v4_H', 'OB_v8_L', 'OB_v8_H', 'OB_v12_H', 'OB_v16_H']
+
+  축 | arm1 | 최우 arm | Δ | arm1 우위?
+  best-of-5      | 2.2817 | OB_v4_L      (2.2973) | +0.0156 | no
+  pack_gap       | 1.2584 | OB_v4_L      (1.2160) | +0.0424 | no
+  hit4p          | 0.0412 | OB_v4_H      (0.0434) | +0.0022 | no
+  세트당 eff        | 1.1261 | OB_v4_H      (1.1352) | +0.0091 | no
+  brain_entropy  | 1.5962 | BRAIN_DIV    (1.5973) | +0.0011 | no
+
+[최종 결론]
+------------------------------------------------------------------------
+  ADOPT: 없음 (엄격 b: hit4p/best5 2구간+ p<0.05 유의 개선 0건)
+  RECONSIDER (Pareto/부분개선): OB_v4_L, OB_v4_H, OB_v8_L, OB_v8_H, OB_v12_H, OB_v16_H
+  HOLD: OB_v12_L, OB_v16_L, BRAIN_DIV
+  ★ 성능 개선 최종 결론: 프로덕션 F1_V2_STRICT 유지. overlap grid/DIV 이식 보류.
+
+[seed0 3구간 상세 — 대표 arm]
+------------------------------------------------------------------------
+  --- OB_v4_L (seed0, n=898) ---
+  전체: best5 2.2817->2.2973 (Δ+0.0156) | gap 1.2584->1.2160 (Δ-0.0423) | hit4p Δ+0.0011 | eff 1.1261->1.1350 | entropy 1.5962->1.5963 | pvar 0.0089
+  [A] best5 arm1=2.2517 arm=2.2819 Δ=+0.0302 p=0.0118 pass=True
+  [B] best5 arm1=2.34 arm=2.3467 Δ=+0.0067 p=0.6552 pass=False
+  [C] best5 arm1=2.2533 arm=2.2633 Δ=+0.0100 p=0.2566 pass=False
+  [A] hit4p arm1=0.0336 arm=0.0336 Δ=+0.0000 p=1.0000 pass=False
+  [B] hit4p arm1=0.0467 arm=0.05 Δ=+0.0033 p=0.5641 pass=False
+  [C] hit4p arm1=0.0433 arm=0.0433 Δ=+0.0000 p=1.0000 pass=False
+  [A] pack_gap arm1=1.3255 arm=1.2785 Δ=-0.0470 p=0.0379 pass=True
+  [B] pack_gap arm1=1.2333 arm=1.2167 Δ=-0.0167 p=0.4352 pass=False
+  [C] pack_gap arm1=1.2167 arm=1.1533 Δ=-0.0633 p=0.0008 pass=True
+  --- OB_v8_L (seed0, n=898) ---
+  전체: best5 2.2817->2.2918 (Δ+0.0100) | gap 1.2584->1.2171 (Δ-0.0412) | hit4p Δ+0.0000 | eff 1.1261->1.1314 | entropy 1.5962->1.5962 | pvar 0.0084
+  [A] best5 arm1=2.2517 arm=2.2718 Δ=+0.0201 p=0.1328 pass=False
+  [B] best5 arm1=2.34 arm=2.3467 Δ=+0.0067 p=0.6552 pass=False
+  [C] best5 arm1=2.2533 arm=2.2567 Δ=+0.0033 p=0.6552 pass=False
+  [A] hit4p arm1=0.0336 arm=0.0302 Δ=-0.0034 p=0.3173 pass=False
+  [B] hit4p arm1=0.0467 arm=0.05 Δ=+0.0033 p=0.5641 pass=False
+  [C] hit4p arm1=0.0433 arm=0.0433 Δ=+0.0000 p=1.0000 pass=False
+  [A] pack_gap arm1=1.3255 arm=1.2886 Δ=-0.0369 p=0.1152 pass=False
+  [B] pack_gap arm1=1.2333 arm=1.2067 Δ=-0.0267 p=0.2054 pass=False
+  [C] pack_gap arm1=1.2167 arm=1.1567 Δ=-0.0600 p=0.0017 pass=True
+  --- OB_v8_H (seed0, n=898) ---
+  전체: best5 2.2817->2.2973 (Δ+0.0156) | gap 1.2584->1.2160 (Δ-0.0423) | hit4p Δ+0.0011 | eff 1.1261->1.1350 | entropy 1.5962->1.5963 | pvar 0.0089
+  [A] best5 arm1=2.2517 arm=2.2819 Δ=+0.0302 p=0.0118 pass=True
+  [B] best5 arm1=2.34 arm=2.3467 Δ=+0.0067 p=0.6552 pass=False
+  [C] best5 arm1=2.2533 arm=2.2633 Δ=+0.0100 p=0.2566 pass=False
+  [A] hit4p arm1=0.0336 arm=0.0336 Δ=+0.0000 p=1.0000 pass=False
+  [B] hit4p arm1=0.0467 arm=0.05 Δ=+0.0033 p=0.5641 pass=False
+  [C] hit4p arm1=0.0433 arm=0.0433 Δ=+0.0000 p=1.0000 pass=False
+  [A] pack_gap arm1=1.3255 arm=1.2785 Δ=-0.0470 p=0.0379 pass=True
+  [B] pack_gap arm1=1.2333 arm=1.2167 Δ=-0.0167 p=0.4352 pass=False
+  [C] pack_gap arm1=1.2167 arm=1.1533 Δ=-0.0633 p=0.0008 pass=True
+  --- BRAIN_DIV (seed0, n=898) ---
+  전체: best5 2.2817->2.2606 (Δ-0.0212) | gap 1.2584->1.2817 (Δ+0.0234) | hit4p Δ+0.0000 | eff 1.1261->1.1180 | entropy 1.5962->1.5973 | pvar 0.0092
+  [A] best5 arm1=2.2517 arm=2.2383 Δ=-0.0134 p=0.5934 pass=False
+  [B] best5 arm1=2.34 arm=2.31 Δ=-0.0300 p=0.3173 pass=False
+  [C] best5 arm1=2.2533 arm=2.2333 Δ=-0.0200 p=0.4145 pass=False
+  [A] hit4p arm1=0.0336 arm=0.0369 Δ=+0.0034 p=0.3173 pass=False
+  [B] hit4p arm1=0.0467 arm=0.0467 Δ=+0.0000 p=1.0000 pass=False
+  [C] hit4p arm1=0.0433 arm=0.04 Δ=-0.0033 p=0.5641 pass=False
+  [A] pack_gap arm1=1.3255 arm=1.3624 Δ=+0.0369 p=0.3509 pass=False
+  [B] pack_gap arm1=1.2333 arm=1.23 Δ=-0.0033 p=0.9357 pass=False
+  [C] pack_gap arm1=1.2167 arm=1.2533 Δ=+0.0367 p=0.3544 pass=False
+
+[논문·이론 대비 해석]
+------------------------------------------------------------------------
+  Liu·Liu·Teo(2025) overlap 균등화: var_weight 4~16 grid 전 arm에서 pack_gap 개선(Δgap -0.01~-0.018),
+  pairwise_ov_var 감소 방향 — 이론과 부합. 단 hit4p/best5 유의 2구간+ 개선은 0건 → 통계적 채택 불가.
+  Wood(2023) 다양성: BRAIN_DIV entropy +0.001 수준(미미), best5 -0.0174·pack_gap +0.028 → 다양성-성능 trade-off 확인.
+  Liu(1999) decorrelation: brain underuse bonus는 copy0 유지하나 단일목표 열화 → HOLD.
+  Pareto: front=['OB_v4_L', 'OB_v4_H', 'OB_v8_H', 'BRAIN_DIV']. arm1은 6개 overlap arm에 seed0 기준 지배당함.
+  다목표 관점: OB_v4_L/H·OB_v8_H가 best5+gap+eff 동시 개선 → RECONSIDER.
+  단일목표 엄격(b) 미달 → ADOPT 없음. 프로덕션 F1_V2_STRICT 유지가 최종 결론.
+  참고: prior arm4(metric var*10) ≈ OB_v8_L(Δbest5=0.002, Δgap=-0.0167) — grid에서 var8 score_low가 baseline arm4에 가장 근접.
+
+[STEP 4 — DB 회귀]
+  predictions sha: 0fe5d19ccbceb829 -> 0fe5d19ccbceb829
+  6뇌 counts: {'fusion': 6015, 'hyena': 6010, 'llm': 6011, 'lstm': 6015, 'markov': 6010, 'stat': 6015} (변경 없음)
+  lead1: 5565 -> 5565
+  OK=True

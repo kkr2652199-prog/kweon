@@ -1,0 +1,127 @@
+# 20260617_4군_전략X_조율뇌_통합완성
+
+- **날짜**: 2026-06-17
+- **이름**: 동생 → 커서
+- **모드**: 4군 신규 구현
+- **1~3군 간섭**: **0건** (읽기 참고만, 수정·저장 없음)
+
+---
+
+## 작업 시작 전 3파일 확인
+
+```
+✅ RULES_FIXED.md 확인 (R2 거짓금지 / R13 walk-forward)
+✅ STATUS_LATEST.md 확인 (기억91, 전략X 3뇌 구현 완료)
+✅ CURSOR_RULES.md 확인 (§2 1~3군 수정금지)
+```
+
+---
+
+## STEP4 — 전략X 4뇌 구조 최종 정리
+
+| 뇌 | brain_tag | 역할 | 신호강도 | 종합 가중치 |
+|----|-----------|------|----------|-------------|
+| 1뇌 인기빈도 | `v13_popularity_freq` | 시작 번호 가중 추출 | 약 (\|r\|=0.017) | **0.3** |
+| 2뇌 인기조합 | `v13_popularity_pair` | 이후 번호 pair 체인 | **최강** (CV=0.49) | **0.5** |
+| 3뇌 패턴형태 | `v13_shape` | 후보 품질 필터 | 약 (필터만) | **0.2** (pass=1) |
+| **4뇌 조율** | `v13_coordinator` | 1~3 신호 종합 | — | 합산 |
+
+**combined_score** = `0.5×pair_score + 0.3×popularity_score + 0.2×shape_pass`
+
+---
+
+## STEP1 — 조율뇌 모듈
+
+**파일**: `app/lotto4/brains/coordinator_brain.py` (신규)
+
+| 단계 | 뇌 | 로직 |
+|------|-----|------|
+| 1번째 번호 | 1뇌 | `number_popularity` 가중 추출 |
+| 2~6번째 | 2뇌 | `pair_popularity` 체인 가중 (최우선) |
+| 품질 검증 | 3뇌 | sum6 p5~p95, odd 2~4, decade≥3 미달 시 재생성 |
+| 다양성 | — | Jaccard<0.5, 5세트 |
+
+---
+
+## STEP2 — API (전략X 최종)
+
+**엔드포인트**: `POST /api/lotto4/v13/strategy_x/recommend/{target_draw_no}`
+
+**응답 예시 (target_draw_no=1229, raw)**
+
+```json
+{
+  "target_draw_no": 1229,
+  "brain": "v13_coordinator",
+  "disclaimer": "1~3 신호(인기번호·인기쌍·형태)를 종합한 조합입니다. 당첨 확률은 모든 조합이 동일하며 미래를 예측하지 않습니다.",
+  "score_weights": {"pair": 0.5, "popularity": 0.3, "shape_pass": 0.2},
+  "sets": [
+    {
+      "set_no": 1,
+      "numbers": [1, 6, 21, 24, 35, 43],
+      "combined_score": 0.2464,
+      "brain_contributions": {
+        "v13_popularity_freq": 0.1294,
+        "v13_popularity_pair": 0.0152,
+        "v13_shape": 1.0
+      },
+      "top_pairs_present": []
+    }
+  ]
+}
+```
+
+---
+
+## STEP3 — 검증
+
+| 검증 항목 | 결과 |
+|-----------|------|
+| POST strategy_x/recommend/1229 | **200 OK**, 5세트 |
+| combined_score 재계산 일치 | **5/5 True** |
+| pair_score > 0 (2뇌 반영) | **5/5** |
+| shape_pass = 1.0 (3뇌 필터 통과) | **5/5** |
+| 인기번호 포함 (6,13,19,45 등) | **4/5 세트** |
+| 상위쌍 동시 포함 (6-12 등) | **0/5** (확률·필터·다양성으로 미동시, pair_score로 2뇌 반영) |
+| popularity API (1뇌) | **200** |
+| pair API (2뇌) | **200** |
+| shape API (3뇌) | **200** |
+| predict API | **200** |
+| 1~3군 파일 변경 | **0건** |
+
+**세트별 기여 (raw)**
+
+| set | numbers | combined | pop | pair | shape |
+|-----|---------|----------|-----|------|-------|
+| 1 | 1,6,21,24,35,43 | 0.2464 | 0.1294 | 0.0152 | 1.0 |
+| 2 | 4,9,11,14,25,40 | 0.2408 | 0.1142 | 0.0131 | 1.0 |
+| 3 | 10,19,22,24,43,45 | 0.2471 | 0.1329 | 0.0144 | 1.0 |
+| 4 | 1,5,13,18,30,44 | 0.2505 | 0.1393 | 0.0175 | 1.0 |
+| 5 | 4,14,19,35,37,39 | 0.2465 | 0.1311 | 0.0144 | 1.0 |
+
+---
+
+## 변경 파일
+
+| 파일 | 변경 |
+|------|------|
+| `app/lotto4/brains/coordinator_brain.py` | 신규 |
+| `app/lotto4/v13_routes.py` | recommend 라우트 1건 추가 |
+
+---
+
+## 결론
+
+- 전략 X **4뇌 조율뇌** 구현 완료 → **전략X 엔진 통합 완료**
+- 최종 엔드포인트: `POST .../strategy_x/recommend/{target_draw_no}`
+- R2 준수: 미래 예측·적중률 향상 문구 없음
+
+---
+
+## 저장 체크리스트
+
+- [✅] 보고서 → `d:\3kweon\reports\20260617_4군_전략X_조율뇌_통합완성.md` + `.txt`
+- [✅] STATUS_LATEST 갱신 → 기억92
+- [✅] 기억92 저장
+- [✅] Drive 복사 → `커서보고서\`
+- [✅] 1~3군 간섭: 0건

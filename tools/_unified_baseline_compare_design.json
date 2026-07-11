@@ -1,0 +1,41 @@
+{
+  "title": "20260620_4군_랜덤vs9뇌vs전략X_동일조건비교표_설계",
+  "mode": "design_only",
+  "arms": ["RANDOM", "V13_7brains+ensemble", "STRATEGY_X_hyena"],
+  "fairness": {
+    "walk_forward": "draw_no < N only for prediction input",
+    "sets_per_draw": 5,
+    "baseline_theory": 0.7894,
+    "verdict_threshold_abs_delta": 0.05,
+    "proposed_common_era_primary": [1100, 1222],
+    "proposed_common_era_extended": [262, 1228]
+  },
+  "current_db_coverage_gap": {
+    "v13_fullbacktest": {"min_draw": 1100, "max_draw": 1222, "draws": 123},
+    "strategy_x_fullbacktest": {"min_draw": 262, "max_draw": 1228, "draws": 964},
+    "note": "공정 비교 전 v13 재백테 또는 구간 교집합 필수"
+  },
+  "output_schema": {
+    "columns": [
+      "arm",
+      "n_draws",
+      "n_sets_total",
+      "avg_matched",
+      "std_matched",
+      "max_matched",
+      "hit_ge3_rate",
+      "hit_ge4_rate",
+      "hit_6_count",
+      "delta_vs_random",
+      "delta_vs_baseline",
+      "p_vs_random",
+      "verdict"
+    ]
+  },
+  "planned_script": "tools/run_unified_random_v13_strategyx_compare.py",
+  "planned_outputs": [
+    "tools/_unified_baseline_compare.json",
+    "reports/20260620_4군_랜덤vs9뇌vs전략X_동일조건비교_결과.txt"
+  ],
+  "ui_deferred": true
+}

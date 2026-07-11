@@ -1,0 +1,60 @@
+20260705_1군7뇌_B1_k3합의부스트 (READ-ONLY in-memory A/B)
+============================================================
+
+[커서 사전 의견]
+(1) 구현: F1_V2_STRICT 파이프라인 유지. arm2만 _f1_weights 산출 후 pattern_store get_consensus_numbers(N, min_k=3) 번호에 ×1.4 부스트(미존재 시 _union_presence k≥3 fallback). popavoid→wheel+copy<5 동일.
+(2) 함정: ① pattern_store draw_coverage 1230까지 — 1231+ 실험 시 pres fallback 필수. ② k≥3 부스트가 카피0 깨면 FAIL — arm2도 ov<COPY_OVERLAP 강제. ③ pack_gap↓와 best-of-5↑는 트레이드오ff — 셋 다 통과 어려울 수 있음. ④ consensus는 N회차 5뇌 예측 기반(당첨 미사용) — 컨닝 없음.
+(3) 허점: CONSENSUS_MULT=1.4 단일값 — grid search 미실施. k=1~2 spike는 미부스트(의도). pattern_store 없는 회차는 pres fallback.
+
+[실험]
+  arm1 F1_V2_STRICT — 현행
+  arm2 F1_V2_STRICT_K3 — k≥3 consensus ×1.4 (pattern_store READ-ONLY)
+  구간: 330~1230 walk-forward 3구간 | 시드 XOR 5종
+
+판정 규칙
+------------------------------------------------------------
+  (a) pack_gap 2구간+ 유의감소: FAIL (0/3)
+  (b) best-of-5 유의하락 없음: PASS
+  (c) 카피율=0.0 (5시드): PASS
+  GO: HOLD
+  (a)pack_gap 2구간+ (0/3) FAIL — 미통과 — wheel union-guard 등 다음 후보 검토.
+
+시드별 pack_gap / best-of-5 / 카피율
+------------------------------------------------------------
+  seed | n | gap1 | gap2 | Δgap | p_gap | best1 | best2 | Δbest | copy0
+          0 | 898 | 1.258 | 1.375 | -0.117 | 0.0010 | 2.282 | 2.287 | +0.006 | True
+    1000003 | 898 | 1.240 | 1.311 | -0.070 | 0.0584 | 2.253 | 2.258 | +0.006 | True
+    2000009 | 898 | 1.266 | 1.333 | -0.067 | 0.0652 | 2.251 | 2.275 | +0.025 | True
+    3000037 | 898 | 1.305 | 1.365 | -0.060 | 0.0943 | 2.318 | 2.282 | -0.037 | True
+    4000099 | 898 | 1.228 | 1.302 | -0.073 | 0.0388 | 2.247 | 2.332 | +0.085 | True
+
+3구간 pack_gap (seed0)
+------------------------------------------------------------
+  [A] [330, 629] n=298 arm1=1.3255 arm2=1.3792 Δreduction=-0.0537 p=0.3980 pass=False
+  [B] [630, 929] n=300 arm1=1.2333 arm2=1.3967 Δreduction=-0.1633 p=0.0051 pass=False
+  [C] [930, 1230] n=300 arm1=1.2167 arm2=1.35 Δreduction=-0.1333 p=0.0330 pass=False
+
+3구간 best-of-5 (seed0)
+------------------------------------------------------------
+  [A] arm1=2.2517 arm2=2.2617 Δ=+0.0101 pass=True
+  [B] arm1=2.34 arm2=2.2933 Δ=-0.0467 pass=True
+  [C] arm1=2.2533 arm2=2.3067 Δ=+0.0533 pass=True
+
+max_data_draw 샘플 (seed0)
+------------------------------------------------------------
+  draw=1226 max_data=1225
+  draw=1227 max_data=1226
+  draw=1228 max_data=1227
+  draw=1229 max_data=1228
+  draw=1230 max_data=1229
+
+6뇌 DB 회귀
+------------------------------------------------------------
+  stat: 6015 → 6015 [OK]
+  markov: 6010 → 6010 [OK]
+  llm: 6011 → 6011 [OK]
+  lstm: 6015 → 6015 [OK]
+  fusion: 6015 → 6015 [OK]
+  hyena: 6010 → 6010 [OK]
+  lead1: 5565 → 5565 [OK]
+  regression_ok: True

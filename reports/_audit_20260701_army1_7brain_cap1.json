@@ -1,0 +1,179 @@
+{
+  "title": "20260701_1군7뇌_CAP1_검증",
+  "date": "2026-07-01",
+  "mode": "READ_ONLY",
+  "periods": [
+    {
+      "label": "A",
+      "range": [
+        330,
+        629
+      ],
+      "rows": [
+        {
+          "arm": "B1_CAP2",
+          "n_eval": 298,
+          "avg_best_of_5": 3.1812,
+          "avg_matched_5sets": 1.9034,
+          "hit6": 0,
+          "mean_max_brain_share": 1.98,
+          "cap1_perfect_n": 6,
+          "cap1_perfect_pct": 2.01,
+          "brain_share_expected": "≤2 max"
+        },
+        {
+          "arm": "B1a_CAP1",
+          "n_eval": 298,
+          "avg_best_of_5": 2.9128,
+          "avg_matched_5sets": 1.5396,
+          "hit6": 0,
+          "mean_max_brain_share": 1,
+          "cap1_perfect_n": 298,
+          "cap1_perfect_pct": 100.0,
+          "brain_share_expected": "1.0 each"
+        },
+        {
+          "arm": "CAP1_v3prio",
+          "n_eval": 298,
+          "avg_best_of_5": 2.9128,
+          "avg_matched_5sets": 1.5389,
+          "hit6": 0,
+          "mean_max_brain_share": 1,
+          "cap1_perfect_n": 298,
+          "cap1_perfect_pct": 100.0,
+          "brain_share_expected": "1.0 each"
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "range": [
+        630,
+        929
+      ],
+      "rows": [
+        {
+          "arm": "B1_CAP2",
+          "n_eval": 300,
+          "avg_best_of_5": 3.15,
+          "avg_matched_5sets": 1.9067,
+          "hit6": 3,
+          "mean_max_brain_share": 1.98,
+          "cap1_perfect_n": 6,
+          "cap1_perfect_pct": 2.0,
+          "brain_share_expected": "≤2 max"
+        },
+        {
+          "arm": "B1a_CAP1",
+          "n_eval": 300,
+          "avg_best_of_5": 2.7967,
+          "avg_matched_5sets": 1.462,
+          "hit6": 1,
+          "mean_max_brain_share": 1,
+          "cap1_perfect_n": 300,
+          "cap1_perfect_pct": 100.0,
+          "brain_share_expected": "1.0 each"
+        },
+        {
+          "arm": "CAP1_v3prio",
+          "n_eval": 300,
+          "avg_best_of_5": 2.7933,
+          "avg_matched_5sets": 1.4607,
+          "hit6": 1,
+          "mean_max_brain_share": 1,
+          "cap1_perfect_n": 300,
+          "cap1_perfect_pct": 100.0,
+          "brain_share_expected": "1.0 each"
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "range": [
+        930,
+        1230
+      ],
+      "rows": [
+        {
+          "arm": "B1_CAP2",
+          "n_eval": 300,
+          "avg_best_of_5": 3.04,
+          "avg_matched_5sets": 1.8313,
+          "hit6": 3,
+          "mean_max_brain_share": 1.987,
+          "cap1_perfect_n": 4,
+          "cap1_perfect_pct": 1.33,
+          "brain_share_expected": "≤2 max"
+        },
+        {
+          "arm": "B1a_CAP1",
+          "n_eval": 300,
+          "avg_best_of_5": 2.82,
+          "avg_matched_5sets": 1.4867,
+          "hit6": 2,
+          "mean_max_brain_share": 1,
+          "cap1_perfect_n": 300,
+          "cap1_perfect_pct": 100.0,
+          "brain_share_expected": "1.0 each"
+        },
+        {
+          "arm": "CAP1_v3prio",
+          "n_eval": 300,
+          "avg_best_of_5": 2.8133,
+          "avg_matched_5sets": 1.4853,
+          "hit6": 2,
+          "mean_max_brain_share": 1,
+          "cap1_perfect_n": 300,
+          "cap1_perfect_pct": 100.0,
+          "brain_share_expected": "1.0 each"
+        }
+      ]
+    }
+  ],
+  "aggregate": {
+    "B1_CAP2": {
+      "mean_best_of_5": 3.1237,
+      "mean_avg": 1.8805,
+      "hit6_total": 6,
+      "cap1_perfect_pct": 1.78
+    },
+    "B1a_CAP1": {
+      "mean_best_of_5": 2.8432,
+      "mean_avg": 1.4961,
+      "hit6_total": 3,
+      "cap1_perfect_pct": 100.0
+    },
+    "CAP1_v3prio": {
+      "mean_best_of_5": 2.8398,
+      "mean_avg": 1.495,
+      "hit6_total": 3,
+      "cap1_perfect_pct": 100.0
+    }
+  },
+  "verdict": {
+    "cap2": {
+      "mean_best_of_5": 3.1237,
+      "mean_avg": 1.8805,
+      "hit6_total": 6,
+      "cap1_perfect_pct": 1.78
+    },
+    "cap1": {
+      "mean_best_of_5": 2.8432,
+      "mean_avg": 1.4961,
+      "hit6_total": 3,
+      "cap1_perfect_pct": 100.0
+    },
+    "cap1_v3prio": {
+      "mean_best_of_5": 2.8398,
+      "mean_avg": 1.495,
+      "hit6_total": 3,
+      "cap1_perfect_pct": 100.0
+    },
+    "best_cap1_variant": "B1a_CAP1",
+    "delta_best_vs_cap2": -0.2805,
+    "delta_hit6_vs_cap2": -3,
+    "go": "GO-B1_CAP2",
+    "adopt": "B1_CAP2",
+    "final": "🔴 CAP1 계열 hit6 3 vs CAP2 6 (Δ=-3) — 큰당첨 유의 하락. CAP2 유지(R2 정직)."
+  }
+}

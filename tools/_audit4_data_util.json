@@ -1,0 +1,522 @@
+{
+  "inventory": {
+    "tables": {
+      "lotto4_winners": {
+        "rows": 1225,
+        "columns": [
+          "draw_no:INTEGER",
+          "draw_date:TEXT",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "bonus:INTEGER",
+          "winner_count:INTEGER",
+          "prize_per_game:INTEGER",
+          "total_sales:INTEGER",
+          "created_at:TEXT"
+        ]
+      },
+      "lotto4_winners_full": {
+        "rows": 1228,
+        "columns": [
+          "drw_no:INTEGER",
+          "n1:INTEGER",
+          "n2:INTEGER",
+          "n3:INTEGER",
+          "n4:INTEGER",
+          "n5:INTEGER",
+          "n6:INTEGER",
+          "bonus:INTEGER",
+          "winner_cnt:INTEGER",
+          "prize_per:INTEGER",
+          "era:TEXT",
+          "created_at:TEXT"
+        ]
+      },
+      "lotto_analysis": {
+        "rows": 0,
+        "columns": [
+          "id:INTEGER",
+          "draw_no:INTEGER",
+          "analysis_type:TEXT",
+          "data_json:TEXT",
+          "created_at:TEXT"
+        ]
+      },
+      "lotto_analysis_army2": {
+        "rows": 0,
+        "columns": [
+          "id:INTEGER",
+          "draw_no:INTEGER",
+          "analysis_type:TEXT",
+          "data_json:TEXT",
+          "created_at:TEXT"
+        ]
+      },
+      "lotto_analysis_army4": {
+        "rows": 1,
+        "columns": [
+          "id:INTEGER",
+          "draw_no:INTEGER",
+          "analysis_type:TEXT",
+          "data_json:TEXT",
+          "created_at:TEXT"
+        ]
+      },
+      "lotto_bonus_stats": {
+        "rows": 45,
+        "columns": [
+          "bonus_no:INTEGER",
+          "total_count:INTEGER",
+          "last_draw_no:INTEGER",
+          "coappear_with:TEXT",
+          "updated_at:TEXT"
+        ]
+      },
+      "lotto_brain_weights": {
+        "rows": 5,
+        "columns": [
+          "brain_tag:TEXT",
+          "current_weight:REAL",
+          "recent_avg_match:REAL",
+          "total_predictions:INTEGER",
+          "total_matches:INTEGER",
+          "last_updated_draw:INTEGER",
+          "updated_at:TEXT"
+        ]
+      },
+      "lotto_brain_weights_army2": {
+        "rows": 6,
+        "columns": [
+          "brain_tag:TEXT",
+          "current_weight:REAL",
+          "recent_avg_match:REAL",
+          "total_predictions:INTEGER",
+          "total_matches:INTEGER",
+          "last_updated_draw:INTEGER",
+          "updated_at:TEXT"
+        ]
+      },
+      "lotto_brain_weights_army4": {
+        "rows": 9,
+        "columns": [
+          "brain_tag:TEXT",
+          "current_weight:REAL",
+          "recent_avg_match:REAL",
+          "total_predictions:INTEGER",
+          "total_matches:INTEGER",
+          "last_updated_draw:INTEGER",
+          "updated_at:TEXT"
+        ]
+      },
+      "lotto_brain_weights_army4_backup_20260513": {
+        "rows": 23,
+        "columns": [
+          "brain_tag:TEXT",
+          "current_weight:REAL",
+          "recent_avg_match:REAL",
+          "total_predictions:INT",
+          "total_matches:INT",
+          "last_updated_draw:INT",
+          "updated_at:TEXT"
+        ]
+      },
+      "lotto_cooccur_2": {
+        "rows": 990,
+        "columns": [
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "count:INTEGER",
+          "last_draw_no:INTEGER",
+          "last_draw_date:TEXT",
+          "updated_at:TEXT"
+        ]
+      },
+      "lotto_cooccur_3": {
+        "rows": 11757,
+        "columns": [
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "count:INTEGER",
+          "last_draw_no:INTEGER",
+          "last_draw_date:TEXT",
+          "updated_at:TEXT"
+        ]
+      },
+      "lotto_cooccur_4": {
+        "rows": 17394,
+        "columns": [
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "count:INTEGER",
+          "last_draw_no:INTEGER",
+          "last_draw_date:TEXT",
+          "updated_at:TEXT"
+        ]
+      },
+      "lotto_draw_tiers": {
+        "rows": 6140,
+        "columns": [
+          "draw_no:INTEGER",
+          "tier_rank:INTEGER",
+          "winner_count:INTEGER",
+          "prize_per_game:INTEGER",
+          "total_prize:INTEGER",
+          "updated_at:TEXT"
+        ]
+      },
+      "lotto_draws": {
+        "rows": 1228,
+        "columns": [
+          "draw_no:INTEGER",
+          "draw_date:TEXT",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "bonus:INTEGER",
+          "total_sales:INTEGER",
+          "first_prize:INTEGER",
+          "first_winners:INTEGER",
+          "created_at:TEXT"
+        ]
+      },
+      "lotto_evolution_trust_army4": {
+        "rows": 615,
+        "columns": [
+          "brain_tag:TEXT",
+          "draw_no:INTEGER",
+          "matched_count:INTEGER",
+          "trust_score:REAL",
+          "context_sum:REAL",
+          "context_odd:REAL",
+          "context_high:REAL",
+          "context_ac:REAL",
+          "created_at:TEXT"
+        ]
+      },
+      "lotto_fullbacktest_army4": {
+        "rows": 28405,
+        "columns": [
+          "draw_no:INTEGER",
+          "brain_tag:TEXT",
+          "set_no:INTEGER",
+          "numbers:TEXT",
+          "matched_count:INTEGER",
+          "matched_numbers:TEXT",
+          "bonus_matched:INTEGER",
+          "created_at:TEXT"
+        ]
+      },
+      "lotto_number_freq": {
+        "rows": 45,
+        "columns": [
+          "number:INTEGER",
+          "total_count:INTEGER",
+          "rank_most:INTEGER",
+          "rank_least:INTEGER",
+          "updated_at:TEXT"
+        ]
+      },
+      "lotto_predictions": {
+        "rows": 0,
+        "columns": [
+          "id:INTEGER",
+          "target_draw_no:INTEGER",
+          "method:TEXT",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "confidence:REAL",
+          "reasoning:TEXT",
+          "matched_count:INTEGER",
+          "bonus_matched:INTEGER",
+          "brain_tag:TEXT",
+          "created_at:TEXT"
+        ]
+      },
+      "lotto_predictions_army2": {
+        "rows": 0,
+        "columns": [
+          "id:INTEGER",
+          "target_draw_no:INTEGER",
+          "method:TEXT",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "confidence:REAL",
+          "reasoning:TEXT",
+          "matched_count:INTEGER",
+          "bonus_matched:INTEGER",
+          "created_at:TEXT",
+          "brain_tag:TEXT"
+        ]
+      },
+      "lotto_predictions_army4": {
+        "rows": 28650,
+        "columns": [
+          "id:INTEGER",
+          "target_draw_no:INTEGER",
+          "method:TEXT",
+          "num1:INTEGER",
+          "num2:INTEGER",
+          "num3:INTEGER",
+          "num4:INTEGER",
+          "num5:INTEGER",
+          "num6:INTEGER",
+          "confidence:REAL",
+          "reasoning:TEXT",
+          "matched_count:INTEGER",
+          "bonus_matched:INTEGER",
+          "created_at:TEXT",
+          "brain_tag:TEXT"
+        ]
+      },
+      "lotto_predictions_army4_backup_20260513": {
+        "rows": 1380,
+        "columns": [
+          "id:INT",
+          "target_draw_no:INT",
+          "method:TEXT",
+          "num1:INT",
+          "num2:INT",
+          "num3:INT",
+          "num4:INT",
+          "num5:INT",
+          "num6:INT",
+          "confidence:REAL",
+          "reasoning:TEXT",
+          "matched_count:INT",
+          "bonus_matched:INT",
+          "created_at:TEXT",
+          "brain_tag:TEXT"
+        ]
+      },
+      "lotto_weight_log_army4": {
+        "rows": 0,
+        "columns": [
+          "id:INTEGER",
+          "draw_no:INTEGER",
+          "brain_tag:TEXT",
+          "weight_before:REAL",
+          "weight_after:REAL",
+          "matched_count:INTEGER",
+          "eta:REAL",
+          "logged_at:TEXT"
+        ]
+      },
+      "lotto_weight_log_army4_backup_20260513": {
+        "rows": 7,
+        "columns": [
+          "id:INT",
+          "draw_no:INT",
+          "brain_tag:TEXT",
+          "weight_before:REAL",
+          "weight_after:REAL",
+          "matched_count:INT",
+          "eta:REAL",
+          "logged_at:TEXT"
+        ]
+      },
+      "number_popularity": {
+        "rows": 45,
+        "columns": [
+          "number:INTEGER",
+          "top30_freq:INTEGER",
+          "top30_pct:REAL",
+          "era:TEXT",
+          "updated_at:TEXT"
+        ]
+      },
+      "pair_popularity": {
+        "rows": 990,
+        "columns": [
+          "num_a:INTEGER",
+          "num_b:INTEGER",
+          "freq:INTEGER",
+          "freq_pct:REAL",
+          "era:TEXT",
+          "updated_at:TEXT"
+        ]
+      },
+      "shape_profile": {
+        "rows": 2,
+        "columns": [
+          "era:TEXT",
+          "segment:TEXT",
+          "metric:TEXT",
+          "data_json:TEXT",
+          "updated_at:TEXT"
+        ]
+      },
+      "sqlite_sequence": {
+        "rows": 3,
+        "columns": [
+          "name:",
+          "seq:"
+        ]
+      }
+    },
+    "step3": {
+      "number_popularity": {
+        "rows": 45,
+        "min_pct": 0.09,
+        "max_pct": 0.2042,
+        "zero_pct": 0
+      },
+      "pair_popularity": {
+        "total_pairs": 990,
+        "pairs_freq_gt0": 981,
+        "sum_freq": 4905
+      },
+      "lotto4_winners_full": {
+        "rows": 1228,
+        "winner_cnt_pos": 1214,
+        "prize_per_pos": 1214
+      },
+      "lotto_draw_tiers": [
+        {
+          "tier": 1,
+          "rows": 1228,
+          "sum_winners": 10434
+        },
+        {
+          "tier": 2,
+          "rows": 1228,
+          "sum_winners": 63078
+        },
+        {
+          "tier": 3,
+          "rows": 1228,
+          "sum_winners": 2382453
+        },
+        {
+          "tier": 4,
+          "rows": 1228,
+          "sum_winners": 116611542
+        },
+        {
+          "tier": 5,
+          "rows": 1228,
+          "sum_winners": 1911762970
+        }
+      ]
+    }
+  },
+  "code_refs": {
+    "lotto4_winners_full": [
+      "app\\lotto4\\strategy_x_fullbackfill.py",
+      "app\\lotto4\\brains\\popularity_pair_brain.py",
+      "app\\lotto4\\brains\\shape_brain.py"
+    ],
+    "number_popularity": [
+      "app\\lotto4\\brains\\coordinator_brain.py",
+      "app\\lotto4\\brains\\popularity_freq_brain.py",
+      "app\\lotto4\\brains\\popularity_pair_brain.py"
+    ],
+    "pair_popularity": [
+      "app\\lotto4\\brains\\coordinator_brain.py",
+      "app\\lotto4\\brains\\popularity_pair_brain.py"
+    ],
+    "shape_profile": [
+      "app\\lotto4\\brains\\coordinator_brain.py",
+      "app\\lotto4\\brains\\hyena_coordinator_v13.py",
+      "app\\lotto4\\brains\\shape_brain.py"
+    ],
+    "lotto_cooccur_2": [
+      "app\\lotto4\\cooccur_walkforward.py"
+    ],
+    "lotto_cooccur_3": [
+      "app\\lotto4\\models.py",
+      "app\\lotto4\\v13_routes.py",
+      "app\\lotto4\\brains\\_utils.py"
+    ],
+    "lotto_cooccur_4": [
+      "app\\lotto4\\models.py",
+      "app\\lotto4\\v13_routes.py",
+      "app\\lotto4\\brains\\_utils.py"
+    ],
+    "lotto_bonus_stats": [
+      "app\\lotto4\\models.py",
+      "app\\lotto4\\v13_routes.py",
+      "app\\lotto4\\brains\\_utils.py"
+    ],
+    "lotto_draw_tiers": [],
+    "lotto_analysis_army4": [
+      "app\\lotto4\\models.py"
+    ],
+    "lotto_predictions_army4": [
+      "app\\lotto4\\army4_draw_sync.py",
+      "app\\lotto4\\models.py",
+      "app\\lotto4\\strategy_x_fullbackfill.py",
+      "app\\lotto4\\strategy_x_logging.py",
+      "app\\lotto4\\v13_engine_v2.py",
+      "app\\lotto4\\v13_routes.py",
+      "app\\lotto4\\v13_weights_v2.py",
+      "app\\lotto4\\brains\\diversity_brain.py",
+      "app\\lotto4\\brains\\evolution_brain.py",
+      "app\\lotto4\\brains\\hyena_coordinator_v13.py",
+      "app\\lotto4\\brains\\hyena_scavenger.py",
+      "app\\lotto4\\legacy\\v13_engine.py",
+      "app\\lotto4\\legacy\\v13_models.py",
+      "app\\lotto4\\legacy\\v13_snake.py"
+    ],
+    "lotto_fullbacktest_army4": [
+      "app\\lotto4\\models.py",
+      "app\\lotto4\\strategy_x_fullbackfill.py",
+      "app\\lotto4\\v13_routes.py",
+      "app\\lotto4\\brains\\evolution_brain.py"
+    ],
+    "lotto_draws": [
+      "app\\lotto4\\army4_draw_sync.py",
+      "app\\lotto4\\cooccur_walkforward.py",
+      "app\\lotto4\\gap_signal_walkforward.py",
+      "app\\lotto4\\models.py",
+      "app\\lotto4\\strategy_x_fullbackfill.py",
+      "app\\lotto4\\v13_engine_v2.py",
+      "app\\lotto4\\v13_routes.py",
+      "app\\lotto4\\v13_weights_v2.py",
+      "app\\lotto4\\brains\\cooccur_brain.py",
+      "app\\lotto4\\brains\\hyena_commander.py",
+      "app\\lotto4\\brains\\hyena_scavenger.py",
+      "app\\lotto4\\brains\\_utils.py",
+      "app\\lotto4\\legacy\\v13_engine.py",
+      "app\\lotto4\\legacy\\v13_models.py"
+    ],
+    "lotto_number_freq": [
+      "app\\lotto4\\models.py",
+      "app\\lotto4\\v13_routes.py",
+      "app\\lotto4\\brains\\_utils.py"
+    ],
+    "lotto_brain_weights_army4": [
+      "app\\lotto4\\models.py",
+      "app\\lotto4\\v13_routes.py",
+      "app\\lotto4\\v13_weights_v2.py",
+      "app\\lotto4\\brains\\ensemble_backup_v5b.py",
+      "app\\lotto4\\legacy\\v13_models.py",
+      "app\\lotto4\\legacy\\v13_snake.py"
+    ],
+    "lotto_weight_log_army4": [
+      "app\\lotto4\\v13_routes.py",
+      "app\\lotto4\\legacy\\v13_models.py"
+    ],
+    "lotto_evolution_trust_army4": [
+      "app\\lotto4\\models.py",
+      "app\\lotto4\\brains\\evolution_brain.py"
+    ]
+  }
+}

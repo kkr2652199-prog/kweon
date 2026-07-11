@@ -1,0 +1,218 @@
+{
+  "title": "20260701_1군7뇌_과학적조합_검증",
+  "periods": [
+    {
+      "range": [
+        330,
+        629
+      ],
+      "n": 298,
+      "arms": {
+        "F1": {
+          "mean_avg": 1.0302,
+          "mean_best": 1.9832,
+          "copy_rate": 0.0,
+          "mean_overlap": 2.792,
+          "best_vs_randunion_delta": 0.2416,
+          "p_best_vs_randunion": 3e-06
+        },
+        "F2": {
+          "mean_avg": 1.0631,
+          "mean_best": 2.0336,
+          "copy_rate": 0.0,
+          "mean_overlap": 2.789,
+          "best_vs_randunion_delta": 0.2919,
+          "p_best_vs_randunion": 1e-06
+        },
+        "F3": {
+          "mean_avg": 1.0792,
+          "mean_best": 2.047,
+          "copy_rate": 0.0,
+          "mean_overlap": 2.839,
+          "best_vs_randunion_delta": 0.3054,
+          "p_best_vs_randunion": 0.0
+        },
+        "RAND_UNION": {
+          "mean_avg": 0.8383,
+          "mean_best": 1.7416,
+          "copy_rate": 0.0,
+          "mean_overlap": 2.526,
+          "best_vs_randunion_delta": 0.0,
+          "p_best_vs_randunion": null
+        },
+        "RAND_45": {
+          "mean_avg": 0.8302,
+          "mean_best": 1.7785,
+          "copy_rate": 0.0007,
+          "mean_overlap": 2.442,
+          "best_vs_randunion_delta": 0.0369,
+          "p_best_vs_randunion": 0.516546
+        },
+        "CAP2": {
+          "mean_avg": 1.9034,
+          "mean_best": 3.1812,
+          "copy_rate": 1.0,
+          "mean_overlap": 5.999,
+          "best_vs_randunion_delta": 1.4396,
+          "p_best_vs_randunion": 0.0
+        }
+      }
+    },
+    {
+      "range": [
+        630,
+        929
+      ],
+      "n": 300,
+      "arms": {
+        "F1": {
+          "mean_avg": 1.0133,
+          "mean_best": 1.9633,
+          "copy_rate": 0.0,
+          "mean_overlap": 2.77,
+          "best_vs_randunion_delta": 0.1767,
+          "p_best_vs_randunion": 0.00377
+        },
+        "F2": {
+          "mean_avg": 1.0793,
+          "mean_best": 2.0833,
+          "copy_rate": 0.0,
+          "mean_overlap": 2.794,
+          "best_vs_randunion_delta": 0.2967,
+          "p_best_vs_randunion": 1e-06
+        },
+        "F3": {
+          "mean_avg": 1.082,
+          "mean_best": 2.09,
+          "copy_rate": 0.0,
+          "mean_overlap": 2.81,
+          "best_vs_randunion_delta": 0.3033,
+          "p_best_vs_randunion": 0.0
+        },
+        "RAND_UNION": {
+          "mean_avg": 0.838,
+          "mean_best": 1.7867,
+          "copy_rate": 0.0,
+          "mean_overlap": 2.524,
+          "best_vs_randunion_delta": 0.0,
+          "p_best_vs_randunion": null
+        },
+        "RAND_45": {
+          "mean_avg": 0.768,
+          "mean_best": 1.6667,
+          "copy_rate": 0.0013,
+          "mean_overlap": 2.455,
+          "best_vs_randunion_delta": -0.12,
+          "p_best_vs_randunion": 0.040469
+        },
+        "CAP2": {
+          "mean_avg": 1.9067,
+          "mean_best": 3.15,
+          "copy_rate": 1.0,
+          "mean_overlap": 6,
+          "best_vs_randunion_delta": 1.3633,
+          "p_best_vs_randunion": 0.0
+        }
+      }
+    },
+    {
+      "range": [
+        930,
+        1230
+      ],
+      "n": 300,
+      "arms": {
+        "F1": {
+          "mean_avg": 0.9913,
+          "mean_best": 1.9533,
+          "copy_rate": 0.0,
+          "mean_overlap": 2.751,
+          "best_vs_randunion_delta": 0.2,
+          "p_best_vs_randunion": 0.000379
+        },
+        "F2": {
+          "mean_avg": 1.0773,
+          "mean_best": 2.1,
+          "copy_rate": 0.0,
+          "mean_overlap": 2.796,
+          "best_vs_randunion_delta": 0.3467,
+          "p_best_vs_randunion": 0.0
+        },
+        "F3": {
+          "mean_avg": 1.054,
+          "mean_best": 2.0333,
+          "copy_rate": 0.0,
+          "mean_overlap": 2.809,
+          "best_vs_randunion_delta": 0.28,
+          "p_best_vs_randunion": 0.0
+        },
+        "RAND_UNION": {
+          "mean_avg": 0.8227,
+          "mean_best": 1.7533,
+          "copy_rate": 0.0,
+          "mean_overlap": 2.543,
+          "best_vs_randunion_delta": 0.0,
+          "p_best_vs_randunion": null
+        },
+        "RAND_45": {
+          "mean_avg": 0.796,
+          "mean_best": 1.75,
+          "copy_rate": 0.0,
+          "mean_overlap": 2.429,
+          "best_vs_randunion_delta": -0.0033,
+          "p_best_vs_randunion": 0.953491
+        },
+        "CAP2": {
+          "mean_avg": 1.8313,
+          "mean_best": 3.04,
+          "copy_rate": 1.0,
+          "mean_overlap": 5.999,
+          "best_vs_randunion_delta": 1.2867,
+          "p_best_vs_randunion": 0.0
+        }
+      }
+    }
+  ],
+  "verdict": {
+    "per_arm": {
+      "F1": {
+        "beats_randunion_periods": 3,
+        "mean_copy_rate": 0.0,
+        "mean_best": 1.9666
+      },
+      "F2": {
+        "beats_randunion_periods": 2,
+        "mean_copy_rate": 0.0,
+        "mean_best": 2.0723
+      },
+      "F3": {
+        "beats_randunion_periods": 0,
+        "mean_copy_rate": 0.0,
+        "mean_best": 2.0568
+      }
+    },
+    "cap2_mean_best": 3.1237,
+    "randunion_mean_best": 1.7605,
+    "go": "CANDIDATE-F1",
+    "final": "🟢 F1 과학적 조합이 랜덤(union) 3/3 유의 초과 & 카피율 0.0 (<5%). best-of-5=1.9666 (CAP2=3.124). 7뇌 재설계 채택 후보 — 형 GO 후 이식."
+  },
+  "six_before": {
+    "fusion": 6005,
+    "hyena": 6000,
+    "llm": 6001,
+    "lstm": 6005,
+    "markov": 6000,
+    "stat": 6005
+  },
+  "six_after": {
+    "fusion": 6005,
+    "hyena": 6000,
+    "llm": 6001,
+    "lstm": 6005,
+    "markov": 6000,
+    "stat": 6005
+  },
+  "lead1_before": 5555,
+  "lead1_after": 5555,
+  "regression_ok": true
+}

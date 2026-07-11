@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>나의 지식 도서관 — 4군 AI 예측</title>
+  <link rel="stylesheet" href="/static/css/lotto4.css?v=20260620c" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="주 메뉴">
+      <div class="sidebar-brand">
+        <div class="brand-title">나의 지식 도서관<br />4군 AI 예측</div>
+        <div class="brand-sub">v13 · army4 · 포트 6124 · 독립 DB · 8뇌 엔진</div>
+      </div>
+      <button type="button" class="nav-btn" data-view="dashboard">대시보드</button>
+      <button type="button" class="nav-btn active" data-view="predict">두뇌예측</button>
+      <button type="button" class="nav-btn" data-view="hall">명예의전당</button>
+      <button type="button" class="nav-btn" data-view="stats">통계분석</button>
+      <button type="button" class="nav-btn" data-view="truth">로또의 진실</button>
+      <button type="button" class="nav-btn" data-view="strategy-x">전략 X</button>
+      <button type="button" class="nav-btn" data-view="combo-lookup">로또 조회</button>
+      <button type="button" class="nav-btn" data-view="all-combos">전체 조합</button>
+      <button type="button" class="nav-btn" data-view="data">데이터수집</button>
+      <button type="button" class="nav-btn" data-view="brain">두뇌상태</button>
+      <div class="sidebar-footer">4군 v13 독립 엔진 (lotto4.brains 8뇌) · 튜닝·백테스트는 4군 전용</div>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="top-header">
+        <h1>나의 지식 도서관 — 4군 AI 예측</h1>
+        <div class="meta">독립 웹앱 · API <code>/api/lotto4/v13/</code></div>
+      </header>
+
+      <div class="content-area">
+        <!-- 대시보드 -->
+        <section id="view-dashboard" class="view-panel" data-view-panel="dashboard">
+          <div class="card">
+            <h2>대시보드 요약</h2>
+            <div class="countdown-widget" aria-live="polite">
+              <div class="countdown-head">다음 추첨까지 <span class="countdown-meta">(매주 토 20:45 KST)</span></div>
+              <div class="countdown-row">
+                <span class="countdown-label">예정 회차</span>
+                <strong id="countdownNextDraw" class="countdown-next">-</strong>
+              </div>
+              <div class="countdown-row">
+                <span class="countdown-label">남은 시간</span>
+                <span id="countdownTimer" class="countdown-timer">계산 중…</span>
+              </div>
+            </div>
+            <div class="rank-dropdown-wrap">
+              <button type="button" class="rank-dropdown-toggle" id="btnDashRankToggle" aria-expanded="false">
+                뇌별 가중치 순위 <span class="rank-caret">▼</span>
+              </button>
+              <div id="dashRankWeightsBody" class="rank-dropdown-body"></div>
+            </div>
+            <button type="button" class="btn btn-secondary" id="btnRefreshDash">요약 새로고침</button>
+            <div id="dashboardBody" class="dash-grid" style="margin-top:14px"></div>
+            <div id="dashboardScores" class="dash-scores"></div>
+            <div style="margin-top:16px">
+              <h3 style="margin:0 0 8px;font-size:0.9rem;color:var(--muted)">두뇌별 적중 누적</h3>
+              <div class="data-table-wrap">
+                <table class="brain-power-table" id="brainPowerTable">
+                  <thead>
+                    <tr>
+                      <th>뇌</th>
+                      <th>1등</th>
+                      <th>2등</th>
+                      <th>3등</th>
+                      <th>4등</th>
+                      <th>5등</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+            <div style="margin-top:20px">
+              <h3 style="margin:0 0 8px;font-size:0.9rem;color:var(--muted)">전략 X 5뇌 백테스트 적중 (era_C walk-forward)</h3>
+              <div id="strategyXDashMeta" class="dash-scores" style="margin-bottom:8px"></div>
+              <div class="data-table-wrap">
+                <table class="brain-power-table" id="strategyXBrainPowerTable">
+                  <thead>
+                    <tr>
+                      <th>뇌</th>
+                      <th>1등</th>
+                      <th>2등</th>
+                      <th>3등</th>
+                      <th>4등</th>
+                      <th>5등</th>
+                      <th>평균적중</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 두뇌예측 -->
+        <section id="view-predict" class="view-panel active" data-view-panel="predict">
+          <div class="card">
+            <h2>두뇌 예측</h2>
+            <div class="predict-toolbar">
+              <div class="draw-stepper">
+                <button type="button" id="btnDrawPrev" title="이전 회차">◀</button>
+                <select id="drawSelect" aria-label="회차 선택"></select>
+                <button type="button" id="btnDrawNext" title="다음 회차">▶</button>
+              </div>
+              <label class="draw-direct-wrap">
+                <span class="visually-hidden">회차 직접 입력</span>
+                <input type="number" id="drawDirectInput" min="1" placeholder="회차" class="draw-direct-input" />
+                <button type="button" class="btn btn-secondary" id="btnDrawDirectGo">이동</button>
+              </label>
+              <button type="button" class="btn btn-primary" id="btnPredict">두뇌 예측 실행</button>
+              <button type="button" class="btn btn-secondary" id="btnLoadPred" title="DB에 저장된 해당 회차만 다시 읽기 (다른 탭·수정 반영)">저장 예측 불러오기</button>
+              <label class="chk-label">
+                <input type="checkbox" id="chkEliteOnly" />
+                엘리트 뇌만 표시
+              </label>
+              <button type="button" class="btn btn-secondary" id="btnTierWins">이 회차 1~5등 적중</button>
+              <button type="button" class="btn btn-kakao" id="btnKakao">카톡 복사</button>
+            </div>
+            <div class="status-line" id="actionStatus" aria-live="polite"></div>
+
+            <div class="brain-tabs-wrap">
+              <div class="brain-tabs-label">상위 4뇌</div>
+              <div class="tabs-row" id="tabsPrimary"></div>
+              <div class="brain-tabs-label">하위 4뇌</div>
+              <div class="tabs-row" id="tabsSecondary"></div>
+            </div>
+
+            <div id="brainActiveTitle" style="font-size:0.9rem;font-weight:700;margin-bottom:10px;color:var(--gold)"></div>
+            <div class="sets-grid" id="setsHost"></div>
+          </div>
+        </section>
+
+        <!-- 명예의 전당 -->
+        <section id="view-hall" class="view-panel" data-view-panel="hall">
+          <div class="card">
+            <h2>명예의 전당 (3등 이상)</h2>
+            <div class="filter-row">
+              <label class="filter-field">등수
+                <select id="hallRankFilter">
+                  <option value="0">전체 (3~6개)</option>
+                  <option value="1">1등 (6)</option>
+                  <option value="2">2등 (5+보너스)</option>
+                  <option value="3">3등 (5)</option>
+                  <option value="4">4등 (4)</option>
+                  <option value="5">5등 (3)</option>
+                </select>
+              </label>
+              <label class="filter-field">뇌
+                <select id="hallBrainFilter">
+                  <option value="">전체</option>
+                  <optgroup label="4군 노출 뇌 (HIDDEN 제외)">
+                    <option value="v13_struct">v13_struct · 구조예측</option>
+                    <option value="v13_seq">v13_seq · 시퀀스(LSTM)</option>
+                    <option value="v13_diversity">v13_diversity · 다양성</option>
+                    <option value="v13_evolution">v13_evolution · 진화</option>
+                    <option value="v13_ev">v13_ev · 기대값</option>
+                    <option value="v13_ensemble">v13_ensemble · 앙상블</option>
+                    <option value="v13_gap">v13_gap · 갭분석</option>
+                  </optgroup>
+                </select>
+              </label>
+              <button type="button" class="btn btn-primary" id="btnApplyHallFilter">필터 적용</button>
+              <button type="button" class="btn btn-secondary" id="btnReloadHall">다시 불러오기</button>
+            </div>
+            <h3 class="subsection-title">뇌별 적중 누적</h3>
+            <div class="data-table-wrap">
+              <table class="data-table" id="hallBrainSummary">
+                <thead>
+                  <tr>
+                    <th>뇌</th><th>1등</th><th>2등</th><th>3등</th><th>4등</th><th>5등</th><th>합계</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <h3 class="subsection-title">적중 상세</h3>
+            <div class="data-table-wrap" style="margin-top:12px">
+              <table class="data-table" id="hallTable">
+                <thead>
+                  <tr>
+                    <th>회차</th>
+                    <th>뇌</th>
+                    <th>등수</th>
+                    <th>적중수</th>
+                    <th>적중번호</th>
+                    <th title="당첨과 같은 번호: 흰·검 이중 테두리·원래 밝기. 나머지 번호는 같은 열에서 흐리게 표시됩니다.">예측(컬러볼)</th>
+                    <th>당첨번호</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 통계 -->
+        <section id="view-stats" class="view-panel" data-view-panel="stats">
+          <div class="card">
+            <h2>통계분석 (종합 · lotto4.db)</h2>
+            <button type="button" class="btn btn-secondary" id="btnReloadStats">불러오기</button>
+            <p class="stats-hint" id="statsDbNote"></p>
+            <div id="statsSummary" class="dash-grid" style="margin-top:12px"></div>
+            <h3 class="subsection-title">홀·짝 / 번호대 / 합계 / 동반출현 (차트)</h3>
+            <div class="chart-grid-stats">
+              <div id="chartOddEven" class="freq-chart chart-odd-even"></div>
+              <div id="chartRange" class="freq-chart chart-range"></div>
+              <div id="chartSum" class="freq-chart chart-sum"></div>
+              <div id="chartPair" class="freq-chart chart-pair"></div>
+            </div>
+            <h3 class="subsection-title">번호별 출현 (전체)</h3>
+            <div id="statsFreqAll" class="freq-chart"></div>
+            <h3 class="subsection-title">번호별 출현 빈도 · 순위</h3>
+            <p class="stats-hint stats-ext-hint" id="statsNumberRankHint"></p>
+            <div id="statsNumberRanked" class="freq-chart"></div>
+            <h3 class="subsection-title">3개 동반출현 TOP 20</h3>
+            <p class="stats-hint stats-ext-hint" id="statsCooccur3Hint"></p>
+            <div class="data-table-wrap" style="margin-top:12px">
+              <table class="data-table" id="statsCooccur3Table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>조합</th>
+                    <th>횟수</th>
+                    <th>최근 회차</th>
+                    <th>추첨일</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <h3 class="subsection-title">4개 동반출현 TOP 20</h3>
+            <p class="stats-hint stats-ext-hint" id="statsCooccur4Hint"></p>
+            <div class="data-table-wrap" style="margin-top:12px">
+              <table class="data-table" id="statsCooccur4Table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>조합</th>
+                    <th>횟수</th>
+                    <th>최근 회차</th>
+                    <th>추첨일</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <h3 class="subsection-title">보너스 번호 빈도</h3>
+            <p class="stats-hint stats-ext-hint" id="statsBonusHint"></p>
+            <div id="statsBonusFreq" class="freq-chart"></div>
+            <h3 class="subsection-title">최근 구간 트렌드</h3>
+            <div id="statsTrendPanels"></div>
+            <h3 class="subsection-title">원시 JSON</h3>
+            <pre id="statsPre" class="stats-pre-raw"></pre>
+          </div>
+        </section>
+
+        <!-- 전략 X -->
+        <section id="view-strategy-x" class="view-panel" data-view-panel="strategy-x">
+          <div class="card">
+            <h2>전략 X</h2>
+            <div class="predict-toolbar">
+              <div class="draw-stepper">
+                <button type="button" id="btnSxDrawPrev" title="이전 회차">◀</button>
+                <select id="sxDrawSelect" aria-label="전략 X 회차 선택"></select>
+                <button type="button" id="btnSxDrawNext" title="다음 회차">▶</button>
+              </div>
+              <label class="draw-direct-wrap">
+                <span class="visually-hidden">회차 직접 입력</span>
+                <input type="number" id="sxDrawDirectInput" min="1" placeholder="회차" class="draw-direct-input" />
+                <button type="button" class="btn btn-secondary" id="btnSxDrawDirectGo">이동</button>
+              </label>
+              <button type="button" class="btn btn-primary" id="btnStrategyXGenerate">전략 X 생성</button>
+              <button type="button" class="btn btn-secondary" id="btnStrategyXReload">저장 기록 불러오기</button>
+              <button type="button" class="btn btn-secondary" id="btnSxTierWins">이 회차 1~5등 적중</button>
+              <button type="button" class="btn btn-kakao" id="btnSxKakao">카톡 복사</button>
+            </div>
+            <div class="status-line" id="strategyXStatus" aria-live="polite"></div>
+
+            <div class="brain-tabs-wrap">
+              <div class="brain-tabs-label">신호 4뇌</div>
+              <div class="tabs-row" id="sxTabsPrimary"></div>
+              <div class="brain-tabs-label">최종 조율</div>
+              <div class="tabs-row" id="sxTabsSecondary"></div>
+            </div>
+
+            <div id="strategyXActiveTitle" style="font-size:0.9rem;font-weight:700;margin-bottom:10px;color:var(--gold)"></div>
+            <p id="strategyXDisclaimer" class="strategy-x-disclaimer-min" role="note"></p>
+            <div class="sets-grid" id="strategyXSetsHost"></div>
+          </div>
+        </section>
+
+        <!-- 로또 조회 (814만 순위 · 당첨 이력) -->
+        <section id="view-combo-lookup" class="view-panel" data-view-panel="combo-lookup">
+          <div class="card">
+            <h2>로또 조회</h2>
+            <p class="stats-hint combo-lookup-disclaimer" role="note">
+              조회·기록 전용입니다. 예측·적중 확률 향상 기능이 아닙니다. 814만 순위는 combinadic 공식으로 즉시 계산하며, 형 앱 DB는 사용하지 않습니다.
+            </p>
+
+            <h3 class="subsection-title">번호 → 순위 · 역대 출현</h3>
+            <div class="combo-lookup-form">
+              <div class="combo-num-inputs" id="comboLookupInputs" aria-label="6개 번호 입력"></div>
+              <button type="button" class="btn btn-primary" id="btnComboLookup">조회</button>
+            </div>
+            <div id="comboLookupResult" class="combo-lookup-result" aria-live="polite"></div>
+
+            <h3 class="subsection-title">전체 당첨 이력</h3>
+            <div class="combo-table-toolbar">
+              <label>회차 검색
+                <input type="text" id="comboSearchQ" placeholder="회차 번호" class="combo-search-input" />
+              </label>
+              <label>정렬
+                <select id="comboOrderSelect" aria-label="정렬 기준">
+                  <option value="draw_no_desc">회차 최신순</option>
+                  <option value="draw_no_asc">회차 오래된순</option>
+                  <option value="combo_no_asc">순위 낮은순</option>
+                  <option value="combo_no_desc">순위 높은순</option>
+                  <option value="date_desc">날짜 최신순</option>
+                  <option value="date_asc">날짜 오래된순</option>
+                </select>
+              </label>
+              <label>페이지당
+                <select id="comboPerPageSelect" aria-label="페이지당 행 수">
+                  <option value="25">25</option>
+                  <option value="50" selected>50</option>
+                  <option value="100">100</option>
+                </select>
+              </label>
+              <button type="button" class="btn btn-secondary" id="btnComboReload">새로고침</button>
+            </div>
+            <div class="status-line" id="comboTableStatus" aria-live="polite"></div>
+            <div class="data-table-wrap">
+              <table class="data-table combo-draw-table" id="comboDrawTable">
+                <thead>
+                  <tr>
+                    <th>회차</th>
+                    <th>날짜</th>
+                    <th>당첨번호</th>
+                    <th>814만 순위</th>
+                    <th>1등 당첨금</th>
+                    <th>1등 당첨자</th>
+                  </tr>
+                </thead>
+                <tbody id="comboDrawTbody"></tbody>
+              </table>
+            </div>
+            <div class="combo-pagination" id="comboPagination"></div>
+          </div>
+        </section>
+
+        <!-- 전체 조합 (814만 · 20분할 DB · 페이지네이션) -->
+        <section id="view-all-combos" class="view-panel" data-view-panel="all-combos">
+          <div class="card allcombos-card">
+            <h2>전체 조합</h2>
+            <div id="acSummary" class="allcombos-summary" aria-live="polite"></div>
+            <p class="stats-hint allcombos-disclaimer" role="note">
+              814만 전체 조합 열람·기록 도구입니다. 순위 No.1 ~ No.8,145,060 (총 8,145,060개). 데이터는 <code>data/combos/</code> 20분할 DB(로컬 전용)에서 읽습니다.
+            </p>
+            <div class="allcombos-quick-search">
+              <label class="allcombos-quick-label">빠른 찾기
+                <input type="text" id="acQuickSearch" class="allcombos-quick-input" placeholder="순위 3826391 또는 1,2,3,4,5,6" />
+              </label>
+              <button type="button" class="btn btn-primary" id="btnAcQuickSearch">찾기</button>
+            </div>
+            <div class="allcombos-toolbar">
+              <label>순위 점프
+                <input type="text" id="acJumpInput" inputmode="numeric" placeholder="예: 3826391" class="allcombos-jump-input" />
+              </label>
+              <button type="button" class="btn btn-secondary" id="btnAcJump">이동</button>
+              <div class="allcombos-search-wrap">
+                <span class="allcombos-search-label">6번호</span>
+                <div class="combo-num-inputs" id="acSearchInputs" aria-label="6번호 검색"></div>
+                <button type="button" class="btn btn-secondary" id="btnAcSearch">번호 검색</button>
+              </div>
+              <label class="allcombos-toggle">
+                <input type="checkbox" id="acWinnersOnly" />
+                당첨만 보기
+              </label>
+              <label>페이지당
+                <select id="acPerPageSelect" aria-label="페이지당 행 수">
+                  <option value="80">80</option>
+                  <option value="120" selected>120</option>
+                  <option value="200">200</option>
+                </select>
+              </label>
+              <button type="button" class="btn btn-secondary" id="btnAcCsv">현재 페이지 CSV</button>
+            </div>
+            <div class="status-line" id="acStatus" aria-live="polite">준비 중…</div>
+            <div class="data-table-wrap allcombos-table-wrap">
+              <table class="data-table allcombos-table">
+                <thead>
+                  <tr>
+                    <th class="ac-col-rank">순위</th>
+                    <th class="ac-col-nums">6번호</th>
+                    <th class="ac-col-sum">합</th>
+                    <th class="ac-col-win">당첨</th>
+                  </tr>
+                </thead>
+                <tbody id="acTbody"></tbody>
+              </table>
+            </div>
+            <div class="combo-pagination" id="acPagination"></div>
+          </div>
+        </section>
+
+        <!-- 플레이스홀더 -->
+        <section id="view-data" class="view-panel" data-view-panel="data">
+          <div class="card">
+            <h2>데이터수집 (동행복권)</h2>
+            <p class="stats-hint">API로 <code>lotto_draws</code>를 갱신합니다. 전체·최신·지정 회차(단일)를 선택할 수 있습니다. 4군 army4 적중 필드도 갱신합니다.</p>
+            <div id="collectStatusBox" class="collect-status">불러오는 중…</div>
+            <div class="collect-actions">
+              <button type="button" class="btn btn-primary" id="btnCollectAll">전체 수집</button>
+              <button type="button" class="btn btn-primary" id="btnCollectLatest">최신 수집</button>
+              <label class="collect-single-field">단일 회차
+                <input type="number" id="collectDrawNoInput" min="1" placeholder="비우면 다음 후보 회차" />
+              </label>
+              <button type="button" class="btn btn-secondary" id="btnCollectSingle">단일 수집</button>
+              <button type="button" class="btn btn-secondary" id="btnCollectStatus">상태 새로고침</button>
+            </div>
+            <div id="collectBusy" class="collect-busy hidden">수집 요청 처리 중…</div>
+            <div id="collectResultSummary" class="collect-result-summary" aria-live="polite"></div>
+            <h3 class="subsection-title">수집 로그 (JSON)</h3>
+            <pre id="collectLog" class="collect-log"></pre>
+          </div>
+        </section>
+
+        <!-- 로또의 진실 (엔진3) -->
+        <section id="view-truth" class="view-panel" data-view-panel="truth">
+          <div class="card truth-page">
+            <div class="truth-banner" id="truthBanner" role="status">
+              로또는 예측할 수 없습니다. 우리는 그 진실 위에서 함께합니다.
+            </div>
+            <h2>로또의 진실</h2>
+            <p class="truth-intro">우리가 walk-forward로 직접 검증한 수치입니다. 과장·예측 약속 없음.</p>
+            <button type="button" class="btn btn-secondary" id="btnReloadTruth">새로고침</button>
+            <div class="status-line" id="truthStatus" aria-live="polite"></div>
+            <div id="truthCardsHost" class="truth-cards-grid"></div>
+            <p class="truth-sources" id="truthSources"></p>
+          </div>
+        </section>
+
+        <!-- 두뇌 현재 -->
+        <section id="view-brain" class="view-panel" data-view-panel="brain">
+          <div class="card">
+            <h2>두뇌상태</h2>
+            <button type="button" class="btn btn-secondary" id="btnReloadBrain">불러오기</button>
+            <div id="brainStatusHost" style="margin-top:14px"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1~5등 적중 모달 -->
+  <div id="modalTier" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="tierModalHeading">
+    <div class="modal-card tier-modal">
+      <div class="modal-head tier-modal-head">
+        <div class="tier-modal-head-row">
+          <h3 id="tierModalHeading" class="tier-modal-heading">
+            📋 <span id="tierDrawNo"></span>회 적중 결과
+          </h3>
+          <button type="button" class="modal-close" id="modalTierClose" aria-label="닫기">✕</button>
+        </div>
+        <div class="tier-nav" role="toolbar" aria-label="회차 이동">
+          <button type="button" class="btn btn-secondary btn-tier-nav" onclick="tierModalNav(-1)">◀</button>
+          <input type="number" id="tierJumpInput" min="1" class="tier-jump-input" placeholder="회차" />
+          <button type="button" class="btn btn-secondary btn-tier-nav" onclick="tierModalJump()">이동</button>
+          <button type="button" class="btn btn-secondary btn-tier-nav" onclick="tierModalNav(1)">▶</button>
+        </div>
+      </div>
+      <div class="modal-body tier-modal-body">
+        <div id="tierActualNumbers" class="tier-actual"></div>
+        <div id="tierSections"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/lotto4.js?v=20260620c"></script>
+</body>
+</html>

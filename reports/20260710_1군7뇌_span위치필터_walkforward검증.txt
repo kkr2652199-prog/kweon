@@ -1,0 +1,55 @@
+20260710_1군7뇌_span위치필터_walkforward검증 (READ-ONLY in-memory)
+====================================================================
+
+[STEP 0 — 사전 설계]
+(1) 구현: F1_V2_STRICT 후보풀(popavoid+f1, copy<5) 동일 생성. 5세트 wheel 직전 score 조정만: arm2=span 80% 밴드(10~90%) 이탈 패널티, arm3=pos1~6 역사 밴드빈도 log합 보너스, arm4=둘 결합. 분포는 lotto_draws 1~(N-1) walk-forward.
+(2) 함정: ① span 필터가 극단 span 세트(고커버 후보) 배제 → cov_span·best-of-5 하락 위험. ② pos_band는 pos1~pos6 당첨 분포 기준 — 예측 세트와 위치 의미 동일(정렬) 가정. ③ 패널티만으로 wheel greedy metric 변화 — 효과 미미할 수 있음. ④ pos7_bonus는 6세트 후보에 없음 — arm3/4는 pos1~6만.
+(3) 허점: SPAN_PENALTY=0.35, POS_BAND_BONUS=0.45 고정 — grid 미실施. 80% 구간=span p10~p90 단순 백분위. 관측 r=-0.65/+0.64는 당첨번호 span-pos 상관 — 필터 인과 미검증.
+
+[STEP 1~2 — 실험]
+  arm1 F1_V2_STRICT — 기준
+  arm2 F1_V2_SPAN — span p10~p90 이탈 패널티
+  arm3 F1_V2_POS_BAND — pos1~6 역사 밴드 log 보너스
+  arm4 F1_V2_COMBINED — span+pos_band
+  구간: 330~1230 3구간 | 시드 XOR 5종 | contamination=0
+
+[STEP 3 — 판정 (각 arm vs arm1)]
+  (a) best-of-5 유의하락 없음 | (b) pack_gap 2구간+ 유의감소
+  (c) 카피율=0 (5시드) | (d) contamination=0
+--------------------------------------------------------------------
+  F1_V2_SPAN: GO=HOLD | best=PASS | gap=FAIL(0/3) | copy=PASS | F1_V2_SPAN: (b)pack_gap(0/3)
+  F1_V2_POS_BAND: GO=HOLD | best=PASS | gap=FAIL(0/3) | copy=PASS | F1_V2_POS_BAND: (b)pack_gap(0/3)
+  F1_V2_COMBINED: GO=HOLD | best=PASS | gap=FAIL(0/3) | copy=PASS | F1_V2_COMBINED: (b)pack_gap(0/3)
+
+[arm별 시드0 요약 vs arm1]
+--------------------------------------------------------------------
+  arm | mean_best | Δbest | mean_gap | Δgap | p_gap | mean_cov | Δcov | copy0
+  _V2_SPAN | 2.287 | +0.006 | 1.296 | -0.038 | 0.0508 | 26.193 | +0.030 | True
+  POS_BAND | 2.248 | -0.033 | 1.238 | +0.020 | 0.4889 | 26.227 | +0.065 | True
+  COMBINED | 2.262 | -0.020 | 1.226 | +0.032 | 0.2854 | 26.271 | +0.108 | True
+  arm1     | 2.282 | — | 1.258 | — | — | 26.163 | — | True
+
+[seed0 3구간 pack_gap 상세 — arm2 SPAN]
+--------------------------------------------------------------------
+  [A] arm1=1.3255 arm2=1.3792 Δred=-0.0537 p=0.1122 pass=False
+  [B] arm1=1.2333 arm2=1.3 Δred=-0.0667 p=0.0577 pass=False
+  [C] arm1=1.2167 arm2=1.21 Δred=+0.0067 p=0.8333 pass=False
+
+[seed0 3구간 best-of-5 상세 — arm2 SPAN]
+--------------------------------------------------------------------
+  [A] arm1=2.2517 arm2=2.2483 Δ=-0.0034 p=0.8948 pass=True
+  [B] arm1=2.34 arm2=2.3433 Δ=+0.0033 p=0.8866 pass=True
+  [C] arm1=2.2533 arm2=2.27 Δ=+0.0167 p=0.4754 pass=True
+
+[STEP 4 — 6뇌/lead1 DB 회귀]
+--------------------------------------------------------------------
+  predictions BEFORE: count=53905 sha=0fe5d19ccbceb829
+  predictions AFTER:  count=53905 sha=0fe5d19ccbceb829
+  stat: 6015 -> 6015 [OK]
+  markov: 6010 -> 6010 [OK]
+  llm: 6011 -> 6011 [OK]
+  lstm: 6015 -> 6015 [OK]
+  fusion: 6015 -> 6015 [OK]
+  hyena: 6010 -> 6010 [OK]
+  lead1: 5565 -> 5565 [OK]
+  regression_ok: True

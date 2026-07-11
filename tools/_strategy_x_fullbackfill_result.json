@@ -1,0 +1,19 @@
+{
+  "start_draw": 262,
+  "end_draw": 1228,
+  "targets": 964,
+  "processed": 964,
+  "skipped": 0,
+  "prediction_rows_written": 24100,
+  "fullbacktest_rows_written": 24100,
+  "expected_rows_per_draw": 25,
+  "brain_tags": [
+    "strategy_x_popularity_freq",
+    "strategy_x_popularity_pair",
+    "strategy_x_shape",
+    "strategy_x_cooccur",
+    "strategy_x_hyena"
+  ],
+  "errors": [],
+  "error_count": 0
+}

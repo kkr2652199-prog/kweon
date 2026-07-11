@@ -1,0 +1,50 @@
+20260617_4군_전략X_하이에나조율뇌_구현검증_패치
+동생→커서 | 2026-06-17 | 4군 패치 | 1~3군 간섭 0
+
+3파일 확인:
+✅ RULES_FIXED (R2/R13/R14)
+✅ STATUS_LATEST 기억97 → 기억98 갱신
+✅ CURSOR_RULES §2 1~3군 수정금지
+
+=== STEP1 하이에나 조율뇌 ===
+신규: app/lotto4/brains/hyena_coordinator_v13.py
+- 입력: 5뇌 출력 + lotto_predictions_army4 N이전 로그(없으면 walk-forward 재생성)
+- (a) N이전 각 뇌 인기적합도 기여도 → brain_trust
+- (b) 기여도 가중 consensus 풀
+- (c) 체인+consensus 6번호, 5세트, Jaccard<0.5
+- brain_tag: strategy_x_hyena
+- 실전 mode: walk_forward only
+
+=== STEP2 분석모드 ===
+함수: analyze_union_hits_lookahead()
+- 라벨: analysis_lookahead_only_NOT_PREDICTION
+- look-ahead(실제 당첨번호) union 적중 측정 — API 미연결
+
+=== STEP3 API ===
+POST /api/lotto4/v13/strategy_x/hyena/{target_draw_no}
+- walk-forward만, 5세트+brain_trust+disclaimer
+- lotto_predictions_army4 5행 저장
+
+=== STEP4 백테스트 (884회, era_C) ===
+| 지표 | 하이에나 | random | cooccur(5뇌최고) | 4뇌 coordinator |
+|------|----------|--------|------------------|-----------------|
+| 인기적합도(sum) | 0.8537 | 0.7988 | **0.8610** | 0.8514 |
+| 적중 | 0.7839 | 0.8100 | 0.8023 | 0.8081 |
+| 인기 t-test p | 0.0 | — | — | — |
+
+분석모드(예측 아님): union 평균 적중 5.79/6 — 5뇌 합치면 이론상 거의 전 번호 커버
+
+=== STEP5 종합 판정 ===
+(1) 5뇌 최고(0.861) 대비 인기 우위: ❌ (0.8537, cooccur 미달)
+(2) 랜덤 대비 인기 유의 우위: ✅ (p<0.05, Δ=+0.0549)
+(3) 적중률 무작위 수준: ✅ (Δ=-0.026, R2 정직)
+→ **보조 조율** (5뇌 대비 인기 최고치 미달, 4뇌·랜덤 대비 인기 우위·union 보완성 있음)
+
+R2: 6개 적중·당첨확률 향상 보장 없음. 예측 엔진 아님.
+
+=== 변경 파일 ===
+신규: hyena_coordinator_v13.py, run_strategy_x_hyena_backtest.py
+수정: strategy_x_logging.py, v13_routes.py
+
+=== 다음 ===
+전략 X UI 연결

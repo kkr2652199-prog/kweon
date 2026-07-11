@@ -1,0 +1,39 @@
+동생 → 커서 | 20260705 | PostMortem 자동훅 연결
+========================================================================
+
+[커서 의견] (1)구현 (2)함정 (3)허점
+
+(1) 구현
+  - postmortem_engine.maybe_build_postmortem_after_scoring(N)
+  - data_service.refresh_all_army_prediction_scores 말미 호출
+  - lotto.db query_only / lotto_patterns.db UPSERT
+
+(2) 함정
+  - postmortem 예외가 refresh_all 전파 → maybe_* 내부 try/except로 격리
+  - 5뇌·lead1 미완 초기 회차 silent skip
+  - F1/예측 역주입 금지 유지
+
+(3) 허점
+  - 과거 1112회 backfill은 tools/_build_postmortem_engine.py 수동
+  - last_built_draw skip 없음(UPSERT만, 중복행은 없음)
+
+[STEP 3 검증]
+  test_draw: 1231
+  predictions BEFORE: count=53905 sha=0fe5d19ccbceb829
+  predictions AFTER:  count=53905 sha=0fe5d19ccbceb829
+  postmortem rows 1231 before hook test: 1 after: 1
+
+  pipeline_postmortem_exists: PASS
+  pipeline_pool_1231: PASS
+  pipeline_pack_1231: PASS
+  hook_returns_built: PASS
+  idempotent_single_row: PASS
+  idempotent_data_stable: PASS
+  isolation_pipeline_survives: PASS
+  isolation_fp_unchanged: PASS
+  predictions_unchanged: PASS
+
+[1231 postmortem snapshot]
+  pool_cover: 6/6
+  lead1_pack: 5/6
+  pack_gap: 1 nums=[4]

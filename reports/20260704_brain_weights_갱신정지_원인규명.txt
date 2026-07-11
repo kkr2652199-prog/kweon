@@ -1,0 +1,51 @@
+20260704_brain_weights_갱신정지_원인규명 (PHASE 1)
+==================================================
+
+[커서 사전 의견 — 실행 전]
+(1) 더 나은 구현: get_brain_tag_ranking에 max_draw_no 추가 필수(백필 컨닝 방지).
+    refresh_all_army_prediction_scores() 끝에 maybe_update_brain_weights() 훅.
+    lotto_weight_log_army3(3군)처럼 1군 weight_log 테이블 추가 권장.
+(2) 예상 함정: get_brain_tag_ranking이 target_draw_no 미전달 → 미래 회차 유입.
+    6뇌 예측 캐시(1회 고정)로 가중치 갱신해도 과거 예측값 불변(의도된 READ-ONLY).
+    fusion은 lotto_brain_weights 미갱신(4뇌만 fusion 로드) — 설계상 정상.
+(3) 설계 허점: last_updated_draw만 있고 시계열 없음 → 정지 시점 역추적 불가.
+    run_backtest 수동 실행 의존 = 운영 공백.
+
+[경계 명시]
+- 수정 대상: brain_weights 갱신 경로(update_brain_weights 호출·집계 로직)
+- READ-ONLY: 6뇌/lead1 lotto_predictions 예측값·예측 알고리즘
+
+STEP 1 — lotto_brain_weights 현재 스냅샷
+----------------------------------------
+  hyena    weight=33.8995 last_draw=1221 updated_at=2026-04-28 12:04:21
+  llm      weight=7.8923 last_draw=1221 updated_at=2026-04-28 12:04:21
+  lstm     weight=41.4442 last_draw=1221 updated_at=2026-04-28 12:04:21
+  markov   weight=3.3879 last_draw=1221 updated_at=2026-04-28 12:04:21
+  stat     weight=5.2125 last_draw=1221 updated_at=2026-04-28 12:04:21
+
+  ※ 히스토리 테이블 없음. 관련 테이블: ['lotto_brain_weights', 'lotto_brain_weights_army2', 'lotto_brain_weights_army3', 'lotto_weight_log_army3']
+
+STEP 2 — update_brain_weights() 호출 지점
+----------------------------------------
+  app/lotto/engine.py:606 — run_backtest() 루프 내부 ONLY
+  data_service.save_draw / refresh_all_army_prediction_scores — 호출 없음
+
+STEP 3 — 1222~max_draw 구간
+----------------------------------------
+  1222 | scored_brains=6 best_mc=2
+  1223 | scored_brains=6 best_mc=2
+  1224 | scored_brains=6 best_mc=3
+  1225 | scored_brains=6 best_mc=3
+  1226 | scored_brains=6 best_mc=2
+  1227 | scored_brains=6 best_mc=2
+  1228 | scored_brains=6 best_mc=3
+  1229 | scored_brains=6 best_mc=3
+  1230 | scored_brains=6 best_mc=2
+  1231 | scored_brains=6 best_mc=3
+
+STEP 4 — 확정된 정지 원인
+----------------------------------------
+  ★ run_backtest() 외 자동 갱신 경로 없음 + 1221 이후 백테스트 미실행
+    → last_updated_draw=1221에서 정지. '호출 실패'가 아닌 '호출 자체 없음'.
+
+max_draw=1231 | get_brain_tag_ranking max_draw_no 파라미터: False

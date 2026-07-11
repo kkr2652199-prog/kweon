@@ -1,0 +1,148 @@
+{
+  "report_stem": "20260710_1군_7구간위치전이지표_축적",
+  "migrated": [],
+  "processed": 1112,
+  "skipped": 0,
+  "checks": {
+    "predictions_unchanged": true,
+    "core19_sha_unchanged": true,
+    "contamination_zero": true,
+    "position_rows": true,
+    "spotcheck_1231": true,
+    "global_stats_exist": true
+  },
+  "sha_before": "16156ab6a7d75f8e",
+  "sha_after": "16156ab6a7d75f8e",
+  "fingerprint_before": "count=53905 sha=0fe5d19ccbceb829",
+  "fingerprint_after": "count=53905 sha=0fe5d19ccbceb829",
+  "contamination_count": 0,
+  "spotcheck_1231": {
+    "ok": true,
+    "checks": {
+      "pos1": true,
+      "pos6": true,
+      "pos7_bonus": true,
+      "pos1_band_1_9": true,
+      "max_data_1230": true,
+      "overlap_1230_1231": true
+    },
+    "expected": [
+      4,
+      13,
+      14,
+      18,
+      31,
+      38
+    ],
+    "bonus": 15
+  },
+  "observation": {
+    "position_table": {
+      "pos1": {
+        "mean": 6.77,
+        "min": 1,
+        "max": 35,
+        "mode_band": "1_9"
+      },
+      "pos2": {
+        "mean": 13.13,
+        "min": 2,
+        "max": 37,
+        "mode_band": "10_19"
+      },
+      "pos3": {
+        "mean": 19.89,
+        "min": 3,
+        "max": 40,
+        "mode_band": "10_19"
+      },
+      "pos4": {
+        "mean": 26.23,
+        "min": 5,
+        "max": 43,
+        "mode_band": "20_29"
+      },
+      "pos5": {
+        "mean": 32.88,
+        "min": 9,
+        "max": 44,
+        "mode_band": "30_39"
+      },
+      "pos6": {
+        "mean": 39.46,
+        "min": 17,
+        "max": 45,
+        "mode_band": "40_45"
+      },
+      "pos7_bonus": {
+        "mean": 22.43,
+        "min": 1,
+        "max": 45,
+        "mode_band": "30_39"
+      }
+    },
+    "overlap_distribution": {
+      "0": 432,
+      "1": 475,
+      "2": 181,
+      "3": 23,
+      "4": 1
+    },
+    "mean_overlap": 0.818,
+    "band_shift_top": [
+      [
+        "40_45:-1",
+        275
+      ],
+      [
+        "1_9:-1",
+        268
+      ],
+      [
+        "10_19:+1",
+        264
+      ],
+      [
+        "20_29:+1",
+        263
+      ],
+      [
+        "40_45:+1",
+        259
+      ],
+      [
+        "1_9:+1",
+        255
+      ],
+      [
+        "10_19:-1",
+        251
+      ],
+      [
+        "20_29:-1",
+        244
+      ]
+    ],
+    "span_delta_mean": 0.007,
+    "chi2_band_transition": {
+      "chi2": 3800.048,
+      "df": 17,
+      "z_sqrt": 14.951
+    },
+    "position_correlation": {
+      "n": 1231,
+      "pos1_pos6_r": 0.1693,
+      "pos1_span_r": -0.6526,
+      "pos6_span_r": 0.6364
+    },
+    "signal_candidates": [
+      "band_transition_matrix: χ²/df>1.5 → 랜덤 독립 대비 쏠림 후보",
+      "pos1_pos6_r=0.1693 → 위치간 상관 후보"
+    ]
+  },
+  "global_stats_keys": [
+    "position_summary",
+    "band_transition_matrix",
+    "position_correlation"
+  ]
+}

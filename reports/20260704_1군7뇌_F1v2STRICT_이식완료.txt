@@ -1,0 +1,51 @@
+20260704_1군7뇌_F1v2STRICT_이식완료
+==========================================================
+
+[커서 사전 의견]
+(1) 구현: predict_brain7.generate_f1_v2_strict_sets 내장 (popavoid 25→wheel 5, ov<COPY_OVERLAP). save_brain7_predictions 경로로 백필·자동훅 공유.
+(2) 함정: ① 백필 전 백업 필수 — 되돌림은 BACKUP_TABLE+JSON. ② save_brain7는 _brain_number_reliability(N-1) — 컨닝 아님. ③ 88~87 skip(5뇌 미존재) 정상.
+(3) 허점: 적중 개선은 백업 F1_BASE lead1 matched_count 대비 — in-memory 실험(+0.19)과 DB 백필 수치는 LSTM 무관 lead1만 비교.
+
+STEP 0 — lead1(F1_BASE) 백업
+----------------------------------------
+  rows=5565 table=lotto_predictions_lead1_backup_20260704
+  json=d:\3kweon\reports\_backup_20260704_lead1_f1_base.json
+
+STEP 1 — predict_brain7.py → F1_V2_STRICT
+----------------------------------------
+  generate_f1_v2_strict_sets + compute_brain7_sets 활성화
+  generate_f1_sets(F1_BASE) 대조용 유지
+
+STEP 2 — lead1 재백필 88~1231
+----------------------------------------
+  deleted=5565 ok=1112 skip=0 range=[88, 1231] elapsed=257.9s
+  copy_violations=0 contamination_skips=0
+  max_data_sample=[{'draw': 1227, 'max_data_draw': 1226}, {'draw': 1228, 'max_data_draw': 1227}, {'draw': 1229, 'max_data_draw': 1228}, {'draw': 1230, 'max_data_draw': 1229}, {'draw': 1231, 'max_data_draw': 1230}]
+
+STEP 3 — 검증
+----------------------------------------
+  lead1 copy_rate=0.0 copy_zero=True
+  best-of-5 old=2.0962 new=2.259 Δ=0.1628 p=0.0 improved=True
+  [A] n=298 old=2.1242 new=2.2517 Δ=0.1275
+  [B] n=300 old=2.13 new=2.34 Δ=0.21
+  [C] n=300 old=2.0533 new=2.2533 Δ=0.2
+  hook_1231={'generated': False, 'reason': 'already_exists', 'target_draw_no': 1232}
+  pred_1232 before/after=0/5
+  1232_reasoning_sample=출처:F1_V2_STRICT | popavoid→wheel | 가중=3.98 | max겹침=4
+  formula_ok=True
+
+STEP 4 — 회귀
+----------------------------------------
+  stat: 6015 → 6015 [OK]
+  markov: 6010 → 6010 [OK]
+  llm: 6011 → 6011 [OK]
+  lstm: 6015 → 6015 [OK]
+  fusion: 6015 → 6015 [OK]
+  hyena: 6010 → 6010 [OK]
+  army2: 42920 → 42920 [OK]
+  army3: 49055 → 49055 [OK]
+  regression_ok: True
+
+STEP 5 — 판정
+----------------------------------------
+  ✅ F1_V2_STRICT 이식 완료 — 카피0·적중개선·회귀 PASS·1232 생성 OK

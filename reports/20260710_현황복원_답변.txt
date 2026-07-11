@@ -1,0 +1,212 @@
+20260710_현황복원_답변 (READ-ONLY 사실 확인)
+동생 → 커서 | 코드·DB·리포트 기준 | 추정 없음
+================================================================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 현재 프로덕션 상태
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[1-1] lead1(7뇌) 활성 모델
+  ▶ F1_V2_STRICT (프로덕션 가동 중)
+
+  근거:
+  - app/lotto/predict_brain7.py L40: F1_FORMULA = "F1_V2_STRICT"
+  - app/lotto/predict_brain7.py L549~561: compute_brain7_sets() → generate_f1_v2_strict_sets()
+  - DB lotto_predictions lead1 최신 reasoning: "출처:F1_V2_STRICT | popavoid→wheel | ..."
+
+  ▶ F1_BASE / F1_V2(비STRICT) / MWU β=0.95 / SEL4 / CAP2 → 프로덕션 경로 아님
+  - F1_BASE: generate_f1_sets() 대조·복구용으로 코드에만 존재 (L402~)
+  - SEL4+CAP2: _select_cap2_sets() 레거시 보존 (L211~), compute_brain7_sets 미호출
+  - MWU β=0.95: tools/_audit_army1_7brain_v2_mwu.py in-memory 실험만. 판정 GO-SEL4 (이식 미착수)
+  - F1_V2_STRICT 이식: d:\3kweon\reports\20260704_1군7뇌_F1v2STRICT_이식완료.txt ✅ PASS
+
+[1-2] lead1 백필 범위·세트 수
+  ▶ 회차: 88 ~ 1232 (1113회 × 5세트 = 5565행)
+
+  근거: data/lotto.db
+  SELECT MIN/MAX/COUNT FROM lotto_predictions WHERE brain_tag='lead1'
+  → mn=88, mx=1232, cnt=5565, draws=1113
+
+  참고: 1~87회는 5뇌 풀 미완으로 백필 skip (20260704_1군7뇌_F1채택_전구간백테스트.txt L12)
+
+[1-3] brain_weights 5뇌 현재값 (last_updated_draw=1231)
+  stat   : 4.9682
+  markov : 3.4103
+  llm    : 7.8029
+  lstm   : 35.2036
+  hyena  : 27.4894
+
+  근거: data/lotto.db → lotto_brain_weights
+
+[1-4] 1232회차 예측·채점
+  ▶ 예측: 생성됨 (lead1 5세트 + 6뇌 각 5세트)
+  ▶ 채점: 미채점 (matched_count = -1 전부)
+
+  근거: data/lotto.db
+  - lead1 target_draw_no=1232: COUNT=5, min/max matched_count=-1
+  - 6뇌+lead1 1232: 전 뇌 matched_count=-1
+  - lotto_draws MAX(draw_no WHERE num1 IS NOT NULL) = 1231 (1232 당첨 미확정)
+
+  F1_V2_STRICT 1232 생성 확인: 20260704_1군7뇌_F1v2STRICT_이식완료.txt L51
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. 최근 작업 순서 (리포트 날짜순, 최신→과거)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+※ d:\3kweon\reports 및 My_Drive_Sync\커서보고서 기준. 20260710 이전 생성분.
+
+20260709_3군_예측자동화.txt
+  → 3군 V12 1221~1231 재백필 + 1232 40세트 + 자동훅 검증. (리포트 내 STEP별 PASS 다수)
+
+20260705_1군7뇌_B2_union_guard.txt
+  → B2 wheel union-guard in-memory A/B. GO: HOLD (pack_gap 1/3, best PASS, copy0 PASS)
+
+20260705_1군7뇌_B1_k3합의부oost.txt  ※파일명 실제: B1_k3합의부스트
+  → B1 k≥3 consensus boost in-memory A/B. GO: HOLD (pack_gap 0/3, gap 오히려 악화)
+
+20260705_postmortem_자동훅.txt
+  → PostMortem maybe_build 훅 연결·검증. OVERALL: PASS (9/9)
+
+20260705_정찰_자동훅_포장갭.txt
+  → 자동훅 복잡도·포장갭 개선 여지 정찰 (코드 수정 0). A(훅) 먼저 권고
+
+20260705_1군_postmortem엔진.txt
+  → PostMortem 엔진 최초 구축 1112회. 1231 스팟체크 PASS
+
+20260704_1군7뇌_F1v2STRICT_이식완료.txt
+  → F1_V2_STRICT 프로덕션 이식 + lead1 88~1231 재백필. ✅ PASS
+
+20260704_1군7뇌_F1v2_카피0강제_최종.txt
+  → F1_BASE vs F1_V2_STRICT. GO: ADOPT-F1_V2_STRICT
+
+20260704_2군_예측자동화.txt / 20260704_1군6뇌_가중치재백테스트.txt / 20260704_1군_예측자동생성.txt
+  → 2군 V11·1군 6뇌 가중치·1군 N+1 자동예측 훅. (각 리포트 PASS)
+
+20260704_1군7뇌_F1v2_이식전검증.txt
+  → F1v2 이식 전 HOLD 검증. GO: TRANSPLANT_HOLD (카피율 FAIL → 이후 STRICT로 해결)
+
+20260704_1군7뇌_F1v2_휠링인기회피검증.txt
+  → F1 wheel+popavoid. GO: ADOPT-F1_V2
+
+20260704_1군7뇌_F1채택_전구간백테스트.txt
+  → lead1 DELETE + F1 백필 88~1230. GO: GO-F1
+
+20260704_1군_무결성스냅샷.txt
+  → 1221~1231 무결성. 종합: ALL PASS
+
+20260701_* (다수)
+  → 7뇌 v2 MWU·v3·CAP1/2·SEL4·하이에나·1등가자 백필 등 초기 검증군
+  → 최종적으로 F1 계열로 수렴 (아래 §3 참조)
+
+[B1/B2 이후 추가 실험]
+  ▶ 확인 결과: 20260705 B2가 날짜 접두 리포트 중 최신 1군 pack_gap 실험.
+  ▶ 20260709는 3군 자동화만. B3·spike guard 등 추가 1군 실험 리포트: 없음.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. 맥락 검증 — MWU / SEL4 / consensus 7뇌 / predict_consensus
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[3-1] "MWU β=0.95"
+  ▶ 존재: tools/_audit_army1_7brain_v2_mwu.py (BETA_CANDIDATES=(0.8,0.9,0.95))
+  ▶ 리포트: My_Drive_Sync\커서보고서\20260701_1군7뇌v2_곱셈가중치학습투표_정밀검증.txt
+  ▶ 결론: "v2(최적 β=0.95) ≈ SEL4" → 판정 GO-SEL4 (MWU 단독 채택 아님)
+  ▶ 프로덕션: 미이식. predict_brain7.py에 MWU 코드 없음.
+
+[3-2] "균등 SEL4"
+  ▶ 존재: predict_brain7.py _select_cap2_sets / SEL4_COUNT (레거시)
+  ▶ 리포트: 20260701_1군7뇌v2_... "30세트 균등 표합 → 상위 5세트", GO-SEL4
+  ▶ 프로덕션: 폐기(비활성). 현행 F1_V2_STRICT가 대체.
+
+[3-3] "consensus 7뇌"
+  ▶ MWU 리포트 STEP4: brain_tag 후보 "consensus", 표시명 "합의체"
+  ▶ 별개 in-memory 실험 개념. 프로덕션 brain_tag=lead1, 공식 F1_V2_STRICT.
+  ▶ pattern_store.get_consensus_numbers(): 5뇌 k≥3 합의 조회(READ-ONLY). lead1 생성 미연결.
+  ▶ B1 실험에서 k≥3 boost in-memory만 사용 → HOLD.
+
+[3-4] predict_consensus.py
+  ▶ My_Library 내 파일: 없음 (Glob 0건)
+  ▶ MWU 리포트 L106: "신규 predict_consensus.py (또는 predict_brain7.py)" — 설계만, 미착수
+  ▶ 실제 이식: predict_brain7.py (brain_tag=lead1)로 대체됨
+
+[3-5] "1군 7뇌 DB 초기화 후 1~1230 전구간 백테스트"
+  ▶ 부분 실행됨 — lead1만 초기화·백필, 범위 88~1230 (1~87 skip)
+
+  근거:
+  - tools/_f1_adopt_full.py: "lead1 초기화·전구간 백필" STEP0 DELETE + STEP2 88~1230
+  - 20260704_1군7뇌_F1채택_전구간백테스트.txt: "STEP0 lead1 삭제 5560행", "백필 [88~1230] 1111회"
+  - 이후 F1_V2_STRICT 이식 시 lead1 88~1231 재백필 (20260704_1군7뇌_F1v2STRICT_이식완료.txt)
+
+  ▶ "1~1230" 전체: 미완 (1~87 회차 lead1 없음 — 5뇌 풀 결측)
+  ▶ "7뇌 DB 전체 초기화": 확인 불가/해당 없음 — 6뇌 lotto_predictions는 삭제 리포트 없음
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. PostMortem 엔진 상태
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[4-1] 자동 훅 연결·가동
+  ▶ 연결됨 (코드 존재)
+
+  근거:
+  - app/lotto/postmortem_engine.py L360: maybe_build_postmortem_after_scoring()
+  - app/lotto/data_service.py L579~582: refresh_all_army_prediction_scores() 말미 호출
+  - 20260705_postmortem_자동훅.txt: 검증 PASS (격리·멱등·fingerprint)
+
+  ▶ 가동 조건: fetch_latest/fetch_all → refresh_all_army_prediction_scores(N) 시 N회차 UPSERT
+  ▶ 1231 회차: postmortem_meta last_hook_build = {"draw_no": 1231} 확인
+
+[4-2] postmortem_draw 누적
+  ▶ 1112회 | MIN=88 | MAX=1231
+
+  근거: data/lotto_patterns.db → postmortem_draw
+
+  ※ lead1 1232 예측은 있으나 당첨 미확정 → postmortem 1232 없음 (정상)
+
+[4-3] 평균 지표 (1112회)
+  pool_cover  : 5.889 / 6
+  lead1_pack  : 4.605 / 6
+  pack_gap    : 1.284
+  lead1_best  : 2.259 (best-of-5 평균)
+
+  근거: data/lotto_patterns.db AVG() — 20260705_1군_postmortem엔진.txt 와 일치
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. 미결 / 대기 (리포트·코드에 명시된 것)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[확인된 대기·HOLD]
+  ① pack_gap 개선 (B1 k3 boost): HOLD — 프로덕션 미반영
+     근거: 20260705_1군7뇌_B1_k3합의부스트.txt GO: HOLD
+
+  ② pack_gap 개선 (B2 union-guard M=4/5): HOLD — 프로덕션 미반영
+     근거: 20260705_1군7뇌_B2_union_guard.txt GO: HOLD
+     리포트: "wheel 트레이드오프상 축소 불가에 가깝다" 결론 검토
+
+  ③ F1/lead1 알고리즘 추가 튜닝: in-memory ADOPT 전까지 HOLD
+     근거: 20260705_정찰_자동훅_포장갭.txt L218
+
+  ④ PostMortem 2단계 LLM 내러티브: 미구현
+     근거: 20260705_1군_postmortem엔진.txt "(3) 허점 — LLM 내러티브 없음(1단계)"
+
+  ⑤ postmortem → F1 역주입: 금지 (2단계까지)
+     근거: postmortem_engine.py docstring, 정찰 리포트
+
+  ⑥ MWU/consensus/SEL4 이식: GO-SEL4 판정이었으나 F1/F1_V2_STRICT로 대체됨
+     근거: 20260701 v2 MWU 리포트 "이식 코드: 형 별도 GO 후" — predict_consensus.py 없음
+
+  ⑦ 1232 lead1·6뇌: 예측만 존재, 1232 당첨 확정 후 채점·postmortem·1233 예측 대기
+     근거: DB matched_count=-1, MAX draw=1231
+
+[코드 TODO]
+  ▶ app/lotto/*.py 프로덕션 경로에 pack_gap/B3 관련 TODO: 확인되지 않음
+  ▶ 미결은 주로 리포트 결론(HOLD/다음 후보)에 기록됨
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+요약 한 줄
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+프로덕션 lead1 = F1_V2_STRICT (88~1232, 5565세트) | 1232 미채점 |
+brain_weights @1231 | PostMortem 훅 연결·1112회(88~1231) |
+B1/B2 pack_gap 실험 HOLD → F1_V2_STRICT 유지 | MWU/SEL4/consensus는 구세대 in-memory.
+
+[본 답변 생성] READ-ONLY | 코드/DB 수정 0건
+[근거 쿼리] tools/_tmp_status_query.py (일회성, 본 보고 후 삭제 가능)

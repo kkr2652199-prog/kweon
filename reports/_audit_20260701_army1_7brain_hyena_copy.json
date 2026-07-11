@@ -1,0 +1,535 @@
+{
+  "title": "20260701_1군7뇌_하이에나복사_교정검증",
+  "date": "2026-07-01",
+  "mode": "READ_ONLY",
+  "army1_modified": false,
+  "db_writes": 0,
+  "step1_lead1_audit": {
+    "n_draws": 1111,
+    "draw_range": [
+      88,
+      1230
+    ],
+    "total_lead1_sets": 5555,
+    "aggregate": {
+      "exact_copy_pct": 74.13,
+      "near5plus_pct": 81.08,
+      "origin_hyena_pct": 73.84,
+      "exact_copy_n": 4118,
+      "near5plus_n": 4504,
+      "origin_hyena_n": 4102
+    },
+    "per_draw_sample": [
+      {
+        "draw_no": 1216,
+        "exact_copy": 4,
+        "near5plus": 5,
+        "origin_hyena": 4,
+        "n": 5,
+        "exact_pct": 80.0,
+        "near_pct": 100.0,
+        "origin_pct": 80.0,
+        "picks_origin": [
+          "hyena",
+          "fusion",
+          "hyena",
+          "hyena",
+          "hyena"
+        ]
+      },
+      {
+        "draw_no": 1217,
+        "exact_copy": 4,
+        "near5plus": 5,
+        "origin_hyena": 4,
+        "n": 5,
+        "exact_pct": 80.0,
+        "near_pct": 100.0,
+        "origin_pct": 80.0,
+        "picks_origin": [
+          "hyena",
+          "hyena",
+          "hyena",
+          "fusion",
+          "hyena"
+        ]
+      },
+      {
+        "draw_no": 1218,
+        "exact_copy": 4,
+        "near5plus": 4,
+        "origin_hyena": 4,
+        "n": 5,
+        "exact_pct": 80.0,
+        "near_pct": 80.0,
+        "origin_pct": 80.0,
+        "picks_origin": [
+          "hyena",
+          "hyena",
+          "hyena",
+          "fusion",
+          "hyena"
+        ]
+      },
+      {
+        "draw_no": 1219,
+        "exact_copy": 3,
+        "near5plus": 5,
+        "origin_hyena": 3,
+        "n": 5,
+        "exact_pct": 60.0,
+        "near_pct": 100.0,
+        "origin_pct": 60.0,
+        "picks_origin": [
+          "fusion",
+          "hyena",
+          "hyena",
+          "lstm",
+          "hyena"
+        ]
+      },
+      {
+        "draw_no": 1220,
+        "exact_copy": 4,
+        "near5plus": 5,
+        "origin_hyena": 4,
+        "n": 5,
+        "exact_pct": 80.0,
+        "near_pct": 100.0,
+        "origin_pct": 80.0,
+        "picks_origin": [
+          "lstm",
+          "hyena",
+          "hyena",
+          "hyena",
+          "hyena"
+        ]
+      },
+      {
+        "draw_no": 1221,
+        "exact_copy": 3,
+        "near5plus": 4,
+        "origin_hyena": 3,
+        "n": 5,
+        "exact_pct": 60.0,
+        "near_pct": 80.0,
+        "origin_pct": 60.0,
+        "picks_origin": [
+          "hyena",
+          "lstm",
+          "hyena",
+          "hyena",
+          "fusion"
+        ]
+      },
+      {
+        "draw_no": 1222,
+        "exact_copy": 4,
+        "near5plus": 5,
+        "origin_hyena": 4,
+        "n": 5,
+        "exact_pct": 80.0,
+        "near_pct": 100.0,
+        "origin_pct": 80.0,
+        "picks_origin": [
+          "hyena",
+          "hyena",
+          "hyena",
+          "hyena",
+          "lstm"
+        ]
+      },
+      {
+        "draw_no": 1223,
+        "exact_copy": 3,
+        "near5plus": 3,
+        "origin_hyena": 3,
+        "n": 5,
+        "exact_pct": 60.0,
+        "near_pct": 60.0,
+        "origin_pct": 60.0,
+        "picks_origin": [
+          "hyena",
+          "hyena",
+          "hyena",
+          "lstm",
+          "fusion"
+        ]
+      },
+      {
+        "draw_no": 1224,
+        "exact_copy": 3,
+        "near5plus": 3,
+        "origin_hyena": 3,
+        "n": 5,
+        "exact_pct": 60.0,
+        "near_pct": 60.0,
+        "origin_pct": 60.0,
+        "picks_origin": [
+          "hyena",
+          "hyena",
+          "hyena",
+          "lstm",
+          "stat"
+        ]
+      },
+      {
+        "draw_no": 1225,
+        "exact_copy": 3,
+        "near5plus": 3,
+        "origin_hyena": 3,
+        "n": 5,
+        "exact_pct": 60.0,
+        "near_pct": 60.0,
+        "origin_pct": 60.0,
+        "picks_origin": [
+          "hyena",
+          "hyena",
+          "hyena",
+          "fusion",
+          "fusion"
+        ]
+      },
+      {
+        "draw_no": 1226,
+        "exact_copy": 3,
+        "near5plus": 3,
+        "origin_hyena": 3,
+        "n": 5,
+        "exact_pct": 60.0,
+        "near_pct": 60.0,
+        "origin_pct": 60.0,
+        "picks_origin": [
+          "hyena",
+          "hyena",
+          "hyena",
+          "stat",
+          "lstm"
+        ]
+      },
+      {
+        "draw_no": 1227,
+        "exact_copy": 4,
+        "near5plus": 4,
+        "origin_hyena": 4,
+        "n": 5,
+        "exact_pct": 80.0,
+        "near_pct": 80.0,
+        "origin_pct": 80.0,
+        "picks_origin": [
+          "hyena",
+          "hyena",
+          "hyena",
+          "lstm",
+          "hyena"
+        ]
+      },
+      {
+        "draw_no": 1228,
+        "exact_copy": 4,
+        "near5plus": 5,
+        "origin_hyena": 4,
+        "n": 5,
+        "exact_pct": 80.0,
+        "near_pct": 100.0,
+        "origin_pct": 80.0,
+        "picks_origin": [
+          "hyena",
+          "hyena",
+          "markov",
+          "hyena",
+          "hyena"
+        ]
+      },
+      {
+        "draw_no": 1229,
+        "exact_copy": 4,
+        "near5plus": 4,
+        "origin_hyena": 4,
+        "n": 5,
+        "exact_pct": 80.0,
+        "near_pct": 80.0,
+        "origin_pct": 80.0,
+        "picks_origin": [
+          "hyena",
+          "hyena",
+          "hyena",
+          "lstm",
+          "hyena"
+        ]
+      },
+      {
+        "draw_no": 1230,
+        "exact_copy": 4,
+        "near5plus": 4,
+        "origin_hyena": 4,
+        "n": 5,
+        "exact_pct": 80.0,
+        "near_pct": 80.0,
+        "origin_pct": 80.0,
+        "picks_origin": [
+          "hyena",
+          "hyena",
+          "hyena",
+          "lstm",
+          "hyena"
+        ]
+      }
+    ],
+    "per_draw_all_stats": {
+      "draws_origin_hyena_ge3": 1085,
+      "draws_exact_ge2": 1111,
+      "draws_near5_ge3": 1107
+    }
+  },
+  "step2_candidates": {
+    "A_CURRENT": "6뇌 SEL4(전체표합)+v3",
+    "B_NO_HYENA": "5뇌(hyena제외) SEL4+v3",
+    "C_NORM_CAP": "6뇌 SEL4(뇌별1표)+v3(몰빵cap 4/3×mean)"
+  },
+  "step2_periods": [
+    {
+      "label": "A",
+      "range": [
+        330,
+        629
+      ],
+      "n_eval": 298,
+      "human_random_avg": 1.396,
+      "individual_best_avg": 3.6074,
+      "summary_rows": [
+        {
+          "arm": "A_CURRENT",
+          "n_eval": 298,
+          "avg_matched_5sets": 2.3342,
+          "avg_best_of_5": 3.0738,
+          "hit6_best_of_5": 0,
+          "hyena_exact_pct": 74.97,
+          "hyena_near5_pct": 82.35,
+          "hyena_origin_pct": 74.63
+        },
+        {
+          "arm": "B_NO_HYENA",
+          "n_eval": 298,
+          "avg_matched_5sets": 1.9094,
+          "avg_best_of_5": 3.2013,
+          "hit6_best_of_5": 0,
+          "hyena_exact_pct": 1.14,
+          "hyena_near5_pct": 14.9,
+          "hyena_origin_pct": 0.0
+        },
+        {
+          "arm": "C_NORM_CAP",
+          "n_eval": 298,
+          "avg_matched_5sets": 2.3134,
+          "avg_best_of_5": 3.0839,
+          "hit6_best_of_5": 0,
+          "hyena_exact_pct": 70.2,
+          "hyena_near5_pct": 78.39,
+          "hyena_origin_pct": 69.87
+        },
+        {
+          "arm": "HUMAN_RANDOM",
+          "n_eval": 298,
+          "avg_matched_5sets": 1.396,
+          "avg_best_of_5": 2.7416,
+          "hit6_best_of_5": 0
+        },
+        {
+          "arm": "INDIVIDUAL_BEST",
+          "n_eval": 298,
+          "avg_matched_5sets": 3.6074,
+          "avg_best_of_5": 3.6074,
+          "hit6_best_of_5": 0
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "range": [
+        630,
+        929
+      ],
+      "n_eval": 300,
+      "human_random_avg": 1.4004,
+      "individual_best_avg": 3.6233,
+      "summary_rows": [
+        {
+          "arm": "A_CURRENT",
+          "n_eval": 300,
+          "avg_matched_5sets": 2.3127,
+          "avg_best_of_5": 3.0167,
+          "hit6_best_of_5": 1,
+          "hyena_exact_pct": 74.93,
+          "hyena_near5_pct": 82.07,
+          "hyena_origin_pct": 74.47
+        },
+        {
+          "arm": "B_NO_HYENA",
+          "n_eval": 300,
+          "avg_matched_5sets": 1.9173,
+          "avg_best_of_5": 3.1567,
+          "hit6_best_of_5": 2,
+          "hyena_exact_pct": 1.27,
+          "hyena_near5_pct": 15.73,
+          "hyena_origin_pct": 0.0
+        },
+        {
+          "arm": "C_NORM_CAP",
+          "n_eval": 300,
+          "avg_matched_5sets": 2.262,
+          "avg_best_of_5": 2.99,
+          "hit6_best_of_5": 2,
+          "hyena_exact_pct": 69.93,
+          "hyena_near5_pct": 77.4,
+          "hyena_origin_pct": 69.47
+        },
+        {
+          "arm": "HUMAN_RANDOM",
+          "n_eval": 300,
+          "avg_matched_5sets": 1.4004,
+          "avg_best_of_5": 2.68,
+          "hit6_best_of_5": 0
+        },
+        {
+          "arm": "INDIVIDUAL_BEST",
+          "n_eval": 300,
+          "avg_matched_5sets": 3.6233,
+          "avg_best_of_5": 3.6233,
+          "hit6_best_of_5": 3
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "range": [
+        930,
+        1230
+      ],
+      "n_eval": 300,
+      "human_random_avg": 1.3562,
+      "individual_best_avg": 3.53,
+      "summary_rows": [
+        {
+          "arm": "A_CURRENT",
+          "n_eval": 300,
+          "avg_matched_5sets": 2.2547,
+          "avg_best_of_5": 2.99,
+          "hit6_best_of_5": 2,
+          "hyena_exact_pct": 74.87,
+          "hyena_near5_pct": 81.33,
+          "hyena_origin_pct": 74.67
+        },
+        {
+          "arm": "B_NO_HYENA",
+          "n_eval": 300,
+          "avg_matched_5sets": 1.8373,
+          "avg_best_of_5": 3.0433,
+          "hit6_best_of_5": 3,
+          "hyena_exact_pct": 0.6,
+          "hyena_near5_pct": 13.4,
+          "hyena_origin_pct": 0.0
+        },
+        {
+          "arm": "C_NORM_CAP",
+          "n_eval": 300,
+          "avg_matched_5sets": 2.2247,
+          "avg_best_of_5": 3.0033,
+          "hit6_best_of_5": 2,
+          "hyena_exact_pct": 68.53,
+          "hyena_near5_pct": 75.53,
+          "hyena_origin_pct": 68.33
+        },
+        {
+          "arm": "HUMAN_RANDOM",
+          "n_eval": 300,
+          "avg_matched_5sets": 1.3562,
+          "avg_best_of_5": 2.58,
+          "hit6_best_of_5": 1
+        },
+        {
+          "arm": "INDIVIDUAL_BEST",
+          "n_eval": 300,
+          "avg_matched_5sets": 3.53,
+          "avg_best_of_5": 3.53,
+          "hit6_best_of_5": 3
+        }
+      ]
+    }
+  ],
+  "step3_aggregate": {
+    "by_candidate": {
+      "A_CURRENT": {
+        "mean_best_of_5": 3.0268,
+        "mean_avg": 2.3005,
+        "hit6_total": 3,
+        "mean_hyena_near5_pct": 81.92,
+        "mean_hyena_origin_pct": 74.59
+      },
+      "B_NO_HYENA": {
+        "mean_best_of_5": 3.1338,
+        "mean_avg": 1.888,
+        "hit6_total": 5,
+        "mean_hyena_near5_pct": 14.68,
+        "mean_hyena_origin_pct": 0.0
+      },
+      "C_NORM_CAP": {
+        "mean_best_of_5": 3.0257,
+        "mean_avg": 2.2667,
+        "hit6_total": 4,
+        "mean_hyena_near5_pct": 77.11,
+        "mean_hyena_origin_pct": 69.22
+      }
+    },
+    "scores": {
+      "A_CURRENT": -82.947,
+      "B_NO_HYENA": 56.658,
+      "C_NORM_CAP": -73.463
+    },
+    "ranked": [
+      [
+        "B_NO_HYENA",
+        56.658
+      ],
+      [
+        "C_NORM_CAP",
+        -73.463
+      ],
+      [
+        "A_CURRENT",
+        -82.947
+      ]
+    ],
+    "step4_go": "GO-B",
+    "step4_adopt": "B_NO_HYENA (하이에나 제외 5뇌 SEL4+v3)",
+    "step4_final": "🟢 형 원래 의도(하이에나 제외) 우선 — 복사율 최저·성능 유지/개선 시 predict_brain7.py를 5뇌 풀로 교체(형 GO 후).",
+    "step4_notes": [
+      "B: near5 14.68% < A 81.92%",
+      "B best-of-5 3.1338 vs A 3.0268 (유지/근접)"
+    ],
+    "reference_a": {
+      "mean_best_of_5": 3.0268,
+      "mean_avg": 2.3005,
+      "hit6_total": 3,
+      "mean_hyena_near5_pct": 81.92,
+      "mean_hyena_origin_pct": 74.59
+    },
+    "reference_b": {
+      "mean_best_of_5": 3.1338,
+      "mean_avg": 1.888,
+      "hit6_total": 5,
+      "mean_hyena_near5_pct": 14.68,
+      "mean_hyena_origin_pct": 0.0
+    },
+    "reference_c": {
+      "mean_best_of_5": 3.0257,
+      "mean_avg": 2.2667,
+      "hit6_total": 4,
+      "mean_hyena_near5_pct": 77.11,
+      "mean_hyena_origin_pct": 69.22
+    }
+  },
+  "step4_go": "GO-B",
+  "step4_adopt": "B_NO_HYENA (하이에나 제외 5뇌 SEL4+v3)",
+  "step4_final": "🟢 형 원래 의도(하이에나 제외) 우선 — 복사율 최저·성능 유지/개선 시 predict_brain7.py를 5뇌 풀로 교체(형 GO 후)."
+}

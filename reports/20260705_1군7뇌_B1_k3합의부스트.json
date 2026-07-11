@@ -1,0 +1,671 @@
+{
+  "title": "20260705_1군7뇌_B1_k3합의부스트",
+  "readonly": true,
+  "cursor_opinion": {
+    "implementation": "F1_V2_STRICT 파이프라인 유지. arm2만 _f1_weights 산출 후 pattern_store get_consensus_numbers(N, min_k=3) 번호에 ×1.4 부스트(미존재 시 _union_presence k≥3 fallback). popavoid→wheel+copy<5 동일.",
+    "pitfalls": "① pattern_store draw_coverage 1230까지 — 1231+ 실험 시 pres fallback 필수. ② k≥3 부스트가 카피0 깨면 FAIL — arm2도 ov<COPY_OVERLAP 강제. ③ pack_gap↓와 best-of-5↑는 트레이드오ff — 셋 다 통과 어려울 수 있음. ④ consensus는 N회차 5뇌 예측 기반(당첨 미사용) — 컨닝 없음.",
+    "gaps": "CONSENSUS_MULT=1.4 단일값 — grid search 미실施. k=1~2 spike는 미부스트(의도). pattern_store 없는 회차는 pres fallback."
+  },
+  "arms": [
+    "F1_V2_STRICT",
+    "F1_V2_STRICT_K3"
+  ],
+  "consensus_min_k": 3,
+  "consensus_mult": 1.4,
+  "seed_runs": [
+    {
+      "seed_xor": 0,
+      "n": 898,
+      "mean_best_arm1": 2.2817,
+      "mean_best_arm2": 2.2873,
+      "delta_best": 0.0056,
+      "p_best": 0.843528,
+      "best_not_worse": true,
+      "mean_gap_arm1": 1.2584,
+      "mean_gap_arm2": 1.3753,
+      "delta_gap_reduction": -0.1169,
+      "p_gap": 0.000986,
+      "gap_reduced": false,
+      "max_copy_rate": 0.0,
+      "copy_zero": true,
+      "periods_gap": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_arm1": 1.3255,
+          "mean_arm2": 1.3792,
+          "delta_arm2_minus_arm1": 0.0537,
+          "delta_arm1_minus_arm2": -0.0537,
+          "p_value": 0.397987,
+          "period_pass": false
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_arm1": 1.2333,
+          "mean_arm2": 1.3967,
+          "delta_arm2_minus_arm1": 0.1633,
+          "delta_arm1_minus_arm2": -0.1633,
+          "p_value": 0.005093,
+          "period_pass": false
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_arm1": 1.2167,
+          "mean_arm2": 1.35,
+          "delta_arm2_minus_arm1": 0.1333,
+          "delta_arm1_minus_arm2": -0.1333,
+          "p_value": 0.032966,
+          "period_pass": false
+        }
+      },
+      "periods_best": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_arm1": 2.2517,
+          "mean_arm2": 2.2617,
+          "delta_arm2_minus_arm1": 0.0101,
+          "delta_arm1_minus_arm2": -0.0101,
+          "p_value": 0.8293,
+          "period_pass": true
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_arm1": 2.34,
+          "mean_arm2": 2.2933,
+          "delta_arm2_minus_arm1": -0.0467,
+          "delta_arm1_minus_arm2": 0.0467,
+          "p_value": 0.33635,
+          "period_pass": true
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_arm1": 2.2533,
+          "mean_arm2": 2.3067,
+          "delta_arm2_minus_arm1": 0.0533,
+          "delta_arm1_minus_arm2": -0.0533,
+          "p_value": 0.29757,
+          "period_pass": true
+        }
+      },
+      "max_data_sample": [
+        {
+          "draw": 1226,
+          "max_data_draw": 1225,
+          "ok": true
+        },
+        {
+          "draw": 1227,
+          "max_data_draw": 1226,
+          "ok": true
+        },
+        {
+          "draw": 1228,
+          "max_data_draw": 1227,
+          "ok": true
+        },
+        {
+          "draw": 1229,
+          "max_data_draw": 1228,
+          "ok": true
+        },
+        {
+          "draw": 1230,
+          "max_data_draw": 1229,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "seed_xor": 1000003,
+      "n": 898,
+      "mean_best_arm1": 2.2528,
+      "mean_best_arm2": 2.2584,
+      "delta_best": 0.0056,
+      "p_best": 0.838209,
+      "best_not_worse": true,
+      "mean_gap_arm1": 1.2405,
+      "mean_gap_arm2": 1.3107,
+      "delta_gap_reduction": -0.0702,
+      "p_gap": 0.058383,
+      "gap_reduced": false,
+      "max_copy_rate": 0.0,
+      "copy_zero": true,
+      "periods_gap": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_arm1": 1.2416,
+          "mean_arm2": 1.3154,
+          "delta_arm2_minus_arm1": 0.0738,
+          "delta_arm1_minus_arm2": -0.0738,
+          "p_value": 0.255055,
+          "period_pass": false
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_arm1": 1.2433,
+          "mean_arm2": 1.32,
+          "delta_arm2_minus_arm1": 0.0767,
+          "delta_arm1_minus_arm2": -0.0767,
+          "p_value": 0.221815,
+          "period_pass": false
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_arm1": 1.2367,
+          "mean_arm2": 1.2967,
+          "delta_arm2_minus_arm1": 0.06,
+          "delta_arm1_minus_arm2": -0.06,
+          "p_value": 0.357193,
+          "period_pass": false
+        }
+      },
+      "periods_best": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_arm1": 2.245,
+          "mean_arm2": 2.2483,
+          "delta_arm2_minus_arm1": 0.0034,
+          "delta_arm1_minus_arm2": -0.0034,
+          "p_value": 0.94468,
+          "period_pass": true
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_arm1": 2.24,
+          "mean_arm2": 2.29,
+          "delta_arm2_minus_arm1": 0.05,
+          "delta_arm1_minus_arm2": -0.05,
+          "p_value": 0.269931,
+          "period_pass": true
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_arm1": 2.2733,
+          "mean_arm2": 2.2367,
+          "delta_arm2_minus_arm1": -0.0367,
+          "delta_arm1_minus_arm2": 0.0367,
+          "p_value": 0.444854,
+          "period_pass": true
+        }
+      },
+      "max_data_sample": [
+        {
+          "draw": 1226,
+          "max_data_draw": 1225,
+          "ok": true
+        },
+        {
+          "draw": 1227,
+          "max_data_draw": 1226,
+          "ok": true
+        },
+        {
+          "draw": 1228,
+          "max_data_draw": 1227,
+          "ok": true
+        },
+        {
+          "draw": 1229,
+          "max_data_draw": 1228,
+          "ok": true
+        },
+        {
+          "draw": 1230,
+          "max_data_draw": 1229,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "seed_xor": 2000009,
+      "n": 898,
+      "mean_best_arm1": 2.2506,
+      "mean_best_arm2": 2.2751,
+      "delta_best": 0.0245,
+      "p_best": 0.378537,
+      "best_not_worse": true,
+      "mean_gap_arm1": 1.2661,
+      "mean_gap_arm2": 1.333,
+      "delta_gap_reduction": -0.0668,
+      "p_gap": 0.06524,
+      "gap_reduced": false,
+      "max_copy_rate": 0.0,
+      "copy_zero": true,
+      "periods_gap": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_arm1": 1.2685,
+          "mean_arm2": 1.3188,
+          "delta_arm2_minus_arm1": 0.0503,
+          "delta_arm1_minus_arm2": -0.0503,
+          "p_value": 0.420955,
+          "period_pass": false
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_arm1": 1.2933,
+          "mean_arm2": 1.3367,
+          "delta_arm2_minus_arm1": 0.0433,
+          "delta_arm1_minus_arm2": -0.0433,
+          "p_value": 0.485628,
+          "period_pass": false
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_arm1": 1.2367,
+          "mean_arm2": 1.3433,
+          "delta_arm2_minus_arm1": 0.1067,
+          "delta_arm1_minus_arm2": -0.1067,
+          "p_value": 0.094306,
+          "period_pass": false
+        }
+      },
+      "periods_best": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_arm1": 2.245,
+          "mean_arm2": 2.2651,
+          "delta_arm2_minus_arm1": 0.0201,
+          "delta_arm1_minus_arm2": -0.0201,
+          "p_value": 0.671799,
+          "period_pass": true
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_arm1": 2.2367,
+          "mean_arm2": 2.2467,
+          "delta_arm2_minus_arm1": 0.01,
+          "delta_arm1_minus_arm2": -0.01,
+          "p_value": 0.82382,
+          "period_pass": true
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_arm1": 2.27,
+          "mean_arm2": 2.3133,
+          "delta_arm2_minus_arm1": 0.0433,
+          "delta_arm1_minus_arm2": -0.0433,
+          "p_value": 0.404548,
+          "period_pass": true
+        }
+      },
+      "max_data_sample": [
+        {
+          "draw": 1226,
+          "max_data_draw": 1225,
+          "ok": true
+        },
+        {
+          "draw": 1227,
+          "max_data_draw": 1226,
+          "ok": true
+        },
+        {
+          "draw": 1228,
+          "max_data_draw": 1227,
+          "ok": true
+        },
+        {
+          "draw": 1229,
+          "max_data_draw": 1228,
+          "ok": true
+        },
+        {
+          "draw": 1230,
+          "max_data_draw": 1229,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "seed_xor": 3000037,
+      "n": 898,
+      "mean_best_arm1": 2.3185,
+      "mean_best_arm2": 2.2817,
+      "delta_best": -0.0367,
+      "p_best": 0.187358,
+      "best_not_worse": true,
+      "mean_gap_arm1": 1.3051,
+      "mean_gap_arm2": 1.3653,
+      "delta_gap_reduction": -0.0601,
+      "p_gap": 0.094341,
+      "gap_reduced": false,
+      "max_copy_rate": 0.0,
+      "copy_zero": true,
+      "periods_gap": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_arm1": 1.3221,
+          "mean_arm2": 1.302,
+          "delta_arm2_minus_arm1": -0.0201,
+          "delta_arm1_minus_arm2": 0.0201,
+          "p_value": 0.760422,
+          "period_pass": false
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_arm1": 1.3433,
+          "mean_arm2": 1.41,
+          "delta_arm2_minus_arm1": 0.0667,
+          "delta_arm1_minus_arm2": -0.0667,
+          "p_value": 0.270742,
+          "period_pass": false
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_arm1": 1.25,
+          "mean_arm2": 1.3833,
+          "delta_arm2_minus_arm1": 0.1333,
+          "delta_arm1_minus_arm2": -0.1333,
+          "p_value": 0.026209,
+          "period_pass": false
+        }
+      },
+      "periods_best": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_arm1": 2.2953,
+          "mean_arm2": 2.2919,
+          "delta_arm2_minus_arm1": -0.0034,
+          "delta_arm1_minus_arm2": 0.0034,
+          "p_value": 0.94211,
+          "period_pass": true
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_arm1": 2.34,
+          "mean_arm2": 2.31,
+          "delta_arm2_minus_arm1": -0.03,
+          "delta_arm1_minus_arm2": 0.03,
+          "p_value": 0.521787,
+          "period_pass": true
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_arm1": 2.32,
+          "mean_arm2": 2.2433,
+          "delta_arm2_minus_arm1": -0.0767,
+          "delta_arm1_minus_arm2": 0.0767,
+          "p_value": 0.137668,
+          "period_pass": true
+        }
+      },
+      "max_data_sample": [
+        {
+          "draw": 1226,
+          "max_data_draw": 1225,
+          "ok": true
+        },
+        {
+          "draw": 1227,
+          "max_data_draw": 1226,
+          "ok": true
+        },
+        {
+          "draw": 1228,
+          "max_data_draw": 1227,
+          "ok": true
+        },
+        {
+          "draw": 1229,
+          "max_data_draw": 1228,
+          "ok": true
+        },
+        {
+          "draw": 1230,
+          "max_data_draw": 1229,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "seed_xor": 4000099,
+      "n": 898,
+      "mean_best_arm1": 2.2472,
+      "mean_best_arm2": 2.3318,
+      "delta_best": 0.0846,
+      "p_best": 0.00213,
+      "best_not_worse": true,
+      "mean_gap_arm1": 1.2283,
+      "mean_gap_arm2": 1.3018,
+      "delta_gap_reduction": -0.0735,
+      "p_gap": 0.038805,
+      "gap_reduced": false,
+      "max_copy_rate": 0.0,
+      "copy_zero": true,
+      "periods_gap": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_arm1": 1.2215,
+          "mean_arm2": 1.2651,
+          "delta_arm2_minus_arm1": 0.0436,
+          "delta_arm1_minus_arm2": -0.0436,
+          "p_value": 0.480519,
+          "period_pass": false
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_arm1": 1.2133,
+          "mean_arm2": 1.28,
+          "delta_arm2_minus_arm1": 0.0667,
+          "delta_arm1_minus_arm2": -0.0667,
+          "p_value": 0.26034,
+          "period_pass": false
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_arm1": 1.25,
+          "mean_arm2": 1.36,
+          "delta_arm2_minus_arm1": 0.11,
+          "delta_arm1_minus_arm2": -0.11,
+          "p_value": 0.08479,
+          "period_pass": false
+        }
+      },
+      "periods_best": {
+        "A": {
+          "range": [
+            330,
+            629
+          ],
+          "n": 298,
+          "mean_arm1": 2.2248,
+          "mean_arm2": 2.3557,
+          "delta_arm2_minus_arm1": 0.1309,
+          "delta_arm1_minus_arm2": -0.1309,
+          "p_value": 0.004506,
+          "period_pass": true
+        },
+        "B": {
+          "range": [
+            630,
+            929
+          ],
+          "n": 300,
+          "mean_arm1": 2.23,
+          "mean_arm2": 2.2933,
+          "delta_arm2_minus_arm1": 0.0633,
+          "delta_arm1_minus_arm2": -0.0633,
+          "p_value": 0.196621,
+          "period_pass": true
+        },
+        "C": {
+          "range": [
+            930,
+            1230
+          ],
+          "n": 300,
+          "mean_arm1": 2.2867,
+          "mean_arm2": 2.3467,
+          "delta_arm2_minus_arm1": 0.06,
+          "delta_arm1_minus_arm2": -0.06,
+          "p_value": 0.211577,
+          "period_pass": true
+        }
+      },
+      "max_data_sample": [
+        {
+          "draw": 1226,
+          "max_data_draw": 1225,
+          "ok": true
+        },
+        {
+          "draw": 1227,
+          "max_data_draw": 1226,
+          "ok": true
+        },
+        {
+          "draw": 1228,
+          "max_data_draw": 1227,
+          "ok": true
+        },
+        {
+          "draw": 1229,
+          "max_data_draw": 1228,
+          "ok": true
+        },
+        {
+          "draw": 1230,
+          "max_data_draw": 1229,
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "verdict": {
+    "go": "HOLD",
+    "note": "(a)pack_gap 2구간+ (0/3) FAIL — 미통과 — wheel union-guard 등 다음 후보 검토.",
+    "pass_a_gap": false,
+    "pass_b_best": true,
+    "pass_c_copy": true,
+    "gap_periods_pass": 0,
+    "all_pass": false,
+    "consensus_mult": 1.4
+  },
+  "six_before": {
+    "fusion": 6015,
+    "hyena": 6010,
+    "llm": 6011,
+    "lstm": 6015,
+    "markov": 6010,
+    "stat": 6015
+  },
+  "six_after": {
+    "fusion": 6015,
+    "hyena": 6010,
+    "llm": 6011,
+    "lstm": 6015,
+    "markov": 6010,
+    "stat": 6015
+  },
+  "lead1_before": 5565,
+  "lead1_after": 5565,
+  "regression_ok": true
+}

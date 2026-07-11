@@ -1,0 +1,213 @@
+{
+  "evaluated_draws": 884,
+  "skipped_draws": 80,
+  "era": "C",
+  "range": "262~1228",
+  "r13": "draw_no < N 만 tiers·cooccur·trust 산출",
+  "baseline_cooccur_favor": {
+    "popularity_sum": 0.8679,
+    "hit_avg": 0.7916,
+    "reference": 0.8679
+  },
+  "step_a_unpopularity": [
+    {
+      "label": "unpop_blend=0.1",
+      "popularity_sum": 0.868,
+      "hit_avg": 0.7894,
+      "delta_vs_baseline": 0.0001,
+      "beats_baseline_0.8679": true,
+      "paired_ttest_vs_baseline": {
+        "t_stat": 0.3553,
+        "p_value": 0.722336,
+        "n": 884
+      },
+      "significant_improve": false,
+      "winner_dispersion_avg": 0.0429,
+      "crowd_avoidance_avg": 0.1798
+    },
+    {
+      "label": "unpop_blend=0.15",
+      "popularity_sum": 0.8679,
+      "hit_avg": 0.7907,
+      "delta_vs_baseline": 0.0,
+      "beats_baseline_0.8679": false,
+      "paired_ttest_vs_baseline": {
+        "t_stat": 0.0476,
+        "p_value": 0.962065,
+        "n": 884
+      },
+      "significant_improve": false,
+      "winner_dispersion_avg": 0.0429,
+      "crowd_avoidance_avg": 0.1798
+    },
+    {
+      "label": "unpop_blend=0.2",
+      "popularity_sum": 0.8677,
+      "hit_avg": 0.7903,
+      "delta_vs_baseline": -0.0002,
+      "beats_baseline_0.8679": false,
+      "paired_ttest_vs_baseline": {
+        "t_stat": -0.9018,
+        "p_value": 0.36716,
+        "n": 884
+      },
+      "significant_improve": false,
+      "winner_dispersion_avg": 0.0428,
+      "crowd_avoidance_avg": 0.1798
+    }
+  ],
+  "step_b_anomaly_pair": [
+    {
+      "label": "anomaly_blend=0.1",
+      "popularity_sum": 0.869,
+      "hit_avg": 0.783,
+      "delta_vs_baseline": 0.0011,
+      "beats_baseline_0.8679": true,
+      "paired_ttest_vs_baseline": {
+        "t_stat": 1.3218,
+        "p_value": 0.186231,
+        "n": 884
+      },
+      "significant_improve": false,
+      "precision_at_50": 0.015,
+      "random_pair_precision_ref": 0.0152
+    },
+    {
+      "label": "anomaly_blend=0.15",
+      "popularity_sum": 0.8692,
+      "hit_avg": 0.7882,
+      "delta_vs_baseline": 0.0013,
+      "beats_baseline_0.8679": true,
+      "paired_ttest_vs_baseline": {
+        "t_stat": 1.4257,
+        "p_value": 0.153959,
+        "n": 884
+      },
+      "significant_improve": false,
+      "precision_at_50": 0.015,
+      "random_pair_precision_ref": 0.0152
+    },
+    {
+      "label": "anomaly_blend=0.2",
+      "popularity_sum": 0.869,
+      "hit_avg": 0.788,
+      "delta_vs_baseline": 0.0011,
+      "beats_baseline_0.8679": true,
+      "paired_ttest_vs_baseline": {
+        "t_stat": 1.0956,
+        "p_value": 0.273272,
+        "n": 884
+      },
+      "significant_improve": false,
+      "precision_at_50": 0.015,
+      "random_pair_precision_ref": 0.0152
+    }
+  ],
+  "step_ab_combo": [
+    {
+      "label": "A+B_blend=0.1",
+      "popularity_sum": 0.8686,
+      "hit_avg": 0.7871,
+      "delta_vs_baseline": 0.0007,
+      "beats_baseline_0.8679": true,
+      "paired_ttest_vs_baseline": {
+        "t_stat": 0.8291,
+        "p_value": 0.407044,
+        "n": 884
+      },
+      "significant_improve": false
+    },
+    {
+      "label": "A+B_blend=0.15",
+      "popularity_sum": 0.8687,
+      "hit_avg": 0.786,
+      "delta_vs_baseline": 0.0008,
+      "beats_baseline_0.8679": true,
+      "paired_ttest_vs_baseline": {
+        "t_stat": 0.9093,
+        "p_value": 0.363211,
+        "n": 884
+      },
+      "significant_improve": false
+    },
+    {
+      "label": "A+B_blend=0.2",
+      "popularity_sum": 0.8685,
+      "hit_avg": 0.7907,
+      "delta_vs_baseline": 0.0006,
+      "beats_baseline_0.8679": true,
+      "paired_ttest_vs_baseline": {
+        "t_stat": 0.5513,
+        "p_value": 0.581462,
+        "n": 884
+      },
+      "significant_improve": false
+    }
+  ],
+  "best": {
+    "unpop": {
+      "label": "unpop_blend=0.1",
+      "popularity_sum": 0.868,
+      "hit_avg": 0.7894,
+      "delta_vs_baseline": 0.0001,
+      "beats_baseline_0.8679": true,
+      "paired_ttest_vs_baseline": {
+        "t_stat": 0.3553,
+        "p_value": 0.722336,
+        "n": 884
+      },
+      "significant_improve": false,
+      "winner_dispersion_avg": 0.0429,
+      "crowd_avoidance_avg": 0.1798
+    },
+    "anomaly": {
+      "label": "anomaly_blend=0.15",
+      "popularity_sum": 0.8692,
+      "hit_avg": 0.7882,
+      "delta_vs_baseline": 0.0013,
+      "beats_baseline_0.8679": true,
+      "paired_ttest_vs_baseline": {
+        "t_stat": 1.4257,
+        "p_value": 0.153959,
+        "n": 884
+      },
+      "significant_improve": false,
+      "precision_at_50": 0.015,
+      "random_pair_precision_ref": 0.0152
+    },
+    "combo": {
+      "label": "A+B_blend=0.15",
+      "popularity_sum": 0.8687,
+      "hit_avg": 0.786,
+      "delta_vs_baseline": 0.0008,
+      "beats_baseline_0.8679": true,
+      "paired_ttest_vs_baseline": {
+        "t_stat": 0.9093,
+        "p_value": 0.363211,
+        "n": 884
+      },
+      "significant_improve": false
+    }
+  },
+  "random_reference": {
+    "popularity_sum": 0.7988,
+    "hit_avg": 0.81
+  },
+  "verdict": {
+    "step_a": "보류 — 비인기회피 절대값은 baseline 초과하나 유의성 없음",
+    "step_b": "보류 — 튄쌍이상치 절대값은 baseline 초과하나 유의성 없음",
+    "step_b_precision_honest": "precision@50=0.015 vs random_top50_ref=0.0152 — 무작위 수준(미래 예측력 없음)",
+    "step_ab_combo": "보류 — A+B 절대값은 baseline 초과하나 유의성 없음",
+    "hit_random_level": true
+  },
+  "priority": {
+    "adopt_signal": null,
+    "discard_signals": [
+      "A_unpopularity",
+      "B_anomaly_pair",
+      "A+B_combo"
+    ],
+    "benchmark_123_next": "2·3군 snake (Jaccard<0.4 차별화)"
+  },
+  "r2_honest": "비인기·이상치·혼합 모두 추첨 예측 아님. 인기적합도=사람 행동 적합. 적중률 무작위 수준. 당첨확률 향상 주장 없음."
+}

@@ -1,0 +1,164 @@
+{
+  "title": "20260704_1군7뇌_F1채택_전구간백테스트",
+  "step0_deleted": 5560,
+  "backfill": {
+    "ok": 1111,
+    "skip": 0,
+    "range": [
+      88,
+      1230
+    ],
+    "elapsed_sec": 42.3
+  },
+  "lead1_after_rows": 5555,
+  "lead1_scored": 5555,
+  "periods": [
+    {
+      "label": "A",
+      "range": [
+        330,
+        629
+      ],
+      "n": 298,
+      "arms": {
+        "F1": {
+          "avg": 1.1315,
+          "best": 2.1242,
+          "hit6": 0,
+          "copy": 0.0,
+          "delta_vs_flat": 0.2785,
+          "p_vs_flat": 1e-06
+        },
+        "FLAT_UNION": {
+          "avg": 0.8463,
+          "best": 1.8456,
+          "hit6": 0,
+          "copy": 0.0,
+          "delta_vs_flat": 0.0,
+          "p_vs_flat": null
+        },
+        "RAND_UNION": {
+          "avg": 0.8456,
+          "best": 1.7852,
+          "hit6": 0,
+          "copy": 0.0,
+          "delta_vs_flat": -0.0604,
+          "p_vs_flat": 0.309699
+        },
+        "CAP2": {
+          "avg": 1.9034,
+          "best": 3.1812,
+          "hit6": 0,
+          "copy": 1.0,
+          "delta_vs_flat": 1.3356,
+          "p_vs_flat": 0.0
+        }
+      }
+    },
+    {
+      "label": "B",
+      "range": [
+        630,
+        929
+      ],
+      "n": 300,
+      "arms": {
+        "F1": {
+          "avg": 1.0707,
+          "best": 2.13,
+          "hit6": 0,
+          "copy": 0.0,
+          "delta_vs_flat": 0.2967,
+          "p_vs_flat": 0.0
+        },
+        "FLAT_UNION": {
+          "avg": 0.8713,
+          "best": 1.8333,
+          "hit6": 0,
+          "copy": 0.0,
+          "delta_vs_flat": 0.0,
+          "p_vs_flat": null
+        },
+        "RAND_UNION": {
+          "avg": 0.8133,
+          "best": 1.7233,
+          "hit6": 0,
+          "copy": 0.0007,
+          "delta_vs_flat": -0.11,
+          "p_vs_flat": 0.051149
+        },
+        "CAP2": {
+          "avg": 1.9067,
+          "best": 3.15,
+          "hit6": 3,
+          "copy": 1.0,
+          "delta_vs_flat": 1.3167,
+          "p_vs_flat": 0.0
+        }
+      }
+    },
+    {
+      "label": "C",
+      "range": [
+        930,
+        1230
+      ],
+      "n": 300,
+      "arms": {
+        "F1": {
+          "avg": 1.09,
+          "best": 2.0433,
+          "hit6": 0,
+          "copy": 0.0,
+          "delta_vs_flat": 0.29,
+          "p_vs_flat": 0.0
+        },
+        "FLAT_UNION": {
+          "avg": 0.838,
+          "best": 1.7533,
+          "hit6": 0,
+          "copy": 0.0,
+          "delta_vs_flat": 0.0,
+          "p_vs_flat": null
+        },
+        "RAND_UNION": {
+          "avg": 0.8367,
+          "best": 1.77,
+          "hit6": 0,
+          "copy": 0.0013,
+          "delta_vs_flat": 0.0167,
+          "p_vs_flat": 0.767441
+        },
+        "CAP2": {
+          "avg": 1.8313,
+          "best": 3.04,
+          "hit6": 3,
+          "copy": 1.0,
+          "delta_vs_flat": 1.2867,
+          "p_vs_flat": 0.0
+        }
+      }
+    }
+  ],
+  "f1_beats_flat_periods": 3,
+  "go": "GO-F1",
+  "final": "🟢 F1이 FLAT_UNION 대비 3/3 구간 유의 우위 — 가중 로직 실익 확인. F1 채택 확정. (CAP2 대비는 하회, 비카피 과학조합 가치 채택)",
+  "six_before": {
+    "fusion": 6010,
+    "hyena": 6005,
+    "llm": 6006,
+    "lstm": 6010,
+    "markov": 6005,
+    "stat": 6010
+  },
+  "six_after": {
+    "fusion": 6010,
+    "hyena": 6005,
+    "llm": 6006,
+    "lstm": 6010,
+    "markov": 6005,
+    "stat": 6010
+  },
+  "lead1_before": 5560,
+  "regression_ok": true
+}

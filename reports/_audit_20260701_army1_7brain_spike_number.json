@@ -1,0 +1,345 @@
+{
+  "title": "20260701_1군7뇌_튀는번호발굴_검증",
+  "date": "2026-07-01",
+  "mode": "READ_ONLY",
+  "cursor_opinion": {
+    "better": [
+      "STEP2(전구간 특기)와 STEP3(예측) 프로파일 물리 분리 — STEP2는 설명용만, STEP3는 draw<N 누적만",
+      "특기 프로파일 단일 pass 증분 누적(O(n))",
+      "번호대 5구간 집계 + 라플라스 스무딩 (h+1)/(p+2)로 소표본 과신 방지"
+    ],
+    "pitfalls": [
+      "DB 락 — READ-ONLY + query_only=ON + busy_timeout",
+      "컨닝 — 튀는후보는 pre-draw 6뇌세트, 당첨은 채점에만",
+      "바닥률 — 풀<=M이면 특기=랜덤 무의미, pool>M 정보성 회차만 집계"
+    ],
+    "flaws": [
+      "다중비교 위양성 — 카이제곱 Bonferroni 보정",
+      "순환정의 — v3(순수 희소성) 대조군으로 뇌특기 순증분만 분리 측정",
+      "사전기대 — 0629에서 약했음, 미달 시 R2 정직 기록"
+    ],
+    "decision": "큰 허점 없음 — 그대로 실행"
+  },
+  "config": {
+    "spike_max_k": 2,
+    "m_predict": 6,
+    "random_trials": 200,
+    "bands": [
+      [
+        1,
+        10
+      ],
+      [
+        11,
+        20
+      ],
+      [
+        21,
+        30
+      ],
+      [
+        31,
+        40
+      ],
+      [
+        41,
+        45
+      ]
+    ],
+    "laplace": [
+      1.0,
+      2.0
+    ]
+  },
+  "step2": {
+    "note": "전구간 설명용 — STEP3 예측에는 사용 안 함(사후편향 방지)",
+    "bands": [
+      [
+        1,
+        10
+      ],
+      [
+        11,
+        20
+      ],
+      [
+        21,
+        30
+      ],
+      [
+        31,
+        40
+      ],
+      [
+        41,
+        45
+      ]
+    ],
+    "bonferroni_tests": 5,
+    "profile": {
+      "stat": {
+        "overall_hit_rate": 0.1518,
+        "band_pick": [
+          5618,
+          6187,
+          5725,
+          6051,
+          2924
+        ],
+        "band_hit": [
+          825,
+          997,
+          834,
+          929,
+          439
+        ],
+        "band_hit_rate": [
+          0.1468,
+          0.1611,
+          0.1457,
+          0.1535,
+          0.1501
+        ],
+        "chi2": 6.051,
+        "p_value": 0.19394,
+        "best_band": [
+          11,
+          20
+        ],
+        "p_bonferroni": 0.9697,
+        "significant": false
+      },
+      "markov": {
+        "overall_hit_rate": 0.1545,
+        "band_pick": [
+          4869,
+          5191,
+          4701,
+          4969,
+          2395
+        ],
+        "band_hit": [
+          726,
+          828,
+          719,
+          778,
+          367
+        ],
+        "band_hit_rate": [
+          0.1491,
+          0.1595,
+          0.1529,
+          0.1566,
+          0.1532
+        ],
+        "chi2": 1.995,
+        "p_value": 0.73963,
+        "best_band": [
+          11,
+          20
+        ],
+        "p_bonferroni": 1.0,
+        "significant": false
+      },
+      "llm": {
+        "overall_hit_rate": 0.1562,
+        "band_pick": [
+          7787,
+          8109,
+          7521,
+          8134,
+          3712
+        ],
+        "band_hit": [
+          1218,
+          1275,
+          1149,
+          1307,
+          558
+        ],
+        "band_hit_rate": [
+          0.1564,
+          0.1572,
+          0.1528,
+          0.1607,
+          0.1503
+        ],
+        "chi2": 2.491,
+        "p_value": 0.64943,
+        "best_band": [
+          31,
+          40
+        ],
+        "p_bonferroni": 1.0,
+        "significant": false
+      },
+      "lstm": {
+        "overall_hit_rate": 0.263,
+        "band_pick": [
+          4925,
+          5335,
+          4902,
+          5209,
+          2494
+        ],
+        "band_hit": [
+          1305,
+          1395,
+          1300,
+          1363,
+          651
+        ],
+        "band_hit_rate": [
+          0.265,
+          0.2615,
+          0.2652,
+          0.2617,
+          0.261
+        ],
+        "chi2": 0.282,
+        "p_value": 0.9879,
+        "best_band": [
+          21,
+          30
+        ],
+        "p_bonferroni": 1.0,
+        "significant": false
+      },
+      "fusion": {
+        "overall_hit_rate": 0.2303,
+        "band_pick": [
+          5355,
+          5786,
+          5267,
+          5513,
+          2691
+        ],
+        "band_hit": [
+          1230,
+          1343,
+          1160,
+          1301,
+          633
+        ],
+        "band_hit_rate": [
+          0.2297,
+          0.2321,
+          0.2202,
+          0.236,
+          0.2352
+        ],
+        "chi2": 3.465,
+        "p_value": 0.48512,
+        "best_band": [
+          31,
+          40
+        ],
+        "p_bonferroni": 1.0,
+        "significant": false
+      }
+    },
+    "any_significant": false
+  },
+  "step3_periods": [
+    {
+      "range": [
+        330,
+        629
+      ],
+      "n_all": 298,
+      "n_informative": 298,
+      "mean_pool_size": 20.7,
+      "mean_winners_in_pool": 2.158,
+      "mean_hit_spec": 1.1141,
+      "mean_hit_v3": 0.4597,
+      "mean_hit_rand": 0.6242,
+      "delta_spec_vs_rand": 0.4899,
+      "delta_spec_vs_v3": 0.6544,
+      "delta_v3_vs_rand": -0.1644,
+      "p_spec_vs_rand": 0.0,
+      "p_spec_vs_v3": 0.0,
+      "p_v3_vs_rand": 1e-06,
+      "spec_strong_frac": 0.4536,
+      "pool_strong_frac": 0.1712,
+      "pass_spec": true
+    },
+    {
+      "range": [
+        630,
+        929
+      ],
+      "n_all": 300,
+      "n_informative": 300,
+      "mean_pool_size": 20.69,
+      "mean_winners_in_pool": 2.237,
+      "mean_hit_spec": 1.13,
+      "mean_hit_v3": 0.5433,
+      "mean_hit_rand": 0.6476,
+      "delta_spec_vs_rand": 0.4824,
+      "delta_spec_vs_v3": 0.5867,
+      "delta_v3_vs_rand": -0.1043,
+      "p_spec_vs_rand": 0.0,
+      "p_spec_vs_v3": 0.0,
+      "p_v3_vs_rand": 0.002074,
+      "spec_strong_frac": 0.4217,
+      "pool_strong_frac": 0.1672,
+      "pass_spec": true
+    },
+    {
+      "range": [
+        930,
+        1230
+      ],
+      "n_all": 300,
+      "n_informative": 300,
+      "mean_pool_size": 20.68,
+      "mean_winners_in_pool": 2.16,
+      "mean_hit_spec": 1.1367,
+      "mean_hit_v3": 0.4733,
+      "mean_hit_rand": 0.6263,
+      "delta_spec_vs_rand": 0.5104,
+      "delta_spec_vs_v3": 0.6633,
+      "delta_v3_vs_rand": -0.1529,
+      "p_spec_vs_rand": 0.0,
+      "p_spec_vs_v3": 0.0,
+      "p_v3_vs_rand": 1.5e-05,
+      "spec_strong_frac": 0.4428,
+      "pool_strong_frac": 0.1686,
+      "pass_spec": true
+    }
+  ],
+  "verdict": {
+    "pass_periods": 3,
+    "mean_delta_spec_vs_rand": 0.4942,
+    "band_specialty_exists": false,
+    "spec_beats_rand_3of3": true,
+    "spec_beats_v3_3of3": true,
+    "formal_gate_pass": false,
+    "spec_strong_frac": 0.4394,
+    "pool_strong_frac": 0.169,
+    "strong_overbet": 0.2704,
+    "v3_beats_random": false,
+    "confound_detected": true,
+    "go": "NO-GO (교란)",
+    "final": "🔴 R2 정직 — 자동판정은 spec>랜덤(3/3, Δ=0.4942)이나 이는 '번호대 특기'가 아니라 교란임. STEP2 카이제곱: 밴드 특기 유의 뇌 0개(적중률 평평). spec의 강뇌(lstm/fusion)-only 번호 비중 0.439 vs 풀 평균 0.169 (초과 0.27). 즉 spec 점수가 밴드가 아닌 '뇌 전체 정확도'로 붕괴 → lstm/fusion 픽 재베팅 = CAP2에서 벗어나려던 2뇌 종속의 재등장. 순수 희소성(v3)은 오히려 랜덤 미만(Δ=[-0.1644, -0.1043, -0.1529]). → '번호대 특기 발굴' 신기능 채택 불가. 기존 CAP2 세트추천 유지."
+  },
+  "six_before": {
+    "fusion": 6005,
+    "hyena": 6000,
+    "llm": 6001,
+    "lstm": 6005,
+    "markov": 6000,
+    "stat": 6005
+  },
+  "six_after": {
+    "fusion": 6005,
+    "hyena": 6000,
+    "llm": 6001,
+    "lstm": 6005,
+    "markov": 6000,
+    "stat": 6005
+  },
+  "lead1_before": 5555,
+  "lead1_after": 5555,
+  "regression_ok": true
+}

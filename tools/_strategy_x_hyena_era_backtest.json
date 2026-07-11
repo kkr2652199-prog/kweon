@@ -1,0 +1,54 @@
+{
+  "scheme": "cooccur_favor",
+  "min_train": 80,
+  "skipped_pretrain": 80,
+  "era_table": [
+    {
+      "era": "A",
+      "range": "1~87",
+      "evaluated": 0,
+      "popularity_sum": null,
+      "hit_avg": null
+    },
+    {
+      "era": "B",
+      "range": "88~261",
+      "evaluated": 170,
+      "popularity_sum": 0.8868,
+      "hit_avg": 0.7518
+    },
+    {
+      "era": "C",
+      "range": "262~1228",
+      "evaluated": 964,
+      "popularity_sum": 0.8388,
+      "hit_avg": 0.777
+    }
+  ],
+  "accumulation_effect": {
+    "early_C_262_600": {
+      "n": 336,
+      "popularity_sum": 0.8409,
+      "hit_avg": 0.7839
+    },
+    "late_C_601_1228": {
+      "n": 628,
+      "popularity_sum": 0.8376,
+      "hit_avg": 0.7732
+    },
+    "delta_pop_late_minus_early": -0.0033,
+    "data_accumulation_pop_boost": false
+  },
+  "truncated_train_test_draw800plus": {
+    "train_cap_draw": 600,
+    "eval_draws": 429,
+    "pop_with_trunc_train_262_600": 0.8323,
+    "pop_with_full_train": 0.835,
+    "delta_full_minus_trunc": 0.0027
+  },
+  "random_baseline_all": {
+    "popularity_sum": 0.7992,
+    "hit_avg": 0.8069
+  },
+  "r2_hit_honest": "모든 era 적중은 random 0.81 전후 무작위 수준 기대"
+}

@@ -1,0 +1,98 @@
+동생 → 커서 | 20260710 | 1군 7구간 위치전이 지표 축적
+========================================================================
+[STEP 0 — 사전 설계 (구현 전)]
+
+(1) 구현 방법
+  - postmortem_draw: ALTER TABLE로 position_values·transition_observation JSON 2컬럼 추가
+  - postmortem_position_stats: stat_key+max_data_draw PK 전역 누적 테이블
+  - compute: lotto_draws READ-ONLY, pos1~6=정렬당첨, pos7=bonus, 5밴드=combo_stats 경계
+  - transition: N vs N-1 직전 대비, max_data_draw=N-1 명시
+  - upsert: UPDATE만으로 19컬럼 무손상 (upsert_postmortem_row 미변경)
+  - 훅: maybe_build_postmortem_after_scoring 말미 maybe_build_position_after_scoring (try/except)
+
+(2) 신규 컬럼 vs 신규 테이블 트레이드오프
+  | 방식 | 장점 | 단점 |
+  | per-draw JSON 컬럼 | load_postmortem 1쿼리, 상세페이지 자연 | UPSERT 시 19컬럼 분리 UPDATE 필요 |
+  | 별도 per-draw 테이블 | 스키마 정규화 | JOIN·훅 복잡, 기존 API 확장 |
+  | 전역 stats 테이블 | 히트맵·대시보드 효율 | draw별 스냅샷과 이중 관리 |
+  → 채택: JSON 2컬럼 + 전역 stats 1테이블 (지시서 권장안)
+
+(3) 예상 함정/버그
+  - upsert_postmortem_row ON CONFLICT가 position 컬럼 NULL 덮어쓰기 → UPDATE 분리로 회피
+  - draw 88: prev=87 존재, postmortem 행 없으면 UPDATE 0건 → postmortem 행 선행 필요
+  - band 경계 불일치(data_service 1~10 vs combo_stats 1~9) → combo_stats(1~9) 고정
+  - global stats 매회 전체 재계산 O(n) → 훅·백필 시 max_data_draw까지 재집계
+
+(4) 설계 허점
+  - band→band 전이: 위치(pos)별 인접회차 밴드쌍 누적 (번호→번호 markov와 별개)
+  - 유의성 검定: χ² 독립성(관측용, F1 미반영)
+  - API/UI 미연결 (2단계)
+
+[STEP 1 — 스키마]
+  migrate 추가: (이미 존재)
+  postmortem_draw + position_values, transition_observation (JSON)
+  postmortem_position_stats (stat_key, max_data_draw PK)
+
+[STEP 2 — 백필]
+  대상: 88~1231  processed=1112  skipped=0
+  elapsed: 0.8s
+  max_data_draw 샘플(마지막 3): [{'draw_no': 1229, 'max_data_draw': 1228}, {'draw_no': 1230, 'max_data_draw': 1229}, {'draw_no': 1231, 'max_data_draw': 1230}]
+
+[STEP 3 — 검증]
+  lotto_predictions BEFORE: count=53905 sha=0fe5d19ccbceb829
+  lotto_predictions AFTER:  count=53905 sha=0fe5d19ccbceb829
+  core19_sha BEFORE: 16156ab6a7d75f8e
+  core19_sha AFTER:  16156ab6a7d75f8e
+  contamination (max_data != draw-1): 0건 PASS
+  predictions_unchanged: PASS
+  core19_sha_unchanged: PASS
+  contamination_zero: PASS
+  position_rows: PASS
+  spotcheck_1231: PASS
+  global_stats_exist: PASS
+
+[1231 스팟체크]
+{
+  "ok": true,
+  "checks": {
+    "pos1": true,
+    "pos6": true,
+    "pos7_bonus": true,
+    "pos1_band_1_9": true,
+    "max_data_1230": true,
+    "overlap_1230_1231": true
+  },
+  "expected": [
+    4,
+    13,
+    14,
+    18,
+    31,
+    38
+  ],
+  "bonus": 15
+}
+
+[STEP 4 — 관측 통계 (예측 반영 아님)]
+
+■ 위치별 값 분포 (pos1~pos7)
+  pos1: mean=6.77 range=[1,35] mode_band=1_9
+  pos2: mean=13.13 range=[2,37] mode_band=10_19
+  pos3: mean=19.89 range=[3,40] mode_band=10_19
+  pos4: mean=26.23 range=[5,43] mode_band=20_29
+  pos5: mean=32.88 range=[9,44] mode_band=30_39
+  pos6: mean=39.46 range=[17,45] mode_band=40_45
+  pos7_bonus: mean=22.43 range=[1,45] mode_band=30_39
+
+■ band→band 전이 (전역 행렬)
+  χ² 검定: {'chi2': 3800.048, 'df': 17, 'z_sqrt': 14.951}
+  overlap 분포: {0: 432, 1: 475, 2: 181, 3: 23, 4: 1}
+  mean_overlap: 0.818 (랜덤 기대 ~0.8)
+
+■ 위치 간 상관
+  {"n": 1231, "pos1_pos6_r": 0.1693, "pos1_span_r": -0.6526, "pos6_span_r": 0.6364}
+  span_delta_mean: 0.007
+
+■ 신호 후보 (관측만, F1 미반영)
+  * band_transition_matrix: χ²/df>1.5 → 랜덤 독립 대비 쏠림 후보
+  * pos1_pos6_r=0.1693 → 위치간 상관 후보

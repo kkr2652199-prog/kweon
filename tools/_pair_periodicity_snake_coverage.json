@@ -1,0 +1,319 @@
+{
+  "step_c_periodicity": {
+    "draw_count": 1228,
+    "max_draw_no": 1228,
+    "analysis_db": "d:\\3kweon\\tools\\pair_periodicity_analysis.db",
+    "step_c2_periodicity": {
+      "testable_pairs": 990,
+      "significant_pairs_p05": 41,
+      "significant_rate": 0.0414,
+      "expected_false_positive_if_random": 0.05,
+      "cv_mean": 0.9158,
+      "cv_median": 0.8876,
+      "exponential_cv_reference": 1.0,
+      "verdict_c2": "유의 쌍 비율이 기대 FP(5%)와 유사 → 주기는 착시",
+      "top_significant_pairs": [
+        {
+          "pair": [
+            7,
+            17
+          ],
+          "appear_count": 18,
+          "gap_count": 17,
+          "gap_mean": 67.29,
+          "gap_cv": 0.4722,
+          "autocorr_lag1": -0.3475,
+          "dominant_period": 4.25,
+          "random_sim_p": 0.002,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            21,
+            29
+          ],
+          "appear_count": 16,
+          "gap_count": 15,
+          "gap_mean": 71.4,
+          "gap_cv": 0.4712,
+          "autocorr_lag1": -0.1763,
+          "dominant_period": 3.75,
+          "random_sim_p": 0.002,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            7,
+            30
+          ],
+          "appear_count": 15,
+          "gap_count": 14,
+          "gap_mean": 81.36,
+          "gap_cv": 0.4735,
+          "autocorr_lag1": 0.0423,
+          "dominant_period": 4.67,
+          "random_sim_p": 0.003,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            13,
+            40
+          ],
+          "appear_count": 20,
+          "gap_count": 19,
+          "gap_mean": 60.95,
+          "gap_cv": 0.5428,
+          "autocorr_lag1": 0.0334,
+          "dominant_period": 2.38,
+          "random_sim_p": 0.004,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            6,
+            10
+          ],
+          "appear_count": 18,
+          "gap_count": 17,
+          "gap_mean": 60.59,
+          "gap_cv": 0.5412,
+          "autocorr_lag1": -0.1071,
+          "dominant_period": 5.67,
+          "random_sim_p": 0.007,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            6,
+            45
+          ],
+          "appear_count": 12,
+          "gap_count": 11,
+          "gap_mean": 100.55,
+          "gap_cv": 0.5008,
+          "autocorr_lag1": 0.2549,
+          "dominant_period": 5.5,
+          "random_sim_p": 0.007,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            16,
+            41
+          ],
+          "appear_count": 24,
+          "gap_count": 23,
+          "gap_mean": 53.13,
+          "gap_cv": 0.6116,
+          "autocorr_lag1": 0.2233,
+          "dominant_period": 23.0,
+          "random_sim_p": 0.01,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            9,
+            33
+          ],
+          "appear_count": 21,
+          "gap_count": 20,
+          "gap_mean": 57.9,
+          "gap_cv": 0.5913,
+          "autocorr_lag1": 0.0476,
+          "dominant_period": 2.5,
+          "random_sim_p": 0.011,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            6,
+            13
+          ],
+          "appear_count": 24,
+          "gap_count": 23,
+          "gap_mean": 51.61,
+          "gap_cv": 0.6253,
+          "autocorr_lag1": -0.1731,
+          "dominant_period": 3.29,
+          "random_sim_p": 0.012,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            7,
+            8
+          ],
+          "appear_count": 15,
+          "gap_count": 14,
+          "gap_mean": 67.93,
+          "gap_cv": 0.5243,
+          "autocorr_lag1": 0.1453,
+          "dominant_period": 3.5,
+          "random_sim_p": 0.012,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            4,
+            26
+          ],
+          "appear_count": 25,
+          "gap_count": 24,
+          "gap_mean": 50.04,
+          "gap_cv": 0.6299,
+          "autocorr_lag1": -0.2063,
+          "dominant_period": 2.67,
+          "random_sim_p": 0.016,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            18,
+            45
+          ],
+          "appear_count": 27,
+          "gap_count": 26,
+          "gap_mean": 42.35,
+          "gap_cv": 0.6691,
+          "autocorr_lag1": -0.2442,
+          "dominant_period": 2.89,
+          "random_sim_p": 0.019,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            5,
+            21
+          ],
+          "appear_count": 19,
+          "gap_count": 18,
+          "gap_mean": 57.78,
+          "gap_cv": 0.5817,
+          "autocorr_lag1": -0.0948,
+          "dominant_period": 4.5,
+          "random_sim_p": 0.019,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            34,
+            39
+          ],
+          "appear_count": 20,
+          "gap_count": 19,
+          "gap_mean": 60.42,
+          "gap_cv": 0.6031,
+          "autocorr_lag1": 0.1886,
+          "dominant_period": 4.75,
+          "random_sim_p": 0.02,
+          "significant_vs_random": true
+        },
+        {
+          "pair": [
+            16,
+            37
+          ],
+          "appear_count": 19,
+          "gap_count": 18,
+          "gap_mean": 64.94,
+          "gap_cv": 0.5831,
+          "autocorr_lag1": -0.3734,
+          "dominant_period": 2.0,
+          "random_sim_p": 0.02,
+          "significant_vs_random": true
+        }
+      ]
+    },
+    "step_c3_walkforward": {
+      "evaluated_draws": 967,
+      "top_k": 50,
+      "precision_at_k": 0.0153,
+      "random_eligible_precision": 0.015,
+      "random_pair_expect": 0.0152,
+      "beats_random": false
+    },
+    "step_c4_verdict": "폐기 — 주기는 착시 (유의쌍 비율≈기대 FP, C3 precision 무작위 수준)"
+  },
+  "step_d_snake_coverage": {
+    "evaluated_draws": 884,
+    "baseline_jaccard_0.5_pop": 0.8679,
+    "rows": [
+      {
+        "jaccard_limit": 0.5,
+        "popularity_sum": 0.8679,
+        "delta_vs_0.5": 0.0,
+        "union_coverage_avg": 18.75,
+        "avg_pairwise_jaccard": 0.2057,
+        "paired_ttest_pop_vs_0.5": {
+          "t_stat": 0.0,
+          "p_value": 1.0,
+          "n": 884
+        }
+      },
+      {
+        "jaccard_limit": 0.45,
+        "popularity_sum": 0.8679,
+        "delta_vs_0.5": 0.0,
+        "union_coverage_avg": 18.75,
+        "avg_pairwise_jaccard": 0.2057,
+        "paired_ttest_pop_vs_0.5": {
+          "t_stat": 0.0,
+          "p_value": 1.0,
+          "n": 884
+        }
+      },
+      {
+        "jaccard_limit": 0.4,
+        "popularity_sum": 0.8679,
+        "delta_vs_0.5": 0.0,
+        "union_coverage_avg": 18.75,
+        "avg_pairwise_jaccard": 0.2057,
+        "paired_ttest_pop_vs_0.5": {
+          "t_stat": 0.0,
+          "p_value": 1.0,
+          "n": 884
+        }
+      },
+      {
+        "jaccard_limit": 0.35,
+        "popularity_sum": 0.8679,
+        "delta_vs_0.5": 0.0,
+        "union_coverage_avg": 18.75,
+        "avg_pairwise_jaccard": 0.2057,
+        "paired_ttest_pop_vs_0.5": {
+          "t_stat": 0.0,
+          "p_value": 1.0,
+          "n": 884
+        }
+      }
+    ],
+    "best_union": {
+      "jaccard_limit": 0.5,
+      "popularity_sum": 0.8679,
+      "delta_vs_0.5": 0.0,
+      "union_coverage_avg": 18.75,
+      "avg_pairwise_jaccard": 0.2057,
+      "paired_ttest_pop_vs_0.5": {
+        "t_stat": 0.0,
+        "p_value": 1.0,
+        "n": 884
+      }
+    },
+    "verdict_d": "보류 — union 상승 시 인기적합도 trade-off 또는 미미",
+    "snake_reference": {
+      "source": "My_Library/app/lotto3/v12_snake.py",
+      "threshold": 0.4,
+      "logic": "1군 30세트 대비 Jaccard<0.4 + 5005 전수"
+    }
+  },
+  "step_e_summary": {
+    "periodicity_real": "폐기 — 주기는 착시 (유의쌍 비율≈기대 FP, C3 precision 무작위 수준)",
+    "coverage_improved": false,
+    "adopt_periodicity_6brain": false,
+    "adopt_jaccard_limit": null,
+    "discard_periodicity": true,
+    "next_benchmark": "1군 5005 전수 (인기적합도 상한)",
+    "second_benchmark": "1군 fusion 벡터 융합"
+  }
+}

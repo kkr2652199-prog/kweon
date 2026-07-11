@@ -1,0 +1,154 @@
+{
+  "evaluated_draws": 884,
+  "baseline_reference": {
+    "union": 18.75,
+    "popularity": 0.8679
+  },
+  "comparison_table": [
+    {
+      "label": "baseline_hyena",
+      "union_avg": 18.75,
+      "union_pct": 41.7,
+      "popularity_sum": 0.8679,
+      "delta_pop_vs_baseline": 0.0,
+      "hit_avg": 0.7916,
+      "avg_pairwise_jaccard": 0.2057,
+      "union_vs_baseline": 0.0,
+      "pop_maintained": true,
+      "union_beats_baseline": false
+    },
+    {
+      "label": "pool15_greedy",
+      "union_avg": 15.0,
+      "union_pct": 33.3,
+      "popularity_sum": 0.9419,
+      "delta_pop_vs_baseline": 0.074,
+      "hit_avg": 0.7957,
+      "avg_pairwise_jaccard": 0.2481,
+      "union_vs_baseline": -3.75,
+      "pop_maintained": true,
+      "union_beats_baseline": false
+    },
+    {
+      "label": "pool20_greedy",
+      "union_avg": 20.0,
+      "union_pct": 44.4,
+      "popularity_sum": 0.9213,
+      "delta_pop_vs_baseline": 0.0534,
+      "hit_avg": 0.7946,
+      "avg_pairwise_jaccard": 0.1428,
+      "union_vs_baseline": 1.25,
+      "pop_maintained": true,
+      "union_beats_baseline": true
+    },
+    {
+      "label": "pool25_greedy",
+      "union_avg": 20.0,
+      "union_pct": 44.4,
+      "popularity_sum": 0.9304,
+      "delta_pop_vs_baseline": 0.0625,
+      "hit_avg": 0.7982,
+      "avg_pairwise_jaccard": 0.1427,
+      "union_vs_baseline": 1.25,
+      "pop_maintained": true,
+      "union_beats_baseline": true
+    },
+    {
+      "label": "pool30_greedy",
+      "union_avg": 20.0,
+      "union_pct": 44.4,
+      "popularity_sum": 0.9313,
+      "delta_pop_vs_baseline": 0.0634,
+      "hit_avg": 0.8,
+      "avg_pairwise_jaccard": 0.1428,
+      "union_vs_baseline": 1.25,
+      "pop_maintained": true,
+      "union_beats_baseline": true
+    },
+    {
+      "label": "full45_greedy",
+      "union_avg": 12.86,
+      "union_pct": 28.6,
+      "popularity_sum": 0.6638,
+      "delta_pop_vs_baseline": -0.2041,
+      "hit_avg": 0.6229,
+      "avg_pairwise_jaccard": 0.0,
+      "union_vs_baseline": -5.89,
+      "pop_maintained": false,
+      "union_beats_baseline": false
+    }
+  ],
+  "tradeoff_curve": [
+    {
+      "label": "baseline_hyena",
+      "union_pct": 41.7,
+      "popularity_sum": 0.8679
+    },
+    {
+      "label": "pool15_greedy",
+      "union_pct": 33.3,
+      "popularity_sum": 0.9419
+    },
+    {
+      "label": "pool20_greedy",
+      "union_pct": 44.4,
+      "popularity_sum": 0.9213
+    },
+    {
+      "label": "pool25_greedy",
+      "union_pct": 44.4,
+      "popularity_sum": 0.9304
+    },
+    {
+      "label": "pool30_greedy",
+      "union_pct": 44.4,
+      "popularity_sum": 0.9313
+    },
+    {
+      "label": "full45_greedy",
+      "union_pct": 28.6,
+      "popularity_sum": 0.6638
+    }
+  ],
+  "sweet_spot_candidates": [
+    {
+      "label": "pool20_greedy",
+      "union_avg": 20.0,
+      "union_pct": 44.4,
+      "popularity_sum": 0.9213,
+      "delta_pop_vs_baseline": 0.0534,
+      "hit_avg": 0.7946,
+      "avg_pairwise_jaccard": 0.1428,
+      "union_vs_baseline": 1.25,
+      "pop_maintained": true,
+      "union_beats_baseline": true
+    },
+    {
+      "label": "pool25_greedy",
+      "union_avg": 20.0,
+      "union_pct": 44.4,
+      "popularity_sum": 0.9304,
+      "delta_pop_vs_baseline": 0.0625,
+      "hit_avg": 0.7982,
+      "avg_pairwise_jaccard": 0.1427,
+      "union_vs_baseline": 1.25,
+      "pop_maintained": true,
+      "union_beats_baseline": true
+    },
+    {
+      "label": "pool30_greedy",
+      "union_avg": 20.0,
+      "union_pct": 44.4,
+      "popularity_sum": 0.9313,
+      "delta_pop_vs_baseline": 0.0634,
+      "hit_avg": 0.8,
+      "avg_pairwise_jaccard": 0.1428,
+      "union_vs_baseline": 1.25,
+      "pop_maintained": true,
+      "union_beats_baseline": true
+    }
+  ],
+  "verdict": "채택 후보 — pool30_greedy (union 20.0/45, pop 0.9313)",
+  "r2_honest": "커버리지=번호 분산도(덮기)이며 당첨 가능성 아님. 적중률 전 구성 무작위 ~0.81 수준.",
+  "theoretical_union_cap": "5세트×6=30 (Jaccard<0.5 시 실질 상한)"
+}

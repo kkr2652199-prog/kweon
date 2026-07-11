@@ -1,0 +1,59 @@
+20260618_4군_전략X_UI_두뇌예측레이아웃적용
+동생 → 커서 | 2026-06-18 | 4군 UI 재구성 | 1~3군 간섭 0건
+
+작업 전 3파일 확인
+✅ RULES_FIXED.md (R2/R13/R14)
+✅ STATUS_LATEST.md (기억103)
+✅ CURSOR_RULES.md (§2)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP1 — 정찰 (predict 탭, 읽기만)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+재사용 대상 컴포넌트:
+- HTML: predict-toolbar, brain-tabs-wrap → tabs-row, brainActiveTitle, sets-grid#setsHost
+- JS: buildBrainTabs/makeTabBtn, lotto4SwitchBrainTab, renderSetsForBrain,
+       renderActualDrawBanner, renderUndrawnBanner, renderBallsHtml, tierLabel, set-row
+- CSS: .brain-tabs-wrap, .tabs-row, .tab-btn, .predict-context-strip, .sets-grid, .set-row
+
+predict·v13 로직: 미수정 (간섭 0)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP2 — 전략 X 탭 재구성
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+index.html (#view-strategy-x)
+- strategyXHost(세로 5블록) 제거
+- sxTabsRow (brain-tabs-wrap + tabs-row) 추가
+- strategyXActiveTitle + strategyXSetsHost (sets-grid) 추가
+- 캐시: lotto4.css/js v=20260618d
+
+lotto4.js
+- 상태: _sxRows, _sxMeta, _sxByTag, _sxCurrentBrain (기본 hyena)
+- buildStrategyXTabs / highlightStrategyXTab / lotto4SwitchStrategyXBrain
+- renderStrategyXSetsForBrain — 선택 뇌 5세트만 + 당첨/미추첨 스트립
+- strategyXHitSummaryLine — 1~5등 적중 요약 (brainActiveTitle nanoLine 패턴)
+- renderStrategyXSets — 데이터 적재 후 탭·단일 뇌 렌더
+- API 동일: GET predictions/draw, POST recommend+cooccur+hyena
+
+lotto4.css
+- .tab-btn--hyena / .sx-final-badge — 하이에나 금색 강조
+
+R2: disclaimer API 원문만 표시, "당첨확률 향상" 문구 없음
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP3 — 검증 (브라우저 6124)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ (1) 전략 X ≈ 두뇌예측 레이아웃 (툴바·가로 탭·제목·sets-grid·당첨 스트립)
+✅ (2) 뇌 버튼 전환 — 1뇌 인기빈도 클릭 시 해당 뇌만 active·5세트 표시
+✅ (3) 회차 ◀ — 1228→1227 갱신·25행 로드
+✅ (4) predict 탭·v13·1~3군 미변경
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+변경 파일
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- app/static/index.html
+- app/static/js/lotto4.js
+- app/static/css/lotto4.css
+
+미변경: v13_routes.py, predict 섹션, 1~3군
+
+저장(R30): 커서보고서 TXT | 동생기억 기억104 | SUMMARY STATUS 갱신

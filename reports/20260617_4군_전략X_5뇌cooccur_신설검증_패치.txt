@@ -1,0 +1,47 @@
+20260617_4군_전략X_5뇌cooccur_신설검증_패치
+동생→커서 | 2026-06-17 | 4군 패치 | 1~3군 간섭 0
+
+3파일 확인:
+✅ RULES_FIXED (R2/R13/R14)
+✅ STATUS_LATEST 기억96 → 기억97 갱신
+✅ CURSOR_RULES §2 1~3군 수정금지
+
+=== STEP1 cooccur 5뇌 신설 ===
+신규: app/lotto4/brains/cooccur_brain_v13.py
+- 입력: aggregate_cooccur_before(target_draw) 또는 CooccurState(백테스트)
+- 로직: 고빈도 2쌍 시드 → 3쌍/4쌍 체인 → 6번호, 5세트, Jaccard<0.5
+- brain_tag: strategy_x_cooccur
+- ensemble cooccur_brain.py 와 파일·로직 분리
+
+=== STEP2 API ===
+POST /api/lotto4/v13/strategy_x/cooccur/{target_draw_no}
+- 반환: 5세트 + cooccur_score + disclaimer
+- strategy_x_logging.generate_and_save_cooccur → lotto_predictions_army4 5행
+
+=== STEP3 백테스트 (era_C walk-forward, 884회) ===
+비교표:
+| 지표 | cooccur 5뇌 | random | 4뇌(기준) |
+|------|-------------|--------|-----------|
+| 평균 적중 | 0.8023 | 0.8100 | 0.8081 |
+| 인기적합도 | 0.8610 | 0.7988 | 0.8514 |
+| 인기 t-test p | 0.0 (유의) | — | — |
+| 4뇌 union Jaccard | 0.3485 | — | — |
+
+적중: 무작위 수준(Δ=-0.0077, p=0.657) — R2 정직
+인기적합도: 랜덤 대비 유의 우위(p<0.05, Δ=+0.0622)
+보완성: 4뇌와 Jaccard 0.35 < 0.55 → 다른 신호
+
+=== STEP4 종합 판정 ===
+(1) 랜덤보다 유의 우위: ✅ (인기적합도 p<0.05)
+(2) 4뇌와 다른 신호(보완): ✅ (union Jaccard 0.35)
+→ **5뇌 정식 채택**
+
+R2: 예측 엔진 아님. 인기영역·동반출현 조합기. 6개 적중 보장 없음.
+cooccur 인기적합도(0.861)가 4뇌(0.8514)보다 높으나 번호 집합은 상이 → 하이에나 조율 시 보조 신호로 활용.
+
+=== 변경 파일 ===
+신규: cooccur_brain_v13.py, run_strategy_x_cooccur_backtest.py, _strategy_x_cooccur_backtest.json
+수정: strategy_x_logging.py, v13_routes.py
+
+=== 다음 ===
+하이에나 조율뇌 (5뇌+4뇌 통합)

@@ -1,0 +1,41 @@
+{
+  "evaluated_draws": 884,
+  "skipped_draws": 80,
+  "baseline_cooccur": {
+    "popularity_sum": 0.861,
+    "hit_avg": 0.8023,
+    "reference": 0.861
+  },
+  "random": {
+    "popularity_sum": 0.7988,
+    "hit_avg": 0.81
+  },
+  "scheme_results": [
+    {
+      "scheme": "equal",
+      "popularity_sum": 0.8537,
+      "hit_avg": 0.7839,
+      "beats_cooccur_0.8610": false,
+      "delta_vs_cooccur": -0.0073
+    },
+    {
+      "scheme": "cooccur_favor",
+      "popularity_sum": 0.8679,
+      "hit_avg": 0.7916,
+      "beats_cooccur_0.8610": true,
+      "delta_vs_cooccur": 0.0069
+    },
+    {
+      "scheme": "top2_focus",
+      "popularity_sum": 0.8674,
+      "hit_avg": 0.793,
+      "beats_cooccur_0.8610": true,
+      "delta_vs_cooccur": 0.0064
+    }
+  ],
+  "best_scheme": "cooccur_favor",
+  "best_scheme_pop": 0.8679,
+  "default_scheme_recommendation": "cooccur_favor",
+  "adoption_verdict": "하이에나 메인 채택 + 가중치 cooccur_favor 확정",
+  "r2_honest": "가중치 튜닝으로 인기적합도 상한은 cooccur 단독에 수렴. 적중률 무작위 수준 유지. 6개 적중 보장 없음."
+}

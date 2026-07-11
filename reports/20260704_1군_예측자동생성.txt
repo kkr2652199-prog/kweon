@@ -1,0 +1,39 @@
+20260704_1군_예측자동생성
+=======================================================
+
+[커서 사전 의견]
+(1) 구현: maybe_generate_army1_next_predictions() → refresh_all_army hook.
+    run_prediction(N+1)+save_brain7, _get_draws_before(N+1)<N+1.
+(2) 함정: run_prediction 캐시(멱등) / LSTM 난수 / lead1은 6뇌 후 별도 save.
+    scheduler는 fetch_latest만 — 예측은 refresh hook 경유.
+(3) 허점: 1232 row가 lotto_draws에 없어도 예측 생성 가능(미래회차).
+    fetch_all_draws는 신규 당첨마다 refresh 호출 → 자동 연쇄.
+
+[경계] 6뇌 알고리즘 코드 0건 수정 | orchestration만 추가
+
+STEP 1 — 현재 자동화 상태
+----------------------------------------
+  fetch_latest_draw: routes POST + scheduler(weekly/startup) — 반자동(설정 ON 시)
+  fetch_all_draws: routes background — 수동 트리거
+  score_weight_hook: refresh_all_army_prediction_scores → connected
+  predict_before: run_prediction 수동(routes) only
+
+STEP 2 — 훅 추가
+----------------------------------------
+  maybe_generate_army1_next_predictions
+  연결: refresh_all_army_prediction_scores (after weight hook)
+
+STEP 3 — 시뮬레이션
+----------------------------------------
+  method: refresh_all_army_prediction_scores(1231) full pipeline
+  pred_1232: 0 → 35
+  max_data_draw: 1231 contamination_ok=True
+  by_brain: {'fusion': {'sets': 5, 'best_mc': -1}, 'hyena': {'sets': 5, 'best_mc': -1}, 'lead1': {'sets': 5, 'best_mc': -1}, 'llm': {'sets': 5, 'best_mc': -1}, 'lstm': {'sets': 5, 'best_mc': -1}, 'markov': {'sets': 5, 'best_mc': -1}, 'stat': {'sets': 5, 'best_mc': -1}}
+  idempotent: {'generated': False, 'reason': 'already_exists', 'target_draw_no': 1232}
+  1232 undrawn hook: {'updated': False, 'reason': 'draw_not_scored', 'target_draw_no': 1232}
+
+STEP 4 — 회귀
+----------------------------------------
+  <=1220 fingerprint: True
+  <=1220 count: True
+  army2/3: True/True

@@ -1,0 +1,73 @@
+20260704_1군6뇌_가중치재백테스트
+=======================================================
+
+[커서 사전 의견]
+(1) 구현: baseline(1221) 복원 → force=True walk-forward 1222~1231.
+    manual 공식 재계산과 DB UPDATE 교차검증.
+(2) 함정: force=False면 already_updated로 SQL skip.
+    PHASE1 진단 update(1221)가 max_draw_no 없이 1231 데이터 혼입 가능.
+    lotto_brain_weights 히스토리 없음 → '삭제'는 baseline UPDATE로 대체.
+(3) 설계허점: Hedge가 SEED*exp(eta*signal) 매회 — 누적곱 아님.
+    50회 sliding window → 10회 추가 시 창 10회만 교체, 변화 완만.
+
+[경계] 6뇌/lead1 lotto_predictions READ-ONLY | 대상: lotto_brain_weights만
+
+STEP 1 — 의심 규명
+----------------------------------------
+  판정: update_brain_weights()는 current_weight+last_draw 모두 재계산함(로직 결함 아님).
+        직전 백필 before/after 동일 원인 = (1) 백필 시작 시점 weight가 이미 1231 산출값과 동일
+        (PHASE1 진단 update(1221)이 max_draw_no 없이 1231 ranking 혼입) +
+        (2) walk-forward 1222~1231 종점이 동일값 → last_draw만 1221→1231 증가.
+        force=True baseline(4/28) 복원 재백테스트에서 10회 전부 weight 변동 확인(YES).
+  rank window 1221==1231: False
+  1221 window: [1221, 1220, 1219, 1218, 1217]...[1174, 1173, 1172]
+  1231 window: [1231, 1230, 1229, 1228, 1227]...[1184, 1183, 1182]
+
+STEP 2 — baseline 복원 + walk-forward 재백테스트
+----------------------------------------
+  baseline(2026-04-28, last_draw=1221) 복원 후 force=True 순차 갱신
+
+  [회차별 가중치 변화표]
+  draw | stat    | markov  | llm     | lstm    | hyena   | changed?
+  1222 |  5.1195 |  3.3274 |  7.7052 | 39.9308 | 32.4013 | YES
+  1223 |  5.1813 |  3.2877 |  7.7982 | 38.7506 | 31.4437 | YES
+  1224 |  5.2157 |  3.2078 |  7.8451 | 36.6402 | 29.4413 | YES
+  1225 |  5.1845 |  3.1506 |  7.8029 | 36.4211 | 29.7968 | YES
+  1226 |  4.9682 |  3.2272 |  7.7562 | 35.7499 | 28.7259 | YES
+  1227 |  4.9981 |  3.1506 |  7.7098 | 35.5360 | 27.8769 | YES
+  1228 |  4.9682 |  3.1715 |  7.8029 | 32.5686 | 25.0782 | YES
+  1229 |  4.8504 |  3.1715 |  7.7562 | 31.7771 | 24.2787 | YES
+  1230 |  4.7926 |  3.2485 |  7.6591 | 29.8489 | 22.1049 | YES
+  1231 |  4.8243 |  3.2485 |  7.6133 | 30.2092 | 22.9152 | YES
+
+  [회차별 delta vs 직전]
+  1222 | d_stat=-0.0930 d_lstm=-1.5134 d_hyena=-1.4981
+  1223 | d_stat=+0.0618 d_lstm=-1.1801 d_hyena=-0.9576
+  1224 | d_stat=+0.0343 d_lstm=-2.1104 d_hyena=-2.0024
+  1225 | d_stat=-0.0312 d_lstm=-0.2192 d_hyena=+0.3554
+  1226 | d_stat=-0.2162 d_lstm=-0.6712 d_hyena=-1.0708
+  1227 | d_stat=+0.0299 d_lstm=-0.2139 d_hyena=-0.8490
+  1228 | d_stat=-0.0299 d_lstm=-2.9675 d_hyena=-2.7987
+  1229 | d_stat=-0.1178 d_lstm=-0.7914 d_hyena=-0.7995
+  1230 | d_stat=-0.0579 d_lstm=-1.9283 d_hyena=-2.1738
+  1231 | d_stat=+0.0317 d_lstm=+0.3603 d_hyena=+0.8103
+
+STEP 3 — 자동갱신
+----------------------------------------
+  last_updated_draw(max)=1231
+  1231 멱등: already_updated
+  1232 모의: draw_not_scored
+
+STEP 4 — 6뇌/lead1 회귀
+----------------------------------------
+  예측 행수 동일: True
+  1231 fingerprint 동일: True
+  종합: PASS
+
+STEP 5 — 최종 weights (1231)
+----------------------------------------
+  stat     5.2125 → 4.8243  (last_draw=1231)
+  markov   3.3879 → 3.2485  (last_draw=1231)
+  llm      7.8923 → 7.6133  (last_draw=1231)
+  lstm     41.4442 → 30.2092  (last_draw=1231)
+  hyena    33.8995 → 22.9152  (last_draw=1231)

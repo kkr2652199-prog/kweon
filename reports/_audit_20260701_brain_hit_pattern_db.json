@@ -1,0 +1,53 @@
+{
+  "title": "20260701_1군5뇌_적중패턴_DB구축",
+  "pattern_db": "D:\\MONEY lol\\My_Library\\data\\lotto_patterns.db",
+  "build": {
+    "processed": 1200,
+    "skipped": 30,
+    "draw_range": [
+      3,
+      1230
+    ],
+    "elapsed_sec": 22.4,
+    "rows_pick": 131774,
+    "rows_catch": 8400,
+    "agg_solo_catch": {
+      "stat": 70,
+      "markov": 50,
+      "llm": 148,
+      "lstm": 213,
+      "fusion": 117
+    },
+    "agg_pair_catch": {
+      "stat": 369,
+      "markov": 283,
+      "llm": 588,
+      "lstm": 983,
+      "fusion": 829
+    },
+    "spike_win_total": 2124,
+    "consensus_win_total": 4932,
+    "missed_win_total": 144,
+    "mean_coverage": 5.88,
+    "coverage6_draws": 1065
+  },
+  "six_before": {
+    "fusion": 6005,
+    "hyena": 6000,
+    "llm": 6001,
+    "lstm": 6005,
+    "markov": 6000,
+    "stat": 6005
+  },
+  "six_after": {
+    "fusion": 6005,
+    "hyena": 6000,
+    "llm": 6001,
+    "lstm": 6005,
+    "markov": 6000,
+    "stat": 6005
+  },
+  "lead1_before": 5555,
+  "lead1_after": 5555,
+  "regression_ok": true
+}

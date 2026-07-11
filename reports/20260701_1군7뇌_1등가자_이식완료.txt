@@ -1,0 +1,65 @@
+20260701_1군7뇌_1등가자_이식완료
+동생 → 커서 | 2026-07-01 | 형 GO 완료
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 0 — 6뇌 출력 구조 정찰 (READ-ONLY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DB: My_Library/data/lotto.db → lotto_predictions
+
+| 컬럼 | 용도 |
+|------|------|
+| target_draw_no | 예측 대상 회차 |
+| brain_tag | stat/markov/llm/lstm/fusion/hyena (6뇌) |
+| method | 한글 표시명 |
+| num1~num6 | 세트 6번호 |
+| confidence | 세트 신뢰도 |
+| matched_count | 역대전적 (-1=미확정) |
+| bonus_matched | 보너스 적중 |
+
+구조: 6뇌 × 5세트 = 30세트/회차 | ORDER BY brain_tag, id
+저장: app/lotto/engine.py INSERT | 7뇌는 READ-ONLY 로드
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7뇌 "1등가자" 공식 (방식 B)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  3세트 = SEL4 (30세트 균등 표합 → 상위 3)
+  2세트 = v3 (1/k 기여도, decay=0.995, draw<N 누적 → 상위 2)
+  brain_tag=lead1 | method=1등가자
+  reasoning: 출처:SEL4 / 출처:V3 (UI 배지)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+이식 파일
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  신규: app/lotto/predict_brain7.py
+  수정: app/lotto/engine.py (_invoke_brain7_safe, run_prediction 말미)
+  수정: app/static/js/lotto.js (7번째 탭 lead1, 출처 배지)
+  수정: app/static/css/lotto.css (.lotto-set-source)
+  수정: app/static/index.html (캐시 v=20260701lead1)
+
+6뇌 predict_*.py · 6뇌 INSERT 로직: 변경 0건
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+회귀 확인 (1230회차)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  run_brain7_for_draw(1230): OK — lead1 5세트 저장
+  6뇌 행 수 (이식 전후): stat/markov/llm/lstm/fusion/hyena 각 5 — 동일 ✅
+  run_prediction(1230) 캐시 경로: 6뇌 5×6 유지, lead1=5 ✅
+  7뇌 실패 시: engine try/except — 6뇌 파이프라인 무영향 ✅
+  matched_count: lotto_draws 확정 시 refresh + lead1 _score_rows_if_actual
+
+1230회 lead1 샘플:
+  #1~3 SEL4 | #4~5 V3 (reasoning 출처 태그)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+실전 추적 (1231~)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  매 회차 run_prediction → lead1 자동 생성/갱신
+  UI: 6뇌 탭 아래 🎯 1등가자 탭 — SEL4/v3 배지 표시
+  형 확인: v3 2세트 vs SEL4 3세트 큰당첨 실전 누적 비교
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+검증 명령
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  python -c "from app.main import app; print('app OK')"  → OK
+
+기억: 20260701_기억108_v1.md | JSON: (본 이식 — 코드 산출물)

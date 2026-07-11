@@ -1,0 +1,1041 @@
+{
+  "timestamp": "2026-07-09T22:20:10",
+  "step0_backup": {
+    "rows": 440,
+    "table": "lotto_predictions_army3_backup_20260709",
+    "json": "d:\\3kweon\\reports\\_backup_20260709_army3_preds_1221_1231.json"
+  },
+  "step1_delete": {
+    "deleted_rows": 440
+  },
+  "delete_range_before": {
+    "v12_contrarian": 55,
+    "v12_fusion": 55,
+    "v12_hyena": 55,
+    "v12_lstm": 55,
+    "v12_offset": 55,
+    "v12_run": 55,
+    "v12_snake": 55,
+    "v12_stat": 55
+  },
+  "step2_walkforward": [
+    {
+      "draw": 1221,
+      "max_draw_no_prediction_data": 1220,
+      "training_count": 200,
+      "training_max_draw_no": 1220,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v12_stat": {
+          "w": 9.4368,
+          "ld": 1220
+        },
+        "v12_run": {
+          "w": 4.7332,
+          "ld": 1220
+        },
+        "v12_offset": {
+          "w": 4.901,
+          "ld": 1220
+        },
+        "v12_contrarian": {
+          "w": 14.6749,
+          "ld": 1220
+        },
+        "v12_lstm": {
+          "w": 18.6295,
+          "ld": 1220
+        },
+        "v12_fusion": {
+          "w": 15.9935,
+          "ld": 1220
+        },
+        "v12_hyena": {
+          "w": 37.3528,
+          "ld": 1220
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v12_sets": 40,
+      "total_sets": 40,
+      "scored": true,
+      "elapsed_sec": 3.44,
+      "by_brain": {
+        "v12_contrarian": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_fusion": {
+          "sets": 5,
+          "best_matched": 4
+        },
+        "v12_hyena": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_lstm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_offset": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_run": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_snake": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 4,
+      "v12_brains": [
+        "v12_stat",
+        "v12_run",
+        "v12_offset",
+        "v12_contrarian",
+        "v12_lstm",
+        "v12_fusion",
+        "v12_hyena"
+      ]
+    },
+    {
+      "draw": 1222,
+      "max_draw_no_prediction_data": 1221,
+      "training_count": 200,
+      "training_max_draw_no": 1221,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v12_stat": {
+          "w": 9.3123,
+          "ld": 1221
+        },
+        "v12_run": {
+          "w": 4.7656,
+          "ld": 1221
+        },
+        "v12_offset": {
+          "w": 4.8629,
+          "ld": 1221
+        },
+        "v12_contrarian": {
+          "w": 14.5706,
+          "ld": 1221
+        },
+        "v12_lstm": {
+          "w": 21.4093,
+          "ld": 1221
+        },
+        "v12_fusion": {
+          "w": 17.4678,
+          "ld": 1221
+        },
+        "v12_hyena": {
+          "w": 48.5056,
+          "ld": 1221
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v12_sets": 40,
+      "total_sets": 40,
+      "scored": true,
+      "elapsed_sec": 1.88,
+      "by_brain": {
+        "v12_contrarian": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_hyena": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_lstm": {
+          "sets": 5,
+          "best_matched": 4
+        },
+        "v12_offset": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_run": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_snake": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 4,
+      "v12_brains": [
+        "v12_stat",
+        "v12_run",
+        "v12_offset",
+        "v12_contrarian",
+        "v12_lstm",
+        "v12_fusion",
+        "v12_hyena"
+      ]
+    },
+    {
+      "draw": 1223,
+      "max_draw_no_prediction_data": 1222,
+      "training_count": 200,
+      "training_max_draw_no": 1222,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v12_stat": {
+          "w": 9.1188,
+          "ld": 1222
+        },
+        "v12_run": {
+          "w": 4.5832,
+          "ld": 1222
+        },
+        "v12_offset": {
+          "w": 4.7966,
+          "ld": 1222
+        },
+        "v12_contrarian": {
+          "w": 14.292,
+          "ld": 1222
+        },
+        "v12_lstm": {
+          "w": 23.0195,
+          "ld": 1222
+        },
+        "v12_fusion": {
+          "w": 17.6309,
+          "ld": 1222
+        },
+        "v12_hyena": {
+          "w": 51.5684,
+          "ld": 1222
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v12_sets": 40,
+      "total_sets": 40,
+      "scored": true,
+      "elapsed_sec": 1.37,
+      "by_brain": {
+        "v12_contrarian": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_fusion": {
+          "sets": 5,
+          "best_matched": 4
+        },
+        "v12_hyena": {
+          "sets": 5,
+          "best_matched": 4
+        },
+        "v12_lstm": {
+          "sets": 5,
+          "best_matched": 4
+        },
+        "v12_offset": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_run": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_snake": {
+          "sets": 5,
+          "best_matched": 4
+        },
+        "v12_stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 4,
+      "v12_brains": [
+        "v12_stat",
+        "v12_run",
+        "v12_offset",
+        "v12_contrarian",
+        "v12_lstm",
+        "v12_fusion",
+        "v12_hyena"
+      ]
+    },
+    {
+      "draw": 1224,
+      "max_draw_no_prediction_data": 1223,
+      "training_count": 200,
+      "training_max_draw_no": 1223,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v12_stat": {
+          "w": 9.1714,
+          "ld": 1223
+        },
+        "v12_run": {
+          "w": 4.4554,
+          "ld": 1223
+        },
+        "v12_offset": {
+          "w": 4.8342,
+          "ld": 1223
+        },
+        "v12_contrarian": {
+          "w": 14.2981,
+          "ld": 1223
+        },
+        "v12_lstm": {
+          "w": 24.8053,
+          "ld": 1223
+        },
+        "v12_fusion": {
+          "w": 17.8133,
+          "ld": 1223
+        },
+        "v12_hyena": {
+          "w": 55.5509,
+          "ld": 1223
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v12_sets": 40,
+      "total_sets": 40,
+      "scored": true,
+      "elapsed_sec": 1.39,
+      "by_brain": {
+        "v12_contrarian": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_hyena": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_lstm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_offset": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_run": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_snake": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 3,
+      "v12_brains": [
+        "v12_stat",
+        "v12_run",
+        "v12_offset",
+        "v12_contrarian",
+        "v12_lstm",
+        "v12_fusion",
+        "v12_hyena"
+      ]
+    },
+    {
+      "draw": 1225,
+      "max_draw_no_prediction_data": 1224,
+      "training_count": 200,
+      "training_max_draw_no": 1224,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v12_stat": {
+          "w": 9.1275,
+          "ld": 1224
+        },
+        "v12_run": {
+          "w": 4.5243,
+          "ld": 1224
+        },
+        "v12_offset": {
+          "w": 4.8166,
+          "ld": 1224
+        },
+        "v12_contrarian": {
+          "w": 14.127,
+          "ld": 1224
+        },
+        "v12_lstm": {
+          "w": 25.912,
+          "ld": 1224
+        },
+        "v12_fusion": {
+          "w": 17.9676,
+          "ld": 1224
+        },
+        "v12_hyena": {
+          "w": 56.6446,
+          "ld": 1224
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v12_sets": 40,
+      "total_sets": 40,
+      "scored": true,
+      "elapsed_sec": 1.45,
+      "by_brain": {
+        "v12_contrarian": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_hyena": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_lstm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_offset": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_run": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_snake": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_stat": {
+          "sets": 5,
+          "best_matched": 1
+        }
+      },
+      "pool_best": 2,
+      "v12_brains": [
+        "v12_stat",
+        "v12_run",
+        "v12_offset",
+        "v12_contrarian",
+        "v12_lstm",
+        "v12_fusion",
+        "v12_hyena"
+      ]
+    },
+    {
+      "draw": 1226,
+      "max_draw_no_prediction_data": 1225,
+      "training_count": 200,
+      "training_max_draw_no": 1225,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v12_stat": {
+          "w": 9.0105,
+          "ld": 1225
+        },
+        "v12_run": {
+          "w": 4.5964,
+          "ld": 1225
+        },
+        "v12_offset": {
+          "w": 4.8117,
+          "ld": 1225
+        },
+        "v12_contrarian": {
+          "w": 13.9987,
+          "ld": 1225
+        },
+        "v12_lstm": {
+          "w": 25.8627,
+          "ld": 1225
+        },
+        "v12_fusion": {
+          "w": 17.9995,
+          "ld": 1225
+        },
+        "v12_hyena": {
+          "w": 55.9312,
+          "ld": 1225
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v12_sets": 40,
+      "total_sets": 40,
+      "scored": true,
+      "elapsed_sec": 1.43,
+      "by_brain": {
+        "v12_contrarian": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_fusion": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_hyena": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_lstm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_offset": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_run": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_snake": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 3,
+      "v12_brains": [
+        "v12_stat",
+        "v12_run",
+        "v12_offset",
+        "v12_contrarian",
+        "v12_lstm",
+        "v12_fusion",
+        "v12_hyena"
+      ]
+    },
+    {
+      "draw": 1227,
+      "max_draw_no_prediction_data": 1226,
+      "training_count": 200,
+      "training_max_draw_no": 1226,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v12_stat": {
+          "w": 9.0306,
+          "ld": 1226
+        },
+        "v12_run": {
+          "w": 4.6162,
+          "ld": 1226
+        },
+        "v12_offset": {
+          "w": 4.8384,
+          "ld": 1226
+        },
+        "v12_contrarian": {
+          "w": 14.3765,
+          "ld": 1226
+        },
+        "v12_lstm": {
+          "w": 25.5025,
+          "ld": 1226
+        },
+        "v12_fusion": {
+          "w": 18.0187,
+          "ld": 1226
+        },
+        "v12_hyena": {
+          "w": 56.0921,
+          "ld": 1226
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v12_sets": 40,
+      "total_sets": 40,
+      "scored": true,
+      "elapsed_sec": 1.86,
+      "by_brain": {
+        "v12_contrarian": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_hyena": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_lstm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_offset": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_run": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_snake": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_stat": {
+          "sets": 5,
+          "best_matched": 3
+        }
+      },
+      "pool_best": 3,
+      "v12_brains": [
+        "v12_stat",
+        "v12_run",
+        "v12_offset",
+        "v12_contrarian",
+        "v12_lstm",
+        "v12_fusion",
+        "v12_hyena"
+      ]
+    },
+    {
+      "draw": 1228,
+      "max_draw_no_prediction_data": 1227,
+      "training_count": 200,
+      "training_max_draw_no": 1227,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v12_stat": {
+          "w": 9.0414,
+          "ld": 1227
+        },
+        "v12_run": {
+          "w": 4.5684,
+          "ld": 1227
+        },
+        "v12_offset": {
+          "w": 4.874,
+          "ld": 1227
+        },
+        "v12_contrarian": {
+          "w": 14.3963,
+          "ld": 1227
+        },
+        "v12_lstm": {
+          "w": 24.369,
+          "ld": 1227
+        },
+        "v12_fusion": {
+          "w": 17.5012,
+          "ld": 1227
+        },
+        "v12_hyena": {
+          "w": 52.4473,
+          "ld": 1227
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v12_sets": 40,
+      "total_sets": 40,
+      "scored": true,
+      "elapsed_sec": 1.77,
+      "by_brain": {
+        "v12_contrarian": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_fusion": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_hyena": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_lstm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_offset": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_run": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_snake": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 2,
+      "v12_brains": [
+        "v12_stat",
+        "v12_run",
+        "v12_offset",
+        "v12_contrarian",
+        "v12_lstm",
+        "v12_fusion",
+        "v12_hyena"
+      ]
+    },
+    {
+      "draw": 1229,
+      "max_draw_no_prediction_data": 1228,
+      "training_count": 200,
+      "training_max_draw_no": 1228,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v12_stat": {
+          "w": 9.0444,
+          "ld": 1228
+        },
+        "v12_run": {
+          "w": 4.4744,
+          "ld": 1228
+        },
+        "v12_offset": {
+          "w": 4.8499,
+          "ld": 1228
+        },
+        "v12_contrarian": {
+          "w": 14.7415,
+          "ld": 1228
+        },
+        "v12_lstm": {
+          "w": 22.7697,
+          "ld": 1228
+        },
+        "v12_fusion": {
+          "w": 16.5495,
+          "ld": 1228
+        },
+        "v12_hyena": {
+          "w": 44.1708,
+          "ld": 1228
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v12_sets": 40,
+      "total_sets": 40,
+      "scored": true,
+      "elapsed_sec": 1.44,
+      "by_brain": {
+        "v12_contrarian": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_hyena": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_lstm": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_offset": {
+          "sets": 5,
+          "best_matched": 3
+        },
+        "v12_run": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_snake": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_stat": {
+          "sets": 5,
+          "best_matched": 1
+        }
+      },
+      "pool_best": 3,
+      "v12_brains": [
+        "v12_stat",
+        "v12_run",
+        "v12_offset",
+        "v12_contrarian",
+        "v12_lstm",
+        "v12_fusion",
+        "v12_hyena"
+      ]
+    },
+    {
+      "draw": 1230,
+      "max_draw_no_prediction_data": 1229,
+      "training_count": 200,
+      "training_max_draw_no": 1229,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v12_stat": {
+          "w": 9.0979,
+          "ld": 1229
+        },
+        "v12_run": {
+          "w": 4.498,
+          "ld": 1229
+        },
+        "v12_offset": {
+          "w": 4.9895,
+          "ld": 1229
+        },
+        "v12_contrarian": {
+          "w": 14.9229,
+          "ld": 1229
+        },
+        "v12_lstm": {
+          "w": 21.9075,
+          "ld": 1229
+        },
+        "v12_fusion": {
+          "w": 16.071,
+          "ld": 1229
+        },
+        "v12_hyena": {
+          "w": 39.6385,
+          "ld": 1229
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v12_sets": 40,
+      "total_sets": 40,
+      "scored": true,
+      "elapsed_sec": 1.28,
+      "by_brain": {
+        "v12_contrarian": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_hyena": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_lstm": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_offset": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_run": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_snake": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_stat": {
+          "sets": 5,
+          "best_matched": 2
+        }
+      },
+      "pool_best": 2,
+      "v12_brains": [
+        "v12_stat",
+        "v12_run",
+        "v12_offset",
+        "v12_contrarian",
+        "v12_lstm",
+        "v12_fusion",
+        "v12_hyena"
+      ]
+    },
+    {
+      "draw": 1231,
+      "max_draw_no_prediction_data": 1230,
+      "training_count": 200,
+      "training_max_draw_no": 1230,
+      "contamination_check": true,
+      "weights_for_predict": {
+        "v12_stat": {
+          "w": 9.1657,
+          "ld": 1230
+        },
+        "v12_run": {
+          "w": 4.6378,
+          "ld": 1230
+        },
+        "v12_offset": {
+          "w": 4.9669,
+          "ld": 1230
+        },
+        "v12_contrarian": {
+          "w": 14.6218,
+          "ld": 1230
+        },
+        "v12_lstm": {
+          "w": 21.9231,
+          "ld": 1230
+        },
+        "v12_fusion": {
+          "w": 16.0322,
+          "ld": 1230
+        },
+        "v12_hyena": {
+          "w": 38.8375,
+          "ld": 1230
+        }
+      },
+      "weight_update_before": true,
+      "weight_update_after": true,
+      "v12_sets": 40,
+      "total_sets": 40,
+      "scored": true,
+      "elapsed_sec": 1.44,
+      "by_brain": {
+        "v12_contrarian": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_fusion": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_hyena": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_lstm": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_offset": {
+          "sets": 5,
+          "best_matched": 2
+        },
+        "v12_run": {
+          "sets": 5,
+          "best_matched": 1
+        },
+        "v12_snake": {
+          "sets": 5,
+          "best_matched": 0
+        },
+        "v12_stat": {
+          "sets": 5,
+          "best_matched": 3
+        }
+      },
+      "pool_best": 3,
+      "v12_brains": [
+        "v12_stat",
+        "v12_run",
+        "v12_offset",
+        "v12_contrarian",
+        "v12_lstm",
+        "v12_fusion",
+        "v12_hyena"
+      ]
+    }
+  ],
+  "step3_auto_1232": {
+    "draw_1232_exists": false,
+    "draw_1232_has_numbers": false,
+    "pred_1232_count_before": 0,
+    "path": "undrawn_wait",
+    "hook_weight_1231": {
+      "updated": false,
+      "reason": "already_updated",
+      "target_draw_no": 1231,
+      "last_updated_draw": 1231
+    },
+    "hook_predict_1232_from_1231": {
+      "generated": false,
+      "reason": "already_exists",
+      "target_draw_no": 1232,
+      "v12_sets": 40
+    },
+    "hook_weight": {
+      "updated": false,
+      "reason": "draw_not_scored",
+      "target_draw_no": 1232
+    },
+    "hook_predict": {
+      "generated": false,
+      "reason": "scored_draw_not_confirmed",
+      "scored_draw_no": 1232
+    },
+    "refresh_no_op_expected": true,
+    "pred_1232_count_after": 40,
+    "max_last_weight_draw": 1232
+  },
+  "step4_regression": {
+    "fp_1220_ok": true,
+    "fp_1210_ok": true,
+    "counts_le1220_before": 48575,
+    "counts_le1220_after": 48575,
+    "counts_le1220_ok": true,
+    "army12_before": {
+      "army1_total": 53905,
+      "army2_total": 42920,
+      "army2_pred_1232": 35
+    },
+    "army12_after": {
+      "army1_total": 53905,
+      "army2_total": 42920,
+      "army2_pred_1232": 35
+    },
+    "army12_ok": true
+  },
+  "new_range_counts": {
+    "v12_contrarian": 55,
+    "v12_fusion": 55,
+    "v12_hyena": 55,
+    "v12_lstm": 55,
+    "v12_offset": 55,
+    "v12_run": 55,
+    "v12_snake": 55,
+    "v12_stat": 55
+  },
+  "backup_vs_new_1231_identical": false,
+  "app_ok": true
+}

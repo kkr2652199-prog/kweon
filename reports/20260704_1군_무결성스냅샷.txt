@@ -1,0 +1,46 @@
+20260704_1군_무결성스냅샷 (READ-ONLY)
+=============================================
+최신 확정 추첨: 1231
+
+[STEP 1] 1221~1231 예측 스냅샷
+  전 회차 conning_ok(5세트+채점): PASS
+  1221: 7뇌×5=True best_mc=4 ge4=5 [OK]
+  1222: 7뇌×5=True best_mc=3 ge4=0 [OK]
+  1223: 7뇌×5=True best_mc=4 ge4=1 [OK]
+  1224: 7뇌×5=True best_mc=4 ge4=2 [OK]
+  1225: 7뇌×5=True best_mc=3 ge4=0 [OK]
+  1226: 7뇌×5=True best_mc=3 ge4=0 [OK]
+  1227: 7뇌×5=True best_mc=2 ge4=0 [OK]
+  1228: 7뇌×5=True best_mc=2 ge4=0 [OK]
+  1229: 7뇌×5=True best_mc=2 ge4=0 [OK]
+  1230: 7뇌×5=True best_mc=2 ge4=0 [OK]
+  1231: 7뇌×5=True best_mc=2 ge4=0 [OK]
+
+[STEP 2] lotto_brain_weights
+  last_updated_draw: [1231] → PASS(1231)
+  hyena    weight=27.4894 last=1231
+  llm      weight=7.8029 last=1231
+  lstm     weight=35.2036 last=1231
+  markov   weight=3.4103 last=1231
+  stat     weight=4.9682 last=1231
+
+[STEP 3] 1232 예측 + max_data
+  1232 추첨 확정: False (미추첨이면 False 정상)
+  1232 총 세트: 35 (기대 35=7뇌×5)
+  7뇌 각 5세트+: PASS
+  matched=-1(미채점): PASS
+  max_data_draw=1231 → PASS(1231)
+  lead1 F1 reasoning: PASS
+
+[STEP 4] A/B 실험 후 DB 무변경
+  뇌별 카운트 A/B기준 대비: PASS
+  stat     6015 (기준 6015) [OK]
+  markov   6010 (기준 6010) [OK]
+  llm      6011 (기준 6011) [OK]
+  lstm     6015 (기준 6015) [OK]
+  fusion   6015 (기준 6015) [OK]
+  hyena    6010 (기준 6010) [OK]
+  lead1    5565 (기준 5565) [OK]
+  backup 테이블: lotto_predictions_backup_20260704
+
+종합: ALL PASS

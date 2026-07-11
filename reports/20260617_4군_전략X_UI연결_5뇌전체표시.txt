@@ -1,0 +1,65 @@
+20260617_4군_전략X_UI연결_5뇌전체표시
+동생 → 커서 | 2026-06-17 | 4군 UI 구현 | 1~3군 간섭 0건
+
+작업 전 3파일 확인
+✅ RULES_FIXED.md (R2/R13/R14)
+✅ STATUS_LATEST.md (기억102, UI 연결 대기)
+✅ CURSOR_RULES.md (§2)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP1 — index.html
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- 사이드바: data-view="strategy-x" 「전략 X」(truth·data 사이)
+- section#view-strategy-x 패널 (truth 패턴)
+- 회차 stepper 전용 sxDrawSelect (262~1228, era_C 백테스트 구간)
+- 버튼: 전략 X 생성 / 저장 기록 불러오기
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP2 — lotto4.js
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+신규 함수:
+- loadStrategyX(drawNo, {generate})
+- renderStrategyXSets(data)
+- generateStrategyX → POST recommend + cooccur + hyena
+- GET /strategy_x/predictions/draw/{d}
+
+5뇌 블록 + 하이에나(최종 종합 강조):
+1. strategy_x_popularity_freq
+2. strategy_x_popularity_pair
+3. strategy_x_shape
+4. strategy_x_cooccur
+5. strategy_x_hyena (.strategy-x-brain-block--final)
+
+각 블록: .sets-grid + renderBallsHtml + 점수·적중 메타
+switchView('strategy-x') 분기 + 버튼 리스너
+
+API 확장: GET predictions/draw → brain_meta(disclaimer)·brain_order
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP3 — disclaimer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- 상단 #strategyXDisclaimer (하이에나 안내문)
+- 뇌별 brain_meta.disclaimer 블록 내 표시
+- R2: "미래 예측 아님·당첨 확률 동일" API 원문 그대로
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP4 — 검증 (브라우저 + API)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+(1) 전략X 탭 → 1228회 25행, 5뇌 블록+하이에나 렌더 ✅
+(2) 회차 262~1228 선택·이동 갱신 ✅ (v13 1100 클램프 분리 수정)
+(3) disclaimer 노출 ✅
+(4) predict·truth·1~3군 미변경, v13 4550행 보존 ✅
+
+서버: 완전 종료 후 재가동 (포트 6124)
+캐시: lotto4.js?v=20260618c
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+변경 파일 (4군만)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- app/static/index.html
+- app/static/js/lotto4.js
+- app/static/css/lotto4.css
+- app/lotto4/v13_routes.py (GET predictions/draw 메타)
+
+R2: 인기영역 조합기 UI. 당첨확률 향상 문구 없음.
+전략 X 풀스택: 백테스트 적재 + 대시보드 + 전용 탭 완료.

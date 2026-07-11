@@ -1,0 +1,206 @@
+20260620_4군_랜덤vs9뇌vs전략X_동일조건비교표_설계
+동생 → 커서 | 2026-06-20 | A안 설계 (READ-ONLY / 구현 전)
+
+원칙: R2 정직 / R14 정찰의무
+목적: 랜덤·9뇌(v13)·전략X가 **동일 walk-forward 조건**에서
+      랜덤과 통계적으로 구분되는지 표로 증명 (예측 약속 아님)
+DB: d:\3kweon\data\lotto4.db 읽기만 | UI: 이번 단계 미구현
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+0. 왜 필요한가
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4군 DB·백테스트는 풍부하나 **비교 축이 분산**되어 있음.
+  · run_cooccur_gap_walkforward.py → gap/cooccur vs 랜덤 (6~1225)
+  · full_backtest_v13.py → v13 7뇌 (기본 5~1223)
+  · strategy_x_fullbackfill.py → era_C 262~1228
+  · truth 탭 → JSON 상수 혼합
+
+형·사용자에게 한 장으로:
+  「우리 엔진이 랜덤보다 나은가? 아니면 정직히 같은가?」
+를 답하려면 **동일 회차·동일 세트 수·동일 채점** 표가 필요.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 비교 3팔 (Arms)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┌────────────┬──────────────────────────────────────────────────┐
+│ Arm        │ 정의                                              │
+├────────────┼──────────────────────────────────────────────────┤
+│ RANDOM     │ 회차 N마다 seed=N(또는 N*1000+s) 고정 난수 6수×5세트 │
+│ V13_9뇌    │ v13_* 7뇌 각 5세트 (UI 8뇌 중 quarantine 제외)   │
+│            │ 집계: 뇌별 + v13_ensemble(조율) + 7뇌 평균       │
+│ STRATEGY_X │ strategy_x_hyena 최종 5세트 (실전과 동일)         │
+│            │ 보조: 5뇌(freq/pair/shape/cooccur/hyena) 개별    │
+└────────────┴──────────────────────────────────────────────────┘
+
+※ 「9뇌」= 앱 표기상 8뇌 엔진군; 백테스트 DB에는 활성 7뇌+v13_ensemble.
+  v13_cdm·v13_cond_prob·v13_seq(quarantine)는 표에서 제외 또는 별도 행.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. 동일 조건 (Fairness Contract)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+필수 통일 항목:
+
+  (1) 회차 구간 — **교집합 우선**
+      · 현재 DB 적재 현황 (2026-06-20 정찰):
+        - v13 fullbacktest: 1100~1222 (123회) only
+        - strategy_x fullbacktest: 262~1228 (964회)
+        - v13 live predictions: 1100~1228 (129회)
+      · **1차 공정 구간 제안: 1100~1222 (123회)** — 양쪽 fullbacktest 존재
+      · **2차 확장: 262~1228** — 단, v13은 full_backtest_v13.py 재실행 필수
+
+  (2) Walk-forward (R13)
+      · 회차 N 예측 시 입력 데이터는 **draw_no < N** 만
+      · N회 당첨번호는 채점에만 사용
+      · 모델 파일·정적 cooccur 전체 스캔 금지 (기존 full_backtest 규칙)
+
+  (3) 세트 수
+      · 팔마다 **5세트/회차** (현행 army4·전략X 동일)
+      · 랜덤: gen_random_sets(N, k=5) — run_cooccur_gap와 동일 시드 규칙
+
+  (4) 채점
+      · matched_count 0~6 (본번호 일치 개수)
+      · bonus_matched (2등 판정용, 별도 열)
+      · tier 1~5 (선택: lotto_draws+보너스로 사후 계산)
+
+  (5) 이론 기준선 (baseline)
+      · BASELINE = 0.7894 — 45개 중 6개 무작위 기대 일치 수
+      · (기존 truth·cooccur_gap와 동일 상수)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. 출력 비교표 (스키마)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+메인 표 (1행 = 1 arm 또는 1 brain_tag):
+
+  arm              | RANDOM | V13_avg | V13_ensemble | SX_hyena | ...
+  n_draws          | 123    | 123     | 123          | 123      |
+  n_sets_total     | 615    | 615×7   | 615          | 615      |
+  avg_matched      | ?      | ?       | ?            | ?        |
+  std_matched      | ?      | ?       | ?            | ?        |
+  max_matched      | ?      | ?       | ?            | ?        |
+  hit_ge3_rate     | ?      | ?       | ?            | ?        |
+  hit_ge4_rate     | ?      | ?       | ?            | ?        |
+  hit_6_count      | 0      | ?       | ?            | ?        |
+  delta_vs_random  | 0      | ?       | ?            | ?        |
+  delta_vs_baseline| ?      | ?       | ?            | ?        |
+  p_vs_random      | —      | ?       | ?            | ?        |
+  verdict          | 기준   | ?       | ?            | ?        |
+
+판정 규칙 (기존 cooccur_gap THRESH=0.05 동일):
+
+  |Δrandom| ≤ 0.05 AND |Δbaseline| ≤ 0.05
+    → ❌ 「랜덤과 통계적으로 구분 안 됨」
+  Δrandom > 0.05 OR Δbaseline > 0.05
+    → ✅ 「약한 우위 — 추가 검증 필요」(1등 예측 아님)
+  Δrandom < -0.05
+    → ❌ 「랜덤보다 나쁨」
+
+유의성 (p_vs_random):
+  · 세트 단위 paired가 아니라 **회차별 avg_mc** 벡터로
+    Wilcoxon signed-rank (engine vs random, same draw)
+  · 또는 bootstrap 10,000회 on (avg_engine - avg_random)
+
+보조 표 — 뇌별 drill-down (V13):
+
+  brain_tag | avg_mc | Δrandom | Δbaseline | verdict
+
+보조 표 — 전략X 5뇌:
+
+  strategy_x_* | avg_mc | Δhyena | verdict
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. 데이터 소스 vs 재실행
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┌─────────────────┬──────────────────────┬─────────────────────────┐
+│ Arm             │ 1차: DB 읽기만       │ 2차: 재실행 (권장)       │
+├─────────────────┼──────────────────────┼─────────────────────────┤
+│ RANDOM          │ 스크립트 내 즉시 생성 │ 동일                     │
+│ V13             │ lotto_fullbacktest   │ full_backtest_v13.py    │
+│                 │ (1100~1222만 존재⚠)  │ 262~1228 또는 88~1228   │
+│ STRATEGY_X      │ lotto_fullbacktest   │ strategy_x_fullbackfill │
+│                 │ (262~1228 ✅)        │                         │
+└─────────────────┴──────────────────────┴─────────────────────────┘
+
+⚠ 현재 상태로 표를 만들면 **회차 수가 다름** → 공정 비교 불가.
+   A안 구현 시 반드시 공통 구간 재산출 또는 v13 풀백테 재돌림.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. 구현 설계 (1스크립트)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+신규: tools/run_unified_random_v13_strategyx_compare.py
+
+입력 파라미터:
+  --start 1100 --end 1222   # 공정 구간
+  --sets 5
+  --seed-mode per_draw      # random.Random(N*1000+s)
+  --source db|regen         # db=읽기만, regen=재생성(미래)
+
+처리 흐름:
+  1) lotto_draws에서 [start,end] 당첨번호 로드
+  2) 각 N에 대해:
+     a. random 5세트 생성·채점
+     b. v13: fullbacktest 행 SELECT 또는 regen
+     c. sx: fullbacktest strategy_x_hyena SELECT
+  3) 회차별·팔별 avg_mc 집계
+  4) 표 + JSON + 판정 출력
+
+출력:
+  tools/_unified_baseline_compare.json
+  reports/20260620_4군_랜덤vs9뇌vs전략X_동일조건비교_결과.txt (실행 후)
+
+DB 쓰기: 없음 (READ-ONLY 정찰 모드)
+  ※ regen 모드는 별도 플래그·형 승인 후
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. UI 연동 (후순위 — 이번 A안 범위 밖)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+「로또의 진실」탭 또는 대시보드 카드 1장:
+  · 3팔 막대: avg_matched (random / v13_ensemble / sx_hyena)
+  · 기준선 0.7894
+  · 문구: 「814만분의 1은 변하지 않음. 엔진은 랜덤과 구분 ○/×」
+
+API 초안:
+  GET /api/lotto4/v13/baseline-compare?start=&end=
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7. 기대 결과 (R2 선행 가설)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+과거 정찰·truth 데이터 기준 **예상**:
+
+  · RANDOM ≈ baseline (0.79 전후)
+  · gap/cooccur 전략은 이미 랜덤 이하 사례 다수
+  · v13_ensemble·strategy_x_hyena도 |Δrandom| < 0.05 가능성 높음
+  · hit_6 = 0 근처 (123회×5세트 = 615장으로는 1등 기대 ≈ 0)
+
+→ 표의 가치는 「이기는 법」이 아니라 **「숨기지 않는 증거」**.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8. 다음 액션 (형 선택)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[ ] A-1 READ-ONLY: 공통구간 1100~1222 DB 읽기만 비교표 1회 산출
+[ ] A-2 FULL: v13 fullbacktest 262~1228 재실행 후 964회 전수 비교
+[ ] A-3 UI: truth 탭에 3팔 막대 연동 (A-1 결과 반영)
+
+기억 갱신: 형 확인 후
+1~3군·DB 무수정 (A-1 기준)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+부록 — 참조 코드·상수
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BASELINE = 0.7894
+THRESH = 0.05
+random: tools/run_cooccur_gap_walkforward.py gen_random_sets
+v13: tools/full_backtest_v13.py (7뇌×5세트)
+strategy_x: app/lotto4/strategy_x_fullbackfill.py (era_C 262~1228)
+truth: app/lotto4/truth_data.py
+
+현재 DB 커버리지 (정찰 시점):
+  v13 fullbacktest: draw 1100~1222, 7 tags × 615 rows
+  strategy_x fullbacktest: draw 262~1228, 5 tags × 4820 rows

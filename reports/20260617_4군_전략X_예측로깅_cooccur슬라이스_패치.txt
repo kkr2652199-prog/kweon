@@ -1,0 +1,43 @@
+20260617_4군_전략X_예측로깅_cooccur슬라이스_패치
+동생→커서 | 2026-06-17 | 4군 패치 | 1~3군 간섭 0
+
+3파일 확인:
+✅ RULES_FIXED (R2 거짓금지 / R13 walk-forward / R14 정찰의무)
+✅ STATUS_LATEST 기억95 → 이번 기억96 갱신
+✅ CURSOR_RULES §2 1~3군 수정금지
+
+=== STEP1 전략 X 예측 로깅 ===
+신규: app/lotto4/strategy_x_logging.py
+수정: v13_routes.py recommend → generate_and_save_recommend
+
+동작:
+- strategy_x/recommend 호출 시 coordinator 5세트 + 1~3뇌 각 5세트 → lotto_predictions_army4
+- brain_tag: strategy_x_coordinator / strategy_x_popularity_freq / strategy_x_pair / strategy_x_shape
+- 컬럼 매핑: target_draw_no, brain_tag, num1~num6(=predicted_nums), reasoning(JSON 기여도), created_at
+- coordinator reasoning에 brain_contributions·combined_score 포함
+
+충돌 방지 (raw):
+- predict 파이프라인 DELETE는 brain_tag LIKE 'v13_%' 만 대상
+- strategy_x_* 태그는 v13_% 아님 → predict 후에도 로그 유지 (검증: 20행→20행)
+
+=== STEP2 cooccur walk-forward 슬라이스 ===
+신규: app/lotto4/cooccur_walkforward.py
+함수: aggregate_cooccur_before(cutoff_draw_no, top_n=None)
+- lotto_draws WHERE draw_no < cutoff 만 집계 (R13)
+- cooccur_2/3/4 반환, 기존 정적 테이블 미변경
+
+=== STEP3 검증 (tools/verify_strategy_x_logging_cooccur.py) ===
+(1) recommend+로깅: test_draw=19999 → 20행 (태그별 5세트씩) ✅
+(2) cooccur 슬라이스: N500 max=499, N1229 max=1228, r13_ok=true ✅
+(3) 4뇌 함수 popularity/pair/shape/recommend 각 5세트 OK ✅
+predict 파이프라인·1~3군 코드 변경 0줄
+
+=== 변경 파일 ===
+신규: strategy_x_logging.py, cooccur_walkforward.py, tools/verify_*.py
+수정: v13_routes.py (recommend 1곳)
+
+=== R2 ===
+당첨확률 향상 문구 없음. 로깅=하이에나 miss 학습 전제 데이터 적재.
+
+=== 다음 ===
+5뇌 cooccur (슬라이스 함수 활용) + 하이에나 조율
