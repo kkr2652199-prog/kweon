@@ -1148,57 +1148,192 @@ async function _loadSingleDraw(drawNo) {
   }
 }
 
-async function _loadRangeTimeline() {
-  const start = parseInt(document.getElementById('tldRangeStart')?.value, 10) || 2;
-  const end = parseInt(document.getElementById('tldRangeEnd')?.value, 10) || 20;
-  const title = document.getElementById('tldTimelineTitle');
+const BRAIN_CHART_COLORS = { stat: '#3b82f6', markov: '#10b981', review: '#f59e0b' };
+
+function _renderRangeDiagnosis(summary, start, end) {
+  const el = document.getElementById('tldRangeDiagnosis');
+  if (!el || !summary) return;
+  const cards = (summary.brain_order || [])
+    .map((tag) => summary.brains?.[tag])
+    .filter((b) => b && b.draw_count)
+    .map(
+      (b) => `<article class="tld-range-diag-card" style="--brain-color:${BRAIN_CHART_COLORS[b.brain_tag] || '#64748b'}">
+        <h4 class="tld-range-diag-card__name">${b.brain_name}</h4>
+        <p class="tld-range-diag-card__narrative">${b.narrative}</p>
+        <dl class="tld-range-diag-stats">
+          <div><dt>평균 적중</dt><dd>${b.avg_match}개</dd></div>
+          <div><dt>추세</dt><dd class="tld-range-trend tld-range-trend--${b.trend}">${b.trend_label}</dd></div>
+          <div><dt>5등+</dt><dd>${b.tier5_plus_count}회</dd></div>
+          <div><dt>최고</dt><dd>${b.best_draw?.draw_no}회 ${b.best_draw?.matched_count}개</dd></div>
+          <div><dt>최저</dt><dd>${b.worst_draw?.draw_no}회 ${b.worst_draw?.matched_count}개</dd></div>
+        </dl>
+      </article>`
+    )
+    .join('');
+  el.innerHTML = cards
+    ? `<p class="tld-range-combined">${summary.combined_narrative || ''}</p><div class="tld-range-diag-grid">${cards}</div>`
+    : `<p class="tld-empty-inline">${start}~${end}회 구간 복습 기록이 없습니다.</p>`;
+}
+
+function _renderRangeTrendSvg(summary) {
+  const el = document.getElementById('tldRangeTrend');
+  if (!el || !summary?.brains) return;
+  const brains = (summary.brain_order || [])
+    .map((tag) => summary.brains[tag])
+    .filter((b) => b?.equity_curve?.length);
+  if (!brains.length) {
+    el.innerHTML = '';
+    return;
+  }
+
+  const W = 760;
+  const H = 240;
+  const pad = { l: 44, r: 20, t: 24, b: 36 };
+  const innerW = W - pad.l - pad.r;
+  const innerH = H - pad.t - pad.b;
+  const allDraws = [...new Set(brains.flatMap((b) => b.equity_curve.map((p) => p.draw_no)))].sort(
+    (a, b) => a - b
+  );
+  const minX = allDraws[0];
+  const maxX = allDraws[allDraws.length - 1] || minX;
+  const maxY = 6;
+  const xAt = (drawNo) => pad.l + ((drawNo - minX) / Math.max(maxX - minX, 1)) * innerW;
+  const yAt = (mc) => pad.t + innerH - (Math.min(mc, maxY) / maxY) * innerH;
+
+  const gridLines = [0, 1, 2, 3, 4, 5, 6]
+    .map((y) => {
+      const yy = yAt(y);
+      return `<line x1="${pad.l}" y1="${yy}" x2="${W - pad.r}" y2="${yy}" class="tld-range-chart__grid"/>
+        <text x="${pad.l - 8}" y="${yy + 4}" class="tld-range-chart__ylabel">${y}</text>`;
+    })
+    .join('');
+
+  const paths = brains
+    .map((b) => {
+      const pts = b.equity_curve
+        .slice()
+        .sort((a, c) => a.draw_no - c.draw_no)
+        .map((p) => `${xAt(p.draw_no).toFixed(1)},${yAt(p.matched_count).toFixed(1)}`)
+        .join(' ');
+      const color = BRAIN_CHART_COLORS[b.brain_tag] || '#94a3b8';
+      return `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.2" class="tld-range-chart__line"/>
+        <text x="${W - pad.r - 4}" y="${pad.t + 14 + (summary.brain_order.indexOf(b.brain_tag) || 0) * 16}" text-anchor="end" fill="${color}" class="tld-range-chart__legend">${b.brain_name}</text>`;
+    })
+    .join('');
+
+  const xLabels = allDraws.length <= 8
+    ? allDraws
+    : [allDraws[0], allDraws[Math.floor(allDraws.length / 2)], allDraws[allDraws.length - 1]];
+  const xText = xLabels
+    .map((d) => `<text x="${xAt(d).toFixed(1)}" y="${H - 8}" class="tld-range-chart__xlabel">${d}회</text>`)
+    .join('');
+
+  el.innerHTML = `<h4 class="tld-range-block-title">적중 추세 (에쿼티 커브식)</h4>
+    <svg class="tld-range-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="구간 적중 추세 그래프">
+      ${gridLines}${paths}${xText}
+    </svg>`;
+}
+
+function _renderRangeWeakness(summary) {
+  const el = document.getElementById('tldRangeWeakness');
+  if (!el || !summary?.brains) return;
+  const blocks = (summary.brain_order || [])
+    .map((tag) => {
+      const b = summary.brains[tag];
+      if (!b?.draw_count) return '';
+      const top3 = b.missed_pattern_top3 || [];
+      const max = top3[0]?.count || 1;
+      const rows = top3.length
+        ? top3
+            .map(
+              (p) => `<div class="tld-range-weak-row">
+              <span class="tld-range-weak-label">${p.label} 놓침</span>
+              <span class="tld-range-weak-bar"><span style="width:${Math.round((p.count / max) * 100)}%"></span></span>
+              <span class="tld-range-weak-val">${p.count}회</span>
+            </div>`
+            )
+            .join('')
+        : '<p class="tld-empty-inline">놓친 패턴 없음</p>';
+      return `<article class="tld-range-weak-card" style="--brain-color:${BRAIN_CHART_COLORS[tag] || '#64748b'}">
+        <h4 class="tld-range-weak-card__title">${b.brain_name} — 구간 약점 top3</h4>
+        ${rows}
+      </article>`;
+    })
+    .join('');
+  el.innerHTML = blocks
+    ? `<h4 class="tld-range-block-title">약점 패턴 집계</h4><div class="tld-range-weak-grid">${blocks}</div>`
+    : '';
+}
+
+function _renderRangeDetailTable(items, start, end) {
   const body = document.getElementById('tldTimelineBody');
-  const status = document.getElementById('tldStatus');
-  const bmeta = BRAINS.find((b) => b.tag === _currentBrain);
-
-  if (title) title.textContent = `${bmeta?.name || ''} · ${start}~${end}회 복습 흐름`;
-  if (status) status.textContent = '구간 데이터를 불러오는 중…';
-
-  try {
-    const data = await _fetchJson(
-      `/api/testlotto/detail/reviews?start=${start}&end=${end}&brain_tag=${_currentBrain}&limit=500`
-    );
-    if (!body) return;
-    if (!data.items?.length) {
-      body.innerHTML = `<tr><td colspan="5" class="tld-empty">${start}~${end}회 구간에 복습 기록이 없습니다.</td></tr>`;
-      if (status) status.textContent = '복습 기록 없음';
-      return;
-    }
-    body.innerHTML = data.items
-      .map((it) => {
-        const labels = (it.missed_patterns || []).map((p) => PATTERN_LABELS[p] || p);
-        const pred = (it.predicted_nums || []).join(' · ');
-        return `<tr data-draw="${it.draw_no}" class="tld-timeline-row" tabindex="0">
-          <td><b>제 ${it.draw_no}회</b></td>
+  if (!body) return;
+  if (!items?.length) {
+    body.innerHTML = `<tr><td colspan="5" class="tld-empty">${start}~${end}회 구간에 복습 기록이 없습니다.</td></tr>`;
+    return;
+  }
+  body.innerHTML = items
+    .map((it) => {
+      const labels = (it.missed_patterns || []).map((p) => PATTERN_LABELS[p] || p);
+      const pred = (it.predicted_nums || []).join(' · ');
+      const bname = it.brain_name || BRAIN_NAME[it.brain_tag] || it.brain_tag;
+      return `<tr data-draw="${it.draw_no}" class="tld-timeline-row" tabindex="0">
+          <td><b>제 ${it.draw_no}회</b><span class="tld-muted"> · ${bname}</span></td>
           <td class="tld-nums-cell">${pred}</td>
           <td><span class="tld-match-badge ${_matchBadge(it.matched_count)}">${it.matched_count}개</span></td>
           <td>${labels.map((l) => `<span class="tld-tag">${l}</span>`).join('') || '—'}</td>
           <td class="tld-narrative-cell">${it.narrative || '—'}</td>
         </tr>`;
-      })
-      .join('');
-    body.querySelectorAll('.tld-timeline-row').forEach((tr) => {
-      const go = () => {
-        const d = _asDrawNo(tr.dataset.draw);
-        if (!d) return;
-        _mode = 'single';
-        _applyModeUi();
-        _goToDraw(d);
-      };
-      tr.addEventListener('click', go);
-      tr.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') go();
-      });
+    })
+    .join('');
+  body.querySelectorAll('.tld-timeline-row').forEach((tr) => {
+    const go = () => {
+      const d = _asDrawNo(tr.dataset.draw);
+      if (!d) return;
+      _mode = 'single';
+      _applyModeUi();
+      _goToDraw(d);
+    };
+    tr.addEventListener('click', go);
+    tr.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') go();
     });
-    if (status) status.textContent = `총 ${data.total}건 중 ${data.items.length}건 표시`;
+  });
+}
+
+async function _loadRangeTimeline() {
+  const start = parseInt(document.getElementById('tldRangeStart')?.value, 10) || 2;
+  const end = parseInt(document.getElementById('tldRangeEnd')?.value, 10) || 20;
+  const title = document.getElementById('tldTimelineTitle');
+  const status = document.getElementById('tldStatus');
+
+  if (title) title.textContent = `${start}~${end}회 구간 진단 리포트`;
+  if (status) status.textContent = '구간 진단 데이터를 불러오는 중…';
+
+  try {
+    const data = await _fetchJson(
+      `/api/testlotto/detail/reviews?start=${start}&end=${end}&limit=500`
+    );
+    const summary = data.summary;
+    if (!summary?.brains?.stat?.draw_count && !data.items?.length) {
+      _renderRangeDiagnosis(summary, start, end);
+      document.getElementById('tldRangeTrend').innerHTML = '';
+      document.getElementById('tldRangeWeakness').innerHTML = '';
+      _renderRangeDetailTable([], start, end);
+      if (status) status.textContent = '복습 기록 없음';
+      return;
+    }
+    _renderRangeDiagnosis(summary, start, end);
+    _renderRangeTrendSvg(summary);
+    _renderRangeWeakness(summary);
+    _renderRangeDetailTable(data.items || [], start, end);
+    if (status) {
+      status.textContent = `${start}~${end}회 · 3뇌 구간 진단 · ${data.total || 0}건`;
+    }
   } catch (e) {
-    if (body) body.innerHTML = `<tr><td colspan="5">${e.message}</td></tr>`;
-    if (status) status.textContent = '구간 불러오기 실패';
+    _renderRangeDiagnosis(null, start, end);
+    _renderRangeDetailTable([], start, end);
+    if (status) status.textContent = e.message || '구간 불러오기 실패';
   }
 }
 

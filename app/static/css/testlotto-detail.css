@@ -1291,7 +1291,189 @@
   font-size: 0.82rem;
 }
 
-/* ── 구간 흐름 ── */
+/* ── 구간 흐름 → 구간 진단 리포트 ── */
+.tld-range-diagnosis {
+  margin-bottom: 1rem;
+}
+
+.tld-range-combined {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(245, 158, 11, 0.08);
+  border-left: 3px solid #f59e0b;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+
+.tld-range-diag-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+}
+
+@media (max-width: 900px) {
+  .tld-range-diag-grid,
+  .tld-range-weak-grid { grid-template-columns: 1fr; }
+}
+
+.tld-range-diag-card {
+  padding: 0.75rem 0.85rem;
+  background: #0f0f1a;
+  border: 1px solid #252538;
+  border-top: 3px solid var(--brain-color, #64748b);
+  border-radius: 10px;
+}
+
+.tld-range-diag-card__name {
+  margin: 0 0 0.35rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--brain-color, #e2e8f0);
+}
+
+.tld-range-diag-card__narrative {
+  margin: 0 0 0.55rem;
+  font-size: 0.86rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+.tld-range-diag-stats {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.35rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+.tld-range-diag-stats dt {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.tld-range-diag-stats dd {
+  margin: 0;
+  color: #f1f5f9;
+  font-variant-numeric: tabular-nums;
+}
+
+.tld-range-trend--up { color: #4ade80; }
+.tld-range-trend--down { color: #f87171; }
+.tld-range-trend--flat { color: #94a3b8; }
+
+.tld-range-block-title {
+  margin: 0 0 0.55rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.tld-range-trend {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: #0f0f1a;
+  border: 1px solid #252538;
+  border-radius: 10px;
+}
+
+.tld-range-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tld-range-chart__grid {
+  stroke: #252538;
+  stroke-width: 1;
+}
+
+.tld-range-chart__ylabel,
+.tld-range-chart__xlabel {
+  fill: #64748b;
+  font-size: 11px;
+}
+
+.tld-range-chart__legend {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tld-range-weakness {
+  margin-bottom: 1rem;
+}
+
+.tld-range-weak-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+}
+
+.tld-range-weak-card {
+  padding: 0.75rem 0.85rem;
+  background: #0f0f1a;
+  border: 1px solid #252538;
+  border-left: 3px solid var(--brain-color, #64748b);
+  border-radius: 10px;
+}
+
+.tld-range-weak-card__title {
+  margin: 0 0 0.55rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.tld-range-weak-row {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr 2.5rem;
+  gap: 0.4rem;
+  align-items: center;
+  margin-bottom: 0.35rem;
+  font-size: 0.82rem;
+}
+
+.tld-range-weak-label { color: #94a3b8; }
+.tld-range-weak-bar {
+  height: 0.5rem;
+  background: #1e293b;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.tld-range-weak-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--brain-color, #3b82f6), #60a5fa);
+  border-radius: 999px;
+}
+.tld-range-weak-val {
+  text-align: right;
+  color: #e2e8f0;
+  font-variant-numeric: tabular-nums;
+}
+
+.tld-range-details {
+  margin-top: 0.5rem;
+  border: 1px solid #252538;
+  border-radius: 10px;
+  background: #0f0f1a;
+}
+
+.tld-range-details__summary {
+  cursor: pointer;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.86rem;
+  color: #cbd5e1;
+  list-style: none;
+}
+
+.tld-range-details__summary::-webkit-details-marker { display: none; }
+
+.tld-range-details .tld-timeline-table-wrap {
+  padding: 0 0.5rem 0.5rem;
+}
+
 .tld-timeline-table-wrap { overflow-x: auto; }
 
 .tld-timeline-table {

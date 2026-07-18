@@ -639,7 +639,7 @@ async def api_detail_reviews(
     limit: int = 100,
     offset: int = 0,
 ):
-    """여러 회차 복습 목록 (타임라인·비교)."""
+    """여러 회차 복습 목록 + 구간 진단 summary (추세·약점·내러티브)."""
     from app.testlotto.detail_service import get_reviews_range
 
     return get_reviews_range(start, end, brain_tag, limit=limit, offset=offset)

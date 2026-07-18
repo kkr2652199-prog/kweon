@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from collections import Counter
 from typing import Any
 
 from app.testlotto.aux_analysis import (
@@ -34,6 +35,8 @@ PATTERN_LABELS: dict[str, str] = {
 }
 
 PHASE_REVIEW = "review"
+PREDICT_BRAIN_TAGS = ("stat", "markov", "review")
+TREND_THRESHOLD = 0.15
 
 
 def _parse_json(raw: str | None, default: Any = None) -> Any:
@@ -556,6 +559,133 @@ def get_hit_draws(brain_tag: str, *, min_match: int = 3) -> list[int]:
         conn.close()
 
 
+def _tier5_plus_from_row(row: dict) -> bool:
+    detail = _parse_json(row.get("detail_json"), {})
+    tr = int(detail.get("tier_rank") or 0)
+    if 1 <= tr <= 5:
+        return True
+    return int(row.get("matched_count") or 0) >= 3
+
+
+def _build_brain_range_summary(
+    points: list[dict[str, Any]],
+    start: int,
+    end: int,
+    brain_tag: str,
+) -> dict[str, Any]:
+    """구간 1뇌 집계 — 추세·약점 top3·한 줄 진단 (READ ONLY)."""
+    name = DISPLAY_NAMES.get(brain_tag, brain_tag)
+    if not points:
+        return {
+            "brain_tag": brain_tag,
+            "brain_name": name,
+            "draw_count": 0,
+            "avg_match": 0.0,
+            "best_draw": None,
+            "worst_draw": None,
+            "tier5_plus_count": 0,
+            "trend": "flat",
+            "trend_label": "유지",
+            "first_half_avg": 0.0,
+            "second_half_avg": 0.0,
+            "missed_pattern_top3": [],
+            "narrative": f"{start}~{end}회 구간: {name} 복습 기록 없음.",
+            "equity_curve": [],
+        }
+
+    sorted_pts = sorted(points, key=lambda p: int(p["draw_no"]))
+    matches = [int(p.get("matched_count") or 0) for p in sorted_pts]
+    avg = sum(matches) / len(matches)
+    best_i = max(range(len(sorted_pts)), key=lambda i: (matches[i], -int(sorted_pts[i]["draw_no"])))
+    worst_i = min(range(len(sorted_pts)), key=lambda i: (matches[i], int(sorted_pts[i]["draw_no"])))
+
+    n = len(sorted_pts)
+    mid = max(1, n // 2)
+    first_pts = sorted_pts[:mid]
+    second_pts = sorted_pts[mid:] if mid < n else sorted_pts[-1:]
+    first_avg = sum(int(p.get("matched_count") or 0) for p in first_pts) / len(first_pts)
+    second_avg = sum(int(p.get("matched_count") or 0) for p in second_pts) / len(second_pts)
+
+    if second_avg > first_avg + TREND_THRESHOLD:
+        trend, trend_label = "up", "상승"
+    elif second_avg < first_avg - TREND_THRESHOLD:
+        trend, trend_label = "down", "하락"
+    else:
+        trend, trend_label = "flat", "유지"
+
+    pattern_counts: Counter[str] = Counter()
+    for p in sorted_pts:
+        for pat in _parse_json(p.get("missed_patterns"), []):
+            if pat:
+                pattern_counts[str(pat)] += 1
+    top3 = [
+        {"pattern": k, "label": PATTERN_LABELS.get(k, k), "count": int(v)}
+        for k, v in pattern_counts.most_common(3)
+    ]
+
+    tier5_plus = sum(1 for p in sorted_pts if _tier5_plus_from_row(p))
+
+    if top3:
+        weak_str = f"{top3[0]['label']}({top3[0]['count']}회 놓침)"
+    else:
+        weak_str = "뚜렷한 약점 없음"
+    narrative = (
+        f"{start}~{end}회 구간: {name} 평균 {avg:.1f}개, {trend_label} 추세. "
+        f"최대 약점은 {weak_str}."
+    )
+
+    return {
+        "brain_tag": brain_tag,
+        "brain_name": name,
+        "draw_count": n,
+        "avg_match": round(avg, 2),
+        "best_draw": {
+            "draw_no": int(sorted_pts[best_i]["draw_no"]),
+            "matched_count": matches[best_i],
+        },
+        "worst_draw": {
+            "draw_no": int(sorted_pts[worst_i]["draw_no"]),
+            "matched_count": matches[worst_i],
+        },
+        "tier5_plus_count": tier5_plus,
+        "trend": trend,
+        "trend_label": trend_label,
+        "first_half_avg": round(first_avg, 2),
+        "second_half_avg": round(second_avg, 2),
+        "missed_pattern_top3": top3,
+        "narrative": narrative,
+        "equity_curve": [
+            {"draw_no": int(p["draw_no"]), "matched_count": int(p.get("matched_count") or 0)}
+            for p in sorted_pts
+        ],
+    }
+
+
+def _build_range_summary(
+    all_rows: list[dict[str, Any]], start: int, end: int
+) -> dict[str, Any]:
+    """구간 3뇌 진단 summary."""
+    by_brain: dict[str, list[dict[str, Any]]] = {tag: [] for tag in PREDICT_BRAIN_TAGS}
+    for row in all_rows:
+        tag = row.get("brain_tag")
+        if tag in by_brain:
+            by_brain[tag].append(row)
+
+    brains = {
+        tag: _build_brain_range_summary(by_brain[tag], start, end, tag)
+        for tag in PREDICT_BRAIN_TAGS
+    }
+    narratives = [brains[tag]["narrative"] for tag in PREDICT_BRAIN_TAGS if brains[tag]["draw_count"]]
+    return {
+        "start": start,
+        "end": end,
+        "draw_span": end - start + 1,
+        "brains": brains,
+        "brain_order": list(PREDICT_BRAIN_TAGS),
+        "combined_narrative": " · ".join(narratives) if narratives else f"{start}~{end}회 구간 복습 기록 없음.",
+    }
+
+
 def get_reviews_range(
     start: int,
     end: int,
@@ -593,13 +723,23 @@ def get_reviews_range(
         rows = conn.execute(
             f"""
             SELECT draw_no, brain_tag, matched_count, missed_patterns,
-                   narrative, predicted_nums, hit_nums, updated_at
+                   narrative, predicted_nums, hit_nums, detail_json, updated_at
             FROM testlotto_brain_page
             WHERE {where}
             ORDER BY draw_no DESC, brain_tag
             LIMIT ? OFFSET ?
             """,
             params + [limit, offset],
+        ).fetchall()
+
+        summary_rows = conn.execute(
+            """
+            SELECT draw_no, brain_tag, matched_count, missed_patterns, detail_json
+            FROM testlotto_brain_page
+            WHERE draw_no BETWEEN ? AND ? AND phase = ?
+            ORDER BY draw_no ASC, brain_tag
+            """,
+            (start, end, PHASE_REVIEW),
         ).fetchall()
 
         items = []
@@ -618,6 +758,7 @@ def get_reviews_range(
                     "updated_at": d.get("updated_at"),
                 }
             )
+        summary = _build_range_summary([dict(r) for r in summary_rows], start, end)
         return {
             "start": start,
             "end": end,
@@ -626,6 +767,7 @@ def get_reviews_range(
             "limit": limit,
             "offset": offset,
             "items": items,
+            "summary": summary,
         }
     finally:
         conn.close()

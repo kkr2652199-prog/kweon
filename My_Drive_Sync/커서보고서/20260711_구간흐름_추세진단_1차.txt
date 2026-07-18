@@ -1,0 +1,79 @@
+# 구간 흐름 → 구간 진단 리포트 (1차)
+
+📅 2026-07-18 KST
+
+## 목적
+
+구간 모드(`mode=range`)를 **회차 나열**에서 **구간 진단 리포트**로 전환.
+
+---
+
+## 벤치마킹
+
+| 참고 | 적용 |
+|------|------|
+| **백테스트 에쿼티 커브** | 가로축=회차, 세로축=적중 개수(0~6) 꺾은선 — 뇌별 색상 3선 |
+| ThoughtSpot/Databricks narrative | 규칙 템플릿 한 줄 진단 |
+| 약점 집계 대시보드 | 놓친 패턴 top3 가로 막대 |
+
+---
+
+## 변경 전 / 후
+
+| 구분 | 변경 전 | 변경 후 |
+|------|---------|---------|
+| 구간 UI | 5열 회차 테이블만 | 진단 카드 + SVG 추세 + 약점 top3 + 접이식 상세表 |
+| API `/detail/reviews` | `items`만 | `summary` 추가 (3뇌 집계) |
+| 뇌 필터 | 현재 뇌 1개만 | summary는 **3뇌 동시** · 상세表는 전체 |
+
+### 변경 파일
+
+- `app/testlotto/detail_service.py` — `_build_range_summary`, `get_reviews_range` summary
+- `app/testlotto/routes.py` — API 설명 갱신
+- `app/static/js/testlotto-detail.js` — `_renderRangeDiagnosis/Trend/Weakness`
+- `app/static/css/testlotto-detail.css` — 구간 진단 스타일
+- `app/static/testlotto-detail.html` — 레이아웃 · `?v=20260718s`
+- `tools/verify_range_diagnosis.py`
+
+### DB
+
+- **변경 없음** · walk-forward 재실행 없음 · `testlotto_brain_page` READ ONLY 집계
+
+---
+
+## summary 필드 (뇌별)
+
+- `avg_match`, `best_draw`, `worst_draw`, `tier5_plus_count`
+- `trend` / `trend_label` — 전반부 vs 후반부 평균 (±0.15 임계)
+- `missed_pattern_top3` — 패턴별 놓침 횟수
+- `narrative` — 한 줄 진단
+- `equity_curve` — `[{draw_no, matched_count}, …]`
+
+---
+
+## 검증
+
+```text
+python tools/verify_range_diagnosis.py
+
+2~20회: stat avg=1.84 상승 · top3 끝수19 · curve 19점
+1180~1231회: stat avg=1.56 유지 · top3 끝수51·이월15 · curve 52점
+(3뇌 모두 ok)
+```
+
+---
+
+## 이전에 한 일
+
+- Phase A/B 회차 정밀분석 · 오답노트 · walk-forward 1230회 완료
+
+## 앞으로 할 일
+
+- Phase C: `detect_missed_patterns` 확장 + markov learn_state
+- 구간 진단 2차: 등수(tier) 추세·히트맵 연동 · PNG 내보내기
+
+---
+
+## Git
+
+- `feat: 구간 흐름 스토리텔링 — 적중 추세 그래프·약점 패턴 집계·구간 진단`
