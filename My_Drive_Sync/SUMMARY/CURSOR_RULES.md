@@ -1,5 +1,5 @@
 # CURSOR_RULES.md — 커서 행동 강제 규칙
-# 최종 갱신: 2026-07-11 (kweon 이식)
+# 최종 갱신: 2026-07-18 (push 검증·RESUME_HERE 반영)
 # 이 파일은 READ-ONLY. 형(사용자)만 수정 가능.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -76,7 +76,19 @@ memoy(1·2·3군) 앱 원본: D:\MONEY lol — 절대 미접촉.
 ### 3-4. Drive 보고서 복사 (R8)
  경로: D:\3kweon\My_Drive_Sync\커서보고서\{보고서파일명}
 
-### 3-5. 완료 확인 출력
+### 3-5. git push + 원격 재확인 (R34 kweon만)
+ `git add` → `commit` → **`push origin main` (kweon)** — memoy push 금지.
+ push 후 **원격에서 파일 존재·커밋 SHA 대조**까지 해야 "완료":
+ - `git rev-parse HEAD` 로컬 SHA
+ - `git ls-remote origin refs/heads/main` 원격 SHA 일치 확인
+ - (선택) `git show origin/main:My_Drive_Sync/SUMMARY/RESUME_HERE.md` 원격 파일 존재 확인
+
+### 3-6. RESUME_HERE.md 갱신 (매 push 동반)
+ 경로: `D:\3kweon\My_Drive_Sync\SUMMARY\RESUME_HERE.md` (+ 동일 `.txt`)
+ 3섹션 고정: **지금 어디까지** / **살아있는 진실** / **다음 한 걸음**
+ push할 때마다 "지금 어디까지"·"다음 한 걸음"을 최신화.
+
+### 3-7. 완료 확인 출력
  작업 마지막에 아래 체크리스트 출력:
 
  📋 저장 체크리스트:
@@ -84,6 +96,8 @@ memoy(1·2·3군) 앱 원본: D:\MONEY lol — 절대 미접촉.
  [ ] STATUS_LATEST 갱신 → 기억{N}, 상태: ...
  [ ] 기억 파일 저장 → 기억{N}_v1.md
  [ ] Drive 복사 완료 → 커서보고서\...
+ [ ] RESUME_HERE.md 갱신 + .txt
+ [ ] push origin main (kweon) + 원격 SHA 대조
  [ ] 1~3군 간섭: 0건
 
  모든 항목 [✅] 확인 후에만 "작업 완료" 선언.
@@ -149,7 +163,8 @@ memoy(1·2·3군) 앱 원본: D:\MONEY lol — 절대 미접촉.
 
  D:\3kweon\My_Drive_Sync\
  ├── SUMMARY/
- │ ├── README_START.md ← 복원 진입점
+ │ ├── RESUME_HERE.md ← **복원 앵커 (매 push 최신화, 3섹션 고정)**
+ │ ├── README_START.md ← 복원 진입점(레거시)
  │ ├── RULES_FIXED.md ← 마스터 룰 (READ-ONLY)
  │ ├── STATUS_LATEST.md ← 현황 (매 작업 후 갱신)
  │ ├── NEXT_ACTIONS.md ← 대기 작업
@@ -184,4 +199,18 @@ memoy(1·2·3군) 앱 원본: D:\MONEY lol — 절대 미접촉.
  - 보고서 미저장 → 작업 완료 불인정
  - STATUS 미갱신 → 작업 완료 불인정
  - 기억 미저장 → 작업 완료 불인정
- - 위 4개 중 하나라도 빠지면 "⛔ 불완전 작업" 표시
+ - push 미수행·원격 SHA 미대조 → 작업 완료 불인정
+ - RESUME_HERE 미갱신 → 작업 완료 불인정
+ - 위 항목 중 하나라도 빠지면 "⛔ 불완전 작업" 표시
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 11. push 검증 절차 (20260718 박제)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ 1. `git status` — memoy·1~3군 파일 staged 여부 확인 (있으면 unstage)
+ 2. `git add` (해당 작업 파일만)
+ 3. `git commit -m "…"`
+ 4. `git push origin main`
+ 5. `git fetch origin && git rev-parse HEAD && git rev-parse origin/main` — SHA 일치
+ 6. 원격 경로 spot-check: `RESUME_HERE.md`, 백업 README 등 이번 커밋 산출물
+ 7. 완료 보고에 **로컬 SHA·원격 SHA·백업 경로** 명시
