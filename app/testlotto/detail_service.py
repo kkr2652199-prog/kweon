@@ -37,6 +37,10 @@ PATTERN_LABELS: dict[str, str] = {
 PHASE_REVIEW = "review"
 PREDICT_BRAIN_TAGS = ("stat", "markov", "review")
 TREND_THRESHOLD = 0.15
+SET_DIST_HONESTY_WARNING = (
+    "이 순위는 과거 관찰이며 미래 예측력을 보장하지 않음(사후선택 주의). "
+    "「구간 최고 세트」는 당첨 번호를 본 뒤 고른 것과 동일한 착시가 있습니다."
+)
 
 
 def _parse_json(raw: str | None, default: Any = None) -> Any:
@@ -686,6 +690,198 @@ def _build_range_summary(
     }
 
 
+def _empty_hit_distribution() -> dict[str, int]:
+    return {"0": 0, "1": 0, "2": 0, "3": 0, "4plus": 0}
+
+
+def _record_hit_distribution(dist: dict[str, int], matched_count: int) -> None:
+    mc = int(matched_count or 0)
+    if mc >= 4:
+        dist["4plus"] += 1
+    else:
+        key = str(mc)
+        dist[key] = dist.get(key, 0) + 1
+
+
+def _finalize_set_bucket(matches: list[int], dist: dict[str, int]) -> dict[str, Any]:
+    n = len(matches)
+    if not n:
+        return {
+            "draw_samples": 0,
+            "avg_match": 0.0,
+            "hit_distribution": dict(dist),
+            "tier5_plus_count": 0,
+        }
+    return {
+        "draw_samples": n,
+        "avg_match": round(sum(matches) / n, 2),
+        "hit_distribution": dict(dist),
+        "tier5_plus_count": sum(1 for m in matches if m >= 3),
+    }
+
+
+def _compute_set_hit_distribution(
+    conn: Any, start: int, end: int
+) -> dict[str, Any]:
+    """구간 내 뇌×세트(1~5) 적중 분포 — READ ONLY."""
+    count = conn.execute(
+        """
+        SELECT COUNT(*) FROM testlotto_brain_page
+        WHERE draw_no BETWEEN ? AND ? AND phase = ?
+        """,
+        (start, end, PHASE_REVIEW),
+    ).fetchone()[0]
+    if count == 0:
+        rev_cnt = conn.execute(
+            """
+            SELECT COUNT(*) FROM testlotto_brain_review
+            WHERE draw_no BETWEEN ? AND ?
+            """,
+            (start, end),
+        ).fetchone()[0]
+        if rev_cnt:
+            sync_brain_pages_from_reviews(start, end)
+
+    rows = conn.execute(
+        """
+        SELECT p.draw_no, p.brain_tag, p.best_set_no, p.predicted_sets_json,
+               d.num1, d.num2, d.num3, d.num4, d.num5, d.num6, d.bonus
+        FROM testlotto_brain_page p
+        JOIN lotto_draws d ON d.draw_no = p.draw_no
+        WHERE p.draw_no BETWEEN ? AND ? AND p.phase = ?
+        ORDER BY p.draw_no ASC, p.brain_tag
+        """,
+        (start, end, PHASE_REVIEW),
+    ).fetchall()
+
+    set_matches: dict[str, dict[int, list[int]]] = {
+        tag: {sn: [] for sn in range(1, 6)} for tag in PREDICT_BRAIN_TAGS
+    }
+    set_dists: dict[str, dict[int, dict[str, int]]] = {
+        tag: {sn: _empty_hit_distribution() for sn in range(1, 6)} for tag in PREDICT_BRAIN_TAGS
+    }
+    official_best: dict[str, list[int]] = {tag: [] for tag in PREDICT_BRAIN_TAGS}
+    posthoc_best: dict[str, list[int]] = {tag: [] for tag in PREDICT_BRAIN_TAGS}
+
+    for row in rows:
+        d = dict(row)
+        tag = d.get("brain_tag")
+        if tag not in set_matches:
+            continue
+        actual = _draw_nums(d)
+        bonus = int(d.get("bonus") or 0)
+        sets = enrich_predicted_sets(_parse_json(d.get("predicted_sets_json"), []), actual, bonus)
+        if not sets and d.get("predicted_sets_json"):
+            continue
+
+        for s in sets:
+            set_no = int(s.get("set_no") or 0)
+            if set_no < 1 or set_no > 5:
+                continue
+            mc = int(s.get("matched_count") or 0)
+            set_matches[tag][set_no].append(mc)
+            _record_hit_distribution(set_dists[tag][set_no], mc)
+
+        if sets:
+            posthoc_best[tag].append(max(int(s.get("matched_count") or 0) for s in sets))
+            best_no = int(d.get("best_set_no") or 1)
+            official = next(
+                (s for s in sets if int(s.get("set_no") or 0) == best_no),
+                sets[0],
+            )
+            official_best[tag].append(int(official.get("matched_count") or 0))
+
+    brains_out: dict[str, Any] = {}
+    ranking_pool: list[dict[str, Any]] = []
+
+    for tag in PREDICT_BRAIN_TAGS:
+        name = DISPLAY_NAMES.get(tag, tag)
+        sets_out: dict[str, Any] = {}
+        for set_no in range(1, 6):
+            stats = _finalize_set_bucket(set_matches[tag][set_no], set_dists[tag][set_no])
+            stats["set_no"] = set_no
+            sets_out[str(set_no)] = stats
+            if stats["draw_samples"]:
+                ranking_pool.append(
+                    {
+                        "brain_tag": tag,
+                        "brain_name": name,
+                        "set_no": set_no,
+                        **stats,
+                    }
+                )
+
+        official_stats = _finalize_set_bucket(official_best[tag], _empty_hit_distribution())
+        posthoc_stats = _finalize_set_bucket(posthoc_best[tag], _empty_hit_distribution())
+        best_in_brain = max(
+            (s for s in ranking_pool if s["brain_tag"] == tag),
+            key=lambda x: (x["avg_match"], x["tier5_plus_count"]),
+            default=None,
+        )
+
+        brains_out[tag] = {
+            "brain_tag": tag,
+            "brain_name": name,
+            "sets": sets_out,
+            "best_set_in_range": best_in_brain,
+            "comparison": {
+                "official_best": {
+                    "label": "복습 기록 best 세트 (walk-forward 사전 지정)",
+                    "avg_match": official_stats["avg_match"],
+                    "tier5_plus_count": official_stats["tier5_plus_count"],
+                    "draw_samples": official_stats["draw_samples"],
+                },
+                "posthoc_range_best": {
+                    "label": "구간 사후 최고 세트 (당첨 본 뒤 고른 것과 동일 — 참고용)",
+                    "avg_match": posthoc_stats["avg_match"],
+                    "tier5_plus_count": posthoc_stats["tier5_plus_count"],
+                    "draw_samples": posthoc_stats["draw_samples"],
+                },
+            },
+        }
+
+    ranking_pool.sort(key=lambda x: (-x["avg_match"], -x["tier5_plus_count"], x["set_no"]))
+    set_ranking: list[dict[str, Any]] = []
+    for i, item in enumerate(ranking_pool[:8], start=1):
+        set_ranking.append(
+            {
+                "rank": i,
+                "brain_tag": item["brain_tag"],
+                "brain_name": item["brain_name"],
+                "set_no": item["set_no"],
+                "avg_match": item["avg_match"],
+                "tier5_plus_count": item["tier5_plus_count"],
+                "draw_samples": item["draw_samples"],
+                "hit_distribution": item["hit_distribution"],
+                "narrative": (
+                    f"{start}~{end}회: {item['brain_name']} {item['set_no']}번 세트 "
+                    f"평균 {item['avg_match']}개, 5등+ {item['tier5_plus_count']}회"
+                ),
+            }
+        )
+
+    top_line = set_ranking[0]["narrative"] if set_ranking else f"{start}~{end}회 세트별 기록 없음"
+
+    return {
+        "start": start,
+        "end": end,
+        "honesty_warning": SET_DIST_HONESTY_WARNING,
+        "brains": brains_out,
+        "brain_order": list(PREDICT_BRAIN_TAGS),
+        "set_ranking": set_ranking,
+        "summary_narrative": top_line,
+    }
+
+
+def get_set_hit_distribution(start: int, end: int) -> dict[str, Any]:
+    """구간 뇌×세트 적중 분포 API (READ ONLY)."""
+    conn = get_lotto_db()
+    try:
+        return _compute_set_hit_distribution(conn, start, end)
+    finally:
+        conn.close()
+
+
 def get_reviews_range(
     start: int,
     end: int,
@@ -759,6 +955,7 @@ def get_reviews_range(
                 }
             )
         summary = _build_range_summary([dict(r) for r in summary_rows], start, end)
+        set_distribution = _compute_set_hit_distribution(conn, start, end)
         return {
             "start": start,
             "end": end,
@@ -768,6 +965,7 @@ def get_reviews_range(
             "offset": offset,
             "items": items,
             "summary": summary,
+            "set_distribution": set_distribution,
         }
     finally:
         conn.close()

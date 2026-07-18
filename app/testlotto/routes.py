@@ -645,6 +645,14 @@ async def api_detail_reviews(
     return get_reviews_range(start, end, brain_tag, limit=limit, offset=offset)
 
 
+@router.get("/detail/reviews/set-distribution")
+async def api_detail_set_distribution(start: int = 2, end: int = 1231):
+    """구간 뇌×세트(1~5) 적중 분포 — READ ONLY, 사후선택 경고 포함."""
+    from app.testlotto.detail_service import get_set_hit_distribution
+
+    return get_set_hit_distribution(start, end)
+
+
 @router.get("/detail/brain/{brain_tag}/summary")
 async def api_detail_brain_summary(brain_tag: str):
     """뇌별 누적 학습 요약."""

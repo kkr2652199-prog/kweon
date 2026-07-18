@@ -1301,6 +1301,87 @@ function _renderRangeDetailTable(items, start, end) {
   });
 }
 
+function _renderSetDistBars(dist) {
+  const d = dist || {};
+  const total = ['0', '1', '2', '3', '4plus'].reduce((s, k) => s + (d[k] || 0), 0) || 1;
+  return ['1', '2', '3', '4plus']
+    .map((k) => {
+      const label = k === '4plus' ? '4+' : k;
+      const cnt = d[k] || 0;
+      const pct = Math.round((cnt / total) * 100);
+      return `<span class="tld-set-dist-chip" title="${label}개 적중 ${cnt}회">${label}:${cnt}</span>`;
+    })
+    .join('');
+}
+
+function _renderSetDistribution(sd, start, end) {
+  const el = document.getElementById('tldRangeSetDist');
+  if (!el) return;
+  if (!sd?.brains) {
+    el.innerHTML = '';
+    return;
+  }
+
+  const warning = sd.honesty_warning || '이 순위는 과거 관찰이며 미래 예측력을 보장하지 않음(사후선택 주의)';
+
+  const ranking = (sd.set_ranking || [])
+    .slice(0, 5)
+    .map(
+      (r) => `<li class="tld-set-rank-item">
+        <span class="tld-set-rank-no">#${r.rank}</span>
+        <span class="tld-set-rank-name" style="color:${BRAIN_CHART_COLORS[r.brain_tag] || '#e2e8f0'}">${r.brain_name} ${r.set_no}번</span>
+        <span class="tld-set-rank-stat">평균 ${r.avg_match}개 · 5등+ ${r.tier5_plus_count}회</span>
+      </li>`
+    )
+    .join('');
+
+  const brainBlocks = (sd.brain_order || [])
+    .map((tag) => {
+      const b = sd.brains[tag];
+      if (!b) return '';
+      const cmp = b.comparison || {};
+      const setRows = [1, 2, 3, 4, 5]
+        .map((sn) => {
+          const s = b.sets?.[String(sn)] || {};
+          return `<tr>
+            <td>${sn}번</td>
+            <td>${s.avg_match ?? '—'}개</td>
+            <td>${s.tier5_plus_count ?? 0}회</td>
+            <td class="tld-set-dist-cells">${_renderSetDistBars(s.hit_distribution)}</td>
+          </tr>`;
+        })
+        .join('');
+      return `<article class="tld-set-brain-card" style="--brain-color:${BRAIN_CHART_COLORS[tag] || '#64748b'}">
+        <h4 class="tld-set-brain-card__title">${b.brain_name}</h4>
+        <table class="tld-set-table">
+          <thead><tr><th>세트</th><th>평균</th><th>5등+</th><th>적중 분포(1/2/3/4+)</th></tr></thead>
+          <tbody>${setRows}</tbody>
+        </table>
+        <div class="tld-set-compare">
+          <div class="tld-set-compare__row tld-set-compare__row--official">
+            <span class="tld-set-compare__label">${cmp.official_best?.label || 'best 세트'}</span>
+            <span>평균 ${cmp.official_best?.avg_match ?? '—'}개 · 5등+ ${cmp.official_best?.tier5_plus_count ?? 0}회</span>
+          </div>
+          <div class="tld-set-compare__row tld-set-compare__row--posthoc">
+            <span class="tld-set-compare__label">${cmp.posthoc_range_best?.label || '사후 최고'}</span>
+            <span>평균 ${cmp.posthoc_range_best?.avg_match ?? '—'}개 · 5등+ ${cmp.posthoc_range_best?.tier5_plus_count ?? 0}회</span>
+          </div>
+        </div>
+      </article>`;
+    })
+    .join('');
+
+  el.innerHTML = `
+    <div class="tld-set-dist-warning" role="alert">${warning}</div>
+    <h4 class="tld-range-block-title">세트별 적중 분포 (${start}~${end}회)</h4>
+    <p class="tld-set-dist-summary">${sd.summary_narrative || ''}</p>
+    <div class="tld-set-rank-block">
+      <h5 class="tld-set-subtitle">구간 세트 랭킹 (관찰용 · 사후선택 주의)</h5>
+      <ol class="tld-set-rank-list">${ranking || '<li class="tld-empty-inline">데이터 없음</li>'}</ol>
+    </div>
+    <div class="tld-set-brain-grid">${brainBlocks}</div>`;
+}
+
 async function _loadRangeTimeline() {
   const start = parseInt(document.getElementById('tldRangeStart')?.value, 10) || 2;
   const end = parseInt(document.getElementById('tldRangeEnd')?.value, 10) || 20;
@@ -1319,6 +1400,7 @@ async function _loadRangeTimeline() {
       _renderRangeDiagnosis(summary, start, end);
       document.getElementById('tldRangeTrend').innerHTML = '';
       document.getElementById('tldRangeWeakness').innerHTML = '';
+      _renderSetDistribution(null, start, end);
       _renderRangeDetailTable([], start, end);
       if (status) status.textContent = '복습 기록 없음';
       return;
@@ -1326,6 +1408,7 @@ async function _loadRangeTimeline() {
     _renderRangeDiagnosis(summary, start, end);
     _renderRangeTrendSvg(summary);
     _renderRangeWeakness(summary);
+    _renderSetDistribution(data.set_distribution, start, end);
     _renderRangeDetailTable(data.items || [], start, end);
     if (status) {
       status.textContent = `${start}~${end}회 · 3뇌 구간 진단 · ${data.total || 0}건`;

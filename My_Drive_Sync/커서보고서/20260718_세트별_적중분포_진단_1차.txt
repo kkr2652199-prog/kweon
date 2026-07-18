@@ -1,0 +1,62 @@
+# 세트별 적중 분포 진단 (1차)
+
+📅 2026-07-18 KST
+
+## 형 아이디어 (원문 요지)
+
+> "어느 뇌의 몇 번 세트가 잘 맞나" — best 1세트만이 아니라 **5세트 전부**를 당첨과 대조해 분포를 본다.
+
+## 편향 위험 (정직한 설계)
+
+| 착시 | 대응 |
+|------|------|
+| **사후선택(cherry-picking)** | 구간 끝난 뒤 잘 맞은 세트만 고르는 것 | 화면 **필수 경고** 문구 |
+| **구간 최고 세트** | 매 회차 5세트 중 최고만 선택 = 당첨 본 뒤 고른 것과 동일 | `posthoc_range_best` 라벨 + 점선 박스 |
+| **walk-forward best** | 복습 시점에 지정한 best — 상대적으로 정직 | `official_best` 라벨로 병렬 표시 |
+
+경고 문구: *「이 순위는 과거 관찰이며 미래 예측력을 보장하지 않음(사후선택 주의)」*
+
+---
+
+## 구현
+
+### API
+- `get_set_hit_distribution(start, end)` — READ ONLY
+- `/api/testlotto/detail/reviews` → `set_distribution` 필드 추가
+- `/api/testlotto/detail/reviews/set-distribution` — 단독 조회
+
+### 집계 (뇌×세트 1~5)
+- `predicted_sets_json` 5세트 × `lotto_draws` 실제번호 채점
+- 평균 적중 · 1/2/3/4+ 분포 · 5등+(≥3) 횟수
+- 구간 세트 랭킹 top8 (관찰용)
+- best 세트 vs 사후 최고 세트 **병렬 비교**
+
+### UI
+- 구간 모드 `tldRangeSetDist` — 경고 · 랭킹 · 3뇌×5세트 표 · 비교행
+
+### DB
+- **변경 없음** · 예측 재실행 없음
+
+---
+
+## 검증
+
+```text
+python tools/verify_set_distribution.py
+
+1212~1231: ok · warning · ranking top3 · stat 1번 세트 분포
+2~20: ok
+```
+
+---
+
+## 이전에 한 일
+- 구간 진단 리포트 (추세·약점·내러티브)
+- Phase A/B 회차 정밀분석
+
+## 앞으로 할 일
+- 세트 분포 2차: tier(등수) 분포 · 히트맵 연동
+- Phase C learn_state 확장
+
+## Git
+`feat: 세트별 적중 분포 진단 — 뇌·세트 단위 성적 관찰(읽기전용, 사후선택 경고)`
